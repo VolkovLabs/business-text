@@ -119,7 +119,3 @@ Check out these snippets for inspiration.
 This is the auth app.
 {{/if}}
 ```
-
-## License
-
-This plugin is licensed under the [Apache 2.0 License](LICENSE).
