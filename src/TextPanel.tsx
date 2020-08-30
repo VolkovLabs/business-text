@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PanelProps, DataFrameView, SelectableValue, renderMarkdown, DataFrame, GrafanaTheme } from '@grafana/data';
+import { PanelProps, DataFrameView, renderMarkdown, DataFrame, GrafanaTheme } from '@grafana/data';
 import { Select, useTheme } from '@grafana/ui';
 import { TextOptions } from 'types';
 import Handlebars from 'handlebars';
@@ -24,7 +24,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
     setFrameIndex(index);
   };
 
-  const selectableFrames: SelectableValue<string>[] = data.series.map(frame => ({
+  const selectableFrames = data.series.map(frame => ({
     label: frame.name,
     value: frame.refId,
   }));
