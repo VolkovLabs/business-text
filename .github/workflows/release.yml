@@ -99,6 +99,17 @@ jobs:
 
           echo ::set-output name=github-tag::${GITHUB_REF#refs/*/}
 
+      - name: Read changelog
+        id: changelog
+        run: |
+          CHANGELOG=$(awk '/^## / {s++} s == 1 {print}' CHANGELOG.md)
+
+          # Escape newlines
+          CHANGELOG="${CHANGELOG//'%'/'%25'}"
+          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
+          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
+
+          echo "::set-output name=body::$CHANGELOG"
       - name: Check package version
         run: if [ "v${{ steps.metadata.outputs.plugin-version }}" != "${{ steps.metadata.outputs.github-tag }}" ]; then printf "\033[0;31mPlugin version doesn't match tag name\033[0m\n"; exit 1; fi
 
@@ -126,8 +137,8 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
+          body: ${{ steps.changelog.outputs.body }}
           draft: true
-          prerelease: false
 
       - name: Add plugin to release
         id: upload-plugin-asset
