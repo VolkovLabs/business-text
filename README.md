@@ -33,7 +33,7 @@ Here's an example of what you can do.
 Deployed on {{join (variable "hostname") ", "}}.
 
 {{#if (eq tier "frontend")}}
-[Link](https://{{cluster}}.example.com/{{app}})
+https://{{cluster}}.example.com/{{app}}
 {{/if}}
 ```
 
@@ -46,7 +46,7 @@ Handles user authentication.
 
 Deployed on server1, server2, server3.
 
-[Link](https://prod.example.com/auth)
+https://prod.example.com/auth
 ```
 
 ## Helpers
