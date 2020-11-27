@@ -8,3 +8,4 @@
 
 - Updated `@grafana` dependencies from `^7.0.0` to `^7.3.0`
 - Improved release process using the new [GitHub workflows](https://github.com/grafana/plugin-workflows) for Grafana plugins
+- Add screenshot
