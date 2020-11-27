@@ -102,14 +102,9 @@ jobs:
       - name: Read changelog
         id: changelog
         run: |
-          CHANGELOG=$(awk '/^## / {s++} s == 1 {print}' CHANGELOG.md)
+          awk '/^## / {s++} s == 1 {print}' CHANGELOG.md > release_notes.md
+          echo "::set-output name=path::release_notes.md"
 
-          # Escape newlines
-          CHANGELOG="${CHANGELOG//'%'/'%25'}"
-          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
-          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
-
-          echo "::set-output name=body::$CHANGELOG"
       - name: Check package version
         run: if [ "v${{ steps.metadata.outputs.plugin-version }}" != "${{ steps.metadata.outputs.github-tag }}" ]; then printf "\033[0;31mPlugin version doesn't match tag name\033[0m\n"; exit 1; fi
 
@@ -122,7 +117,6 @@ jobs:
           echo "::set-output name=checksum::$(cat ./${{ steps.metadata.outputs.archive-checksum }} | cut -d' ' -f1)"
 
       - name: Lint plugin
-        if: false # Disable until linter can handle Markdown links in code blocks.
         run: |
           git clone https://github.com/grafana/plugin-validator
           pushd ./plugin-validator/cmd/plugincheck
@@ -138,7 +132,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: ${{ steps.changelog.outputs.body }}
+          body_path: ${{ steps.changelog.outputs.path }}
           draft: true
 
       - name: Add plugin to release
