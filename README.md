@@ -11,6 +11,8 @@ While the built-in Text panel in Grafana does support variables, that's about as
 
 The panel supports both [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 
+![Screenshot](https://github.com/marcusolsson/grafana-dynamictext-panel/raw/master/src/img/screenshot.png)
+
 ## Example
 
 Here's an example of what you can do.
@@ -95,7 +97,7 @@ Formats the given number using fixed-point notation.
 
 ### `{{variable}}`
 
-Returns a string array of the currently selected values for a certain [variable](https://grafana.com/docs/grafana/latest/variables/templates-and-variables/).
+Returns a string array of the currently selected values for a certain [variable](https://grafana.com/docs/grafana/latest/variables/).
 
 ```
 {{variable "hostname"}}
