@@ -35,10 +35,50 @@ const eq = (left: string, right: string): boolean => {
   return left === right;
 };
 
+const diff = (left: string, right: string): boolean => {
+  return left !== right;
+};
+
+const sup = (left: number, right: number): boolean => {
+  return left > right;
+};
+
+const inf = (left: number, right: number): boolean => {
+  return left < right;
+};
+
+const supeq = (left: number, right: number): boolean => {
+  return left >= right;
+};
+
+const infeq = (left: number, right: number): boolean => {
+  return left <= right;
+};
+
+const and = (left: boolean, right: boolean): boolean => {
+  return left && right;
+};
+
+const or = (left: boolean, right: boolean): boolean => {
+  return left || right;
+};
+
+const not = (left: boolean): boolean => {
+  return !left;
+};
+
 export const registerHelpers = (handlebars: any) => {
   handlebars.registerHelper('date', date);
   handlebars.registerHelper('toFixed', toFixed);
   handlebars.registerHelper('variable', variable);
   handlebars.registerHelper('join', join);
   handlebars.registerHelper('eq', eq);
+  handlebars.registerHelper('diff', diff);
+  handlebars.registerHelper('sup', sup);
+  handlebars.registerHelper('inf', inf);
+  handlebars.registerHelper('supeq', supeq);
+  handlebars.registerHelper('infeq', infeq);
+  handlebars.registerHelper('and', and);
+  handlebars.registerHelper('or', or);
+  handlebars.registerHelper('not', not);
 };
