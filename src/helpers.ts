@@ -35,23 +35,23 @@ const eq = (left: string, right: string): boolean => {
   return left === right;
 };
 
-const diff = (left: string, right: string): boolean => {
+const unlessEq = (left: string, right: string): boolean => {
   return left !== right;
 };
 
-const sup = (left: number, right: number): boolean => {
+const gt = (left: number, right: number): boolean => {
   return left > right;
 };
 
-const inf = (left: number, right: number): boolean => {
+const lt = (left: number, right: number): boolean => {
   return left < right;
 };
 
-const supeq = (left: number, right: number): boolean => {
+const gte = (left: number, right: number): boolean => {
   return left >= right;
 };
 
-const infeq = (left: number, right: number): boolean => {
+const lte = (left: number, right: number): boolean => {
   return left <= right;
 };
 
@@ -73,11 +73,11 @@ export const registerHelpers = (handlebars: any) => {
   handlebars.registerHelper('variable', variable);
   handlebars.registerHelper('join', join);
   handlebars.registerHelper('eq', eq);
-  handlebars.registerHelper('diff', diff);
-  handlebars.registerHelper('sup', sup);
-  handlebars.registerHelper('inf', inf);
-  handlebars.registerHelper('supeq', supeq);
-  handlebars.registerHelper('infeq', infeq);
+  handlebars.registerHelper('unlessEq', unlessEq);
+  handlebars.registerHelper('gt', gt);
+  handlebars.registerHelper('lt', lt);
+  handlebars.registerHelper('gte', gte);
+  handlebars.registerHelper('lte', lte);
   handlebars.registerHelper('and', and);
   handlebars.registerHelper('or', or);
   handlebars.registerHelper('not', not);
