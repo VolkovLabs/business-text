@@ -10,9 +10,14 @@ A panel plugin for [Grafana](https://grafana.com) for dynamic, data-driven text.
 
 While the built-in Text panel in Grafana does support variables, that's about as dynamic it gets. This panel lets you define a text template using the data from your data source query.
 
-The panel supports both [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
+- Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage)
+- Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML
 
 ![Screenshot](https://github.com/marcusolsson/grafana-dynamictext-panel/raw/master/src/img/screenshot.png)
+
+## Security
+
+HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through [textUtil](https://grafana.com/docs/grafana/latest/packages_api/data/textutil/).
 
 ## Example
 

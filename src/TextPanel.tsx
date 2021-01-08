@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { PanelProps, DataFrameView, renderMarkdown, DataFrame, GrafanaTheme } from '@grafana/data';
+import { PanelProps, DataFrameView, DataFrame, GrafanaTheme, textUtil } from '@grafana/data';
 import { Select, useTheme } from '@grafana/ui';
 import { TextOptions } from 'types';
 import Handlebars from 'handlebars';
+
+import MarkdownIt from 'markdown-it';
 
 import { registerHelpers } from './helpers';
 import { css, cx } from 'emotion';
@@ -31,6 +33,8 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
 
   const frame: DataFrame | undefined = data.series[frameIndex];
 
+  const md = new MarkdownIt({ html: true });
+
   return (
     <div
       className={cx(
@@ -44,11 +48,12 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
       {frame ? (
         <div style={{ flexGrow: 1, overflow: 'auto' }}>
           {new DataFrameView(frame).toArray().map(row => {
-            const compiledTemplate = Handlebars.compile(content ?? '');
-            const renderedTemplate = compiledTemplate(row);
-            const renderedMarkdown = renderMarkdown(renderedTemplate);
+            const template = Handlebars.compile(content ?? '');
+            const markdown = template(row);
+            const html = md.render(markdown);
+            const sanitizedHtml = textUtil.sanitize(html);
 
-            return <div className={styles.frame} dangerouslySetInnerHTML={{ __html: renderedMarkdown }} />;
+            return <div className={styles.frame} dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
           })}
         </div>
       ) : null}
