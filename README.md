@@ -130,3 +130,15 @@ Check out these snippets for inspiration.
 This is the auth app.
 {{/if}}
 ```
+
+### Render HTML from data
+
+If you'd like to render HTML returned by the data source, you need to use three-brace expressions, `{{{htmlValue}}}`, otherwise Handlebars escapes the HTML content.
+
+```
+<ul>
+{{{htmlValue}}}
+</ul>
+```
+
+`htmlValue` is `<li>foo</li><li>bar</li>`.
