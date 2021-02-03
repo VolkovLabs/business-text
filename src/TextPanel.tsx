@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { PanelProps, DataFrameView, DataFrame, GrafanaTheme, textUtil } from '@grafana/data';
-import { Select, useTheme } from '@grafana/ui';
+import { PanelProps, DataFrameView, GrafanaTheme, textUtil } from '@grafana/data';
+import { Select, stylesFactory, useTheme } from '@grafana/ui';
 import { TextOptions } from 'types';
 import Handlebars from 'handlebars';
 
@@ -17,7 +17,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
   const [frameIndex, setFrameIndex] = useState(0);
 
   const theme = useTheme();
-  const styles = makeStyles(theme);
+  const styles = getStyles(theme);
 
   const { content } = options;
 
@@ -31,7 +31,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
     value: frame.refId,
   }));
 
-  const frame: DataFrame | undefined = data.series[frameIndex];
+  const frame = data.series[frameIndex];
 
   const md = new MarkdownIt({ html: true });
 
@@ -67,7 +67,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
   );
 };
 
-const makeStyles = (theme: GrafanaTheme) => ({
+const getStyles = stylesFactory((theme: GrafanaTheme) => ({
   root: css`
     display: flex;
     flex-direction: column;
@@ -89,4 +89,4 @@ const makeStyles = (theme: GrafanaTheme) => ({
       margin-left: ${theme.spacing.md};
     }
   `,
-});
+}));
