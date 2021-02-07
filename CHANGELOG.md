@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.0 (2020-01-08)
+
+[Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.3.0...v1.4.0)
+
+### Enhancements
+
+- Update @grafana/* packages
+- Improved styling for tables and blockquotes
+
 ## 1.3.0 (2020-01-08)
 
 [Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.2.1...v1.3.0)

@@ -22,11 +22,11 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
   const { content } = options;
 
   const onChangeFrame = (selectableValue: any) => {
-    const index = data.series.findIndex(frame => frame.refId === selectableValue.value);
+    const index = data.series.findIndex((frame) => frame.refId === selectableValue.value);
     setFrameIndex(index);
   };
 
-  const selectableFrames = data.series.map(frame => ({
+  const selectableFrames = data.series.map((frame) => ({
     label: frame.name,
     value: frame.refId,
   }));
@@ -45,24 +45,24 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
         `
       )}
     >
-      {frame ? (
+      {frame && (
         <div style={{ flexGrow: 1, overflow: 'auto' }}>
-          {new DataFrameView(frame).toArray().map(row => {
+          {new DataFrameView(frame).toArray().map((row, key) => {
             const template = Handlebars.compile(content ?? '');
             const markdown = template(row);
             const html = md.render(markdown);
             const sanitizedHtml = textUtil.sanitize(html);
 
-            return <div className={styles.frame} dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
+            return <div key={key} className={styles.frame} dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
           })}
         </div>
-      ) : null}
+      )}
 
-      {data.series.length > 1 ? (
+      {data.series.length > 1 && (
         <div className={styles.frameSelect}>
           <Select onChange={onChangeFrame} value={frame.refId} options={selectableFrames} />
         </div>
-      ) : null}
+      )}
     </div>
   );
 };
@@ -87,6 +87,37 @@ const getStyles = stylesFactory((theme: GrafanaTheme) => ({
 
     li {
       margin-left: ${theme.spacing.md};
+    }
+
+    table {
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: ${theme.spacing.xs} ${theme.spacing.sm};
+        border-top: 1px solid ${theme.colors.border2};
+        border-left: 1px solid ${theme.colors.border2};
+      }
+
+      th {
+        font-weight: ${theme.typography.weight.semibold};
+        background: ${theme.colors.bg2};
+      }
+
+      border-bottom: 1px solid ${theme.colors.border2};
+      border-right: 1px solid ${theme.colors.border2};
+    }
+
+    blockquote {
+      margin: ${theme.spacing.md} 0;
+      border-left: 5px solid ${theme.colors.border3};
+      padding: ${theme.spacing.sm};
+      padding-left: ${theme.spacing.md};
+
+      p {
+        font-size: ${theme.typography.size.base};
+        color: ${theme.colors.textSemiWeak};
+      }
     }
   `,
 }));
