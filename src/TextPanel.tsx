@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { PanelProps, DataFrameView, GrafanaTheme, textUtil } from '@grafana/data';
 import { Select, stylesFactory, useTheme } from '@grafana/ui';
 import { TextOptions } from 'types';
@@ -33,7 +33,22 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
 
   const frame = data.series[frameIndex];
 
-  const md = new MarkdownIt({ html: true });
+  /**
+   * By using useMemo here, we avoid having to compile and render the Markdown
+   * on every render.
+   */
+  const html = useMemo(() => {
+    return new DataFrameView(frame).toArray().map((row, key) => {
+      const md = new MarkdownIt({ html: true });
+
+      const template = Handlebars.compile(content ?? '');
+      const markdown = template(row);
+      const html = md.render(markdown);
+      const sanitizedHtml = textUtil.sanitize(html);
+
+      return <div key={key} className={styles.frame} dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
+    });
+  }, [content, frame, styles]);
 
   return (
     <div
@@ -45,18 +60,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
         `
       )}
     >
-      {frame && (
-        <div style={{ flexGrow: 1, overflow: 'auto' }}>
-          {new DataFrameView(frame).toArray().map((row, key) => {
-            const template = Handlebars.compile(content ?? '');
-            const markdown = template(row);
-            const html = md.render(markdown);
-            const sanitizedHtml = textUtil.sanitize(html);
-
-            return <div key={key} className={styles.frame} dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
-          })}
-        </div>
-      )}
+      {frame && <div style={{ flexGrow: 1, overflow: 'auto' }}>{html}</div>}
 
       {data.series.length > 1 && (
         <div className={styles.frameSelect}>
