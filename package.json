@@ -1,6 +1,6 @@
 {
   "name": "marcusolsson-dynamictext-panel",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A panel plugin for Grafana for dynamic, data-driven text",
   "keywords": [
     "grafana"
@@ -27,10 +27,10 @@
     "markdown-it": "^12.0.4"
   },
   "devDependencies": {
-    "@grafana/data": "^7.3.0",
-    "@grafana/runtime": "^7.3.0",
-    "@grafana/toolkit": "^7.3.0",
-    "@grafana/ui": "^7.3.0",
+    "@grafana/data": "latest",
+    "@grafana/runtime": "latest",
+    "@grafana/toolkit": "latest",
+    "@grafana/ui": "latest",
     "@types/markdown-it": "^12.0.1",
     "emotion": "10.0.27"
   },

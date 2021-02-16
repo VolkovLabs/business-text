@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.0 (2020-02-16)
+
+[Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.4.0...v1.5.0)
+
+### Enhancements
+
+- Avoid recompiling templates on every render
+
 ## 1.4.0 (2020-01-08)
 
 [Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.3.0...v1.4.0)
