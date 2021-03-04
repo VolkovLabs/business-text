@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0 (2020-03-04)
+
+[Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.5.0...v1.6.0)
+
+### Enhancements
+
+- Improved error handling
+
 ## 1.5.0 (2020-02-16)
 
 [Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.4.0...v1.5.0)
