@@ -34,6 +34,7 @@ export const Text = React.memo(({ frame, content, defaultContent }: TextProps) =
     </div>
   );
 });
+Text.displayName = 'Text';
 
 const generateHtml = (row: Record<string, any>, content: string) => {
   const md = new MarkdownIt({ html: true });
