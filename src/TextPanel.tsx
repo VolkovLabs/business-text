@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PanelProps, GrafanaTheme, SelectableValue } from '@grafana/data';
-import { InfoBox, Select, stylesFactory, useTheme } from '@grafana/ui';
+import { Select, stylesFactory, useTheme } from '@grafana/ui';
 import { TextOptions } from 'types';
 
 import { Text } from './Text';
@@ -25,23 +25,6 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
     value: frame.refId,
   }));
 
-  if (data.series.length === 0) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100%',
-        }}
-      >
-        <InfoBox severity="info" style={{ maxWidth: '500px' }}>
-          <p>{`Your query didn't return any results.`}</p>
-        </InfoBox>
-      </div>
-    );
-  }
-
   const frame = data.series[frameIndex];
 
   return (
@@ -54,7 +37,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
         `
       )}
     >
-      <Text frame={frame} content={options.content} />
+      <Text frame={frame} content={options.content ?? ''} defaultContent={options.defaultContent ?? ''} />
 
       {data.series.length > 1 && (
         <div className={styles.frameSelect}>
