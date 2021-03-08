@@ -34,15 +34,15 @@ module.exports = {
           items: [
             {
               label: 'Installation',
-              to: '/',
+              to: '/installation',
             },
             {
-              label: 'Configuration',
-              to: 'configuration/',
+              label: 'Helpers',
+              to: '/helpers',
             },
             {
-              label: 'Query editor',
-              to: 'query-editor/',
+              label: 'Recipes',
+              to: '/recipes',
             },
           ],
         },
