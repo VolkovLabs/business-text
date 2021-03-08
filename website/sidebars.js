@@ -10,6 +10,10 @@ module.exports = {
     },
     {
       type: 'doc',
+      id: 'options',
+    },
+    {
+      type: 'doc',
       id: 'helpers',
     },
     {
