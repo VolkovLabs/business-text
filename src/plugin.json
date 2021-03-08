@@ -16,6 +16,10 @@
     },
     "links": [
       {
+        "name": "Documentation",
+        "url": "https://marcusolsson.github.io/grafana-dynamictext-panel"
+      },
+      {
         "name": "Website",
         "url": "https://github.com/marcusolsson/grafana-dynamictext-panel"
       },
