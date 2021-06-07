@@ -22,7 +22,7 @@
     "url": "https://marcus.se.net"
   },
   "dependencies": {
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "helper-date": "^1.0.1",
     "markdown-it": "^12.0.4"
   },
