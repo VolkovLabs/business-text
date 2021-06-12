@@ -20,7 +20,6 @@ While the built-in Text panel in Grafana does support variables, that's about as
 
 Full documentation for the plugin is available on the [website](https://marcusolsson.github.io/grafana-dynamictext-panel).
 
-
 ## Security
 
 HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through [textUtil](https://grafana.com/docs/grafana/latest/packages_api/data/textutil/).
