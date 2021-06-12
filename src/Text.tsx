@@ -1,12 +1,10 @@
-import React from 'react';
-import { DataFrameView, textUtil, DataFrame, GrafanaTheme } from '@grafana/data';
+import { DataFrame, DataFrameView, GrafanaTheme, textUtil } from '@grafana/data';
 import { useTheme } from '@grafana/ui';
-import Handlebars from 'handlebars';
-
-import MarkdownIt from 'markdown-it';
-
-import { registerHelpers } from './helpers';
 import { css } from 'emotion';
+import Handlebars from 'handlebars';
+import MarkdownIt from 'markdown-it';
+import React from 'react';
+import { registerHelpers } from './helpers';
 
 registerHelpers(Handlebars);
 
