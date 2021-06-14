@@ -29,10 +29,8 @@
       }
     ],
     "screenshots": [
-      {
-        "name": "Dynamic text",
-        "path": "img/product.png"
-      }
+      { "name": "Dynamic text (Dark)", "path": "img/dark.png" },
+      { "name": "Dynamic text (Light)", "path": "img/light.png" }
     ],
     "version": "%VERSION%",
     "updated": "%TODAY%"

@@ -14,7 +14,7 @@ While the built-in Text panel in Grafana does support variables, that's about as
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage)
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML
 
-![Screenshot](https://github.com/marcusolsson/grafana-dynamictext-panel/raw/main/src/img/screenshot.png)
+![Screenshot](https://github.com/marcusolsson/grafana-dynamictext-panel/raw/main/src/img/dark.png)
 
 ## Documentation
 
