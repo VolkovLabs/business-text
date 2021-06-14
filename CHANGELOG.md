@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.7.1 (2020-06-15)
+
+[Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.7.0...v1.7.1)
+
+### Enhancements
+
+- Update docs and metadata
+- Upgrade dependencies
+
 ## 1.7.0 (2020-03-08)
 
 [Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.6.0...v1.7.0)
