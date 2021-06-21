@@ -32,6 +32,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
         css`
           width: ${width}px;
           height: ${height}px;
+          overflow: auto;
         `
       )}
     >

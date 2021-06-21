@@ -1,5 +1,5 @@
 import { DataFrame, DataFrameView, GrafanaTheme, textUtil } from '@grafana/data';
-import { useTheme } from '@grafana/ui';
+import { InfoBox, useTheme } from '@grafana/ui';
 import { css } from 'emotion';
 import Handlebars from 'handlebars';
 import MarkdownIt from 'markdown-it';
@@ -18,23 +18,48 @@ export const Text = React.memo(({ frame, content, defaultContent }: TextProps) =
   const theme = useTheme();
   const styles = getStyles(theme);
 
-  return (
-    <div style={{ flexGrow: 1, overflow: 'auto' }}>
-      {frame?.length ? (
-        new DataFrameView(frame).toArray().map((row, key) => {
-          return (
-            <div key={key} className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml(row, content) }} />
-          );
-        })
-      ) : (
-        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, defaultContent) }} />
-      )}
-    </div>
-  );
+  try {
+    return (
+      <div style={{ flexGrow: 1, overflow: 'auto' }}>
+        {frame?.length ? (
+          new DataFrameView(frame).toArray().map((row, key) => {
+            return (
+              <div
+                key={key}
+                className={styles.frame}
+                dangerouslySetInnerHTML={{ __html: generateHtml(row, content) }}
+              />
+            );
+          })
+        ) : (
+          <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, defaultContent) }} />
+        )}
+      </div>
+    );
+  } catch (e) {
+    return (
+      <div
+        className={css`
+          padding: ${theme.spacing.sm};
+        `}
+      >
+        <InfoBox title="Couldn't build text from template" severity="error">
+          <p>
+            Please make sure the your text content is a valid{' '}
+            <a href="https://handlebarsjs.com/" target="_blank" rel="noreferrer">
+              Handlebars
+            </a>{' '}
+            template.
+          </p>
+          <pre>{e instanceof Error ? e.message : e}</pre>
+        </InfoBox>
+      </div>
+    );
+  }
 });
 Text.displayName = 'Text';
 
-const generateHtml = (row: Record<string, any>, content: string) => {
+const generateHtml = (row: Record<string, any>, content: string): string => {
   const md = new MarkdownIt({ html: true });
 
   const template = Handlebars.compile(content);
