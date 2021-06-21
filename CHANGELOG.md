@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.2 (2020-06-21)
+
+[Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.7.1...v1.7.2)
+
+### Enhancements
+
+- Improve error handling. Avoids having to refresh the dashboard on template errors.
+
 ## 1.7.1 (2020-06-15)
 
 [Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.7.0...v1.7.1)
