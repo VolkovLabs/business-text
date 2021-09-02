@@ -32,6 +32,8 @@
     "@grafana/runtime": "8.0.1",
     "@grafana/toolkit": "8.0.1",
     "@grafana/ui": "8.0.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "@types/markdown-it": "^12.0.1",
     "@emotion/core": "10.0.27",
     "emotion": "10.0.27"
