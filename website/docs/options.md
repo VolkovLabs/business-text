@@ -26,3 +26,11 @@ Whenever the data source query returns an empty result, Grafana displays the tem
 This can be useful to provide users with instructions on what to do, or who to contact, when the query returns an empty result.
 
 Even though there's no data from the data source, you can still use the available [helpers](helpers.md).
+
+### Every row
+
+By default, the template configured in the **Content** field is rendered for each record in the result.
+
+You can render this template only once by turning this switch off. In this case, the query results are passed in as the `data` field to the template.
+
+Handlebars provides a [builtin-helper](https://handlebarsjs.com/guide/builtin-helpers.html#each) to iterate over these records. 

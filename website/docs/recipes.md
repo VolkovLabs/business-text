@@ -55,3 +55,23 @@ For example, for the following query result:
 you'll end up with something like this:
 
 ![Dynamic template](/img/dynamic-template.gif)
+
+
+## Render a single template
+
+For the following query result:
+
+| title | author        | year |
+|-------|---------------|------|
+| Dune  | Frank Herbert | 1965 |
+| 1984  | George Orwell | 1949 |
+
+Given that the **EveryRow** switch is turned off, the following template renders a table from the query result:
+
+```md
+| Title | Author | Year |
+|-------|--------|------|
+{{#each data}}
+| {{title}} | {{author}} | {{year}} |
+{{/each}}
+```
