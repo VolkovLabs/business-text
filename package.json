@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@emotion/core": "10.0.27",
-    "@grafana/data": "8.0.6",
+    "@grafana/data": "8.2.3",
     "@grafana/runtime": "8.0.6",
     "@grafana/toolkit": "8.0.6",
     "@grafana/ui": "8.0.6",
