@@ -37,6 +37,18 @@ Join all elements of array into a string using a given separator.
 <!-- results in: 'a-b-c'  -->
 ```
 
+## `{{contains}}`
+
+Checks if given value exists within an array
+
+```md
+<!-- array: ['a', 'b', 'c'] -->
+{{#if (contains array "a")}}
+Success!
+{{/if}}
+<!-- results in: 'Success!'  -->
+```
+
 ## `{{toFixed}}`
 
 Formats the given number using fixed-point notation.
