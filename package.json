@@ -1,6 +1,6 @@
 {
   "name": "marcusolsson-dynamictext-panel",
-  "version": "1.7.2",
+  "version": "1.8.0",
   "description": "A panel plugin for Grafana for dynamic, data-driven text",
   "keywords": [
     "grafana"
