@@ -31,6 +31,10 @@ const join = (arr: string[], sep: string): string => {
   return arr.join(sep);
 };
 
+const contains = (arr: string[], value: string): boolean => {
+  return arr.indexOf(value) !== -1;
+};
+
 const eq = (left: string, right: string): boolean => {
   return left === right;
 };
@@ -72,6 +76,7 @@ export const registerHelpers = (handlebars: any) => {
   handlebars.registerHelper('toFixed', toFixed);
   handlebars.registerHelper('variable', variable);
   handlebars.registerHelper('join', join);
+  handlebars.registerHelper('contains', contains);
   handlebars.registerHelper('eq', eq);
   handlebars.registerHelper('unlessEq', unlessEq);
   handlebars.registerHelper('gt', gt);
