@@ -28,14 +28,14 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@grafana/data": "8.0.1",
-    "@grafana/runtime": "8.0.1",
-    "@grafana/toolkit": "8.0.1",
-    "@grafana/ui": "8.0.1",
+    "@emotion/core": "10.0.27",
+    "@grafana/data": "8.2.5",
+    "@grafana/runtime": "8.2.5",
+    "@grafana/toolkit": "8.2.5",
+    "@grafana/ui": "8.2.5",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@types/markdown-it": "^12.0.1",
-    "@emotion/core": "10.0.27",
     "emotion": "10.0.27"
   },
   "engines": {
