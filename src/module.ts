@@ -22,5 +22,10 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setNoPadding().set
         useTextarea: true,
         rows: 5,
       },
+    })
+    .addBooleanSwitch({
+      path: 'everyRow',
+      name: 'Render template for every row',
+      defaultValue: true,
     });
 });

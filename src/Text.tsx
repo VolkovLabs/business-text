@@ -8,34 +8,40 @@ import { registerHelpers } from './helpers';
 
 registerHelpers(Handlebars);
 
-interface TextProps {
+export interface TextProps {
   frame?: DataFrame;
   content: string;
   defaultContent: string;
+  everyRow: boolean;
 }
 
-export const Text = React.memo(({ frame, content, defaultContent }: TextProps) => {
+export const Text = React.memo(({ frame, content, defaultContent, everyRow }: TextProps) => {
   const theme = useTheme();
   const styles = getStyles(theme);
 
   try {
-    return (
-      <div style={{ flexGrow: 1, overflow: 'auto' }}>
-        {frame?.length ? (
-          new DataFrameView(frame).toArray().map((row, key) => {
-            return (
-              <div
-                key={key}
-                className={styles.frame}
-                dangerouslySetInnerHTML={{ __html: generateHtml(row, content) }}
-              />
-            );
-          })
-        ) : (
-          <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, defaultContent) }} />
-        )}
-      </div>
-    );
+    let renderedContent;
+    if (frame?.length) {
+      const dataframeView = new DataFrameView(frame);
+      renderedContent = everyRow ? (
+        dataframeView.toArray().map((row, key) => {
+          return (
+            <div key={key} className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml(row, content) }} />
+          );
+        })
+      ) : (
+        <div
+          className={styles.frame}
+          dangerouslySetInnerHTML={{ __html: generateHtml({ data: dataframeView.toArray() }, content) }}
+        />
+      );
+    } else {
+      renderedContent = (
+        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, defaultContent) }} />
+      );
+    }
+
+    return <div style={{ flexGrow: 1, overflow: 'auto' }}>{renderedContent}</div>;
   } catch (e) {
     return (
       <div
@@ -59,11 +65,11 @@ export const Text = React.memo(({ frame, content, defaultContent }: TextProps) =
 });
 Text.displayName = 'Text';
 
-const generateHtml = (row: Record<string, any>, content: string): string => {
+const generateHtml = (data: Record<string, any>, content: string): string => {
   const md = new MarkdownIt({ html: true });
 
   const template = Handlebars.compile(content);
-  const markdown = template(row);
+  const markdown = template(data);
   const html = md.render(markdown);
   const sanitizedHtml = textUtil.sanitize(html);
 

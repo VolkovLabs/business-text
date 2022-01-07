@@ -36,7 +36,12 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
         `
       )}
     >
-      <Text frame={frame} content={options.content ?? ''} defaultContent={options.defaultContent ?? ''} />
+      <Text
+        frame={frame}
+        content={options.content ?? ''}
+        defaultContent={options.defaultContent ?? ''}
+        everyRow={options.everyRow ?? true}
+      />
 
       {data.series.length > 1 && (
         <div className={styles.frameSelect}>
