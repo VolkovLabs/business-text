@@ -9,6 +9,8 @@ Helpers are functions that let you perform basic text transformation within your
 
 Formats the timestamp in a given field using a date format. Uses [helper-date](https://github.com/helpers/helper-date).
 
+The field value must be a Unix timestamp or any of the formats supported by [date.js](https://date.js.org/).
+
 ```md
 <!-- Time: 1598791377556 -->
 {{date Time "YYYY-MM-DD"}}
