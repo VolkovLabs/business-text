@@ -51,7 +51,7 @@ describe('<Text />', () => {
     const nameData: string[] = ['Erik', 'Natasha'];
     const ageData: number[] = [42, 38];
 
-    const template: string = `| Name | Age |
+    const template = `| Name | Age |
 | ---- | --- |
 {{#each data}}
 | {{name}} | {{age}} |
