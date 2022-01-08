@@ -27,21 +27,29 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
 
   return (
     <div
-      className={cx(
-        styles.root,
-        css`
-          width: ${width}px;
-          height: ${height}px;
-          overflow: auto;
-        `
-      )}
+      className={css`
+        display: flex;
+        flex-direction: column;
+        width: ${width}px;
+        height: ${height}px;
+      `}
     >
-      <Text
-        frame={frame}
-        content={options.content ?? ''}
-        defaultContent={options.defaultContent ?? ''}
-        everyRow={options.everyRow ?? true}
-      />
+      <div
+        className={cx(
+          styles.root,
+          css`
+            flex-grow: 1;
+            overflow: auto;
+          `
+        )}
+      >
+        <Text
+          frame={frame}
+          content={options.content ?? ''}
+          defaultContent={options.defaultContent ?? ''}
+          everyRow={options.everyRow ?? true}
+        />
+      </div>
 
       {data.series.length > 1 && (
         <div className={styles.frameSelect}>
