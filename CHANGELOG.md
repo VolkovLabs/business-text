@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.9.0 (2022-01-09)
+
+[Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.8.0...v1.9.0)
+
+### Enhancements
+
+- Add an option to render template for each row or as a single template. Useful for when you want to create tables from the query result. [#53](https://github.com/marcusolsson/grafana-dynamictext-panel/pull/53) (thanks [@andykingking](https://github.com/andykingking)!)
+
+### Bug fixes
+
+- The dropdown for selecting between multiple frames wasn't visible due to overflow. [#65](https://github.com/marcusolsson/grafana-dynamictext-panel/issues/65)
+
 ## 1.8.0 (2021-11-19)
 
 [Full changelog](https://github.com/marcusolsson/grafana-dynamictext-panel/compare/v1.7.2...v1.8.0)
