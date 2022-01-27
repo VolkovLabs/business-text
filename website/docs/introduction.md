@@ -52,3 +52,5 @@ https://{{cluster}}.example.com/{{app}}
 The panel renders Handlebars → Markdown → HTML and displays the final result.
 
 ![Apps](../static/img/example.png)
+
+> If you like the Dynamic text panel, make sure to check out [my other plugins](https://marcus.se.net/projects/) as well!
