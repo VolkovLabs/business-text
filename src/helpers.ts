@@ -1,4 +1,5 @@
 import { getTemplateSrv } from '@grafana/runtime';
+import dayjs from 'dayjs'
 
 const date = require('helper-date');
 
@@ -17,7 +18,12 @@ const variable = (name: any): string[] => {
     if (Array.isArray(value)) {
       values.push(...value);
     } else {
-      values.push(value);
+      if (name.startsWith("__from:") || name.startsWith("__to:")) {
+        let dateFormattingString = formateDate(name, value);
+        values.push(dateFormattingString);
+      } else {
+        values.push(value);
+      }
     }
 
     // We don't really care about the string here.
@@ -26,6 +32,32 @@ const variable = (name: any): string[] => {
 
   return values;
 };
+
+function formateDate(name: string, value: string): string {
+  let date = new Date(parseInt(value));
+  if (name === "__from:date" || name === "__to:date" || name === "__from:date:iso" || name === "__to:date:iso") {
+    //normal case 
+    return dayjs(date).toISOString()
+  } else {
+    //by parsing name, we can get the formatter string. ex: YYYY-MM-DD
+    try {
+      if (name.startsWith("__from:date:")) {
+        const formatter = name.substring("__from:date:".length);
+        return dayjs(date).format(formatter);
+      } else if (name.startsWith("__to:date:")) {
+        const formatter = name.substring("__to:date:".length);
+        return dayjs(date).format(formatter);
+      } else {
+        // if we can not get formatter, return original value
+        return value;
+      }
+    } catch (e) {
+      // if format error, return original value
+      return value;
+    }
+  }
+}
+
 
 const join = (arr: string[], sep: string): string => {
   return arr.join(sep);
