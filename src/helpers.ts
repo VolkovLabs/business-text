@@ -40,7 +40,7 @@ function formatDate(name: string, value: string): string {
     //normal case
     //no args, defaults to ISO 8601/RFC 3339
     return dayjs(date).toISOString();
-  } else if (name === '__from:date:seconds') {
+  } else if (name === '__from:date:seconds' || name === '__to:date:seconds') {
     //unix seconds epoch
     const unitSeconds = (parseInt(value, 10) / 1000).toFixed(0);
     return unitSeconds.toString();
