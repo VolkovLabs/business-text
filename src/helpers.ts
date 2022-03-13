@@ -42,7 +42,8 @@ function formatDate(name: string, value: string): string {
     return dayjs(date).toISOString()
   } else if(name === "__from:date:seconds"){
     //unix seconds epoch
-    return (parseInt(value) / 1000).toString();;
+    const unitSeconds= (parseInt(value) / 1000).toFixed(0);
+    return unitSeconds.toString();
   } else {
     //by parsing name, we can get the formatter string. ex: YYYY-MM-DD
     //any custom date format that does not include the : character
