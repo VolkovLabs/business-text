@@ -19,7 +19,7 @@ const variable = (name: any): string[] => {
       values.push(...value);
     } else {
       if (name.startsWith("__from:") || name.startsWith("__to:")) {
-        let dateFormattingString = formateDate(name, value);
+        let dateFormattingString = formatDate(name, value);
         values.push(dateFormattingString);
       } else {
         values.push(value);
@@ -33,10 +33,10 @@ const variable = (name: any): string[] => {
   return values;
 };
 
-function formateDate(name: string, value: string): string {
+function formatDate(name: string, value: string): string {
   let date = new Date(parseInt(value));
   if (name === "__from:date" || name === "__to:date" || name === "__from:date:iso" || name === "__to:date:iso") {
-    //normal case 
+    //normal case
     return dayjs(date).toISOString()
   } else {
     //by parsing name, we can get the formatter string. ex: YYYY-MM-DD
