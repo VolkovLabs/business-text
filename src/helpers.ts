@@ -1,5 +1,5 @@
 import { getTemplateSrv } from '@grafana/runtime';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 const date = require('helper-date');
 
@@ -18,7 +18,7 @@ const variable = (name: any): string[] => {
     if (Array.isArray(value)) {
       values.push(...value);
     } else {
-      if (name.startsWith("__from:") || name.startsWith("__to:")) {
+      if (name.startsWith('__from:') || name.startsWith('__to:')) {
         let dateFormattingString = formatDate(name, value);
         values.push(dateFormattingString);
       } else {
@@ -35,24 +35,24 @@ const variable = (name: any): string[] => {
 
 //This special formatting syntax works only available in Grafana 7.1.2+
 function formatDate(name: string, value: string): string {
-  let date = new Date(parseInt(value));
-  if (name === "__from:date" || name === "__to:date" || name === "__from:date:iso" || name === "__to:date:iso") {
+  let date = new Date(parseInt(value, 10));
+  if (name === '__from:date' || name === '__to:date' || name === '__from:date:iso' || name === '__to:date:iso') {
     //normal case
     //no args, defaults to ISO 8601/RFC 3339
     return dayjs(date).toISOString();
-  } else if(name === "__from:date:seconds"){
+  } else if (name === '__from:date:seconds') {
     //unix seconds epoch
-    const unitSeconds= (parseInt(value) / 1000).toFixed(0);
+    const unitSeconds = (parseInt(value, 10) / 1000).toFixed(0);
     return unitSeconds.toString();
   } else {
     //by parsing name, we can get the formatter string. ex: YYYY-MM-DD
     //any custom date format that does not include the : character
     try {
-      if (name.startsWith("__from:date:")) {
-        const formatter = name.substring("__from:date:".length);
+      if (name.startsWith('__from:date:')) {
+        const formatter = name.substring('__from:date:'.length);
         return dayjs(date).format(formatter);
-      } else if (name.startsWith("__to:date:")) {
-        const formatter = name.substring("__to:date:".length);
+      } else if (name.startsWith('__to:date:')) {
+        const formatter = name.substring('__to:date:'.length);
         return dayjs(date).format(formatter);
       } else {
         // if we can not get formatter, return original value
