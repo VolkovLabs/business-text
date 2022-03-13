@@ -33,16 +33,19 @@ const variable = (name: any): string[] => {
   return values;
 };
 
+//This special formatting syntax works only available in Grafana 7.1.2+
 function formatDate(name: string, value: string): string {
   let date = new Date(parseInt(value));
   if (name === "__from:date" || name === "__to:date" || name === "__from:date:iso" || name === "__to:date:iso") {
     //normal case
+    //no args, defaults to ISO 8601/RFC 3339
     return dayjs(date).toISOString()
   } else if(name === "__from:date:seconds"){
     //unix seconds epoch
     return (parseInt(value) / 1000).toString();;
   } else {
     //by parsing name, we can get the formatter string. ex: YYYY-MM-DD
+    //any custom date format that does not include the : character
     try {
       if (name.startsWith("__from:date:")) {
         const formatter = name.substring("__from:date:".length);
