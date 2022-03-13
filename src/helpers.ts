@@ -38,6 +38,9 @@ function formatDate(name: string, value: string): string {
   if (name === "__from:date" || name === "__to:date" || name === "__from:date:iso" || name === "__to:date:iso") {
     //normal case
     return dayjs(date).toISOString()
+  } else if(name === "__from:date:seconds"){
+    //unix seconds epoch
+    return (parseInt(value) / 1000).toString();;
   } else {
     //by parsing name, we can get the formatter string. ex: YYYY-MM-DD
     try {
