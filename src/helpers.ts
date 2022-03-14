@@ -25,7 +25,6 @@ const variable = (name: any): string[] => {
         values.push(value);
       }
     }
-
     // We don't really care about the string here.
     return '';
   });
@@ -33,7 +32,7 @@ const variable = (name: any): string[] => {
   return values;
 };
 
-//This special formatting syntax works only available in Grafana 7.1.2+
+//Special date formatting syntax follows Global variables
 function formatDate(name: string, value: string): string {
   let date = new Date(parseInt(value, 10));
   if (name === '__from:date' || name === '__to:date' || name === '__from:date:iso' || name === '__to:date:iso') {
@@ -46,7 +45,7 @@ function formatDate(name: string, value: string): string {
     return unitSeconds.toString();
   } else {
     //by parsing name, we can get the formatter string. ex: YYYY-MM-DD
-    //any custom date format that does not include the : character
+    //custom date format depend on dayjs format method.
     try {
       if (name.startsWith('__from:date:')) {
         const formatter = name.substring('__from:date:'.length);
@@ -64,7 +63,6 @@ function formatDate(name: string, value: string): string {
     }
   }
 }
-
 
 const join = (arr: string[], sep: string): string => {
   return arr.join(sep);
