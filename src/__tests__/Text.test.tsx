@@ -18,9 +18,32 @@ describe('<Text />', () => {
   });
 
   test('should render content twice when there is a dataframe and everyRow is true', async () => {
+    const nameData: string[] = ['Erik', 'Natasha'];
+    const ageData: number[] = [42, 38];
     const props: TextProps = {
       frame: {
-        fields: [],
+        fields: [
+          {
+            name: 'name',
+            type: FieldType.string,
+            config: {},
+            values: {
+              length: 2,
+              get: (index) => nameData[index],
+              toArray: () => nameData,
+            },
+          },
+          {
+            name: 'age',
+            type: FieldType.number,
+            config: {},
+            values: {
+              length: 2,
+              get: (index) => ageData[index],
+              toArray: () => ageData,
+            },
+          },
+        ],
         length: 2,
       },
       content: 'Test content',
