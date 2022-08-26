@@ -23,8 +23,14 @@ export const Text = React.memo(({ frame, content, defaultContent, everyRow }: Te
     let renderedContent;
     if (frame?.length) {
       const dataframeView = new DataFrameView(frame);
+      const data = dataframeView.data.fields.reduce((out, { config, name, values }) => { 
+        values.toArray().forEach((v, i) => {
+          out[i] = { ...out[i], [config.displayName || name]: v } 
+        });
+        return out; 
+      }, []);
       renderedContent = everyRow ? (
-        dataframeView.toArray().map((row, key) => {
+        data.map((row, key) => {
           return (
             <div key={key} className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml(row, content) }} />
           );
@@ -32,7 +38,7 @@ export const Text = React.memo(({ frame, content, defaultContent, everyRow }: Te
       ) : (
         <div
           className={styles.frame}
-          dangerouslySetInnerHTML={{ __html: generateHtml({ data: dataframeView.toArray() }, content) }}
+          dangerouslySetInnerHTML={{ __html: generateHtml({ data }, content) }}
         />
       );
     } else {
