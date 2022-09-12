@@ -7,6 +7,8 @@
 [![License](https://img.shields.io/github/license/marcusolsson/grafana-dynamictext-panel)](LICENSE)
 [![Twitter](https://img.shields.io/twitter/follow/marcusolsson?color=%231DA1F2&label=twitter&style=plastic)](https://twitter.com/marcusolsson)
 
+> **Maintenance**: As I'm no longer working at Grafana Labs, nor am I using Grafana where I'm at now, **I'm no longer able to actively maintain this plugin**. I'm exploring ways to keep the project going. Check back here to stay updated!
+
 A panel plugin for [Grafana](https://grafana.com) for dynamic, data-driven text.
 
 While the built-in Text panel in Grafana does support variables, that's about as dynamic it gets. This panel lets you define a text template using the data from your data source query.
