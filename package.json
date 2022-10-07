@@ -1,32 +1,7 @@
 {
-  "name": "marcusolsson-dynamictext-panel",
-  "version": "1.9.0",
+  "author": "Volkov Labs",
+  "bugs": "https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues",
   "description": "A panel plugin for Grafana for dynamic, data-driven text",
-  "keywords": [
-    "grafana"
-  ],
-  "license": "Apache-2.0",
-  "scripts": {
-    "build": "grafana-toolkit plugin:build",
-    "test": "grafana-toolkit plugin:test",
-    "dev": "grafana-toolkit plugin:dev",
-    "watch": "grafana-toolkit plugin:dev --watch",
-    "sign": "grafana-toolkit plugin:sign"
-  },
-  "homepage": "https://grafana.com/plugins/marcusolsson-dynamictext-panel",
-  "bugs": "https://github.com/marcusolsson/grafana-dynamictext-panel/issues",
-  "repository": "github:marcusolsson/grafana-dynamictext-panel",
-  "author": {
-    "name": "Marcus Olsson",
-    "email": "marcus.olsson@hey.com",
-    "url": "https://marcus.se.net"
-  },
-  "dependencies": {
-    "handlebars": "^4.7.7",
-    "helper-date": "^1.0.1",
-    "markdown-it": "^12.0.4",
-    "tslib": "^2.3.0"
-  },
   "devDependencies": {
     "@emotion/core": "10.0.27",
     "@grafana/data": "8.2.7",
@@ -36,9 +11,27 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@types/markdown-it": "^12.0.1",
-    "emotion": "10.0.27"
+    "emotion": "10.0.27",
+    "handlebars": "^4.7.7",
+    "helper-date": "^1.0.1",
+    "markdown-it": "^12.0.4",
+    "tslib": "^2.3.0"
   },
   "engines": {
-    "node": ">=14"
-  }
+    "node": ">=16"
+  },
+  "license": "Apache-2.0",
+  "name": "marcusolsson-dynamictext-panel",
+  "scripts": {
+    "build": "grafana-toolkit plugin:build --coverage",
+    "dev": "grafana-toolkit plugin:dev",
+    "format": "prettier --write \"**\"",
+    "sign": "grafana-toolkit plugin:sign",
+    "start": "docker-compose pull && docker-compose up",
+    "stop": "docker-compose down",
+    "test": "grafana-toolkit plugin:test",
+    "upgrade": "yarn upgrade --latest",
+    "watch": "grafana-toolkit plugin:dev --watch"
+  },
+  "version": "2.0.0"
 }
