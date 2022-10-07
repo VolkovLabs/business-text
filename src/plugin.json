@@ -1,43 +1,41 @@
 {
   "$schema": "https://github.com/grafana/grafana/raw/main/docs/sources/developers/plugins/plugin.schema.json",
-  "type": "panel",
-  "name": "Dynamic text",
-  "id": "marcusolsson-dynamictext-panel",
-  "info": {
-    "description": "Data-driven text with Markdown support",
-    "author": {
-      "name": "Marcus Olsson",
-      "url": "https://github.com/marcusolsson"
-    },
-    "keywords": ["text", "markdown", "handlebars"],
-    "logos": {
-      "small": "img/logo.svg",
-      "large": "img/logo.svg"
-    },
-    "links": [
-      {
-        "name": "Documentation",
-        "url": "https://marcusolsson.github.io/grafana-dynamictext-panel"
-      },
-      {
-        "name": "Website",
-        "url": "https://github.com/marcusolsson/grafana-dynamictext-panel"
-      },
-      {
-        "name": "License",
-        "url": "https://github.com/marcusolsson/grafana-dynamictext-panel/blob/main/LICENSE"
-      }
-    ],
-    "screenshots": [
-      { "name": "Dynamic text (Dark)", "path": "img/dark.png" },
-      { "name": "Dynamic text (Light)", "path": "img/light.png" }
-    ],
-    "version": "%VERSION%",
-    "updated": "%TODAY%"
-  },
   "dependencies": {
     "grafanaDependency": ">=7.0.0",
     "grafanaVersion": "7.0.0",
     "plugins": []
-  }
+  },
+  "id": "marcusolsson-dynamictext-panel",
+  "info": {
+    "author": {
+      "name": "Volkov Labs",
+      "url": "https://volkovlabs.io"
+    },
+    "description": "Data-driven text with Markdown support",
+    "keywords": ["text", "markdown", "handlebars"],
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/volkovlabs/volkovlabs-dynamictext-panel"
+      },
+      {
+        "name": "Website",
+        "url": "https://volkovlabs.io"
+      }
+    ],
+    "logos": {
+      "large": "img/logo.svg",
+      "small": "img/logo.svg"
+    },
+    "screenshots": [
+      {
+        "name": "Panel",
+        "path": "img/screenshot.png"
+      }
+    ],
+    "updated": "%TODAY%",
+    "version": "%VERSION%"
+  },
+  "name": "Dynamic text",
+  "type": "panel"
 }
