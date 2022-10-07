@@ -1,33 +1,46 @@
-# Dynamic text for Grafana
+# Dynamic text panel plugin for Grafana
 
-[![Build](https://github.com/marcusolsson/grafana-dynamictext-panel/workflows/CI/badge.svg)](https://github.com/marcusolsson/grafana-dynamictext-panel/actions?query=workflow%3A%22CI%22)
-[![Release](https://github.com/marcusolsson/grafana-dynamictext-panel/workflows/Release/badge.svg)](https://github.com/marcusolsson/grafana-dynamictext-panel/actions?query=workflow%3ARelease)
-[![Marketplace](https://img.shields.io/badge/dynamic/json?logo=grafana&color=F47A20&label=marketplace&prefix=v&query=%24.items%5B%3F%28%40.slug%20%3D%3D%20%22marcusolsson-dynamictext-panel%22%29%5D.version&url=https%3A%2F%2Fgrafana.com%2Fapi%2Fplugins)](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel)
-[![Downloads](https://img.shields.io/badge/dynamic/json?logo=grafana&color=F47A20&label=downloads&query=%24.items%5B%3F%28%40.slug%20%3D%3D%20%22marcusolsson-dynamictext-panel%22%29%5D.downloads&url=https%3A%2F%2Fgrafana.com%2Fapi%2Fplugins)](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel)
-[![License](https://img.shields.io/github/license/marcusolsson/grafana-dynamictext-panel)](LICENSE)
-[![Twitter](https://img.shields.io/twitter/follow/marcusolsson?color=%231DA1F2&label=twitter&style=plastic)](https://twitter.com/marcusolsson)
+![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
 
-> **Maintenance**: As I'm no longer working at Grafana Labs, nor am I using Grafana where I'm at now, **I'm no longer able to actively maintain this plugin**. I'm exploring ways to keep the project going. Check back here to stay updated!
+[![Grafana 8](https://img.shields.io/badge/Grafana-8.2.7-orange)](https://www.grafana.com)
+![CI](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel)
 
-A panel plugin for [Grafana](https://grafana.com) for dynamic, data-driven text.
+## Introduction
+
+A panel plugin for Grafana for dynamic, data-driven text.
 
 While the built-in Text panel in Grafana does support variables, that's about as dynamic it gets. This panel lets you define a text template using the data from your data source query.
 
-- Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage)
-- Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML
+### Requirements
 
-![Screenshot](https://github.com/marcusolsson/grafana-dynamictext-panel/raw/main/src/img/dark.png)
+- Grafana 7.0++ is required for version 1.X.
+
+## Getting Started
+
+The Dynamic Text panel can be installed from the Grafana Catalog or use the `grafana-cli` tool to install from the command line:
+
+```bash
+grafana-cli plugins install marcusolsson-dynamictext-panel
+```
+
+## Features
+
+- Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
+- Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
+- HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through [textUtil](https://grafana.com/docs/grafana/latest/packages_api/data/textutil/).
 
 ## Documentation
 
-Full documentation for the plugin is available on the [website](https://marcusolsson.github.io/grafana-dynamictext-panel).
+Full documentation for the plugin is available on the [volkovlabs.io](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel).
 
-## Security
+## Feedback
 
-HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through [textUtil](https://grafana.com/docs/grafana/latest/packages_api/data/textutil/).
+We love to hear from users, developers, and the whole community interested in this plugin. These are various ways to get in touch with us:
 
-## Maintenance
+- Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues/new/choose).
+- Star the repository to show your support.
 
-I maintain [several plugins](https://marcus.se.net/projects/) for Grafana. While my employer allows me to spend some time on developing plugins, most of the work happens on evenings and weekends. At the moment, I'm prioritizing fixing bugs and reviewing PRs over introducing new features.
+## License
 
-If you'd still like to propose a new feature, [create a new Discussion](https://github.com/marcusolsson/grafana-dynamictext-panel/discussions/new?category=ideas). While I likely won't be able to work on features myself, I'd be happy to accept pull requests. If you'd like to contribute a feature, please let me know before you start working on it.
+- Apache License Version 2.0, see [LICENSE](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/blob/main/LICENSE).
