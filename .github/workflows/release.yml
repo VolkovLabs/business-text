@@ -15,12 +15,12 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.2
         with:
-          node-version: '14.x'
+          node-version: '16.x'
 
       - name: Setup Go environment
         uses: actions/setup-go@v2
         with:
-          go-version: '1.15'
+          go-version: '1.16'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -52,28 +52,6 @@ jobs:
 
       - name: Build and test frontend
         run: yarn build
-
-      - name: Check for backend
-        id: check-for-backend
-        run: |
-          if [ -f "Magefile.go" ]
-          then
-            echo "::set-output name=has-backend::true"
-          fi
-
-      - name: Test backend
-        if: steps.check-for-backend.outputs.has-backend == 'true'
-        uses: magefile/mage-action@v1
-        with:
-          version: latest
-          args: coverage
-
-      - name: Build backend
-        if: steps.check-for-backend.outputs.has-backend == 'true'
-        uses: magefile/mage-action@v1
-        with:
-          version: latest
-          args: buildAll
 
       - name: Sign plugin
         run: yarn sign
@@ -117,12 +95,13 @@ jobs:
           echo "::set-output name=checksum::$(cat ./${{ steps.metadata.outputs.archive-checksum }} | cut -d' ' -f1)"
 
       - name: Lint plugin
+        continue-on-error: true
         run: |
           git clone https://github.com/grafana/plugin-validator
-          pushd ./plugin-validator/pkg/cmd/plugincheck
+          pushd ./plugin-validator/pkg/cmd/plugincheck2
           go install
           popd
-          plugincheck ${{ steps.metadata.outputs.archive }}
+          plugincheck2 -config ./plugin-validator/config/default.yaml ${{ steps.metadata.outputs.archive }}
 
       - name: Create release
         id: create_release
@@ -156,9 +135,3 @@ jobs:
           asset_path: ./${{ steps.metadata.outputs.archive-checksum }}
           asset_name: ${{ steps.metadata.outputs.archive-checksum }}
           asset_content_type: text/plain
-
-      - name: Publish to Grafana.com
-        run: |
-          echo A draft release has been created for your plugin. Please review and publish it. Then submit your plugin to grafana.com/plugins by opening a PR to https://github.com/grafana/grafana-plugin-repository with the following entry:
-          echo
-          echo '{ "id": "${{ steps.metadata.outputs.plugin-id }}", "type": "${{ steps.metadata.outputs.plugin-type }}", "url": "https://github.com/${{ github.repository }}", "versions": [ { "version": "${{ steps.metadata.outputs.plugin-version }}", "commit": "${{ github.sha }}", "url": "https://github.com/${{ github.repository }}", "download": { "any": { "url": "https://github.com/${{ github.repository }}/releases/download/v${{ steps.metadata.outputs.plugin-version }}/${{ steps.metadata.outputs.archive }}", "md5": "${{ steps.package-plugin.outputs.checksum }}" } } } ] }' | jq .
