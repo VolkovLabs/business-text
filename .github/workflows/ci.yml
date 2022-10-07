@@ -12,12 +12,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '16.x'
+
+      - name: Setup Go environment
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.16'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -47,30 +52,31 @@ jobs:
       - name: Build and test frontend
         run: yarn build
 
-      - name: Check for backend
-        id: check-for-backend
+      - name: Package plugin
+        id: package-plugin
         run: |
-          if [ -f "Magefile.go" ]
-          then
-            echo "::set-output name=has-backend::true"
-          fi
+          zip -r dist.zip dist
 
-      - name: Setup Go environment
-        if: steps.check-for-backend.outputs.has-backend == 'true'
-        uses: actions/setup-go@v2
-        with:
-          go-version: '1.15'
+      - name: Lint plugin
+        continue-on-error: true
+        run: |
+          git clone https://github.com/grafana/plugin-validator
+          pushd ./plugin-validator/pkg/cmd/plugincheck2
+          go install
+          popd
+          plugincheck2 -config ./plugin-validator/config/default.yaml dist.zip
 
-      - name: Test backend
-        if: steps.check-for-backend.outputs.has-backend == 'true'
-        uses: magefile/mage-action@v1
+      - name: Compatibility check
+        uses: grafana/plugin-actions/is-compatible@v1
         with:
-          version: latest
-          args: coverage
+          module: './src/module.ts'
+          comment-pr: 'yes'
+          fail-if-incompatible: 'no'
 
-      - name: Build backend
-        if: steps.check-for-backend.outputs.has-backend == 'true'
-        uses: magefile/mage-action@v1
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
         with:
-          version: latest
-          args: buildAll
+          directory: ./coverage/
+          files: ./coverage/lcov.info
+          env_vars: OS,PYTHON
+          fail_ci_if_error: true
