@@ -30,9 +30,60 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
 - HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through [textUtil](https://grafana.com/docs/grafana/latest/packages_api/data/textutil/).
 
-## Documentation
+## Panel Options
 
-Full documentation for the plugin is available on the [volkovlabs.io](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel).
+### Content
+
+A [Handlebars](https://handlebarsjs.com/) template with support for Markdown.
+
+To use display data from your query result, enter the name of the field surrounded by double braces. For example, to display the value from the `Time` field, enter `{{Time}}`.
+
+Grafana renders the template for every row in the query result. If a query returns multiple query results, you can select the query result you wish to display from a drop-down menu.
+
+You can even do basic text processing using one or more [helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) inside your template.
+
+### Default content
+
+Whenever the data source query returns an empty result, Grafana displays the template in **Default content** instead of **Content**.
+
+This can be useful to provide users with instructions on what to do, or who to contact, when the query returns an empty result.
+
+Even though there's no data from the data source, you can still use the available [helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers).
+
+### Every row
+
+By default, the template configured in the **Content** field is rendered for each record in the result.
+
+You can render this template only once by turning this switch off. In this case, the query results are passed in as the `data` field to the template.
+
+Handlebars provides a [builtin-helper](https://handlebarsjs.com/guide/builtin-helpers.html#each) to iterate over these records.
+
+## Example
+
+Let's say that your data source returns the following data:
+
+| app  | description                  | cluster | tier     |
+| ---- | ---------------------------- | ------- | -------- |
+| auth | Handles user authentication. | prod    | frontend |
+
+You can then write Markdown with placeholders for the data you want to use. The value inside each double brace expression refers to a field in the query result.
+
+```md
+# {{app}}
+
+{{description}}
+
+{{#if (eq tier "frontend")}}
+https://{{cluster}}.example.com/{{app}}
+{{/if}}
+```
+
+The panel renders Handlebars → Markdown → HTML and displays the final result.
+
+For more examples, take a look at
+
+- [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) - functions that let you perform basic text transformation within your template.
+- [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) - useful snippets that you can use in your templates.
 
 ## Feedback
 
