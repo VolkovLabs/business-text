@@ -62,9 +62,11 @@ Handlebars provides a [builtin-helper](https://handlebarsjs.com/guide/builtin-he
 
 Let's say that your data source returns the following data:
 
+```md
 | app  | description                  | cluster | tier     |
 | ---- | ---------------------------- | ------- | -------- |
 | auth | Handles user authentication. | prod    | frontend |
+```
 
 You can then write Markdown with placeholders for the data you want to use. The value inside each double brace expression refers to a field in the query result.
 
