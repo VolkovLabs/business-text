@@ -1,11 +1,11 @@
 import Handlebars from 'handlebars';
 import MarkdownIt from 'markdown-it';
 import React from 'react';
-import { TextOptions } from 'types';
 import { css } from '@emotion/css';
 import { DataFrame, DataFrameView, textUtil } from '@grafana/data';
 import { InfoBox, useTheme } from '@grafana/ui';
 import { registerHelpers } from '../../helpers';
+import { TextOptions } from '../../types';
 import { getStyles } from './Text.styles';
 
 /**

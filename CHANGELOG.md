@@ -10,7 +10,7 @@ This release bumps the minimum required Grafana to >=8.5.
 
 - Maintained by Volkov Labs (#100)
 - Updated based on Volkov Labs Panel Template (#100)
-- Update to Grafana 9.1.6 (#101)
+- Update to Grafana 9.1.6 (#104)
 
 ## 1.9.0 (2022-01-09)
 

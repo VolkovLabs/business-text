@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { TextOptions } from 'types';
 import { css, cx } from '@emotion/css';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { Select, useTheme2 } from '@grafana/ui';
 import { getStyles } from '../../styles';
+import { TextOptions } from '../../types';
 import { Text } from '../Text/Text';
 
 /**
