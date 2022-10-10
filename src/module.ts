@@ -1,5 +1,5 @@
 import { PanelPlugin } from '@grafana/data';
-import { TextPanel } from './TextPanel';
+import { TextPanel } from './components';
 import { TextOptions } from './types';
 
 export const plugin = new PanelPlugin<TextOptions>(TextPanel).setNoPadding().setPanelOptions((builder) => {

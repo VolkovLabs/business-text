@@ -1,30 +1,55 @@
-import { GrafanaTheme, PanelProps, SelectableValue } from '@grafana/data';
-import { Select, stylesFactory, useTheme } from '@grafana/ui';
-import { css, cx } from 'emotion';
 import React, { useState } from 'react';
-import { TextOptions } from 'types';
-import { Text } from './Text';
+import { css, cx } from '@emotion/css';
+import { PanelProps, SelectableValue } from '@grafana/data';
+import { Select, useTheme2 } from '@grafana/ui';
+import { getStyles } from '../../styles';
+import { TextOptions } from '../../types';
+import { Text } from '../Text/Text';
 
+/**
+ * Properties
+ */
 interface Props extends PanelProps<TextOptions> {}
 
+/**
+ * Panel
+ */
 export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => {
+  /**
+   * States
+   */
   const [frameIndex, setFrameIndex] = useState(0);
 
-  const theme = useTheme();
+  /**
+   * Theme
+   */
+  const theme = useTheme2();
   const styles = getStyles(theme);
 
+  /**
+   * Change Frame
+   */
   const onChangeFrame = (selectableValue: SelectableValue<string>) => {
     const index = data.series.findIndex((frame) => frame.refId === selectableValue.value);
     setFrameIndex(index);
   };
 
+  /**
+   * Frames
+   */
   const selectableFrames = data.series.map((frame) => ({
     label: frame.name,
     value: frame.refId,
   }));
 
+  /**
+   * Selected Frame
+   */
   const frame = data.series[frameIndex];
 
+  /**
+   * Return
+   */
   return (
     <div
       className={css`
@@ -59,13 +84,3 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
     </div>
   );
 };
-
-const getStyles = stylesFactory((theme: GrafanaTheme) => ({
-  root: css`
-    display: flex;
-    flex-direction: column;
-  `,
-  frameSelect: css`
-    padding: ${theme.spacing.sm};
-  `,
-}));
