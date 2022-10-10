@@ -1,9 +1,9 @@
-import { DataFrame, DataFrameView, GrafanaTheme, textUtil } from '@grafana/data';
-import { InfoBox, useTheme } from '@grafana/ui';
-import { css } from 'emotion';
 import Handlebars from 'handlebars';
 import MarkdownIt from 'markdown-it';
 import React from 'react';
+import { css } from '@emotion/css';
+import { DataFrame, DataFrameView, GrafanaTheme, textUtil } from '@grafana/data';
+import { InfoBox, useTheme } from '@grafana/ui';
 import { registerHelpers } from './helpers';
 
 registerHelpers(Handlebars);
@@ -42,7 +42,7 @@ export const Text = React.memo(({ frame, content, defaultContent, everyRow }: Te
     }
 
     return <div style={{ flexGrow: 1, overflow: 'auto' }}>{renderedContent}</div>;
-  } catch (e) {
+  } catch (e: any) {
     return (
       <div
         className={css`

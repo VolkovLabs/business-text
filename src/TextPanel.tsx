@@ -1,8 +1,8 @@
-import { GrafanaTheme, PanelProps, SelectableValue } from '@grafana/data';
-import { Select, stylesFactory, useTheme } from '@grafana/ui';
-import { css, cx } from 'emotion';
 import React, { useState } from 'react';
 import { TextOptions } from 'types';
+import { css, cx } from '@emotion/css';
+import { GrafanaTheme, PanelProps, SelectableValue } from '@grafana/data';
+import { Select, stylesFactory, useTheme } from '@grafana/ui';
 import { Text } from './Text';
 
 interface Props extends PanelProps<TextOptions> {}

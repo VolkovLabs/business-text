@@ -3,19 +3,16 @@
   "bugs": "https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues",
   "description": "A panel plugin for Grafana for dynamic, data-driven text",
   "devDependencies": {
-    "@emotion/core": "10.0.27",
-    "@grafana/data": "8.2.7",
-    "@grafana/runtime": "8.2.7",
-    "@grafana/toolkit": "8.2.7",
-    "@grafana/ui": "8.2.7",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
+    "@grafana/data": "9.1.7",
+    "@grafana/runtime": "9.1.7",
+    "@grafana/toolkit": "9.1.7",
+    "@grafana/ui": "9.1.7",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^12.1.2",
     "@types/markdown-it": "^12.0.1",
-    "emotion": "10.0.27",
     "handlebars": "^4.7.7",
     "helper-date": "^1.0.1",
-    "markdown-it": "^12.0.4",
-    "tslib": "^2.3.0"
+    "markdown-it": "^13.0.1"
   },
   "engines": {
     "node": ">=16"
