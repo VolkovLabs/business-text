@@ -16,7 +16,8 @@ While the built-in Text panel in Grafana does support variables, that's about as
 
 ### Requirements
 
-- Grafana 7.0+ is required for version 1.X.
+- **Grafana 8.5+**, **Grafana 9.0+** is required for version 2.X.
+- **Grafana 7.0+** is required for version 1.X.
 
 ## Getting Started
 
