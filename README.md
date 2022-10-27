@@ -1,4 +1,4 @@
-# Dynamic text panel plugin for Grafana
+# Dynamic Text Panel plugin for Grafana
 
 ![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
 
@@ -12,9 +12,12 @@ A panel plugin for Grafana for dynamic, data-driven text.
 
 While the built-in Text panel in Grafana does support variables, that's about as dynamic it gets. This panel lets you define a text template using the data from your data source query.
 
+[![Dynamic Text Plugin for Grafana | Markdown, HTML and Handlebars to transform data visualizations](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/video.png)](https://youtu.be/MpNZ4Yl-p0U)
+
 ### Requirements
 
-- Grafana 7.0+ is required for version 1.X.
+- **Grafana 8.5+**, **Grafana 9.0+** is required for version 2.X.
+- **Grafana 7.0+** is required for version 1.X.
 
 ## Getting Started
 
@@ -92,6 +95,7 @@ For more examples, take a look at
 We love to hear from users, developers, and the whole community interested in this plugin. These are various ways to get in touch with us:
 
 - Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues/new/choose).
+- Sponsor our open-source plugins for Grafana with [GitHub Sponsor](https://github.com/sponsors/VolkovLabs)
 - Star the repository to show your support.
 
 ## License

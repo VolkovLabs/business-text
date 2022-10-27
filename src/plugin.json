@@ -35,6 +35,6 @@
     "updated": "%TODAY%",
     "version": "%VERSION%"
   },
-  "name": "Dynamic text",
+  "name": "Dynamic Text",
   "type": "panel"
 }
