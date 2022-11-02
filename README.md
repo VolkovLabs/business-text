@@ -1,14 +1,14 @@
-# Dynamic Text Panel plugin for Grafana
+# Dynamic Text Panel for Grafana
 
 ![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
 
-[![Grafana 8](https://img.shields.io/badge/Grafana-8.2.7-orange)](https://www.grafana.com)
+[![Grafana 8](https://img.shields.io/badge/Grafana-9.1.7-orange)](https://www.grafana.com)
 ![CI](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel)
 
 ## Introduction
 
-A panel plugin for Grafana for dynamic, data-driven text.
+A Dynamic Text panel is a plugin for Grafana for dynamic, data-driven text.
 
 While the built-in Text panel in Grafana does support variables, that's about as dynamic it gets. This panel lets you define a text template using the data from your data source query.
 
@@ -21,7 +21,7 @@ While the built-in Text panel in Grafana does support variables, that's about as
 
 ## Getting Started
 
-The Dynamic Text panel can be installed from the Grafana Catalog or use the `grafana-cli` tool to install from the command line:
+The Dynamic Text panel can be installed from the [Grafana Catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or use the `grafana-cli` tool to install from the command line:
 
 ```bash
 grafana-cli plugins install marcusolsson-dynamictext-panel
@@ -95,7 +95,7 @@ For more examples, take a look at
 We love to hear from users, developers, and the whole community interested in this plugin. These are various ways to get in touch with us:
 
 - Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues/new/choose).
-- Sponsor our open-source plugins for Grafana with [GitHub Sponsor](https://github.com/sponsors/VolkovLabs)
+- Sponsor our open-source plugins for Grafana with [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
 - Star the repository to show your support.
 
 ## License
