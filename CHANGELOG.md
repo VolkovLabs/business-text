@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 (IN PROGRESS)
+## 2.0.0 (2022-11-02)
 
 ### Breaking changes
 
