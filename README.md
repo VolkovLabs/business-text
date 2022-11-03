@@ -31,7 +31,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
-- HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through [textUtil](https://grafana.com/docs/grafana/latest/packages_api/data/textutil/).
+- HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through `textUtil`.
 
 ## Panel Options
 

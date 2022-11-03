@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Fix broken link in README (#111)
+
 ## 2.0.0 (2022-11-02)
 
 ### Breaking changes
