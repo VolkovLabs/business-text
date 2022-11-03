@@ -14,7 +14,7 @@ This release bumps the minimum required Grafana to >=8.5.
 - Add "Dynamic Text Plugin for Grafana" video in README (#106)
 - Update CI to Node 16 and Synchronize with Release workflow (#107)
 - Update to Grafana 9.2.2 (#108)
-- Update screenshot (#109)
+- Update screenshot and provisioning (#109)
 
 ## 1.9.0 (2022-01-09)
 
