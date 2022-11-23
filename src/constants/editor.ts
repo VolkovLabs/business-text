@@ -2,9 +2,19 @@
  * Supported Languages
  */
 export const enum CodeLanguage {
-  JAVASCRIPT = 'javascript',
-  JSON = 'json',
+  HTML = 'html',
+  MARKDOWN = 'markdown',
+  HANDLEBARS = 'handlebars',
 }
+
+/**
+ * Supported Languages Options
+ */
+export const CodeLanguageOptions = [
+  { value: CodeLanguage.HTML, label: 'HTML' },
+  { value: CodeLanguage.MARKDOWN, label: 'Markdown' },
+  { value: CodeLanguage.HANDLEBARS, label: 'Handlebars' },
+];
 
 /**
  * Format
