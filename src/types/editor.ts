@@ -1,4 +1,4 @@
-import { Format } from '../constants';
+import { CodeLanguage, Format } from '../constants';
 
 /**
  * Editor Options
@@ -17,4 +17,11 @@ export interface EditorOptions {
    * @type {Format}
    */
   format: Format;
+
+  /**
+   * Language
+   *
+   * @type {CodeLanguage}
+   */
+  language: CodeLanguage;
 }
