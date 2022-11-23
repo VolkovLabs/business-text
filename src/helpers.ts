@@ -25,13 +25,10 @@ const variable = (name: any): string[] => {
   getTemplateSrv().replace(`$${name}`, {}, (value: string | string[]) => {
     if (Array.isArray(value)) {
       values.push(...value);
+    } else if (name.startsWith('__from:') || name.startsWith('__to:')) {
+      values.push(formatDate(name, value));
     } else {
-      if (name.startsWith('__from:') || name.startsWith('__to:')) {
-        let dateFormattingString = formatDate(name, value);
-        values.push(dateFormattingString);
-      } else {
-        values.push(value);
-      }
+      values.push(value);
     }
 
     /**
@@ -78,13 +75,11 @@ const formatDate = (name: string, value: string): string => {
       const formatter = name.substring('__to:date:'.length);
       return dayjs(date).format(formatter);
     }
-  } catch (e) {
-    /**
-     * If format error, return original value
-     */
-    return value;
-  }
+  } catch (e) {}
 
+  /**
+   * Return original value
+   */
   return value;
 };
 
