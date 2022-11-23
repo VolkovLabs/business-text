@@ -122,50 +122,71 @@
     },
     {
       "datasource": {
-        "type": "volkovlabs-rss-datasource",
-        "uid": "rZAdZdf82"
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 37,
+        "h": 4,
         "w": 12,
         "x": 12,
         "y": 0
       },
-      "id": 3,
+      "id": 7,
       "options": {
-        "content": "<table width=100% style='border:0'>\n<tr>\n<td style='border:0'><h3><a target=\"_blank\" style=\"color: blue\" href=\"{{link}}\">{{title}}</a></h3>\n{{{content:h4}}}</td>\n<td rowspan=2 style='border:0' width=200px>\n<div style='max-width: 100%; display: inline; height: auto '><img width=200px src=\"{{media:group:media:thumbnail:url}}\"></div></td>\n</tr>\n<tr>\n<td style='border:0'><b>{{date updated 'MMM, DD YYYY'}} by {{author}}</b></td>\n</table>",
+        "content": "- Timestamp: {{variable \"__from\"}}\n- Parsed: {{variable \"__from:date:YYYY\"}}",
         "defaultContent": "The query didn't return any results.",
-        "everyRow": true
+        "everyRow": false
       },
-      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
-            "type": "volkovlabs-rss-datasource",
-            "uid": "rZAdZdf82"
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
           },
-          "dateField": "",
-          "feedType": "items",
-          "queryText": "test",
           "refId": "A"
         }
       ],
-      "title": "YouTube",
-      "transformations": [
+      "title": "No Results",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 8,
+      "options": {
+        "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}} \n  - To {{variable \"__from:date\"}}",
+        "defaultContent": "The query didn't return any results.",
+        "everyRow": false
+      },
+      "targets": [
         {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
               {
-                "dateFormat": "",
-                "destinationType": "time",
-                "targetField": "updated"
+                "config": {},
+                "name": "test",
+                "type": "string",
+                "values": ["test"]
               }
             ],
-            "fields": {}
-          }
+            "meta": {}
+          },
+          "refId": "A"
         }
       ],
+      "title": "Date Variables",
       "type": "marcusolsson-dynamictext-panel"
     },
     {
@@ -208,6 +229,54 @@
                 "dateFormat": "ddd, DD MMM YYYY HH:mm:ss ZZ",
                 "destinationType": "time",
                 "targetField": "pubDate"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "volkovlabs-rss-datasource",
+        "uid": "rZAdZdf82"
+      },
+      "gridPos": {
+        "h": 37,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 3,
+      "options": {
+        "content": "<table width=100% style='border:0'>\n<tr>\n<td style='border:0'><h3><a target=\"_blank\" style=\"color: blue\" href=\"{{link}}\">{{title}}</a></h3>\n{{{content:h4}}}</td>\n<td rowspan=2 style='border:0' width=200px>\n<div style='max-width: 100%; display: inline; height: auto '><img width=200px src=\"{{media:group:media:thumbnail:url}}\"></div></td>\n</tr>\n<tr>\n<td style='border:0'><b>{{date updated 'MMM, DD YYYY'}} by {{author}}</b></td>\n</table>",
+        "defaultContent": "The query didn't return any results.",
+        "everyRow": true
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-rss-datasource",
+            "uid": "rZAdZdf82"
+          },
+          "dateField": "",
+          "feedType": "items",
+          "queryText": "test",
+          "refId": "A"
+        }
+      ],
+      "title": "YouTube",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "",
+                "destinationType": "time",
+                "targetField": "updated"
               }
             ],
             "fields": {}

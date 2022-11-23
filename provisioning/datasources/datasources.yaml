@@ -20,3 +20,8 @@ datasources:
     editable: true
     jsonData:
       feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCQadniwbukI6ZmTN2oTTb-g
+  - name: Static
+    type: marcusolsson-static-datasource
+    access: proxy
+    orgId: 1
+    uid: U0HP2Rv4z

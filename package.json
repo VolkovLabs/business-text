@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/markdown-it": "^12.0.1",
+    "dayjs": "^1.11.6",
     "handlebars": "^4.7.7",
     "helper-date": "^1.0.1",
     "markdown-it": "^13.0.1",
