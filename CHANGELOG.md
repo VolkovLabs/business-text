@@ -6,6 +6,8 @@
 
 - Fix broken link in README (#111)
 - Update CI to upload signed artifacts (#113)
+- Add feature of parsing time formatting syntax (#86)
+- Fix data rendering when using transformations (#98)
 
 ## 2.0.0 (2022-11-02)
 
