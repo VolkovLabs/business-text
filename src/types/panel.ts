@@ -1,3 +1,5 @@
+import { EditorOptions } from './editor';
+
 /**
  * Options
  */
@@ -22,4 +24,11 @@ export interface TextOptions {
    * @type {boolean}
    */
   everyRow: boolean;
+
+  /**
+   * Editor
+   *
+   * @type {EditorOptions}
+   */
+  editor: EditorOptions;
 }

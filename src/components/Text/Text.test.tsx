@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import React from 'react';
 import { FieldType } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
+import { DefaultOptions } from '../../constants';
 import { Text, TextProps } from './Text';
 
 /**
@@ -13,6 +14,7 @@ describe('<Text />', () => {
       content: 'Test content',
       defaultContent: 'Test default content',
       everyRow: true,
+      editor: DefaultOptions.editor,
     };
     render(<Text {...props} />);
 
@@ -51,6 +53,7 @@ describe('<Text />', () => {
       content: 'Test content',
       defaultContent: 'Test default content',
       everyRow: true,
+      editor: DefaultOptions.editor,
     };
     render(<Text {...props} />);
 
@@ -66,6 +69,7 @@ describe('<Text />', () => {
       content: 'Test content',
       defaultContent: 'Test default content',
       everyRow: false,
+      editor: DefaultOptions.editor,
     };
     render(<Text {...props} />);
 
@@ -112,6 +116,7 @@ describe('<Text />', () => {
       content: template,
       defaultContent: 'Test default content',
       everyRow: false,
+      editor: DefaultOptions.editor,
     };
     render(<Text {...props} />);
 
