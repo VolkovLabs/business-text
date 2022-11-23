@@ -1,10 +1,12 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-
-import { Text, TextProps } from '../Text';
+import React from 'react';
 import { FieldType } from '@grafana/data';
+import { render, screen } from '@testing-library/react';
+import { Text, TextProps } from './Text';
 
+/**
+ * Text
+ */
 describe('<Text />', () => {
   test('should render default content when there is no dataframe', async () => {
     const props: TextProps = {
