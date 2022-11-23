@@ -1,43 +1,44 @@
 {
   "$schema": "https://github.com/grafana/grafana/raw/main/docs/sources/developers/plugins/plugin.schema.json",
-  "type": "panel",
-  "name": "Dynamic text",
+  "dependencies": {
+    "grafanaDependency": ">=8.5.0",
+    "plugins": []
+  },
   "id": "marcusolsson-dynamictext-panel",
   "info": {
-    "description": "Data-driven text with Markdown support",
     "author": {
-      "name": "Marcus Olsson",
-      "url": "https://github.com/marcusolsson"
+      "name": "Volkov Labs",
+      "url": "https://volkovlabs.io"
     },
+    "description": "Data-driven text with Markdown support",
     "keywords": ["text", "markdown", "handlebars"],
-    "logos": {
-      "small": "img/logo.svg",
-      "large": "img/logo.svg"
-    },
     "links": [
       {
-        "name": "Documentation",
-        "url": "https://marcusolsson.github.io/grafana-dynamictext-panel"
+        "name": "GitHub",
+        "url": "https://github.com/volkovlabs/volkovlabs-dynamictext-panel"
+      },
+      {
+        "name": "YouTube Playlist",
+        "url": "https://www.youtube.com/playlist?list=PLPow72ygztmSRxDiDIAdXNIqD_RxLRjcW"
       },
       {
         "name": "Website",
-        "url": "https://github.com/marcusolsson/grafana-dynamictext-panel"
-      },
-      {
-        "name": "License",
-        "url": "https://github.com/marcusolsson/grafana-dynamictext-panel/blob/main/LICENSE"
+        "url": "https://volkovlabs.io"
       }
     ],
+    "logos": {
+      "large": "img/logo.svg",
+      "small": "img/logo.svg"
+    },
     "screenshots": [
-      { "name": "Dynamic text (Dark)", "path": "img/dark.png" },
-      { "name": "Dynamic text (Light)", "path": "img/light.png" }
+      {
+        "name": "Panel",
+        "path": "img/screenshot.png"
+      }
     ],
-    "version": "%VERSION%",
-    "updated": "%TODAY%"
+    "updated": "%TODAY%",
+    "version": "%VERSION%"
   },
-  "dependencies": {
-    "grafanaDependency": ">=7.0.0",
-    "grafanaVersion": "7.0.0",
-    "plugins": []
-  }
+  "name": "Dynamic Text",
+  "type": "panel"
 }
