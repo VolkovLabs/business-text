@@ -2,7 +2,7 @@ import Handlebars from 'handlebars';
 import MarkdownIt from 'markdown-it';
 import React from 'react';
 import { css } from '@emotion/css';
-import { DataFrame, DataFrameView, textUtil } from '@grafana/data';
+import { DataFrame, textUtil } from '@grafana/data';
 import { InfoBox, useTheme } from '@grafana/ui';
 import { registerHelpers } from '../../helpers';
 import { TextOptions } from '../../types';
@@ -42,22 +42,24 @@ export const Text = React.memo(({ frame, content, defaultContent, everyRow }: Te
      * Frame returned
      */
     if (frame?.length) {
-      const dataframeView = new DataFrameView(frame);
+      const data = frame.fields.reduce((out, { config, name, values }) => {
+        values.toArray().forEach((v, i) => {
+          out[i] = { ...out[i], [config.displayName || name]: v };
+        });
+        return out;
+      }, [] as Array<Record<string, any>>);
 
       /**
        * Content
        */
       renderedContent = everyRow ? (
-        dataframeView.toArray().map((row, key) => {
+        data.map((row, key) => {
           return (
             <div key={key} className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml(row, content) }} />
           );
         })
       ) : (
-        <div
-          className={styles.frame}
-          dangerouslySetInnerHTML={{ __html: generateHtml({ data: dataframeView.toArray() }, content) }}
-        />
+        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({ data }, content) }} />
       );
     } else {
       /**

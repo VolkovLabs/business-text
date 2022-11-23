@@ -33,7 +33,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
 - HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through `textUtil`.
-- Allows to display Time global variables (`__to` and `__from`) as seconds, ISO, formatted using `dayjs`.
+- Allows to display Time global variables (`__to` and `__from`) as seconds, ISO, and formatted using `dayjs`.
 
 ## Panel Options
 
