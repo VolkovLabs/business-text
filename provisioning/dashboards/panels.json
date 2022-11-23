@@ -162,7 +162,7 @@
       },
       "id": 8,
       "options": {
-        "content": "- Timestamp: {{variable \"__from\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}} \n  - To {{variable \"__from:date\"}}",
+        "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}} \n  - To {{variable \"__from:date\"}}",
         "defaultContent": "The query didn't return any results.",
         "everyRow": false
       },

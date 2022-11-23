@@ -50,14 +50,14 @@ const formatDate = (name: string, value: string): string => {
    * Normal case
    * no args, defaults to ISO 8601/RFC 3339
    */
-  if (name === '__from:date' || name === '__to:date' || name === '__from:date:iso' || name === '__to:date:iso') {
+  if (['__from:date', '__to:date', '__from:date:iso', '__to:date:iso'].includes(name)) {
     return dayjs(date).toISOString();
   }
 
   /**
    * Unix seconds epoch
    */
-  if (name === '__from:date:seconds' || name === '__to:date:seconds') {
+  if (['__from:date:seconds', '__to:date:seconds'].includes(name)) {
     return (parseInt(value, 10) / 1000).toFixed(0).toString();
   }
 
