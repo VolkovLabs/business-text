@@ -5,6 +5,7 @@
 ### Features / Enhancements
 
 - Fix broken link in README (#111)
+- Update CI to upload signed artifacts ()
 
 ## 2.0.0 (2022-11-02)
 
