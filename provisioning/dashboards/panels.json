@@ -42,6 +42,11 @@
       "options": {
         "content": "<table width=100% style='border:2px solid #5D3FC4'>\n<tr>\n<td style='border:0;background-color:#5d3fc4;color:white;'>\n    <p style='margin:0'><b style='font-family: silom;font-size:20px'>{{first_name}} {{last_name}}</b>\n   </p>\n</td>\n<td rowspan=3 style='border:2px solid #5D3FC4;text-align:center' width=200px>\n           <img width=120px src=\"{{photo}}\">\n</td>\n</tr>\n<tr><td style='background-color:#f6f2ff;color:#5F3DC4'>login <b style='font-family: silom;font-size:14px'>{{login}}</b>\n   <br>role <b style='font-family: silom;font-size:14px'>{{role}}</b></td></tr>\n<tr>\n     <td style='text-align:right;border:0;background-color:#f6f2ff;color:#5F3DC4;'>\n      <p style='margin:0'>\n              {{#if (eq status 'active')}}\n                   <p style='px;color:#549728; font-size:22px; font-family:Roboto;margin:0'><b>Active</b></p>\n                {{/if}}\n                {{#if (eq status 'not active')}}\n                   <p style='px;color:#FF5656; font-size:22px; font-family:Roboto;margin:0'><b>Not Active</b></p>\n                {{/if}}\n Last Login Date <br><b> {{date last_login_date}}</b></p>\n    </td>\n</tr>\n</table>",
         "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "html"
+        },
         "everyRow": true
       },
       "targets": [
@@ -135,6 +140,11 @@
       "options": {
         "content": "- Timestamp: {{variable \"__from\"}}\n- Parsed: {{variable \"__from:date:YYYY\"}}",
         "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "html"
+        },
         "everyRow": false
       },
       "targets": [
@@ -162,8 +172,13 @@
       },
       "id": 8,
       "options": {
-        "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}} \n  - To {{variable \"__from:date\"}}",
+        "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"}}",
         "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "markdown"
+        },
         "everyRow": false
       },
       "targets": [
@@ -204,6 +219,11 @@
       "options": {
         "content": "<table width=100% style='border:0'>\n<tr>\n<td style='border:0'><h3><a target=\"_blank\" style=\"color: blue\" href=\"{{link}}\">{{title}}</a></h3>\n{{{content:h4}}}</td>\n<td rowspan=2 style='border:0' width=200px>\n<div style='max-width: 100%; display: inline; height: auto '><img width=200px src=\"{{content:img-src}}\"></div></td>\n</tr>\n<tr>\n<td style='border:0'><b>{{date pubDate 'MMM, DD YYYY'}} by {{dc:creator}}</b></td>\n</table>",
         "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "html"
+        },
         "everyRow": true
       },
       "pluginVersion": "8.3.3",
@@ -252,6 +272,11 @@
       "options": {
         "content": "<table width=100% style='border:0'>\n<tr>\n<td style='border:0'><h3><a target=\"_blank\" style=\"color: blue\" href=\"{{link}}\">{{title}}</a></h3>\n{{{content:h4}}}</td>\n<td rowspan=2 style='border:0' width=200px>\n<div style='max-width: 100%; display: inline; height: auto '><img width=200px src=\"{{media:group:media:thumbnail:url}}\"></div></td>\n</tr>\n<tr>\n<td style='border:0'><b>{{date updated 'MMM, DD YYYY'}} by {{author}}</b></td>\n</table>",
         "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "html"
+        },
         "everyRow": true
       },
       "pluginVersion": "8.3.3",

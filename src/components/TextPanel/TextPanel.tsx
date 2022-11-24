@@ -4,7 +4,7 @@ import { PanelProps, SelectableValue } from '@grafana/data';
 import { Select, useTheme2 } from '@grafana/ui';
 import { getStyles } from '../../styles';
 import { TextOptions } from '../../types';
-import { Text } from '../Text/Text';
+import { Text } from '../Text';
 
 /**
  * Properties
@@ -73,6 +73,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
           content={options.content ?? ''}
           defaultContent={options.defaultContent ?? ''}
           everyRow={options.everyRow ?? true}
+          editor={options.editor}
         />
       </div>
 
