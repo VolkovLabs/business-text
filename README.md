@@ -9,7 +9,7 @@
 
 ## Introduction
 
-A Dynamic Text panel is a plugin for Grafana for dynamic, data-driven text.
+A Dynamic Text panel is a plugin for Grafana for dynamic, data-driven text with Markdown and Handlebars support.
 
 While the built-in Text panel in Grafana does support variables, that's about as dynamic it gets. This panel lets you define a text template using the data from your data source query.
 

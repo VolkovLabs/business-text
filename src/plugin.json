@@ -10,7 +10,7 @@
       "name": "Volkov Labs",
       "url": "https://volkovlabs.io"
     },
-    "description": "Data-driven text with Markdown support",
+    "description": "Data-driven text with Markdown and Handlebars support",
     "keywords": ["text", "markdown", "handlebars"],
     "links": [
       {
