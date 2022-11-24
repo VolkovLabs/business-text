@@ -11,9 +11,9 @@ export const enum CodeLanguage {
  * Supported Languages Options
  */
 export const CodeLanguageOptions = [
+  { value: CodeLanguage.HANDLEBARS, label: 'Handlebars' },
   { value: CodeLanguage.HTML, label: 'HTML' },
   { value: CodeLanguage.MARKDOWN, label: 'Markdown' },
-  { value: CodeLanguage.HANDLEBARS, label: 'Handlebars' },
 ];
 
 /**
@@ -28,6 +28,6 @@ export enum Format {
  * Format Options
  */
 export const FormatOptions = [
-  { value: Format.NONE, label: 'Disabled' },
   { value: Format.AUTO, label: 'Auto' },
+  { value: Format.NONE, label: 'Disabled' },
 ];
