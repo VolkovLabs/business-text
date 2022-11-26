@@ -1,6 +1,10 @@
 # Changelog
 
-## 2.1.0 (2022-11-24)
+## 2.1.0 (2022-11-26)
+
+### Breaking changes
+
+Refactoring may introduce breaking changes. Please test before upgrading in Production.
 
 ### Features / Enhancements
 
@@ -10,7 +14,8 @@
 - Fix data rendering when using transformations (#98)
 - Update Panel Options to Monaco Code Editor (#114)
 - Increase Test Coverage (#114)
-- Refactoring and update Screenshots (#115)
+- Refactor and update images (#116)
+- Refactor Alert Message and Text Options (#117)
 
 ## 2.0.0 (2022-11-02)
 

@@ -1,22 +1,22 @@
-import Handlebars from 'handlebars';
-import MarkdownIt from 'markdown-it';
 import React from 'react';
 import { css } from '@emotion/css';
-import { DataFrame, textUtil } from '@grafana/data';
-import { InfoBox, useTheme } from '@grafana/ui';
-import { registerHelpers } from '../../helpers';
+import { DataFrame } from '@grafana/data';
+import { Alert, useTheme } from '@grafana/ui';
+import { generateHtml } from '../../helpers';
 import { TextOptions } from '../../types';
 import { getStyles } from './Text.styles';
 
 /**
- * Helpers
- */
-registerHelpers(Handlebars);
-
-/**
  * Properties
  */
-export interface TextProps extends TextOptions {
+export interface Props {
+  /**
+   * Options
+   *
+   * @type {TextOptions}
+   */
+  options: TextOptions;
+
   /**
    * Frame
    *
@@ -28,7 +28,7 @@ export interface TextProps extends TextOptions {
 /**
  * Text
  */
-export const Text = React.memo(({ frame, content, defaultContent, everyRow }: TextProps) => {
+export const Text: React.FC<Props> = ({ options, frame }) => {
   /**
    * Theme
    */
@@ -52,21 +52,25 @@ export const Text = React.memo(({ frame, content, defaultContent, everyRow }: Te
       /**
        * Content
        */
-      renderedContent = everyRow ? (
+      renderedContent = options.everyRow ? (
         data.map((row, key) => {
           return (
-            <div key={key} className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml(row, content) }} />
+            <div
+              key={key}
+              className={styles.frame}
+              dangerouslySetInnerHTML={{ __html: generateHtml(row, options.content) }}
+            />
           );
         })
       ) : (
-        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({ data }, content) }} />
+        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({ data }, options.content) }} />
       );
     } else {
       /**
        * Default Content
        */
       renderedContent = (
-        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, defaultContent) }} />
+        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, options.defaultContent) }} />
       );
     }
 
@@ -81,33 +85,12 @@ export const Text = React.memo(({ frame, content, defaultContent, everyRow }: Te
           padding: ${theme.spacing.sm};
         `}
       >
-        <InfoBox title="Couldn't build text from template" severity="error">
-          <p>
-            Please make sure the your text content is a valid{' '}
-            <a href="https://handlebarsjs.com/" target="_blank" rel="noreferrer">
-              Handlebars
-            </a>{' '}
-            template.
-          </p>
-          <pre>{e instanceof Error ? e.message : e}</pre>
-        </InfoBox>
+        <Alert title="Couldn't build text from template" severity="error">
+          Please make sure the Content is a valid template.
+        </Alert>
+
+        {<pre>{e instanceof Error ? e.message : e}</pre>}
       </div>
     );
   }
-});
-
-Text.displayName = 'Text';
-
-/**
- * Generate HTML
- */
-const generateHtml = (data: Record<string, any>, content: string): string => {
-  const md = new MarkdownIt({ html: true });
-
-  const template = Handlebars.compile(content);
-  const markdown = template(data);
-  const html = md.render(markdown);
-  const sanitizedHtml = textUtil.sanitize(html);
-
-  return sanitizedHtml;
 };

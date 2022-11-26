@@ -172,14 +172,14 @@
       },
       "id": 8,
       "options": {
-        "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"}}",
+        "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"}}\n\n## {{test}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
           "height": 400,
           "language": "markdown"
         },
-        "everyRow": false
+        "everyRow": true
       },
       "targets": [
         {
@@ -196,9 +196,30 @@
                 "values": ["test"]
               }
             ],
-            "meta": {}
+            "meta": {},
+            "name": "test"
           },
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "test",
+                "type": "string",
+                "values": ["test2"]
+              }
+            ],
+            "meta": {},
+            "name": "test2"
+          },
+          "hide": false,
+          "refId": "B"
         }
       ],
       "title": "Date Variables",
@@ -210,7 +231,7 @@
         "uid": "rZAdZdf7a"
       },
       "gridPos": {
-        "h": 37,
+        "h": 21,
         "w": 12,
         "x": 0,
         "y": 13
@@ -259,14 +280,80 @@
     },
     {
       "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 9,
+      "options": {
+        "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"\n\n## {{test}}",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "markdown"
+        },
+        "everyRow": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "test",
+                "type": "string",
+                "values": ["test"]
+              }
+            ],
+            "meta": {},
+            "name": "test"
+          },
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "test",
+                "type": "string",
+                "values": ["test2"]
+              }
+            ],
+            "meta": {},
+            "name": "test2"
+          },
+          "hide": false,
+          "refId": "B"
+        }
+      ],
+      "title": "Error Output",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
         "type": "volkovlabs-rss-datasource",
         "uid": "rZAdZdf82"
       },
       "gridPos": {
-        "h": 37,
+        "h": 12,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 22
       },
       "id": 3,
       "options": {
