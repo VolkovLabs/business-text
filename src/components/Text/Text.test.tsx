@@ -3,28 +3,36 @@ import React from 'react';
 import { FieldType } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
 import { DefaultOptions } from '../../constants';
-import { Text, TextProps } from './Text';
+import { Props, Text } from './Text';
 
 /**
  * Text
  */
 describe('<Text />', () => {
+  /**
+   * Default Content
+   */
   test('should render default content when there is no dataframe', async () => {
-    const props: TextProps = {
-      content: 'Test content',
-      defaultContent: 'Test default content',
-      everyRow: true,
-      editor: DefaultOptions.editor,
+    const props: Props = {
+      options: {
+        content: 'Test content',
+        defaultContent: 'Test default content',
+        everyRow: true,
+        editor: DefaultOptions.editor,
+      },
     };
     render(<Text {...props} />);
 
     expect(screen.getByText('Test default content')).toBeInTheDocument();
   });
 
+  /**
+   * Render content twice
+   */
   test('should render content twice when there is a dataframe and everyRow is true', async () => {
     const nameData: string[] = ['Erik', 'Natasha'];
     const ageData: number[] = [42, 38];
-    const props: TextProps = {
+    const props: Props = {
       frame: {
         fields: [
           {
@@ -50,32 +58,42 @@ describe('<Text />', () => {
         ],
         length: 2,
       },
-      content: 'Test content',
-      defaultContent: 'Test default content',
-      everyRow: true,
-      editor: DefaultOptions.editor,
+      options: {
+        content: 'Test content',
+        defaultContent: 'Test default content',
+        everyRow: true,
+        editor: DefaultOptions.editor,
+      },
     };
     render(<Text {...props} />);
 
     expect(screen.getAllByText('Test content')).toHaveLength(2);
   });
 
+  /**
+   * Render content once
+   */
   test('should render content once when there is a dataframe and everyRow is false', async () => {
-    const props: TextProps = {
+    const props: Props = {
       frame: {
         fields: [],
         length: 2,
       },
-      content: 'Test content',
-      defaultContent: 'Test default content',
-      everyRow: false,
-      editor: DefaultOptions.editor,
+      options: {
+        content: 'Test content',
+        defaultContent: 'Test default content',
+        everyRow: false,
+        editor: DefaultOptions.editor,
+      },
     };
     render(<Text {...props} />);
 
     expect(screen.getAllByText('Test content')).toHaveLength(1);
   });
 
+  /**
+   * Render properties
+   */
   test('should render properties of dataframe in template', async () => {
     const nameData: string[] = ['Erik', 'Natasha'];
     const ageData: number[] = [42, 38];
@@ -87,7 +105,7 @@ describe('<Text />', () => {
 {{/each}}
 `;
 
-    const props: TextProps = {
+    const props: Props = {
       frame: {
         fields: [
           {
@@ -113,10 +131,12 @@ describe('<Text />', () => {
         ],
         length: 2,
       },
-      content: template,
-      defaultContent: 'Test default content',
-      everyRow: false,
-      editor: DefaultOptions.editor,
+      options: {
+        content: template,
+        defaultContent: 'Test default content',
+        everyRow: false,
+        editor: DefaultOptions.editor,
+      },
     };
     render(<Text {...props} />);
 

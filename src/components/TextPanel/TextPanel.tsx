@@ -68,13 +68,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
           `
         )}
       >
-        <Text
-          frame={frame}
-          content={options.content ?? ''}
-          defaultContent={options.defaultContent ?? ''}
-          everyRow={options.everyRow ?? true}
-          editor={options.editor}
-        />
+        <Text frame={frame} options={options} />
       </div>
 
       {data.series.length > 1 && (
