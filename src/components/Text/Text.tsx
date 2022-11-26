@@ -1,17 +1,10 @@
-import Handlebars from 'handlebars';
-import MarkdownIt from 'markdown-it';
 import React from 'react';
 import { css } from '@emotion/css';
-import { DataFrame, textUtil } from '@grafana/data';
+import { DataFrame } from '@grafana/data';
 import { Alert, useTheme } from '@grafana/ui';
-import { registerHelpers } from '../../helpers';
+import { generateHtml } from '../../helpers';
 import { TextOptions } from '../../types';
 import { getStyles } from './Text.styles';
-
-/**
- * Helpers
- */
-registerHelpers(Handlebars);
 
 /**
  * Properties
@@ -100,18 +93,4 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
       </div>
     );
   }
-};
-
-/**
- * Generate HTML
- */
-const generateHtml = (data: Record<string, any>, content: string): string => {
-  const md = new MarkdownIt({ html: true });
-
-  const template = Handlebars.compile(content);
-  const markdown = template(data);
-  const html = md.render(markdown);
-  const sanitizedHtml = textUtil.sanitize(html);
-
-  return sanitizedHtml;
 };
