@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import MarkdownIt from 'markdown-it';
 import { textUtil } from '@grafana/data';
+import { config } from '@grafana/runtime';
 import { registerHelpers } from './handlebars';
 
 /**
@@ -25,12 +26,14 @@ export const generateHtml = (data: Record<string, any>, content: string): string
   const html = md.render(markdown);
 
   /**
-   * Sanitize
+   * Skip sanitizing if disabled in Grafana
    */
-  const sanitizedHtml = textUtil.sanitize(html);
+  if (config.disableSanitizeHtml) {
+    return html;
+  }
 
   /**
-   * Return
+   * Return sanitized HTML
    */
-  return sanitizedHtml;
+  return textUtil.sanitize(html);
 };
