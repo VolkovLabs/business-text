@@ -33,14 +33,14 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 8,
+        "h": 5,
         "w": 12,
         "x": 0,
         "y": 0
       },
-      "id": 11,
+      "id": 13,
       "options": {
-        "content": "<a type=\"button\" class=\"btn btn-danger\">{{test}}</a>\n\n<button>{{test}}</button>",
+        "content": "# {{app}}\n\n{{description}}\n\n{{#if (eq tier \"frontend\")}}\nLink: <a href='https://{{cluster}}.example.com/{{app}}'>https://{{cluster}}.example.com/{{app}}</a>\n{{/if}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -60,18 +60,36 @@
             "fields": [
               {
                 "config": {},
-                "name": "test",
+                "name": "app",
                 "type": "string",
-                "values": ["Hello"]
+                "values": ["auth"]
+              },
+              {
+                "config": {},
+                "name": "description",
+                "type": "string",
+                "values": ["Handles user authentication."]
+              },
+              {
+                "config": {},
+                "name": "cluster",
+                "type": "string",
+                "values": ["prod"]
+              },
+              {
+                "config": {},
+                "name": "tier",
+                "type": "string",
+                "values": ["frontend"]
               }
             ],
             "meta": {},
-            "name": "test"
+            "name": "Test"
           },
           "refId": "A"
         }
       ],
-      "title": "Buttons",
+      "title": "All Rows",
       "type": "marcusolsson-dynamictext-panel"
     },
     {
@@ -180,10 +198,57 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "id": 11,
+      "options": {
+        "content": "<a type=\"button\" class=\"btn btn-danger\">{{test}}</a>\n\n<button>{{test}}</button>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "markdown"
+        },
+        "everyRow": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "feedType": "all",
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "test",
+                "type": "string",
+                "values": ["Hello"]
+              }
+            ],
+            "meta": {},
+            "name": "test"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Buttons",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "gridPos": {
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 5,
       "options": {
@@ -344,10 +409,10 @@
         "uid": "rZAdZdf7a"
       },
       "gridPos": {
-        "h": 21,
+        "h": 12,
         "w": 12,
         "x": 0,
-        "y": 21
+        "y": 22
       },
       "id": 2,
       "options": {

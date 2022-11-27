@@ -90,7 +90,7 @@ You can then write Markdown with placeholders for the data you want to use. The 
 {{description}}
 
 {{#if (eq tier "frontend")}}
-https://{{cluster}}.example.com/{{app}}
+Link: <a href='https://{{cluster}}.example.com/{{app}}'>https://{{cluster}}.example.com/{{app}}</a>
 {{/if}}
 ```
 
