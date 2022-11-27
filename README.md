@@ -52,6 +52,8 @@ Template support text processing using one or more helpers and recipies:
 - [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) - functions that let you perform text transformation within your template.
 - [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) - useful snippets that you can use in your templates.
 
+The panel renders Handlebars → Markdown → HTML and displays the final result.
+
 ### Default content
 
 Whenever the data source query returns an empty result, Grafana displays the template in **Default content**. This can be useful to provide users with instructions on what to do, or who to contact, when the query returns an empty result.
@@ -93,8 +95,6 @@ You can then write Markdown with placeholders for the data you want to use. The 
 Link: <a href='https://{{cluster}}.example.com/{{app}}'>https://{{cluster}}.example.com/{{app}}</a>
 {{/if}}
 ```
-
-The panel renders Handlebars → Markdown → HTML and displays the final result.
 
 ## Feedback
 
