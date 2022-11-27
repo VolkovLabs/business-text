@@ -39,7 +39,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Content
 
-To use display data from your query result, enter the name of the field surrounded by double braces. For example, to display the value from the `Time` field:
+To display data from your query result, enter the name of the field surrounded by double braces. For example, to display the value from the `Time` field:
 
 ```
 {{Time}}
@@ -62,9 +62,7 @@ Even though there's no data from the data source, you can still use the availabl
 
 Sanitizing content is enabled by default and some elements like `<button>` are unavailable in the content.
 
-To disable sanitizing, panel depends on the Grafana configuration option [`disable_sanitize_html`](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#disable_sanitize_html).
-
-To disable in the Docker container and Docker Compose, use as:
+To disable sanitizing, panel depends on the Grafana configuration option [`disable_sanitize_html`](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#disable_sanitize_html). For Docker container and Docker Compose, use as:
 
 ```bash
 - GF_PANELS_DISABLE_SANITIZE_HTML=true
