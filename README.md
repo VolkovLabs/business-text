@@ -47,7 +47,10 @@ To use display data from your query result, enter the name of the field surround
 
 Panels renders the template for every row in the query result. If a query returns multiple query results, you can select the query result you wish to display from a drop-down menu.
 
-You can even do basic text processing using one or more [helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) inside your template.
+Template support text processing using one or more helpers and recipies:
+
+- [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) - functions that let you perform text transformation within your template.
+- [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) - useful snippets that you can use in your templates.
 
 ### Default content
 
@@ -94,11 +97,6 @@ https://{{cluster}}.example.com/{{app}}
 ```
 
 The panel renders Handlebars → Markdown → HTML and displays the final result.
-
-## Resources
-
-- [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) - functions that let you perform basic text transformation within your template.
-- [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) - useful snippets that you can use in your templates.
 
 ## Feedback
 
