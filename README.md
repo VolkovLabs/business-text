@@ -52,7 +52,7 @@ Template support text processing using one or more helpers and recipies:
 - [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) - functions that let you perform text transformation within your template.
 - [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) - useful snippets that you can use in your templates.
 
-The panel renders Handlebars → Markdown → HTML and displays the final result.
+The panel renders Handlebars → Markdown → Sanitized HTML and displays the final result.
 
 ### Default content
 
