@@ -30,42 +30,53 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Features
 
+- Uses Monaco Code Editor with Auto formatting to update Templates.
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
 - HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html) through `textUtil`.
 - Allows to display Time global variables (`__to` and `__from`) as seconds, ISO, and formatted using `dayjs`.
+- Supports disable Sanitizing using Grafana configuration `disable_sanitize_html`.
 
-## Panel Options
+## Content
 
-### Content
+To display data from your query result, enter the name of the field surrounded by double braces. For example, to display the value from the `Time` field:
 
-A [Handlebars](https://handlebarsjs.com/) template with support for Markdown.
+```
+{{Time}}
+```
 
-To use display data from your query result, enter the name of the field surrounded by double braces. For example, to display the value from the `Time` field, enter `{{Time}}`.
+Panels renders the template for every row in the query result. If a query returns multiple query results, you can select the query result you wish to display from a drop-down menu.
 
-Grafana renders the template for every row in the query result. If a query returns multiple query results, you can select the query result you wish to display from a drop-down menu.
+Template support text processing using one or more helpers and recipies:
 
-You can even do basic text processing using one or more [helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) inside your template.
+- [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) - functions that let you perform text transformation within your template.
+- [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) - useful snippets that you can use in your templates.
+
+The panel renders Handlebars → Markdown → Sanitized HTML and displays the final result.
 
 ### Default content
 
-Whenever the data source query returns an empty result, Grafana displays the template in **Default content** instead of **Content**.
-
-This can be useful to provide users with instructions on what to do, or who to contact, when the query returns an empty result.
+Whenever the data source query returns an empty result, Grafana displays the template in **Default content**. This can be useful to provide users with instructions on what to do, or who to contact, when the query returns an empty result.
 
 Even though there's no data from the data source, you can still use the available [helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers).
 
-### Every row
+### Sanitizing
 
-By default, the template configured in the **Content** field is rendered for each record in the result.
+Sanitizing is enabled by default and some elements like `<button>` are unavailable in the content.
 
-You can render this template only once by turning this switch off. In this case, the query results are passed in as the `data` field to the template.
+To disable sanitizing, panel depends on the Grafana configuration option [`disable_sanitize_html`](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#disable_sanitize_html). For Docker container and Docker Compose, use as:
+
+```bash
+- GF_PANELS_DISABLE_SANITIZE_HTML=true
+```
+
+## Every row vs All rows
+
+By default, the template configured in the **Content** field is rendered for each record in the result. You can render this template only once by selecting `All rows`. In this case, the query results are passed in as the `data` field to the template.
 
 Handlebars provides a [builtin-helper](https://handlebarsjs.com/guide/builtin-helpers.html#each) to iterate over these records.
 
-## Example
-
-Let's say that your data source returns the following data:
+If your data source returns the following data:
 
 ```md
 | app  | description                  | cluster | tier     |
@@ -81,16 +92,9 @@ You can then write Markdown with placeholders for the data you want to use. The 
 {{description}}
 
 {{#if (eq tier "frontend")}}
-https://{{cluster}}.example.com/{{app}}
+Link: <a href='https://{{cluster}}.example.com/{{app}}'>https://{{cluster}}.example.com/{{app}}</a>
 {{/if}}
 ```
-
-The panel renders Handlebars → Markdown → HTML and displays the final result.
-
-For more examples, take a look at
-
-- [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) - functions that let you perform basic text transformation within your template.
-- [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) - useful snippets that you can use in your templates.
 
 ## Feedback
 

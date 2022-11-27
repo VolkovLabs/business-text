@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.1.0 (2022-11-26)
+## 2.1.0 (2022-11-27)
 
 ### Breaking changes
 
@@ -16,6 +16,7 @@ Refactoring may introduce breaking changes. Please test before upgrading in Prod
 - Increase Test Coverage (#114)
 - Refactor and update images (#116)
 - Refactor Alert Message and Text Options (#117)
+- Add Support for Disable Sanitize HTML configuration (#118)
 
 ## 2.0.0 (2022-11-02)
 
