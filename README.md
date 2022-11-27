@@ -62,7 +62,7 @@ Even though there's no data from the data source, you can still use the availabl
 
 ### Sanitizing
 
-Sanitizing content is enabled by default and some elements like `<button>` are unavailable in the content.
+Sanitizing is enabled by default and some elements like `<button>` are unavailable in the content.
 
 To disable sanitizing, panel depends on the Grafana configuration option [`disable_sanitize_html`](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#disable_sanitize_html). For Docker container and Docker Compose, use as:
 
