@@ -4,7 +4,8 @@
 
 ### Features / Enhancements
 
-- Add JSON helper to show stringify objects (#)
+- Add JSON helper to show stringify objects (#121)
+- Update to Grafana 9.3.1 (#122)
 
 ## 2.1.0 (2022-11-27)
 
