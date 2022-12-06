@@ -16,98 +16,81 @@ const toFixed = (num: unknown, digits: unknown) => {
 };
 
 /**
- * Join
- */
-const join = (arr: string[], sep: string): string => {
-  return arr.join(sep);
-};
-
-/**
- * Contains
- */
-const contains = (arr: string[], value: string): boolean => {
-  return arr.indexOf(value) !== -1;
-};
-
-/**
- * Equal
- */
-const eq = (left: string, right: string): boolean => {
-  return left === right;
-};
-
-/**
- * Unless Equal
- */
-const unlessEq = (left: string, right: string): boolean => {
-  return left !== right;
-};
-
-/**
- * Greater Than
- */
-const gt = (left: number, right: number): boolean => {
-  return left > right;
-};
-
-/**
- * Less Than
- */
-const lt = (left: number, right: number): boolean => {
-  return left < right;
-};
-
-/**
- * Greater or Equal
- */
-const gte = (left: number, right: number): boolean => {
-  return left >= right;
-};
-
-/**
- * Less or Equal
- */
-const lte = (left: number, right: number): boolean => {
-  return left <= right;
-};
-
-/**
- * And
- */
-const and = (left: boolean, right: boolean): boolean => {
-  return left && right;
-};
-
-/**
- * Or
- */
-const or = (left: boolean, right: boolean): boolean => {
-  return left || right;
-};
-
-/**
- * Not
- */
-const not = (left: boolean): boolean => {
-  return !left;
-};
-
-/**
  * Register Helpers
  */
 export const registerHelpers = (handlebars: any) => {
+  /**
+   * And
+   */
+  handlebars.registerHelper('and', (left: boolean, right: boolean): boolean => left && right);
+
+  /**
+   * Contains
+   */
+  handlebars.registerHelper('contains', (arr: string[], value: string): boolean => arr.indexOf(value) !== -1);
+
+  /**
+   * Date
+   */
   handlebars.registerHelper('date', date);
+
+  /**
+   * Equal
+   */
+  handlebars.registerHelper('eq', (left: string, right: string): boolean => left === right);
+
+  /**
+   * JSON
+   */
+  handlebars.registerHelper('json', (context: any) => JSON.stringify(context, null, 2));
+
+  /**
+   * Greater Than
+   */
+  handlebars.registerHelper('gt', (left: number, right: number): boolean => left > right);
+
+  /**
+   * Greater or Equal
+   */
+  handlebars.registerHelper('gte', (left: number, right: number): boolean => left >= right);
+
+  /**
+   * Join
+   */
+  handlebars.registerHelper('join', (arr: string[], sep: string): string => arr.join(sep));
+
+  /**
+   * Less Than
+   */
+  handlebars.registerHelper('lt', (left: number, right: number): boolean => left < right);
+
+  /**
+   * Less or Equal
+   */
+  handlebars.registerHelper('lte', (left: number, right: number): boolean => left <= right);
+
+  /**
+   * Not
+   */
+  handlebars.registerHelper('not', (left: boolean): boolean => !left);
+
+  /**
+   * Or
+   */
+  handlebars.registerHelper('or', (left: boolean, right: boolean): boolean => left || right);
+
+  /**
+   * To Fixed
+   */
   handlebars.registerHelper('toFixed', toFixed);
+
+  /**
+   * Unless Equal
+   */
+  handlebars.registerHelper('unlessEq', (left: string, right: string): boolean => left !== right);
+
+  /**
+   * Variable
+   */
   handlebars.registerHelper('variable', variable);
-  handlebars.registerHelper('join', join);
-  handlebars.registerHelper('contains', contains);
-  handlebars.registerHelper('eq', eq);
-  handlebars.registerHelper('unlessEq', unlessEq);
-  handlebars.registerHelper('gt', gt);
-  handlebars.registerHelper('lt', lt);
-  handlebars.registerHelper('gte', gte);
-  handlebars.registerHelper('lte', lte);
-  handlebars.registerHelper('and', and);
-  handlebars.registerHelper('or', or);
-  handlebars.registerHelper('not', not);
 };
