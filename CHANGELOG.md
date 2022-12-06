@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Add JSON helper to show stringify objects (#)
+
 ## 2.1.0 (2022-11-27)
 
 ### Breaking changes
