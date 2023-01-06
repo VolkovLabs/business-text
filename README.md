@@ -40,9 +40,11 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Documentation
 
-- [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content)
-- [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers)
-- [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes)
+| Section | Description |
+| -- | -- |
+| [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content) | Explains how to create a visualization template for your data. |
+| [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) | Helpers are functions that let you perform basic text transformation within your template. |
+| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) | Useful snippets that you can use in your templates. |
 
 ## Feedback
 
