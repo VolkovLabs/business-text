@@ -14,16 +14,16 @@
     "keywords": ["text", "markdown", "handlebars"],
     "links": [
       {
+        "name": "Documentation",
+        "url": "https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/"
+      },
+      {
         "name": "GitHub",
         "url": "https://github.com/volkovlabs/volkovlabs-dynamictext-panel"
       },
       {
         "name": "YouTube Playlist",
         "url": "https://www.youtube.com/playlist?list=PLPow72ygztmSRxDiDIAdXNIqD_RxLRjcW"
-      },
-      {
-        "name": "Website",
-        "url": "https://volkovlabs.io"
       }
     ],
     "logos": {

@@ -12,6 +12,7 @@ const toFixed = (num: unknown, digits: unknown) => {
   if (typeof num !== 'number' || typeof digits !== 'number') {
     return 0;
   }
+
   return num.toFixed(digits);
 };
 
