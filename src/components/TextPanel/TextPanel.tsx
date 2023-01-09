@@ -52,12 +52,13 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
    */
   return (
     <div
-      className={css`
-        display: flex;
-        flex-direction: column;
-        width: ${width}px;
-        height: ${height}px;
-      `}
+      className={cx(
+        styles.root,
+        css`
+          width: ${width}px;
+          height: ${height}px;
+        `
+      )}
     >
       <div
         className={cx(

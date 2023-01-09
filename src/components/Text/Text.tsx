@@ -1,10 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/css';
 import { DataFrame } from '@grafana/data';
-import { Alert, useTheme } from '@grafana/ui';
+import { Alert, useTheme2 } from '@grafana/ui';
 import { generateHtml } from '../../helpers';
+import { getStyles } from '../../styles';
 import { TextOptions } from '../../types';
-import { getStyles } from './Text.styles';
 
 /**
  * Properties
@@ -32,59 +31,59 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
   /**
    * Theme
    */
-  const theme = useTheme();
+  const theme = useTheme2();
   const styles = getStyles(theme);
 
   try {
-    let renderedContent;
+    /**
+     * Default Content if no frames returned
+     */
+    if (!frame?.length) {
+      return (
+        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, options.defaultContent) }} />
+      );
+    }
 
     /**
      * Frame returned
      */
-    if (frame?.length) {
-      const data = frame.fields.reduce((out, { config, name, values }) => {
-        values.toArray().forEach((v, i) => {
-          out[i] = { ...out[i], [config.displayName || name]: v };
-        });
-        return out;
-      }, [] as Array<Record<string, any>>);
+    const data = frame.fields.reduce((out, { config, name, values }) => {
+      values.toArray().forEach((v, i) => {
+        out[i] = { ...out[i], [config.displayName || name]: v };
+      });
 
-      /**
-       * Content
-       */
-      renderedContent = options.everyRow ? (
-        data.map((row, key) => {
-          return (
+      return out;
+    }, [] as Array<Record<string, any>>);
+
+    /**
+     * Every Row
+     */
+    if (options.everyRow) {
+      return (
+        <>
+          {data.map((row, key) => (
             <div
               key={key}
               className={styles.frame}
               dangerouslySetInnerHTML={{ __html: generateHtml(row, options.content) }}
             />
-          );
-        })
-      ) : (
-        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({ data }, options.content) }} />
-      );
-    } else {
-      /**
-       * Default Content
-       */
-      renderedContent = (
-        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, options.defaultContent) }} />
+          ))}
+        </>
       );
     }
 
-    return <div style={{ flexGrow: 1, overflow: 'auto' }}>{renderedContent}</div>;
+    /**
+     * All Rows
+     */
+    return (
+      <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({ data }, options.content) }} />
+    );
   } catch (e: any) {
     /**
      * Error
      */
     return (
-      <div
-        className={css`
-          padding: ${theme.spacing.sm};
-        `}
-      >
+      <div className={styles.frame}>
         <Alert title="Couldn't build text from template" severity="error">
           Please make sure the Content is a valid template.
         </Alert>
