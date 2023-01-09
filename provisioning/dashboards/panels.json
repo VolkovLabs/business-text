@@ -33,10 +33,93 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 12,
         "x": 0,
         "y": 0
+      },
+      "id": 15,
+      "options": {
+        "content": "{{replace Test \"Pattern\" \"Replaced\"}}",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 202,
+          "language": "markdown"
+        },
+        "everyRow": true,
+        "helpers": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "feedType": "all",
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Test",
+                "type": "string",
+                "values": ["Here is the Pattern to replace"]
+              }
+            ],
+            "meta": {},
+            "name": "Test"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Replace Custom Function",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 7,
+      "options": {
+        "content": "- Timestamp: {{variable \"__from\"}}\n- Parsed: {{variable \"__from:date:YYYY\"}}",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "html"
+        },
+        "everyRow": false,
+        "helpers": ""
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "No Results",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 4
       },
       "id": 13,
       "options": {
@@ -47,7 +130,8 @@
           "height": 400,
           "language": "markdown"
         },
-        "everyRow": true
+        "everyRow": true,
+        "helpers": ""
       },
       "targets": [
         {
@@ -98,40 +182,6 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 4,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "id": 7,
-      "options": {
-        "content": "- Timestamp: {{variable \"__from\"}}\n- Parsed: {{variable \"__from:date:YYYY\"}}",
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 400,
-          "language": "html"
-        },
-        "everyRow": false
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "marcusolsson-static-datasource",
-            "uid": "U0HP2Rv4z"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "No Results",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "U0HP2Rv4z"
-      },
-      "gridPos": {
         "h": 9,
         "w": 12,
         "x": 12,
@@ -146,7 +196,8 @@
           "height": 400,
           "language": "markdown"
         },
-        "everyRow": true
+        "everyRow": true,
+        "handlebars": ""
       },
       "targets": [
         {
@@ -201,18 +252,19 @@
         "h": 4,
         "w": 12,
         "x": 0,
-        "y": 5
+        "y": 9
       },
       "id": 11,
       "options": {
-        "content": "<a type=\"button\" class=\"btn btn-danger\">{{test}}</a>\n\n<button>{{test}}</button>",
+        "content": "<a type=\"button\" onclick=\"myFunc()\" class=\"btn btn-danger\">{{test}}</a>\n\n<button onclick=\"myFunc()\">{{test}}</button>",
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
-          "height": 400,
+          "height": 200,
           "language": "markdown"
         },
-        "everyRow": true
+        "everyRow": true,
+        "helpers": "myFunc = () => {\n  alert('Bonjour!');\n};\n"
       },
       "targets": [
         {
@@ -245,10 +297,10 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 13,
+        "h": 12,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 13
       },
       "id": 5,
       "options": {
@@ -259,7 +311,8 @@
           "height": 400,
           "language": "html"
         },
-        "everyRow": true
+        "everyRow": true,
+        "handlebars": ""
       },
       "targets": [
         {
@@ -357,7 +410,8 @@
           "height": 400,
           "language": "markdown"
         },
-        "everyRow": true
+        "everyRow": true,
+        "handlebars": ""
       },
       "targets": [
         {
@@ -406,59 +460,6 @@
     {
       "datasource": {
         "type": "volkovlabs-rss-datasource",
-        "uid": "rZAdZdf7a"
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 0,
-        "y": 22
-      },
-      "id": 2,
-      "options": {
-        "content": "| Title | Data | Author |\n| ----- | ------ | ---- |\n{{#each data}}\n| {{title}} | {{author}} | {{date pubDate 'MMM, DD YYYY'}} |\n{{/each}}",
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 400,
-          "language": "html"
-        },
-        "everyRow": false
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "volkovlabs-rss-datasource",
-            "uid": "rZAdZdf7a"
-          },
-          "dateField": "pubDate",
-          "feedType": "all",
-          "queryText": "test",
-          "refId": "A"
-        }
-      ],
-      "title": "News",
-      "transformations": [
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "dateFormat": "ddd, DD MMM YYYY HH:mm:ss ZZ",
-                "destinationType": "time",
-                "targetField": "pubDate"
-              }
-            ],
-            "fields": {}
-          }
-        }
-      ],
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "volkovlabs-rss-datasource",
         "uid": "rZAdZdf82"
       },
       "gridPos": {
@@ -476,7 +477,8 @@
           "height": 400,
           "language": "html"
         },
-        "everyRow": true
+        "everyRow": true,
+        "handlebars": ""
       },
       "pluginVersion": "8.3.3",
       "targets": [
@@ -508,6 +510,60 @@
         }
       ],
       "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "volkovlabs-rss-datasource",
+        "uid": "rZAdZdf7a"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 2,
+      "options": {
+        "content": "| Title | Data | Author |\n| ----- | ------ | ---- |\n{{#each data}}\n| {{title}} | {{author}} | {{date pubDate 'MMM, DD YYYY'}} |\n{{/each}}",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "html"
+        },
+        "everyRow": false,
+        "handlebars": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-rss-datasource",
+            "uid": "rZAdZdf7a"
+          },
+          "dateField": "pubDate",
+          "feedType": "items",
+          "queryText": "test",
+          "refId": "A"
+        }
+      ],
+      "title": "News",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "ddd, DD MMM YYYY HH:mm:ss ZZ",
+                "destinationType": "time",
+                "targetField": "pubDate"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "refresh": "",
@@ -525,6 +581,6 @@
   "timezone": "",
   "title": "Examples",
   "uid": "O4tc_E6Gz",
-  "version": 5,
+  "version": 8,
   "weekStart": ""
 }

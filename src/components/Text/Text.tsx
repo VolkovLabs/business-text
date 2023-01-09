@@ -40,7 +40,10 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
      */
     if (!frame?.length) {
       return (
-        <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({}, options.defaultContent) }} />
+        <div
+          className={styles.frame}
+          dangerouslySetInnerHTML={{ __html: generateHtml({}, options.defaultContent, options.helpers) }}
+        />
       );
     }
 
@@ -65,7 +68,7 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
             <div
               key={key}
               className={styles.frame}
-              dangerouslySetInnerHTML={{ __html: generateHtml(row, options.content) }}
+              dangerouslySetInnerHTML={{ __html: generateHtml(row, options.content, options.helpers) }}
             />
           ))}
         </>
@@ -76,7 +79,10 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
      * All Rows
      */
     return (
-      <div className={styles.frame} dangerouslySetInnerHTML={{ __html: generateHtml({ data }, options.content) }} />
+      <div
+        className={styles.frame}
+        dangerouslySetInnerHTML={{ __html: generateHtml({ data }, options.content, options.helpers) }}
+      />
     );
   } catch (e: any) {
     /**
@@ -85,7 +91,7 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
     return (
       <div className={styles.frame}>
         <Alert title="Couldn't build text from template" severity="error">
-          Please make sure the Content is a valid template.
+          Please make sure the Content is a valid template and Helpers are correct.
         </Alert>
 
         {<pre>{e instanceof Error ? e.message : e}</pre>}

@@ -1,5 +1,5 @@
 import { PanelPlugin } from '@grafana/data';
-import { TextEditor, TextPanel } from './components';
+import { HelpersEditor, TextEditor, TextPanel } from './components';
 import { CodeLanguageOptions, DefaultOptions, EveryRowOptions, FormatOptions } from './constants';
 import { TextOptions } from './types';
 
@@ -65,11 +65,20 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
     .addCustomEditor({
       id: 'defaultContent',
       path: 'defaultContent',
-      name: 'Default content',
+      name: 'Default Content',
       description: 'Displayed when query result is empty.',
       defaultValue: DefaultOptions.defaultContent,
       editor: TextEditor,
       category: ['Content'],
+    })
+    .addCustomEditor({
+      id: 'helpers',
+      path: 'helpers',
+      name: 'Javascript Code',
+      description: 'Allows to add Handlebars Helpers and event handlers.',
+      defaultValue: DefaultOptions.helpers,
+      editor: HelpersEditor,
+      category: ['Helpers'],
     });
 
   return builder;
