@@ -22,7 +22,7 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
   builder
     .addRadio({
       path: 'editor.language',
-      name: 'Primary Language',
+      name: 'Primary Content Language',
       description: 'Used for formatting and suggestions.',
       settings: {
         options: CodeLanguageOptions,
@@ -32,7 +32,7 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
     })
     .addRadio({
       path: 'editor.format',
-      name: 'Code Formatting',
+      name: 'Formatting',
       settings: {
         options: FormatOptions,
       },
