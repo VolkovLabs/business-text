@@ -22,6 +22,10 @@ export const getStyles = (theme: GrafanaTheme2) => ({
       border-bottom: 0;
     }
 
+    img {
+      max-width: 100%;
+    }
+
     li {
       margin-left: ${theme.spacing(2)};
     }

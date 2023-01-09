@@ -74,7 +74,7 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
     .addCustomEditor({
       id: 'helpers',
       path: 'helpers',
-      name: 'Javascript Code',
+      name: 'JavaScript Code',
       description: 'Allows to add Handlebars Helpers and event handlers.',
       defaultValue: DefaultOptions.helpers,
       editor: HelpersEditor,
