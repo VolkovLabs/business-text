@@ -19,6 +19,7 @@ describe('<Text />', () => {
         defaultContent: 'Test default content',
         everyRow: true,
         editor: DefaultOptions.editor,
+        helpers: '',
       },
     };
     render(<Text {...props} />);
@@ -63,6 +64,7 @@ describe('<Text />', () => {
         defaultContent: 'Test default content',
         everyRow: true,
         editor: DefaultOptions.editor,
+        helpers: '',
       },
     };
     render(<Text {...props} />);
@@ -84,6 +86,7 @@ describe('<Text />', () => {
         defaultContent: 'Test default content',
         everyRow: false,
         editor: DefaultOptions.editor,
+        helpers: '',
       },
     };
     render(<Text {...props} />);
@@ -136,6 +139,7 @@ describe('<Text />', () => {
         defaultContent: 'Test default content',
         everyRow: false,
         editor: DefaultOptions.editor,
+        helpers: '',
       },
     };
     render(<Text {...props} />);

@@ -9,6 +9,8 @@
 - Update Documentation links (#130, #131)
 - Add Split Helper (#132)
 - Refactor Text Component and Styles (#133)
+- Add Javascript Code to add Handlebars helpers and Event handlers (#134)
+- Update default Content to `{{json @root}}` and Code Editor height to `200px`.
 
 ## 2.1.0 (2022-11-27)
 

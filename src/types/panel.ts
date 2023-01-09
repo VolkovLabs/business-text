@@ -31,4 +31,11 @@ export interface TextOptions {
    * @type {EditorOptions}
    */
   editor: EditorOptions;
+
+  /**
+   * Helpers
+   *
+   * @type {string}
+   */
+  helpers: string;
 }

@@ -12,7 +12,15 @@ registerHelpers(Handlebars);
 /**
  * Generate HTML
  */
-export const generateHtml = (data: Record<string, any>, content: string): string => {
+export const generateHtml = (data: Record<string, any>, content: string, helpers: string): string => {
+  /**
+   * Add Custom Helpers
+   */
+  if (helpers) {
+    const func = new Function('data', 'handlebars', helpers);
+    func(data, Handlebars, helpers);
+  }
+
   /**
    * Handlebars
    */

@@ -5,8 +5,9 @@ import { CodeLanguage, Format } from './editor';
  * Default Options
  */
 export const DefaultOptions: TextOptions = {
-  content: '',
+  content: '{{json @root}}',
   defaultContent: "The query didn't return any results.",
   everyRow: true,
-  editor: { height: 400, format: Format.AUTO, language: CodeLanguage.MARKDOWN },
+  editor: { height: 200, format: Format.AUTO, language: CodeLanguage.MARKDOWN },
+  helpers: '',
 };
