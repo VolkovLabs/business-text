@@ -81,6 +81,11 @@ export const registerHelpers = (handlebars: any) => {
   handlebars.registerHelper('or', (left: boolean, right: boolean): boolean => left || right);
 
   /**
+   * Split
+   */
+  handlebars.registerHelper('split', (str: string, sep: string): string[] => str.split(sep));
+
+  /**
    * To Fixed
    */
   handlebars.registerHelper('toFixed', toFixed);
