@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import MarkdownIt from 'markdown-it';
-import { textUtil } from '@grafana/data';
+import { getLocale, textUtil } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import { registerHelpers } from './handlebars';
 
@@ -17,8 +17,8 @@ export const generateHtml = (data: Record<string, any>, content: string, helpers
    * Add Custom Helpers
    */
   if (helpers) {
-    const func = new Function('data', 'handlebars', helpers);
-    func(data, Handlebars, helpers);
+    const func = new Function('data', 'handlebars', 'getLocale', helpers);
+    func(data, Handlebars, getLocale, helpers);
   }
 
   /**

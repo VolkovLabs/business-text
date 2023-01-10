@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.2.0 (IN PROGRESS)
+## 2.2.0 (2022-01-09)
 
 ### Features / Enhancements
 
@@ -12,6 +12,7 @@
 - Add JavaScript Code to add Handlebars helpers and Event handlers (#134)
 - Update default Content to `{{json @root}}` and Code Editor height to `200px` (#134)
 - Update CSS to fit images to screen (#135)
+- Add `getLocale()` parameter to JavaScript Code (#137)
 
 ## 2.1.0 (2022-11-27)
 
