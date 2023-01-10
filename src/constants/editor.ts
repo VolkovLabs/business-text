@@ -47,6 +47,11 @@ export const CodeEditorSuggestions: CodeEditorSuggestionItem[] = [
   {
     label: 'handlebars',
     kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Handlebars object.',
+    detail: 'Handlebars library.',
+  },
+  {
+    label: 'getLocale',
+    kind: CodeEditorSuggestionItemKind.Method,
+    detail: 'Returns locale.',
   },
 ];
