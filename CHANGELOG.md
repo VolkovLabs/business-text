@@ -4,7 +4,7 @@
 
 ### Features / Enhancements
 
-- Update README features with new JavaScript Code Editor ()
+- Update README features with new JavaScript Code Editor (#141)
 
 ## 2.2.0 (2023-01-09)
 
