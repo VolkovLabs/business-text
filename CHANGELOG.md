@@ -1,6 +1,12 @@
 # Changelog
 
-## 2.2.0 (2022-01-09)
+## 2.3.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Update README features with new JavaScript Code Editor ()
+
+## 2.2.0 (2023-01-09)
 
 ### Features / Enhancements
 
