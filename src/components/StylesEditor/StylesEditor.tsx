@@ -65,7 +65,7 @@ export const StylesEditor: React.FC<Props> = ({ value, onChange, context }) => {
   return (
     <div>
       <CodeEditor
-        language={CodeLanguage.CSS}
+        language={CodeLanguage.SCSS}
         showLineNumbers={true}
         showMiniMap={(value && value.length) > 100}
         value={value}

@@ -1,21 +1,29 @@
-import { StylesEditor } from 'components/StylesEditor';
 import { PanelPlugin } from '@grafana/data';
-import { HelpersEditor, TextEditor, TextPanel } from './components';
-import { CodeLanguageOptions, DefaultOptions, EveryRowOptions, FormatOptions } from './constants';
-import { TextOptions } from './types';
+import { HelpersEditor, StylesEditor, TextEditor, TextPanel } from './components';
+import { CodeLanguageOptions, DefaultOptions, EditorsOptions, EveryRowOptions, FormatOptions } from './constants';
+import { EditorType, TextOptions } from './types';
 
 /**
  * Panel Plugin
  */
 export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((builder) => {
-  builder.addRadio({
-    path: 'everyRow',
-    name: 'Render template',
-    settings: {
-      options: EveryRowOptions,
-    },
-    defaultValue: DefaultOptions.everyRow,
-  });
+  builder
+    .addRadio({
+      path: 'everyRow',
+      name: 'Render template',
+      settings: {
+        options: EveryRowOptions,
+      },
+      defaultValue: DefaultOptions.everyRow,
+    })
+    .addMultiSelect({
+      path: 'editors',
+      name: 'Select Editors to display. Editors with updated values always displayed.',
+      settings: {
+        options: EditorsOptions as any,
+      },
+      defaultValue: DefaultOptions.editors,
+    });
 
   /**
    * Editor
@@ -71,6 +79,8 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
       defaultValue: DefaultOptions.defaultContent,
       editor: TextEditor,
       category: ['Content'],
+      showIf: (config) =>
+        config.editors.includes(EditorType.DEFAULT) || config.defaultContent !== DefaultOptions.defaultContent,
     })
     .addCustomEditor({
       id: 'helpers',
@@ -79,7 +89,8 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
       description: 'Allows to add Handlebars Helpers and event handlers.',
       defaultValue: DefaultOptions.helpers,
       editor: HelpersEditor,
-      category: ['Helpers'],
+      category: ['Content'],
+      showIf: (config) => config.editors.includes(EditorType.HELPERS) || config.helpers !== DefaultOptions.helpers,
     })
     .addCustomEditor({
       id: 'styles',
@@ -88,7 +99,8 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
       description: 'Allows to add styles.',
       defaultValue: DefaultOptions.styles,
       editor: StylesEditor,
-      category: ['Styles'],
+      category: ['Content'],
+      showIf: (config) => config.editors.includes(EditorType.STYLES) || config.styles !== DefaultOptions.styles,
     });
 
   return builder;

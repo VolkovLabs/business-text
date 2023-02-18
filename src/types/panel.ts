@@ -1,5 +1,11 @@
 import { EditorOptions } from './editor';
 
+export enum EditorType {
+  DEFAULT = 'default',
+  HELPERS = 'helpers',
+  STYLES = 'styles',
+}
+
 /**
  * Options
  */
@@ -24,6 +30,13 @@ export interface TextOptions {
    * @type {boolean}
    */
   everyRow: boolean;
+
+  /**
+   * Editors to Display
+   *
+   * @type {Array<EditorType>}
+   */
+  editors: Array<EditorType>;
 
   /**
    * Editor

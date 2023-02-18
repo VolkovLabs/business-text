@@ -4,7 +4,7 @@ import { CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana
  * Supported Languages
  */
 export const enum CodeLanguage {
-  CSS = 'css',
+  SCSS = 'scss',
   HANDLEBARS = 'handlebars',
   HTML = 'html',
   JAVASCRIPT = 'javascript',
