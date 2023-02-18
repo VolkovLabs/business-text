@@ -7,6 +7,7 @@
 - Update README features with new JavaScript Code Editor (#141)
 - Update to Grafana 9.3.6 (#147)
 - Update CI and Release workflows (#147)
+- Update README to include JavaScript tutorial (#148)
 
 ## 2.2.0 (2023-01-09)
 
