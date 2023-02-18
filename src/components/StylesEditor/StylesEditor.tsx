@@ -2,7 +2,7 @@ import React from 'react';
 import { StandardEditorProps } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
 import { CodeEditor, CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana/ui';
-import { CodeLanguage, Format, HelpersEditorSuggestions } from '../../constants';
+import { CodeLanguage, Format, StylesEditorSuggestions } from '../../constants';
 
 /**
  * Monaco
@@ -15,9 +15,9 @@ import type * as monacoType from 'monaco-editor/esm/vs/editor/editor.api';
 interface Props extends StandardEditorProps {}
 
 /**
- * Helpers Editor
+ * Styles Editor
  */
-export const HelpersEditor: React.FC<Props> = ({ value, onChange, context }) => {
+export const StylesEditor: React.FC<Props> = ({ value, onChange, context }) => {
   /**
    * Template Service to get Variables
    */
@@ -51,7 +51,7 @@ export const HelpersEditor: React.FC<Props> = ({ value, onChange, context }) => 
       };
     });
 
-    return [...HelpersEditorSuggestions, ...suggestions];
+    return [...StylesEditorSuggestions, ...suggestions];
   };
 
   /**
@@ -65,7 +65,7 @@ export const HelpersEditor: React.FC<Props> = ({ value, onChange, context }) => 
   return (
     <div>
       <CodeEditor
-        language={CodeLanguage.JAVASCRIPT}
+        language={CodeLanguage.CSS}
         showLineNumbers={true}
         showMiniMap={(value && value.length) > 100}
         value={value}

@@ -4,6 +4,7 @@ import { CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana
  * Supported Languages
  */
 export const enum CodeLanguage {
+  CSS = 'css',
   HANDLEBARS = 'handlebars',
   HTML = 'html',
   JAVASCRIPT = 'javascript',
@@ -36,9 +37,9 @@ export const FormatOptions = [
 ];
 
 /**
- * Suggestions
+ * Helpers Suggestions
  */
-export const CodeEditorSuggestions: CodeEditorSuggestionItem[] = [
+export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
   {
     label: 'data',
     kind: CodeEditorSuggestionItemKind.Property,
@@ -53,5 +54,16 @@ export const CodeEditorSuggestions: CodeEditorSuggestionItem[] = [
     label: 'getLocale',
     kind: CodeEditorSuggestionItemKind.Method,
     detail: 'Returns locale.',
+  },
+];
+
+/**
+ * Styles Suggestions
+ */
+export const StylesEditorSuggestions: CodeEditorSuggestionItem[] = [
+  {
+    label: 'theme',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Themes.',
   },
 ];

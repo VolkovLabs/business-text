@@ -10,4 +10,5 @@ export const DefaultOptions: TextOptions = {
   everyRow: true,
   editor: { height: 200, format: Format.AUTO, language: CodeLanguage.MARKDOWN },
   helpers: '',
+  styles: '',
 };

@@ -38,4 +38,11 @@ export interface TextOptions {
    * @type {string}
    */
   helpers: string;
+
+  /**
+   * Styles
+   *
+   * @type {string}
+   */
+  styles: string;
 }

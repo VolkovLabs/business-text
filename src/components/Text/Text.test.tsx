@@ -20,6 +20,7 @@ describe('<Text />', () => {
         everyRow: true,
         editor: DefaultOptions.editor,
         helpers: '',
+        styles: '',
       },
     };
     render(<Text {...props} />);
@@ -65,6 +66,7 @@ describe('<Text />', () => {
         everyRow: true,
         editor: DefaultOptions.editor,
         helpers: '',
+        styles: '',
       },
     };
     render(<Text {...props} />);
@@ -87,6 +89,7 @@ describe('<Text />', () => {
         everyRow: false,
         editor: DefaultOptions.editor,
         helpers: '',
+        styles: '',
       },
     };
     render(<Text {...props} />);
@@ -140,6 +143,7 @@ describe('<Text />', () => {
         everyRow: false,
         editor: DefaultOptions.editor,
         helpers: '',
+        styles: '',
       },
     };
     render(<Text {...props} />);

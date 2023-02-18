@@ -1,3 +1,4 @@
+import { StylesEditor } from 'components/StylesEditor';
 import { PanelPlugin } from '@grafana/data';
 import { HelpersEditor, TextEditor, TextPanel } from './components';
 import { CodeLanguageOptions, DefaultOptions, EveryRowOptions, FormatOptions } from './constants';
@@ -79,6 +80,15 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
       defaultValue: DefaultOptions.helpers,
       editor: HelpersEditor,
       category: ['Helpers'],
+    })
+    .addCustomEditor({
+      id: 'styles',
+      path: 'styles',
+      name: 'CSS Styles',
+      description: 'Allows to add styles.',
+      defaultValue: DefaultOptions.styles,
+      editor: StylesEditor,
+      category: ['Styles'],
     });
 
   return builder;
