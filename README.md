@@ -30,7 +30,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Features
 
-- Uses Monaco Code Editor with Auto formatting to update Templates,  JavaScript Code and Styles Editor.
+- Uses Monaco Code Editor with Auto formatting to update Templates,  JavaScript Code and Styles.
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
 - Sanitizing
