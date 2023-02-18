@@ -56,14 +56,3 @@ export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
     detail: 'Returns locale.',
   },
 ];
-
-/**
- * Styles Suggestions
- */
-export const StylesEditorSuggestions: CodeEditorSuggestionItem[] = [
-  {
-    label: 'theme',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Themes.',
-  },
-];

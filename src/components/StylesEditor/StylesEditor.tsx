@@ -2,7 +2,7 @@ import React from 'react';
 import { StandardEditorProps } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
 import { CodeEditor, CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana/ui';
-import { CodeLanguage, Format, StylesEditorSuggestions } from '../../constants';
+import { CodeLanguage, Format } from '../../constants';
 
 /**
  * Monaco
@@ -51,7 +51,7 @@ export const StylesEditor: React.FC<Props> = ({ value, onChange, context }) => {
       };
     });
 
-    return [...StylesEditorSuggestions, ...suggestions];
+    return [...suggestions];
   };
 
   /**
