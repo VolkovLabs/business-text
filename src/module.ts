@@ -6,7 +6,7 @@ import { EditorType, TextOptions } from './types';
 /**
  * Panel Plugin
  */
-export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((builder) => {
+export const plugin = new PanelPlugin<TextOptions>(TextPanel).setNoPadding().setPanelOptions((builder) => {
   builder
     .addRadio({
       path: 'everyRow',
