@@ -41,13 +41,19 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Documentation
 
-| Section | Description |
-| -- | -- |
-| [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content) | Explains how to create a visualization template for your data. |
-| [Data](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/data) | Demonstrates how to use Every Row and All Rows option. |
-| [JavaScript Code](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/code) | Demonstrates how to add a Handlebars helpers and Event handlers. |
-| [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) | Helpers are functions that let you perform basic text transformation within your template. |
-| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) | Useful snippets that you can use in your templates. |
+| Section                  | Description                                                    |
+| ------------------------ | -------------------------------------------------------------- |
+| [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content)       | Explains how to create a visualization template for your data. |
+| [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release) | Stay up to date with the latest features and updates.          |
+
+### Features
+
+| Section                 | Description                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------ |
+| [Data](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/data)            | Demonstrates how to use the Every Row and All Rows options.                                |
+| [JavaScript Code](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/code) | Demonstrates how to add Handlebars helpers and Event handlers.                             |
+| [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers)      | Helpers are functions that let you perform basic text transformation within your template. |
+| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes)      | Useful snippets that you can use in your templates.                                        |
 
 ## Tutorial
 
