@@ -197,7 +197,8 @@
           "language": "markdown"
         },
         "everyRow": true,
-        "handlebars": ""
+        "handlebars": "",
+        "helpers": ""
       },
       "targets": [
         {
@@ -312,7 +313,8 @@
           "language": "html"
         },
         "everyRow": true,
-        "handlebars": ""
+        "handlebars": "",
+        "helpers": ""
       },
       "targets": [
         {
@@ -411,7 +413,8 @@
           "language": "markdown"
         },
         "everyRow": true,
-        "handlebars": ""
+        "handlebars": "",
+        "helpers": ""
       },
       "targets": [
         {
@@ -478,7 +481,8 @@
           "language": "html"
         },
         "everyRow": true,
-        "handlebars": ""
+        "handlebars": "",
+        "helpers": ""
       },
       "pluginVersion": "8.3.3",
       "targets": [
@@ -524,7 +528,7 @@
       },
       "id": 2,
       "options": {
-        "content": "| Title | Data | Author |\n| ----- | ------ | ---- |\n{{#each data}}\n| {{title}} | {{author}} | {{date pubDate 'MMM, DD YYYY'}} |\n{{/each}}",
+        "content": "| Title | Date | Category |\n| ----- | ------ | ---- |\n{{#each data}}\n| {{title}} | {{date pubDate 'MMM, DD YYYY'}} | {{category}}\n{{/each}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -532,7 +536,8 @@
           "language": "html"
         },
         "everyRow": false,
-        "handlebars": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n"
+        "handlebars": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n",
+        "helpers": ""
       },
       "pluginVersion": "8.3.3",
       "targets": [

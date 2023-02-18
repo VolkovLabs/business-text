@@ -2,12 +2,10 @@
 
 ![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
 
-[![Grafana](https://img.shields.io/badge/Grafana-9.3.1-orange)](https://www.grafana.com)
+[![Grafana](https://img.shields.io/badge/Grafana-9.3.6-orange)](https://www.grafana.com)
 ![CI](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel)
 [![CodeQL](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/actions/workflows/codeql-analysis.yml)
-
-## Introduction
 
 A Dynamic Text visualization panel is a Grafana plugin that transforms monotone text/table data into vibrant, easy-to-read information cards. The panel supports variables, Markdown and Handlebars.
 
@@ -15,7 +13,7 @@ The Dynamic Text visualization panel lets you define a text template using the d
 
 [![Dynamic Text Plugin for Grafana | Markdown, HTML and Handlebars to transform data visualizations](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/video.png)](https://youtu.be/MpNZ4Yl-p0U)
 
-### Requirements
+## Requirements
 
 - **Grafana 8.5+**, **Grafana 9.0+** is required for version 2.X.
 - **Grafana 7.0+** is required for version 1.X.
