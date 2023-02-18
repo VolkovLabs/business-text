@@ -32,22 +32,34 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
 - Sanitizing
-    - HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html).
-    - Can be disabled using Grafana configuration `disable_sanitize_html`.
+  - HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html).
+  - Can be disabled using Grafana configuration `disable_sanitize_html`.
 - Allows to display nested objects using `{{json object}}` Handlebars helper.
-- Allows to display Time global variables (`__to` and `__from`) as seconds, ISO, and formatted using `dayjs`.
-- Allows to add Handlebars helpers and Event handlers.
+- Allows displaying Time global variables (`__to` and `__from`) as seconds, ISO, and formatted using `dayjs`.
+- Allows adding Handlebars helpers and Event handlers.
 - Supports Internationalization using custom helpers.
 
 ## Documentation
 
-| Section | Description |
-| -- | -- |
-| [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content) | Explains how to create a visualization template for your data. |
-| [Data](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/data) | Demonstrates how to use Every Row and All Rows option. |
-| [JavaScript Code](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/code) | Demonstrates how to add a Handlebars helpers and Event handlers. |
-| [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers) | Helpers are functions that let you perform basic text transformation within your template. |
-| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes) | Useful snippets that you can use in your templates. |
+| Section                  | Description                                                    |
+| ------------------------ | -------------------------------------------------------------- |
+| [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content)       | Explains how to create a visualization template for your data. |
+| [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release) | Stay up to date with the latest features and updates.          |
+
+### Features
+
+| Section                 | Description                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------ |
+| [Data](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/data)            | Demonstrates how to use the Every Row and All Rows options.                                |
+| [JavaScript Code](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/code) | Demonstrates how to add Handlebars helpers and Event handlers.                             |
+| [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers)      | Helpers are functions that let you perform basic text transformation within your template. |
+| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes)      | Useful snippets that you can use in your templates.                                        |
+
+## Tutorial
+
+This video outlines all the new features we implemented, including the most asked-for JavaScript area code.
+
+[![JavaScript code in the Dynamic text panel | Grafana functionality explodes](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/javascript.png)](https://youtu.be/lJqk5Gobec4)
 
 ## Feedback
 
@@ -59,4 +71,4 @@ We love to hear from you. There are various ways to get in touch with us:
 
 ## License
 
-- Apache License Version 2.0, see [LICENSE](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/blob/main/LICENSE).
+Apache License Version 2.0, see [LICENSE](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/blob/main/LICENSE).
