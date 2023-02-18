@@ -24,7 +24,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
    * Theme
    */
   const theme = useTheme2();
-  const styles = getStyles(theme);
+  const styles = getStyles(theme, options.styles);
 
   /**
    * Change Frame

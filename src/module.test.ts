@@ -17,6 +17,7 @@ describe('plugin', () => {
       addCustomEditor: jest.fn().mockImplementation(() => builder),
       addRadio: jest.fn().mockImplementation(() => builder),
       addSliderInput: jest.fn().mockImplementation(() => builder),
+      addMultiSelect: jest.fn().mockImplementation(() => builder),
     };
 
     /**
@@ -30,5 +31,6 @@ describe('plugin', () => {
     expect(builder.addCustomEditor).toHaveBeenCalled();
     expect(builder.addRadio).toHaveBeenCalled();
     expect(builder.addSliderInput).toHaveBeenCalled();
+    expect(builder.addMultiSelect).toHaveBeenCalled();
   });
 });

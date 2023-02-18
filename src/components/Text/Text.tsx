@@ -32,7 +32,7 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
    * Theme
    */
   const theme = useTheme2();
-  const styles = getStyles(theme);
+  const styles = getStyles(theme, options.styles);
 
   try {
     /**

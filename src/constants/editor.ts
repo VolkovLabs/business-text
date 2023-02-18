@@ -4,6 +4,7 @@ import { CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana
  * Supported Languages
  */
 export const enum CodeLanguage {
+  SCSS = 'scss',
   HANDLEBARS = 'handlebars',
   HTML = 'html',
   JAVASCRIPT = 'javascript',
@@ -36,9 +37,9 @@ export const FormatOptions = [
 ];
 
 /**
- * Suggestions
+ * Helpers Suggestions
  */
-export const CodeEditorSuggestions: CodeEditorSuggestionItem[] = [
+export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
   {
     label: 'data',
     kind: CodeEditorSuggestionItemKind.Property,

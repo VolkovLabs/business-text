@@ -7,6 +7,8 @@
 [![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel)
 [![CodeQL](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/actions/workflows/codeql-analysis.yml)
 
+## Introduction
+
 A Dynamic Text visualization panel is a Grafana plugin that transforms monotone text/table data into vibrant, easy-to-read information cards. The panel supports variables, Markdown and Handlebars.
 
 The Dynamic Text visualization panel lets you define a text template using the data from your data source query.
@@ -28,7 +30,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Features
 
-- Uses Monaco Code Editor with Auto formatting to update Templates and JavaScript Code Editor.
+- Uses Monaco Code Editor with Auto formatting to update Templates,  JavaScript Code and Styles.
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
 - Sanitizing
@@ -37,6 +39,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 - Allows to display nested objects using `{{json object}}` Handlebars helper.
 - Allows displaying Time global variables (`__to` and `__from`) as seconds, ISO, and formatted using `dayjs`.
 - Allows adding Handlebars helpers and Event handlers.
+- Allows adding CSS styles.
 - Supports Internationalization using custom helpers.
 
 ## Documentation

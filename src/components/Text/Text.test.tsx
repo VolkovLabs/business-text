@@ -15,11 +15,10 @@ describe('<Text />', () => {
   test('should render default content when there is no dataframe', async () => {
     const props: Props = {
       options: {
+        ...DefaultOptions,
         content: 'Test content',
         defaultContent: 'Test default content',
         everyRow: true,
-        editor: DefaultOptions.editor,
-        helpers: '',
       },
     };
     render(<Text {...props} />);
@@ -60,11 +59,10 @@ describe('<Text />', () => {
         length: 2,
       },
       options: {
+        ...DefaultOptions,
         content: 'Test content',
         defaultContent: 'Test default content',
         everyRow: true,
-        editor: DefaultOptions.editor,
-        helpers: '',
       },
     };
     render(<Text {...props} />);
@@ -82,11 +80,10 @@ describe('<Text />', () => {
         length: 2,
       },
       options: {
+        ...DefaultOptions,
         content: 'Test content',
         defaultContent: 'Test default content',
         everyRow: false,
-        editor: DefaultOptions.editor,
-        helpers: '',
       },
     };
     render(<Text {...props} />);
@@ -135,11 +132,10 @@ describe('<Text />', () => {
         length: 2,
       },
       options: {
+        ...DefaultOptions,
         content: template,
         defaultContent: 'Test default content',
         everyRow: false,
-        editor: DefaultOptions.editor,
-        helpers: '',
       },
     };
     render(<Text {...props} />);
