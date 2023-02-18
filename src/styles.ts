@@ -4,17 +4,10 @@ import { GrafanaTheme2 } from '@grafana/data';
 /**
  * Styles
  */
-export const getStyles = (theme: GrafanaTheme2, frame: string) => ({
-  root: css`
-    display: flex;
-    flex-direction: column;
-  `,
-  frameSelect: css`
-    padding: ${theme.spacing(1)};
-  `,
-  frame: frame
+export const getStyles = (theme: GrafanaTheme2, custom: string) => {
+  const frame = custom
     ? css`
-        ${frame}
+        ${custom}
       `
     : css`
         border-bottom: 1px solid ${theme.colors.border.medium};
@@ -64,5 +57,16 @@ export const getStyles = (theme: GrafanaTheme2, frame: string) => ({
             color: ${theme.colors.text.secondary};
           }
         }
-      `,
-});
+      `;
+
+  return {
+    root: css`
+      display: flex;
+      flex-direction: column;
+    `,
+    frameSelect: css`
+      padding: ${theme.spacing(1)};
+    `,
+    frame,
+  };
+};
