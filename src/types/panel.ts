@@ -34,9 +34,9 @@ export interface TextOptions {
   /**
    * Editors to Display
    *
-   * @type {Array<EditorType>}
+   * @type {EditorType[]}
    */
-  editors: Array<EditorType>;
+  editors: EditorType[];
 
   /**
    * Editor

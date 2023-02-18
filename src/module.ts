@@ -96,7 +96,7 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setPanelOptions((b
       id: 'styles',
       path: 'styles',
       name: 'CSS Styles',
-      description: 'Allows to add styles.',
+      description: 'Allows to add styles. Use & {} for root style.',
       defaultValue: DefaultOptions.styles,
       editor: StylesEditor,
       category: ['Content'],
