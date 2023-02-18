@@ -30,7 +30,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Features
 
-- Uses Monaco Code Editor with Auto formatting to update Templates and JavaScript Code Editor.
+- Uses Monaco Code Editor with Auto formatting to update Templates,  JavaScript Code and Styles Editor.
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
 - Sanitizing
@@ -39,6 +39,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 - Allows to display nested objects using `{{json object}}` Handlebars helper.
 - Allows displaying Time global variables (`__to` and `__from`) as seconds, ISO, and formatted using `dayjs`.
 - Allows adding Handlebars helpers and Event handlers.
+- Allows adding CSS styles.
 - Supports Internationalization using custom helpers.
 
 ## Documentation
