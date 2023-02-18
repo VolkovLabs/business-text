@@ -5,6 +5,7 @@
 ### Features / Enhancements
 
 - Update README features with new JavaScript Code Editor (#141)
+- Update to Grafana 9.3.6 (#)
 
 ## 2.2.0 (2023-01-09)
 
