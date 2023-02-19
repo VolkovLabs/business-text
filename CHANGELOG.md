@@ -9,6 +9,7 @@
 - Update CI and Release workflows (#147)
 - Update README to include JavaScript tutorial (#148)
 - Add custom styles (#149)
+- Remove Panel Padding (#150)
 
 ## 2.2.0 (2023-01-09)
 
