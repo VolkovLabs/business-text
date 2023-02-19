@@ -17,12 +17,14 @@ The Dynamic Text visualization panel lets you define a text template using the d
 
 ## Requirements
 
-- **Grafana 8.5+**, **Grafana 9.0+** is required for version 2.X.
-- **Grafana 7.0+** is required for version 1.X.
+- **Grafana 8.5+**, **Grafana 9.0+** is required for major versions 2 and 3.
+- **Grafana 7.0+** is required for major version 1.
 
 ## Getting Started
 
-The Dynamic Text visualization panel can be installed from the [Grafana Catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or utilizing the Grafana command line tool. For the latter, use the following command:
+The Dynamic Text visualization panel can be installed from the [Grafana Catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or utilizing the Grafana command line tool.
+
+For the latter, use the following command.
 
 ```bash
 grafana-cli plugins install marcusolsson-dynamictext-panel
@@ -66,7 +68,7 @@ This video outlines all the new features we implemented, including the most aske
 
 ## Feedback
 
-We love to hear from you. There are various ways to get in touch with us:
+We love to hear from you. There are various ways to get in touch with us.
 
 - Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues/new/choose).
 - Sponsor our open-source plugins for Grafana with [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
