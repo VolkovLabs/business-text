@@ -1,4 +1,4 @@
-import { GitHub, GitHubDark } from 'constants/highlight';
+import { HighlightDark, HighlightLight } from 'constants/highlight';
 import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 
@@ -66,7 +66,7 @@ export const getStyles = (theme: GrafanaTheme2, custom: string) => {
   /**
    * Highlight
    */
-  const highlight = theme.isDark ? GitHubDark : GitHub;
+  const highlight = theme.isDark ? HighlightDark : HighlightLight;
 
   return {
     root: css`

@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 
-export const GitHub = css`
+export const HighlightLight = css`
   pre code.hljs {
     display: block;
     overflow-x: auto;
@@ -9,95 +9,85 @@ export const GitHub = css`
   code.hljs {
     padding: 3px 5px;
   } /*!
-Theme: GitHub
-Description: Light theme as seen on github.com
-Author: github.com
-Maintainer: @Hirse
-Updated: 2021-05-15
+Theme: a11y-light
+Author: @ericwbailey
+Maintainer: @ericwbailey
 
-Outdated base version: https://github.com/primer/github-syntax-light
-Current colors taken from GitHub's CSS
+Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css
 */
   .hljs {
-    color: #24292e;
-    background: #fff;
+    background: #fefefe;
+    color: #545454;
   }
-  .hljs-doctag,
-  .hljs-keyword,
-  .hljs-meta .hljs-keyword,
-  .hljs-template-tag,
+  .hljs-comment,
+  .hljs-quote {
+    color: #696969;
+  }
+  .hljs-deletion,
+  .hljs-name,
+  .hljs-regexp,
+  .hljs-selector-class,
+  .hljs-selector-id,
+  .hljs-tag,
   .hljs-template-variable,
-  .hljs-type,
-  .hljs-variable.language_ {
-    color: #d73a49;
+  .hljs-variable {
+    color: #d91e18;
   }
-  .hljs-title,
-  .hljs-title.class_,
-  .hljs-title.class_.inherited__,
-  .hljs-title.function_ {
-    color: #6f42c1;
-  }
-  .hljs-attr,
   .hljs-attribute,
+  .hljs-built_in,
+  .hljs-link,
   .hljs-literal,
   .hljs-meta,
   .hljs-number,
-  .hljs-operator,
-  .hljs-selector-attr,
-  .hljs-selector-class,
-  .hljs-selector-id,
-  .hljs-variable {
-    color: #005cc5;
+  .hljs-params,
+  .hljs-type {
+    color: #aa5d00;
   }
-  .hljs-meta .hljs-string,
-  .hljs-regexp,
-  .hljs-string {
-    color: #032f62;
-  }
-  .hljs-built_in,
+  .hljs-addition,
+  .hljs-bullet,
+  .hljs-string,
   .hljs-symbol {
-    color: #e36209;
+    color: green;
   }
-  .hljs-code,
-  .hljs-comment,
-  .hljs-formula {
-    color: #6a737d;
+  .hljs-section,
+  .hljs-title {
+    color: #007faa;
   }
-  .hljs-name,
-  .hljs-quote,
-  .hljs-selector-pseudo,
+  .hljs-keyword,
   .hljs-selector-tag {
-    color: #22863a;
-  }
-  .hljs-subst {
-    color: #24292e;
-  }
-  .hljs-section {
-    color: #005cc5;
-    font-weight: 700;
-  }
-  .hljs-bullet {
-    color: #735c0f;
+    color: #7928a1;
   }
   .hljs-emphasis {
-    color: #24292e;
     font-style: italic;
   }
   .hljs-strong {
-    color: #24292e;
     font-weight: 700;
   }
-  .hljs-addition {
-    color: #22863a;
-    background-color: #f0fff4;
-  }
-  .hljs-deletion {
-    color: #b31d28;
-    background-color: #ffeef0;
+  @media screen and (-ms-high-contrast: active) {
+    .hljs-addition,
+    .hljs-attribute,
+    .hljs-built_in,
+    .hljs-bullet,
+    .hljs-comment,
+    .hljs-link,
+    .hljs-literal,
+    .hljs-meta,
+    .hljs-number,
+    .hljs-params,
+    .hljs-quote,
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-type {
+      color: highlight;
+    }
+    .hljs-keyword,
+    .hljs-selector-tag {
+      font-weight: 700;
+    }
   }
 `;
 
-export const GitHubDark = css`
+export const HighlightDark = css`
   pre code.hljs {
     display: block;
     overflow-x: auto;
@@ -106,90 +96,82 @@ export const GitHubDark = css`
   code.hljs {
     padding: 3px 5px;
   } /*!
-Theme: GitHub Dark
-Description: Dark theme as seen on github.com
-Author: github.com
-Maintainer: @Hirse
-Updated: 2021-05-15
+  Theme: a11y-dark
+  Author: @ericwbailey
+  Maintainer: @ericwbailey
 
-Outdated base version: https://github.com/primer/github-syntax-dark
-Current colors taken from GitHub's CSS
+  Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css
 */
   .hljs {
-    color: #c9d1d9;
-    background: #0d1117;
+    background: #2b2b2b;
+    color: #f8f8f2;
   }
-  .hljs-doctag,
-  .hljs-keyword,
-  .hljs-meta .hljs-keyword,
-  .hljs-template-tag,
+  .hljs-comment,
+  .hljs-quote {
+    color: #d4d0ab;
+  }
+  .hljs-deletion,
+  .hljs-name,
+  .hljs-regexp,
+  .hljs-selector-class,
+  .hljs-selector-id,
+  .hljs-tag,
   .hljs-template-variable,
-  .hljs-type,
-  .hljs-variable.language_ {
-    color: #ff7b72;
+  .hljs-variable {
+    color: #ffa07a;
   }
-  .hljs-title,
-  .hljs-title.class_,
-  .hljs-title.class_.inherited__,
-  .hljs-title.function_ {
-    color: #d2a8ff;
-  }
-  .hljs-attr,
-  .hljs-attribute,
+  .hljs-built_in,
+  .hljs-link,
   .hljs-literal,
   .hljs-meta,
   .hljs-number,
-  .hljs-operator,
-  .hljs-selector-attr,
-  .hljs-selector-class,
-  .hljs-selector-id,
-  .hljs-variable {
-    color: #79c0ff;
+  .hljs-params,
+  .hljs-type {
+    color: #f5ab35;
   }
-  .hljs-meta .hljs-string,
-  .hljs-regexp,
-  .hljs-string {
-    color: #a5d6ff;
+  .hljs-attribute {
+    color: gold;
   }
-  .hljs-built_in,
+  .hljs-addition,
+  .hljs-bullet,
+  .hljs-string,
   .hljs-symbol {
-    color: #ffa657;
+    color: #abe338;
   }
-  .hljs-code,
-  .hljs-comment,
-  .hljs-formula {
-    color: #8b949e;
+  .hljs-section,
+  .hljs-title {
+    color: #00e0e0;
   }
-  .hljs-name,
-  .hljs-quote,
-  .hljs-selector-pseudo,
+  .hljs-keyword,
   .hljs-selector-tag {
-    color: #7ee787;
-  }
-  .hljs-subst {
-    color: #c9d1d9;
-  }
-  .hljs-section {
-    color: #1f6feb;
-    font-weight: 700;
-  }
-  .hljs-bullet {
-    color: #f2cc60;
+    color: #dcc6e0;
   }
   .hljs-emphasis {
-    color: #c9d1d9;
     font-style: italic;
   }
   .hljs-strong {
-    color: #c9d1d9;
     font-weight: 700;
   }
-  .hljs-addition {
-    color: #aff5b4;
-    background-color: #033a16;
-  }
-  .hljs-deletion {
-    color: #ffdcd7;
-    background-color: #67060c;
+  @media screen and (-ms-high-contrast: active) {
+    .hljs-addition,
+    .hljs-attribute,
+    .hljs-built_in,
+    .hljs-bullet,
+    .hljs-comment,
+    .hljs-link,
+    .hljs-literal,
+    .hljs-meta,
+    .hljs-number,
+    .hljs-params,
+    .hljs-quote,
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-type {
+      color: highlight;
+    }
+    .hljs-keyword,
+    .hljs-selector-tag {
+      font-weight: 700;
+    }
   }
 `;

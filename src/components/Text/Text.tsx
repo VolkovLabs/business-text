@@ -42,7 +42,7 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
     if (!frame?.length) {
       return (
         <div
-          className={cx(styles.frame, styles.highlight)}
+          className={cx(styles.highlight, styles.frame)}
           dangerouslySetInnerHTML={{ __html: generateHtml({}, options.defaultContent, options.helpers) }}
         />
       );
@@ -68,7 +68,7 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
           {data.map((row, key) => (
             <div
               key={key}
-              className={cx(styles.frame, styles.highlight)}
+              className={cx(styles.highlight, styles.frame)}
               dangerouslySetInnerHTML={{ __html: generateHtml(row, options.content, options.helpers) }}
             />
           ))}
@@ -81,7 +81,7 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
      */
     return (
       <div
-        className={cx(styles.frame, styles.highlight)}
+        className={cx(styles.highlight, styles.frame)}
         dangerouslySetInnerHTML={{ __html: generateHtml({ data }, options.content, options.helpers) }}
       />
     );
