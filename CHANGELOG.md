@@ -4,7 +4,7 @@
 
 ### Breaking changes
 
-The default Content and JavaScript editors are not displayed unless values were modified.
+The default Content and JavaScript editors are not displayed by default unless values were modified.
 To display required editors, including the new Styles, they should be selected in the list.
 
 ### Features / Enhancements
