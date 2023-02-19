@@ -17,6 +17,7 @@ To display required editors, including the new Styles, they should be selected i
 - Add option to display optional editors (#149)
 - Remove Panel Padding (#150)
 - Add Code Syntax Highlight (#151)
+- Add Breaking Changes for displaying optional editors (#152)
 
 ## 2.2.0 (2023-01-09)
 
