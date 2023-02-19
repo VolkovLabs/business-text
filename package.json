@@ -11,12 +11,14 @@
     "@testing-library/react": "^14.0.0",
     "@types/enzyme": "^3.10.12",
     "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/highlight.js": "^9.12.2",
     "@types/markdown-it": "^12.0.1",
     "dayjs": "^1.11.7",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "handlebars": "^4.7.7",
     "helper-date": "^1.0.1",
+    "highlight.js": "^11.7.0",
     "markdown-it": "^13.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -37,5 +39,5 @@
     "upgrade": "yarn upgrade --latest",
     "watch": "grafana-toolkit plugin:dev --watch"
   },
-  "version": "2.3.0"
+  "version": "3.0.0"
 }

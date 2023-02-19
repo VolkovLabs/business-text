@@ -33,7 +33,7 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 4,
+        "h": 2,
         "w": 12,
         "x": 0,
         "y": 0
@@ -47,8 +47,10 @@
           "height": 202,
           "language": "markdown"
         },
+        "editors": [],
         "everyRow": true,
-        "helpers": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n"
+        "helpers": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n",
+        "styles": ""
       },
       "targets": [
         {
@@ -81,7 +83,7 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 4,
+        "h": 2,
         "w": 12,
         "x": 12,
         "y": 0
@@ -95,8 +97,10 @@
           "height": 400,
           "language": "html"
         },
+        "editors": [],
         "everyRow": false,
-        "helpers": ""
+        "helpers": "",
+        "styles": ""
       },
       "targets": [
         {
@@ -119,7 +123,7 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 4
+        "y": 2
       },
       "id": 13,
       "options": {
@@ -130,8 +134,10 @@
           "height": 400,
           "language": "markdown"
         },
+        "editors": [],
         "everyRow": true,
-        "helpers": ""
+        "helpers": "",
+        "styles": ""
       },
       "targets": [
         {
@@ -182,10 +188,10 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 12,
+        "w": 6,
         "x": 12,
-        "y": 4
+        "y": 2
       },
       "id": 8,
       "options": {
@@ -196,9 +202,11 @@
           "height": 400,
           "language": "markdown"
         },
+        "editors": [],
         "everyRow": true,
         "handlebars": "",
-        "helpers": ""
+        "helpers": "",
+        "styles": ""
       },
       "targets": [
         {
@@ -246,6 +254,42 @@
     },
     {
       "datasource": {
+        "type": "grafana",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 6,
+        "x": 18,
+        "y": 2
+      },
+      "id": 17,
+      "options": {
+        "content": "```json\n{{{json @root}}}\n```",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 100,
+          "language": "markdown"
+        },
+        "editors": ["styles"],
+        "everyRow": false,
+        "helpers": "",
+        "styles": "& {\n  padding: 0;\n  margin: 0;\n}"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
         "type": "marcusolsson-static-datasource",
         "uid": "U0HP2Rv4z"
       },
@@ -253,7 +297,7 @@
         "h": 4,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 7
       },
       "id": 11,
       "options": {
@@ -264,8 +308,10 @@
           "height": 200,
           "language": "markdown"
         },
+        "editors": [],
         "everyRow": true,
-        "helpers": "myFunc = () => {\n  alert('Bonjour!');\n};\n"
+        "helpers": "myFunc = () => {\n  alert('Bonjour!');\n};\n",
+        "styles": ""
       },
       "targets": [
         {
@@ -298,23 +344,25 @@
         "uid": "U0HP2Rv4z"
       },
       "gridPos": {
-        "h": 12,
+        "h": 13,
         "w": 12,
         "x": 0,
-        "y": 13
+        "y": 11
       },
       "id": 5,
       "options": {
-        "content": "<table width=100% style='border:2px solid #5D3FC4'>\n   <tr>\n      <td style='border:0;background-color:#5d3fc4;color:white;'>\n         <p style='margin:0'><b style='font-family: silom;font-size:20px'>{{first_name}} {{last_name}}</b>\n         </p>\n      </td>\n      <td rowspan=3 style='border:2px solid #5D3FC4;text-align:center' width=200px>\n         <img width=120px src=\"{{photo}}\">\n      </td>\n   </tr>\n   <tr>\n      <td style='background-color:#f6f2ff;color:#5F3DC4'>login\n         <b style='font-family: silom;font-size:14px'>{{login}}</b>\n         <br>role <b style='font-family: silom;font-size:14px'>{{role}}</b>\n      </td>\n   </tr>\n   <tr>\n      <td style='text-align:right;border:0;background-color:#f6f2ff;color:#5F3DC4;'>\n         <p style='margin:0'>\n            {{#if (eq status 'active')}}\n         <p style='px;color:#549728; font-size:22px; font-family:Roboto;margin:0'><b>Active</b></p>\n         {{/if}}\n         {{#if (eq status 'not active')}}\n         <p style='px;color:#FF5656; font-size:22px; font-family:Roboto;margin:0'><b>Not Active</b></p>\n         {{/if}}\n         Last Login Date <br><b> {{date last_login_date 'YYYY-MM-DD HH:MM'}}</b></p>\n      </td>\n   </tr>\n</table>",
+        "content": "<table width=100% style='border:2px solid #5D3FC4'>\n   <tr>\n      <td class='name'>\n         <p style='margin:0'><b class='name'>{{first_name}} {{last_name}}</b>\n         </p>\n      </td>\n      <td rowspan=3 class='photo' width=200px>\n         <img width=120px src=\"{{photo}}\">\n      </td>\n   </tr>\n   <tr>\n      <td style='background-color:#f6f2ff;color:#5F3DC4'>login\n         <b style='font-family: silom;font-size:14px'>{{login}}</b>\n         <br>role <b style='font-family: silom;font-size:14px'>{{role}}</b>\n      </td>\n   </tr>\n   <tr>\n      <td class='desc'>\n         <p style='margin:0'>\n            {{#if (eq status 'active')}}\n         <p style='px;color:#549728; font-size:22px; font-family:Roboto;margin:0'><b>Active</b></p>\n         {{/if}}\n         {{#if (eq status 'not active')}}\n         <p style='px;color:#FF5656; font-size:22px; font-family:Roboto;margin:0'><b>Not Active</b></p>\n         {{/if}}\n         Last Login Date <br><b> {{date last_login_date 'YYYY-MM-DD HH:MM'}}</b></p>\n      </td>\n   </tr>\n</table>",
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
           "height": 400,
           "language": "html"
         },
+        "editors": ["styles"],
         "everyRow": true,
         "handlebars": "",
-        "helpers": ""
+        "helpers": "",
+        "styles": "td.name {\n  border: 0;\n  background-color: #5d3fc4;\n  color: white;\n}\n\nb.name {\n  font-family: silom;\n  font-size:20px;\n}\n\ntd.photo {\n  border:2px solid #5D3FC4;\n  text-align:center;\n}\n\ntd.desc {\n  text-align:right;\n  border:0;\n  background-color:#f6f2ff;\n  color:#5F3DC4;\n}"
       },
       "targets": [
         {
@@ -401,7 +449,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 14
       },
       "id": 9,
       "options": {
@@ -412,9 +460,11 @@
           "height": 400,
           "language": "markdown"
         },
+        "editors": [],
         "everyRow": true,
         "handlebars": "",
-        "helpers": ""
+        "helpers": "",
+        "styles": ""
       },
       "targets": [
         {
@@ -469,7 +519,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 22
+        "y": 23
       },
       "id": 3,
       "options": {
@@ -480,9 +530,11 @@
           "height": 400,
           "language": "html"
         },
+        "editors": [],
         "everyRow": true,
         "handlebars": "",
-        "helpers": ""
+        "helpers": "",
+        "styles": ""
       },
       "pluginVersion": "8.3.3",
       "targets": [
@@ -524,7 +576,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 24
       },
       "id": 2,
       "options": {
@@ -535,9 +587,11 @@
           "height": 400,
           "language": "html"
         },
+        "editors": [],
         "everyRow": false,
         "handlebars": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n",
-        "helpers": ""
+        "helpers": "",
+        "styles": ""
       },
       "pluginVersion": "8.3.3",
       "targets": [
@@ -586,6 +640,6 @@
   "timezone": "",
   "title": "Examples",
   "uid": "O4tc_E6Gz",
-  "version": 8,
+  "version": 2,
   "weekStart": ""
 }

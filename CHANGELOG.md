@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.3.0 (IN PROGRESS)
+## 3.0.0 (2023-02-19)
 
 ### Features / Enhancements
 
@@ -10,6 +10,7 @@
 - Update README to include JavaScript tutorial (#148)
 - Add custom styles (#149)
 - Remove Panel Padding (#150)
+- Add Code Syntax Highlight (#151)
 
 ## 2.2.0 (2023-01-09)
 
