@@ -1,3 +1,4 @@
+import { GitHub, GitHubDark } from 'constants/highlight';
 import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 
@@ -5,6 +6,9 @@ import { GrafanaTheme2 } from '@grafana/data';
  * Styles
  */
 export const getStyles = (theme: GrafanaTheme2, custom: string) => {
+  /**
+   * Frame
+   */
   const frame = custom
     ? css`
         ${custom}
@@ -59,6 +63,11 @@ export const getStyles = (theme: GrafanaTheme2, custom: string) => {
         }
       `;
 
+  /**
+   * Highlight
+   */
+  const highlight = theme.isDark ? GitHubDark : GitHub;
+
   return {
     root: css`
       display: flex;
@@ -68,5 +77,6 @@ export const getStyles = (theme: GrafanaTheme2, custom: string) => {
       padding: ${theme.spacing(1)};
     `,
     frame,
+    highlight,
   };
 };

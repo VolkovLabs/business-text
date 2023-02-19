@@ -1,4 +1,5 @@
 import Handlebars from 'handlebars';
+import hljs from 'highlight.js';
 import MarkdownIt from 'markdown-it';
 import { getLocale, textUtil } from '@grafana/data';
 import { config } from '@grafana/runtime';
@@ -28,9 +29,22 @@ export const generateHtml = (data: Record<string, any>, content: string, helpers
   const markdown = template(data);
 
   /**
+   * Create Markdown with Syntax Highlighting
+   */
+  const md = new MarkdownIt({
+    html: true,
+    highlight: (str, lang) => {
+      if (lang && hljs.getLanguage(lang)) {
+        return hljs.highlight(str, { language: lang }).value;
+      }
+
+      return '';
+    },
+  });
+
+  /**
    * Render Markdown
    */
-  const md = new MarkdownIt({ html: true });
   const html = md.render(markdown);
 
   /**
