@@ -96,7 +96,7 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setNoPadding().set
       id: 'styles',
       path: 'styles',
       name: 'CSS Styles',
-      description: 'Allows to add styles. Use & {} for root style.',
+      description: 'Allows to add styles. Use & {} for parent style.',
       defaultValue: DefaultOptions.styles,
       editor: StylesEditor,
       category: ['Content'],

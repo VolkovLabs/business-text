@@ -2,6 +2,11 @@
 
 ## 3.0.0 (2023-02-19)
 
+### Breaking changes
+
+The default Content and JavaScript editors are not displayed by default unless values were modified.
+To display required editors, including the new Styles, they should be selected in the list.
+
 ### Features / Enhancements
 
 - Update README features with new JavaScript Code Editor (#141)
@@ -9,8 +14,10 @@
 - Update CI and Release workflows (#147)
 - Update README to include JavaScript tutorial (#148)
 - Add custom styles (#149)
+- Add option to display optional editors (#149)
 - Remove Panel Padding (#150)
 - Add Code Syntax Highlight (#151)
+- Add Breaking Changes for displaying optional editors (#152)
 
 ## 2.2.0 (2023-01-09)
 

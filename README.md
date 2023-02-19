@@ -17,12 +17,14 @@ The Dynamic Text visualization panel lets you define a text template using the d
 
 ## Requirements
 
-- **Grafana 8.5+**, **Grafana 9.0+** is required for version 2.X.
-- **Grafana 7.0+** is required for version 1.X.
+- **Grafana 8.5+**, **Grafana 9.0+** is required for major versions 2 and 3.
+- **Grafana 7.0+** is required for major version 1.
 
 ## Getting Started
 
-The Dynamic Text visualization panel can be installed from the [Grafana Catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or utilizing the Grafana command line tool. For the latter, use the following command:
+The Dynamic Text visualization panel can be installed from the [Grafana Catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or utilizing the Grafana command line tool.
+
+For the latter, use the following command.
 
 ```bash
 grafana-cli plugins install marcusolsson-dynamictext-panel
@@ -33,6 +35,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 - Uses Monaco Code Editor with Auto formatting to update Templates,  JavaScript Code and Styles.
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
+  - Supports Code syntax highlight using a11y styles.
 - Sanitizing
   - HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html).
   - Can be disabled using Grafana configuration `disable_sanitize_html`.
@@ -47,6 +50,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 | Section                  | Description                                                    |
 | ------------------------ | -------------------------------------------------------------- |
 | [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content)       | Explains how to create a visualization template for your data. |
+| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes)      | Useful snippets that you can use in your templates.                                        |
 | [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release) | Stay up to date with the latest features and updates.          |
 
 ### Features
@@ -55,8 +59,9 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 | ----------------------- | ------------------------------------------------------------------------------------------ |
 | [Data](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/data)            | Demonstrates how to use the Every Row and All Rows options.                                |
 | [JavaScript Code](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/code) | Demonstrates how to add Handlebars helpers and Event handlers.                             |
+| [Styles](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/styles)        | Demonstrates how to add CSS styles.                                                        |
 | [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers)      | Helpers are functions that let you perform basic text transformation within your template. |
-| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes)      | Useful snippets that you can use in your templates.                                        |
+| [Variables](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/variables)  | Demonstrates how to use variables.                                                         |
 
 ## Tutorial
 
@@ -66,7 +71,7 @@ This video outlines all the new features we implemented, including the most aske
 
 ## Feedback
 
-We love to hear from you. There are various ways to get in touch with us:
+We love to hear from you. There are various ways to get in touch with us.
 
 - Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues/new/choose).
 - Sponsor our open-source plugins for Grafana with [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
