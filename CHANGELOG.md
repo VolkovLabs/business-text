@@ -4,7 +4,8 @@
 
 ### Features / Enhancements
 
-- Add Time Zone and Range parameters for Javascript Code
+- Add Time Zone and Range parameters for Javascript Code (#155)
+- Update to Grafana 9.4.3 (#156)
 
 ## 3.0.0 (2023-02-19)
 
