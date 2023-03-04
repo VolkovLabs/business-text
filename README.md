@@ -69,6 +69,10 @@ This video outlines all the new features we implemented, including the most aske
 
 [![JavaScript code in the Dynamic text panel | Grafana functionality explodes](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/javascript.png)](https://youtu.be/lJqk5Gobec4)
 
+Three plugins that make Grafana complete. Dynamic Text, Data Manipulation, and Apache ECharts are all you need to create functional real-world web applications.
+
+[![Magic JavaScript trio for Grafana | Dynamic Text, Data Manipulation and Apache ECharts plugins](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/magic-trio.png)](https://youtu.be/wPr4gZYzUVA)
+
 ## Feedback
 
 We love to hear from you. There are various ways to get in touch with us.

@@ -6,6 +6,7 @@
 
 - Add Time Zone and Range parameters for Javascript Code (#155)
 - Update to Grafana 9.4.3 (#156)
+- Add Magic (JavaScript) Trio tutorial (#157)
 
 ## 3.0.0 (2023-02-19)
 
