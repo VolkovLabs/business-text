@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import hljs from 'highlight.js';
 import MarkdownIt from 'markdown-it';
-import { getLocale, textUtil } from '@grafana/data';
+import { getLocale, textUtil, TimeRange, TimeZone } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import { registerHelpers } from './handlebars';
 
@@ -13,13 +13,19 @@ registerHelpers(Handlebars);
 /**
  * Generate HTML
  */
-export const generateHtml = (data: Record<string, any>, content: string, helpers: string): string => {
+export const generateHtml = (
+  data: Record<string, any>,
+  content: string,
+  helpers: string,
+  timeRange: TimeRange,
+  timeZone: TimeZone
+): string => {
   /**
    * Add Custom Helpers
    */
   if (helpers) {
-    const func = new Function('data', 'handlebars', 'getLocale', helpers);
-    func(data, Handlebars, getLocale, helpers);
+    const func = new Function('data', 'handlebars', 'getLocale', 'timeZone', 'timeRange', helpers);
+    func(data, Handlebars, getLocale, timeZone, timeRange, helpers);
   }
 
   /**

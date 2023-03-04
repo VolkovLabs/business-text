@@ -20,6 +20,8 @@ describe('<Text />', () => {
         defaultContent: 'Test default content',
         everyRow: true,
       },
+      timeRange: {} as any,
+      timeZone: '',
     };
     render(<Text {...props} />);
 
@@ -64,6 +66,8 @@ describe('<Text />', () => {
         defaultContent: 'Test default content',
         everyRow: true,
       },
+      timeRange: {} as any,
+      timeZone: '',
     };
     render(<Text {...props} />);
 
@@ -85,6 +89,8 @@ describe('<Text />', () => {
         defaultContent: 'Test default content',
         everyRow: false,
       },
+      timeRange: {} as any,
+      timeZone: '',
     };
     render(<Text {...props} />);
 
@@ -137,6 +143,8 @@ describe('<Text />', () => {
         defaultContent: 'Test default content',
         everyRow: false,
       },
+      timeRange: {} as any,
+      timeZone: '',
     };
     render(<Text {...props} />);
 

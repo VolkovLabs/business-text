@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { css, cx } from '@emotion/css';
 import { PanelProps, SelectableValue } from '@grafana/data';
-import { Select, useTheme2 } from '@grafana/ui';
+import { Select, useStyles2 } from '@grafana/ui';
 import { getStyles } from '../../styles';
 import { TextOptions } from '../../types';
 import { Text } from '../Text';
@@ -14,17 +14,16 @@ interface Props extends PanelProps<TextOptions> {}
 /**
  * Panel
  */
-export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => {
+export const TextPanel: React.FC<Props> = ({ options, data, width, height, timeRange, timeZone }) => {
   /**
    * States
    */
   const [frameIndex, setFrameIndex] = useState(0);
 
   /**
-   * Theme
+   * Styles
    */
-  const theme = useTheme2();
-  const styles = getStyles(theme);
+  const styles = useStyles2(getStyles);
 
   /**
    * Change Frame
@@ -69,7 +68,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height }) => 
           `
         )}
       >
-        <Text frame={frame} options={options} />
+        <Text frame={frame} options={options} timeRange={timeRange} timeZone={timeZone} />
       </div>
 
       {data.series.length > 1 && (

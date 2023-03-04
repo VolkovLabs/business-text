@@ -1,7 +1,7 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
-import { DataFrame } from '@grafana/data';
-import { Alert, useTheme2 } from '@grafana/ui';
+import { DataFrame, TimeRange, TimeZone } from '@grafana/data';
+import { Alert, useStyles2 } from '@grafana/ui';
 import { generateHtml } from '../../helpers';
 import { getStyles } from '../../styles';
 import { TextOptions } from '../../types';
@@ -23,21 +23,30 @@ export interface Props {
    * @type {DataFrame}
    */
   frame?: DataFrame;
+
+  /**
+   * Time range of the current dashboard
+   *
+   * @type {TimeRange}
+   */
+  timeRange: TimeRange;
+
+  /**
+   * Time zone of the current dashboard
+   *
+   * @type {TimeZone}
+   */
+  timeZone: TimeZone;
 }
 
 /**
  * Text
  */
-export const Text: React.FC<Props> = ({ options, frame }) => {
-  /**
-   * Theme
-   */
-  const theme = useTheme2();
-  const styles = getStyles(theme);
-
+export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone }) => {
   /**
    * Styles
    */
+  const styles = useStyles2(getStyles);
   const className = cx(
     styles.highlight,
     styles.frame,
@@ -46,17 +55,17 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
     `
   );
 
+  /**
+   * HTML
+   */
+  const getHtml = (data: any, content: string) => generateHtml(data, content, options.helpers, timeRange, timeZone);
+
   try {
     /**
      * Default Content if no frames returned
      */
     if (!frame?.length) {
-      return (
-        <div
-          className={className}
-          dangerouslySetInnerHTML={{ __html: generateHtml({}, options.defaultContent, options.helpers) }}
-        />
-      );
+      return <div className={className} dangerouslySetInnerHTML={{ __html: getHtml({}, options.defaultContent) }} />;
     }
 
     /**
@@ -80,7 +89,9 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
             <div
               key={key}
               className={className}
-              dangerouslySetInnerHTML={{ __html: generateHtml(row, options.content, options.helpers) }}
+              dangerouslySetInnerHTML={{
+                __html: getHtml(row, options.content),
+              }}
             />
           ))}
         </>
@@ -90,12 +101,7 @@ export const Text: React.FC<Props> = ({ options, frame }) => {
     /**
      * All Rows
      */
-    return (
-      <div
-        className={className}
-        dangerouslySetInnerHTML={{ __html: generateHtml({ data }, options.content, options.helpers) }}
-      />
-    );
+    return <div className={className} dangerouslySetInnerHTML={{ __html: getHtml({ data }, options.content) }} />;
   } catch (e: any) {
     /**
      * Error

@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Add Time Zone and Range parameters for Javascript Code
+
 ## 3.0.0 (2023-02-19)
 
 ### Breaking changes
