@@ -7,8 +7,8 @@
 - Add Time Zone and Range parameters for Javascript Code (#155)
 - Update to Grafana 9.4.3 (#156)
 - Add Magic (JavaScript) Trio tutorial in README (#157)
-- Update replace variables with scoped function (#158)
-- Add Replace variables and Location service parameters for Javascript Code (#158)
+- Update replace variables with scoped function (#160)
+- Add Replace variables and Location service parameters for Javascript Code (#160)
 
 ## 3.0.0 (2023-02-19)
 
