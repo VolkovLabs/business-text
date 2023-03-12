@@ -1,12 +1,14 @@
 # Changelog
 
-## 3.1.0 (IN PROGRESS)
+## 3.1.0 (2023-03-12)
 
 ### Features / Enhancements
 
 - Add Time Zone and Range parameters for Javascript Code (#155)
 - Update to Grafana 9.4.3 (#156)
-- Add Magic (JavaScript) Trio tutorial (#157)
+- Add Magic (JavaScript) Trio tutorial in README (#157)
+- Update replace variables with scoped function (#160)
+- Add Replace variables and Location service parameters for Javascript Code (#160)
 
 ## 3.0.0 (2023-02-19)
 

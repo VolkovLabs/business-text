@@ -55,4 +55,24 @@ export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
     kind: CodeEditorSuggestionItemKind.Method,
     detail: 'Returns locale.',
   },
+  {
+    label: 'timeRange',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Selected time range.',
+  },
+  {
+    label: 'timeZone',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Selected time zone.',
+  },
+  {
+    label: 'locationService',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Browser location and history.',
+  },
+  {
+    label: 'replaceVariables',
+    kind: CodeEditorSuggestionItemKind.Method,
+    detail: 'Interpolate variables.',
+  },
 ];

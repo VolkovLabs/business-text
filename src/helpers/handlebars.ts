@@ -1,5 +1,3 @@
-import { variable } from './variable';
-
 /**
  * Helper for Date
  */
@@ -94,9 +92,4 @@ export const registerHelpers = (handlebars: any) => {
    * Unless Equal
    */
   handlebars.registerHelper('unlessEq', (left: string, right: string): boolean => left !== right);
-
-  /**
-   * Variable
-   */
-  handlebars.registerHelper('variable', variable);
 };
