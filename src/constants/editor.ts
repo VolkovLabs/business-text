@@ -58,7 +58,7 @@ export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
   {
     label: 'timeRange',
     kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Selected time ramge.',
+    detail: 'Selected time range.',
   },
   {
     label: 'timeZone',
