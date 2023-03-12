@@ -22,6 +22,7 @@ describe('<Text />', () => {
       },
       timeRange: {} as any,
       timeZone: '',
+      replaceVariables: {} as any,
     };
     render(<Text {...props} />);
 
@@ -68,6 +69,7 @@ describe('<Text />', () => {
       },
       timeRange: {} as any,
       timeZone: '',
+      replaceVariables: {} as any,
     };
     render(<Text {...props} />);
 
@@ -91,6 +93,7 @@ describe('<Text />', () => {
       },
       timeRange: {} as any,
       timeZone: '',
+      replaceVariables: {} as any,
     };
     render(<Text {...props} />);
 
@@ -145,6 +148,7 @@ describe('<Text />', () => {
       },
       timeRange: {} as any,
       timeZone: '',
+      replaceVariables: {} as any,
     };
     render(<Text {...props} />);
 

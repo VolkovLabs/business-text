@@ -1,16 +1,16 @@
 import dayjs from 'dayjs';
-import { getTemplateSrv } from '@grafana/runtime';
+import { InterpolateFunction } from '@grafana/data';
 
 /**
  * Replace Variables
  */
-export const variable = (name: any): string[] => {
+export const replaceVariablesHelper = (name: any, replaceVariables: InterpolateFunction): string[] => {
   const values: string[] = [];
 
   /**
    * Instead of interpolating the string, we collect the values in an array.
    */
-  getTemplateSrv().replace(`$${name}`, {}, (value: string | string[]) => {
+  replaceVariables(`$${name}`, {}, (value: string | string[]) => {
     if (Array.isArray(value)) {
       values.push(...value);
     } else if (name.startsWith('__from:') || name.startsWith('__to:')) {

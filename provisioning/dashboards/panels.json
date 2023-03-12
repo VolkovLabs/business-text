@@ -29,6 +29,45 @@
   "panels": [
     {
       "datasource": {
+        "type": "grafana",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "id": 19,
+      "options": {
+        "content": "{{variable \"test\"}}",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 200,
+          "language": "markdown"
+        },
+        "editors": [],
+        "everyRow": false,
+        "helpers": "",
+        "styles": ""
+      },
+      "repeat": "test",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "$test",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
         "type": "marcusolsson-static-datasource",
         "uid": "U0HP2Rv4z"
       },
@@ -36,7 +75,7 @@
         "h": 2,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 5
       },
       "id": 15,
       "options": {
@@ -86,7 +125,7 @@
         "h": 2,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 5
       },
       "id": 7,
       "options": {
@@ -123,7 +162,7 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 2
+        "y": 7
       },
       "id": 13,
       "options": {
@@ -191,7 +230,7 @@
         "h": 12,
         "w": 6,
         "x": 12,
-        "y": 2
+        "y": 7
       },
       "id": 8,
       "options": {
@@ -261,7 +300,7 @@
         "h": 12,
         "w": 6,
         "x": 18,
-        "y": 2
+        "y": 7
       },
       "id": 17,
       "options": {
@@ -297,7 +336,7 @@
         "h": 4,
         "w": 12,
         "x": 0,
-        "y": 7
+        "y": 12
       },
       "id": 11,
       "options": {
@@ -347,7 +386,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 16
       },
       "id": 5,
       "options": {
@@ -449,7 +488,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 14
+        "y": 19
       },
       "id": 9,
       "options": {
@@ -519,7 +558,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 23
+        "y": 28
       },
       "id": 3,
       "options": {
@@ -576,7 +615,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 29
       },
       "id": 2,
       "options": {
@@ -626,11 +665,50 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 37,
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "test",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "test1",
+            "value": "test1"
+          },
+          {
+            "selected": false,
+            "text": "test2",
+            "value": "test2"
+          },
+          {
+            "selected": false,
+            "text": "test3",
+            "value": "test3"
+          }
+        ],
+        "query": "test1,test2,test3",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
   },
   "time": {
     "from": "now-1y",

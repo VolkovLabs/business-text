@@ -1,6 +1,7 @@
 import React from 'react';
 import { css, cx } from '@emotion/css';
-import { DataFrame, TimeRange, TimeZone } from '@grafana/data';
+import { DataFrame, InterpolateFunction, TimeRange } from '@grafana/data';
+import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
 import { generateHtml } from '../../helpers';
 import { getStyles } from '../../styles';
@@ -37,12 +38,19 @@ export interface Props {
    * @type {TimeZone}
    */
   timeZone: TimeZone;
+
+  /**
+   * Replace Variables
+   *
+   * @type {InterpolateFunction}
+   */
+  replaceVariables: InterpolateFunction;
 }
 
 /**
  * Text
  */
-export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone }) => {
+export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, replaceVariables }) => {
   /**
    * Styles
    */
@@ -58,7 +66,8 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone }) =
   /**
    * HTML
    */
-  const getHtml = (data: any, content: string) => generateHtml(data, content, options.helpers, timeRange, timeZone);
+  const getHtml = (data: any, content: string) =>
+    generateHtml(data, content, options.helpers, timeRange, timeZone, replaceVariables);
 
   try {
     /**
