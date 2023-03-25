@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.2.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Add Mermaid Diagram (#165)
+
 ## 3.1.0 (2023-03-12)
 
 ### Features / Enhancements
