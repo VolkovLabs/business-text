@@ -5,7 +5,7 @@ import { getLocale, GrafanaTheme2, InterpolateFunction, textUtil, TimeRange } fr
 import { config, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import { registerHelpers } from './handlebars';
-import MermaidPlugIn from './mermaid-plugin';
+import { MermaidPlugin } from './mermaid';
 import { replaceVariablesHelper } from './variable';
 
 /**
@@ -70,7 +70,7 @@ export const generateHtml = (
   /**
    * Mermaid
    */
-  md.use(MermaidPlugIn, { theme: theme.isDark ? 'dark' : 'default' });
+  md.use(MermaidPlugin, { theme: theme.isDark ? 'dark' : 'default' });
 
   /**
    * Render Markdown

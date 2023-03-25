@@ -15,7 +15,7 @@ const MermaidChart = (code: string) => {
      */
     mermaid.mermaidAPI.render(needsUniqueId, code, element as any);
 
-    return `<div class="mermaid">${code}</div>`;
+    return `<div class="diagram">${code}</div>`;
   } catch (err: any) {
     return `<pre>${err.name}: ${err.message}</pre>`;
   }
@@ -24,14 +24,14 @@ const MermaidChart = (code: string) => {
 /**
  * Mermaid Plugin
  */
-const MermaidPlugIn = (md: any, opts: any) => {
-  Object.assign(MermaidPlugIn.default, opts);
-  const { token: _token, ...dictionary } = MermaidPlugIn.default.dictionary as any;
+export const MermaidPlugin = (md: any, opts: any) => {
+  Object.assign(MermaidPlugin.default, opts);
+  const { token: _token, ...dictionary } = MermaidPlugin.default.dictionary as any;
 
   /**
    * Initialize
    */
-  mermaid.initialize(MermaidPlugIn.default);
+  mermaid.initialize(MermaidPlugin.default);
 
   /**
    * Replace
@@ -60,11 +60,9 @@ const MermaidPlugIn = (md: any, opts: any) => {
 /**
  * Default
  */
-MermaidPlugIn.default = {
+MermaidPlugin.default = {
   startOnLoad: false,
   dictionary: {
     token: 'diagram',
   },
 };
-
-export default MermaidPlugIn;
