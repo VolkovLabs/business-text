@@ -2,7 +2,7 @@ import React from 'react';
 import { css, cx } from '@emotion/css';
 import { DataFrame, InterpolateFunction, TimeRange } from '@grafana/data';
 import { TimeZone } from '@grafana/schema';
-import { Alert, useStyles2 } from '@grafana/ui';
+import { Alert, useStyles2, useTheme2 } from '@grafana/ui';
 import { generateHtml } from '../../helpers';
 import { getStyles } from '../../styles';
 import { TextOptions } from '../../types';
@@ -54,6 +54,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
   /**
    * Styles
    */
+  const theme = useTheme2();
   const styles = useStyles2(getStyles);
   const className = cx(
     styles.highlight,
@@ -67,7 +68,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
    * HTML
    */
   const getHtml = (data: any, content: string) =>
-    generateHtml(data, content, options.helpers, timeRange, timeZone, replaceVariables);
+    generateHtml(data, content, options.helpers, timeRange, timeZone, replaceVariables, theme);
 
   try {
     /**
