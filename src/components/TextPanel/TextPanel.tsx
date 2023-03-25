@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { css, cx } from '@emotion/css';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { Select, useStyles2 } from '@grafana/ui';
-import { getStyles } from '../../styles';
+import { Styles } from '../../styles';
 import { TextOptions } from '../../types';
 import { Text } from '../Text';
 
@@ -23,7 +23,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height, timeR
   /**
    * Styles
    */
-  const styles = useStyles2(getStyles);
+  const styles = useStyles2(Styles);
 
   /**
    * Change Frame

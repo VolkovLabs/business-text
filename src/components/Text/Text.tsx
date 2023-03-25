@@ -4,7 +4,7 @@ import { DataFrame, InterpolateFunction, TimeRange } from '@grafana/data';
 import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
 import { generateHtml } from '../../helpers';
-import { getStyles } from '../../styles';
+import { Styles } from '../../styles';
 import { TextOptions } from '../../types';
 
 /**
@@ -54,7 +54,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
   /**
    * Styles
    */
-  const styles = useStyles2(getStyles);
+  const styles = useStyles2(Styles);
   const className = cx(
     styles.highlight,
     styles.frame,
