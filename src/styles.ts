@@ -5,7 +5,7 @@ import { HighlightDark, HighlightLight } from './constants';
 /**
  * Styles
  */
-export const getStyles = (theme: GrafanaTheme2) => {
+export const Styles = (theme: GrafanaTheme2) => {
   /**
    * Frame
    */

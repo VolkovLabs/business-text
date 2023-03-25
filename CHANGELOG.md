@@ -4,6 +4,7 @@
 
 ### Features / Enhancements
 
+- Update to Grafana 9.4.7 (#166)
 - Add Mermaid Diagram (#165)
 
 ## 3.1.0 (2023-03-12)
