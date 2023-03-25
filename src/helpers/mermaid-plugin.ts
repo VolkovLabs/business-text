@@ -26,7 +26,7 @@ const MermaidChart = (code: string) => {
  */
 const MermaidPlugIn = (md: any, opts: any) => {
   Object.assign(MermaidPlugIn.default, opts);
-  const { token: _token = 'diagram', ...dictionary } = MermaidPlugIn.default.dictionary as any;
+  const { token: _token, ...dictionary } = MermaidPlugIn.default.dictionary as any;
 
   /**
    * Initialize
