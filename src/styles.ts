@@ -1,6 +1,6 @@
+import { HighlightDark, HighlightLight } from 'constants/highlight';
 import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
-import { HighlightDark, HighlightLight } from './constants';
 
 /**
  * Styles

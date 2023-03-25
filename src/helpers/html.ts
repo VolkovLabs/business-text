@@ -1,11 +1,10 @@
 import Handlebars from 'handlebars';
 import hljs from 'highlight.js';
 import MarkdownIt from 'markdown-it';
-import { getLocale, GrafanaTheme2, InterpolateFunction, textUtil, TimeRange } from '@grafana/data';
+import { getLocale, InterpolateFunction, textUtil, TimeRange } from '@grafana/data';
 import { config, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import { registerHelpers } from './handlebars';
-import { MermaidPlugin } from './mermaid';
 import { replaceVariablesHelper } from './variable';
 
 /**
@@ -22,8 +21,7 @@ export const generateHtml = (
   helpers: string,
   timeRange: TimeRange,
   timeZone: TimeZone,
-  replaceVariables: InterpolateFunction,
-  theme: GrafanaTheme2
+  replaceVariables: InterpolateFunction
 ): string => {
   /**
    * Variable
@@ -66,11 +64,6 @@ export const generateHtml = (
       return '';
     },
   });
-
-  /**
-   * Mermaid
-   */
-  md.use(MermaidPlugin, { theme: theme.isDark ? 'dark' : 'default' });
 
   /**
    * Render Markdown
