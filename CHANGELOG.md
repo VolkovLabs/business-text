@@ -5,6 +5,8 @@
 ### Features / Enhancements
 
 - Update to Grafana 9.4.7 (#166)
+- Increase Test Coverage and update to testing-library/react (#177)
+- Update to Grafana 9.5.2 (#178)
 
 ## 3.1.0 (2023-03-12)
 

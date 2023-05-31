@@ -2,7 +2,7 @@
 
 ![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
 
-[![Grafana](https://img.shields.io/badge/Grafana-9.4.3-orange)](https://www.grafana.com)
+![Grafana](https://img.shields.io/badge/Grafana-9.5.2-orange)
 ![CI](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel)
 [![CodeQL](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/actions/workflows/codeql-analysis.yml)
@@ -30,9 +30,9 @@ For the latter, use the following command.
 grafana-cli plugins install marcusolsson-dynamictext-panel
 ```
 
-## Features
+## Highlights
 
-- Uses Monaco Code Editor with Auto formatting to update Templates,  JavaScript Code and Styles.
+- Uses Monaco Code Editor with Auto formatting to update Templates, JavaScript Code and Styles.
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
   - Supports Code syntax highlight using a11y styles.
@@ -43,7 +43,6 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 - Allows displaying Time global variables (`__to` and `__from`) as seconds, ISO, and formatted using `dayjs`.
 - Allows adding Handlebars helpers and Event handlers.
 - Allows adding CSS styles.
-- Supports Internationalization using custom helpers.
 
 ## Documentation
 
@@ -78,6 +77,7 @@ Three plugins that make Grafana complete. Dynamic Text, Data Manipulation, and A
 We love to hear from you. There are various ways to get in touch with us.
 
 - Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues/new/choose).
+- Subscribe to our [YouTube Channel](https://www.youtube.com/@volkovlabs) and add a comment.
 - Sponsor our open-source plugins for Grafana with [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
 - Star the repository to show your support.
 
