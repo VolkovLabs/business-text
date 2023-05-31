@@ -3,6 +3,7 @@ import { css, cx } from '@emotion/css';
 import { DataFrame, InterpolateFunction, TimeRange } from '@grafana/data';
 import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
+import { TestIds } from '../../constants';
 import { generateHtml } from '../../helpers';
 import { Styles } from '../../styles';
 import { TextOptions } from '../../types';
@@ -74,7 +75,13 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
      * Default Content if no frames returned
      */
     if (!frame?.length) {
-      return <div className={className} dangerouslySetInnerHTML={{ __html: getHtml({}, options.defaultContent) }} />;
+      return (
+        <div
+          className={className}
+          dangerouslySetInnerHTML={{ __html: getHtml({}, options.defaultContent) }}
+          data-testid={TestIds.text.content}
+        />
+      );
     }
 
     /**
@@ -101,6 +108,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
               dangerouslySetInnerHTML={{
                 __html: getHtml(row, options.content),
               }}
+              data-testid={TestIds.text.content}
             />
           ))}
         </>
@@ -110,18 +118,24 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
     /**
      * All Rows
      */
-    return <div className={className} dangerouslySetInnerHTML={{ __html: getHtml({ data }, options.content) }} />;
+    return (
+      <div
+        className={className}
+        dangerouslySetInnerHTML={{ __html: getHtml({ data }, options.content) }}
+        data-testid={TestIds.text.content}
+      />
+    );
   } catch (e: any) {
     /**
      * Error
      */
     return (
-      <div className={styles.frame}>
-        <Alert title="Couldn't build text from template" severity="error">
+      <div className={styles.frame} data-testid={TestIds.text.root}>
+        <Alert title="Couldn't build text from template" severity="error" data-testid={TestIds.text.error}>
           Please make sure the Content is a valid template and Helpers are correct.
         </Alert>
 
-        {<pre>{e instanceof Error ? e.message : e}</pre>}
+        {<pre data-testid={TestIds.text.errorContent}>{e instanceof Error ? e.message : e}</pre>}
       </div>
     );
   }

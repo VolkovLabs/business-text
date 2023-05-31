@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { css, cx } from '@emotion/css';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { Select, useStyles2 } from '@grafana/ui';
+import { TestIds } from '../../constants';
 import { Styles } from '../../styles';
 import { TextOptions } from '../../types';
 import { Text } from '../Text';
@@ -58,6 +59,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height, timeR
           height: ${height}px;
         `
       )}
+      data-testid={TestIds.panel.root}
     >
       <div
         className={cx(

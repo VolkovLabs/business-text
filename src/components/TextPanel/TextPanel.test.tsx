@@ -1,6 +1,7 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 import { toDataFrame } from '@grafana/data';
+import { TestIds } from '../../constants';
 import { TextPanel } from './TextPanel';
 
 /**
@@ -20,8 +21,8 @@ describe('Panel', () => {
       return <TextPanel data={data} {...restProps} options={options} />;
     };
 
-    const wrapper = shallow(getComponent({}));
-    const div = wrapper.find('div');
-    expect(div.exists()).toBeTruthy();
+    render(getComponent({}));
+
+    expect(screen.getByTestId(TestIds.panel.root)).toBeInTheDocument();
   });
 });
