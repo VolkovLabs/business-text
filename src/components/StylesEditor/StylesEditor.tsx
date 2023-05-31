@@ -2,7 +2,7 @@ import React from 'react';
 import { StandardEditorProps } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
 import { CodeEditor, CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana/ui';
-import { CodeLanguage, Format } from '../../constants';
+import { CodeLanguage, Format, TestIds } from '../../constants';
 
 /**
  * Monaco
@@ -63,7 +63,7 @@ export const StylesEditor: React.FC<Props> = ({ value, onChange, context }) => {
       : { formatOnPaste: false, formatOnType: false };
 
   return (
-    <div>
+    <div data-testid={TestIds.stylesEditor.root}>
       <CodeEditor
         language={CodeLanguage.SCSS}
         showLineNumbers={true}

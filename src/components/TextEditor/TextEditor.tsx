@@ -1,7 +1,7 @@
 import React from 'react';
 import { StandardEditorProps } from '@grafana/data';
 import { CodeEditor } from '@grafana/ui';
-import { Format } from '../../constants';
+import { Format, TestIds } from '../../constants';
 
 /**
  * Monaco
@@ -39,7 +39,7 @@ export const TextEditor: React.FC<Props> = ({ value, onChange, context }) => {
       : { formatOnPaste: false, formatOnType: false };
 
   return (
-    <div>
+    <div data-testid={TestIds.textEditor.root}>
       <CodeEditor
         language={context.options.editor.language}
         showLineNumbers={true}

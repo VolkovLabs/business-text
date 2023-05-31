@@ -2,7 +2,7 @@ import React from 'react';
 import { StandardEditorProps } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
 import { CodeEditor, CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana/ui';
-import { CodeLanguage, Format, HelpersEditorSuggestions } from '../../constants';
+import { CodeLanguage, Format, HelpersEditorSuggestions, TestIds } from '../../constants';
 
 /**
  * Monaco
@@ -63,7 +63,7 @@ export const HelpersEditor: React.FC<Props> = ({ value, onChange, context }) => 
       : { formatOnPaste: false, formatOnType: false };
 
   return (
-    <div>
+    <div data-testid={TestIds.helpersEditor.root}>
       <CodeEditor
         language={CodeLanguage.JAVASCRIPT}
         showLineNumbers={true}
