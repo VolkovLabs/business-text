@@ -31,7 +31,7 @@ export const generateHtml = ({
   timeZone: TimeZone;
   replaceVariables: InterpolateFunction;
   eventBus: EventBus;
-}): string => {
+}): { html: string; unsubscribe?: unknown } => {
   /**
    * Variable
    */
@@ -40,6 +40,7 @@ export const generateHtml = ({
   /**
    * Add Custom Helpers
    */
+  let unsubscribe: undefined | unknown;
   if (helpers) {
     const func = new Function(
       'data',
@@ -52,7 +53,17 @@ export const generateHtml = ({
       'eventBus',
       helpers
     );
-    func(data, Handlebars, getLocale, timeZone, timeRange, replaceVariables, locationService, eventBus, helpers);
+    unsubscribe = func(
+      data,
+      Handlebars,
+      getLocale,
+      timeZone,
+      timeRange,
+      replaceVariables,
+      locationService,
+      eventBus,
+      helpers
+    );
   }
 
   /**
@@ -84,11 +95,17 @@ export const generateHtml = ({
    * Skip sanitizing if disabled in Grafana
    */
   if (config.disableSanitizeHtml) {
-    return html;
+    return {
+      html,
+      unsubscribe,
+    };
   }
 
   /**
    * Return sanitized HTML
    */
-  return textUtil.sanitize(html);
+  return {
+    html: textUtil.sanitize(html),
+    unsubscribe,
+  };
 };
