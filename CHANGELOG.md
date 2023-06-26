@@ -1,6 +1,10 @@
 # Changelog
 
-## 3.2.0 (IN PROGRESS)
+## 4.0.0 (IN PROGRESS)
+
+### Breaking changes
+
+- Requires Grafana 9 and Grafana 10
 
 ### Features / Enhancements
 
@@ -8,6 +12,10 @@
 - Increase Test Coverage and update to testing-library/react (#177)
 - Update to Grafana 9.5.2 (#178)
 - Add Event Bus object to JavaScript function (#179)
+- Migrate to Plugin Tools 1.5.2
+- Update to Grafana 10.0.0
+- Update to Node 18 and npm
+- Remove Grafana 8.5 support
 
 ## 3.1.0 (2023-03-12)
 
