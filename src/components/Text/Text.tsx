@@ -77,7 +77,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
     styles.highlight,
     styles.frame,
     css`
-      ${options.styles}
+      ${replaceVariables(options.styles)}
     `
   );
 
