@@ -75,4 +75,9 @@ export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
     kind: CodeEditorSuggestionItemKind.Method,
     detail: 'Interpolate variables.',
   },
+  {
+    label: 'eventBus',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Event bus for application events.',
+  },
 ];

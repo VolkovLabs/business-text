@@ -1,5 +1,8 @@
 import { EditorOptions } from './editor';
 
+/**
+ * Editor Types
+ */
 export enum EditorType {
   DEFAULT = 'default',
   HELPERS = 'helpers',
