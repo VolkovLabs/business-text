@@ -15,7 +15,16 @@ interface Props extends PanelProps<TextOptions> {}
 /**
  * Panel
  */
-export const TextPanel: React.FC<Props> = ({ options, data, width, height, timeRange, timeZone, replaceVariables }) => {
+export const TextPanel: React.FC<Props> = ({
+  options,
+  data,
+  width,
+  height,
+  timeRange,
+  timeZone,
+  eventBus,
+  replaceVariables,
+}) => {
   /**
    * States
    */
@@ -76,6 +85,7 @@ export const TextPanel: React.FC<Props> = ({ options, data, width, height, timeR
           timeRange={timeRange}
           timeZone={timeZone}
           replaceVariables={replaceVariables}
+          eventBus={eventBus}
         />
       </div>
 

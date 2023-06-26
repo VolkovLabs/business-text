@@ -1,6 +1,5 @@
 import React from 'react';
 import { toDataFrame, FieldType } from '@grafana/data';
-import { getAppEvents } from '@grafana/runtime';
 import { render, screen } from '@testing-library/react';
 import { TestIds } from '../../constants';
 import { TextPanel } from './TextPanel';
@@ -10,7 +9,6 @@ import { TextPanel } from './TextPanel';
  */
 jest.mock('@grafana/runtime', () => ({
   ...jest.requireActual('@grafana/runtime'),
-  getAppEvents: jest.fn(),
 }));
 
 /**
@@ -44,11 +42,10 @@ describe('Panel', () => {
     const subscribe = jest.fn(() => ({
       unsubscribe,
     }));
+
     const eventBus = {
       subscribe,
     };
-
-    jest.mocked(getAppEvents).mockImplementation(() => eventBus as any);
 
     const helpers = `
       const subscription = eventBus.subscribe('event', () => {});
@@ -71,6 +68,7 @@ describe('Panel', () => {
             helpers,
           },
           replaceVariables: (str: string) => str,
+          eventBus,
         })
       );
 
@@ -94,6 +92,7 @@ describe('Panel', () => {
             helpers,
           },
           replaceVariables: (str: string) => str,
+          eventBus,
         })
       );
 
@@ -109,6 +108,7 @@ describe('Panel', () => {
             helpers,
           },
           replaceVariables: (str: string) => str,
+          eventBus,
         })
       );
 
@@ -143,6 +143,7 @@ describe('Panel', () => {
           },
           replaceVariables: (str: string) => str,
           data,
+          eventBus,
         })
       );
 
@@ -161,6 +162,7 @@ describe('Panel', () => {
           },
           replaceVariables: (str: string) => str,
           data,
+          eventBus,
         })
       );
 
@@ -195,6 +197,7 @@ describe('Panel', () => {
           },
           replaceVariables: (str: string) => str,
           data,
+          eventBus,
         })
       );
 
@@ -213,6 +216,7 @@ describe('Panel', () => {
           },
           replaceVariables: (str: string) => str,
           data,
+          eventBus,
         })
       );
 
@@ -233,6 +237,7 @@ describe('Panel', () => {
             helpers: `abc()`,
           },
           replaceVariables: (str: string) => str,
+          eventBus,
         })
       );
 
@@ -253,6 +258,7 @@ describe('Panel', () => {
             helpers,
           },
           replaceVariables: (str: string) => str,
+          eventBus,
         })
       );
 

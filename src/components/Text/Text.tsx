@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { css, cx } from '@emotion/css';
-import { DataFrame, InterpolateFunction, TimeRange } from '@grafana/data';
-import { getAppEvents } from '@grafana/runtime';
+import { DataFrame, EventBus, InterpolateFunction, TimeRange } from '@grafana/data';
 import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
 import { TestIds } from '../../constants';
@@ -47,12 +46,19 @@ export interface Props {
    * @type {InterpolateFunction}
    */
   replaceVariables: InterpolateFunction;
+
+  /**
+   * Event Bus
+   *
+   * @type {EventBus}
+   */
+  eventBus: EventBus;
 }
 
 /**
  * Text
  */
-export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, replaceVariables }) => {
+export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, replaceVariables, eventBus }) => {
   /**
    * Generated html
    */
@@ -74,11 +80,6 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
       ${options.styles}
     `
   );
-
-  /**
-   * Event Bus
-   */
-  const eventBus = getAppEvents();
 
   /**
    * HTML
