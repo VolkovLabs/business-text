@@ -38,9 +38,13 @@ export const generateHtml = ({
   Handlebars.registerHelper('variable', (name: string) => replaceVariablesHelper(name, replaceVariables));
 
   /**
-   * Add Custom Helpers
+   * Unsubscribe
    */
   let unsubscribe: undefined | unknown;
+
+  /**
+   * Add Custom Helpers
+   */
   if (helpers) {
     const func = new Function(
       'data',

@@ -76,7 +76,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
   );
 
   /**
-   * Event bus
+   * Event Bus
    */
   const eventBus = getAppEvents();
 
@@ -123,7 +123,6 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
            * For every row in data frame
            */
           const rows = data.map((row) => getHtml(row, options.content));
-
           setHtml(rows.map(({ html }) => html));
 
           /**
@@ -141,7 +140,6 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
            * For whole data frame
            */
           const { html, unsubscribe } = getHtml({ data }, options.content);
-
           setHtml([html]);
 
           unsubscribeFn = unsubscribe;
