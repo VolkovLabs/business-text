@@ -68,7 +68,7 @@
     "lint:fix": "eslint --fix --ignore-path ./.gitignore --ext .js,.jsx,.ts,.tsx .",
     "sign": "npx --yes @grafana/sign-plugin@latest",
     "start": "docker-compose pull && docker-compose up",
-    "stop": "docker-compose -f docker-compose-min.yml  down",
+    "stop": "docker-compose down",
     "test": "jest --watch --onlyChanged",
     "test:ci": "jest --maxWorkers 4 --coverage",
     "upgrade": "npm upgrade --save"
