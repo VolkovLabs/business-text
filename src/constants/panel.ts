@@ -1,4 +1,4 @@
-import { EditorType } from 'types';
+import { EditorType } from '../types';
 
 /**
  * Rows Options
