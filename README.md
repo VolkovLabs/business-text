@@ -17,8 +17,8 @@ The Dynamic Text visualization panel lets you define a text template using the d
 
 ## Requirements
 
-- **Grafana 9**, **Grafana 10** are required for major version 4.
-- **Grafana 8.5+**, **Grafana 9** is required for major versions 2 and 3.
+- **Grafana 9** and **Grafana 10** are required for major version 4.
+- **Grafana 8.5** and **Grafana 9** are required for major versions 2 and 3.
 - **Grafana 7** is required for major version 1.
 
 ## Getting Started

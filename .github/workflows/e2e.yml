@@ -1,0 +1,44 @@
+name: E2E
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Start Grafana
+        run: docker-compose up -d
+
+      - name: Run e2e tests
+        run: npm run e2e
+
+      - name: Stop Grafana
+        run: docker-compose down
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          path: |
+            cypress/videos
+            cypress/screenshots/actual

@@ -16,6 +16,7 @@
 - Update to Grafana 10.0.0 (#183)
 - Update to Node 18 and npm (#183)
 - Remove Grafana 8.5 support (#183)
+- Add E2E Cypress testing (#184)
 
 ## 3.1.0 (2023-03-12)
 
