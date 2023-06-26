@@ -21,7 +21,7 @@ describe('<Text />', () => {
       },
       timeRange: {} as any,
       timeZone: '',
-      replaceVariables: {} as any,
+      replaceVariables: (str: string) => str,
       eventBus: {} as any,
     };
 
@@ -71,7 +71,7 @@ describe('<Text />', () => {
       },
       timeRange: {} as any,
       timeZone: '',
-      replaceVariables: {} as any,
+      replaceVariables: (str: string) => str,
       eventBus: {} as any,
     };
 
@@ -100,7 +100,7 @@ describe('<Text />', () => {
       },
       timeRange: {} as any,
       timeZone: '',
-      replaceVariables: {} as any,
+      replaceVariables: (str: string) => str,
       eventBus: {} as any,
     };
 
@@ -157,7 +157,7 @@ describe('<Text />', () => {
       },
       timeRange: {} as any,
       timeZone: '',
-      replaceVariables: {} as any,
+      replaceVariables: (str: string) => str,
       eventBus: {} as any,
     };
 

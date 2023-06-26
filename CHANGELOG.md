@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.0.0 (IN PROGRESS)
+## 4.0.0 (2023-06-26)
 
 ### Breaking changes
 
@@ -8,15 +8,14 @@
 
 ### Features / Enhancements
 
-- Update to Grafana 9.4.7 (#166)
 - Increase Test Coverage and update to testing-library/react (#177)
-- Update to Grafana 9.5.2 (#178)
 - Add Event Bus object to JavaScript function (#179)
 - Migrate to Plugin Tools 1.5.2 (#183)
-- Update to Grafana 10.0.0 (#183)
+- Update to Grafana 10.0.0 (#166, #178, #183)
 - Update to Node 18 and npm (#183)
 - Remove Grafana 8.5 support (#183)
 - Add E2E Cypress testing (#184)
+- Support Variables in CSS styles editor (#185)
 
 ## 3.1.0 (2023-03-12)
 

@@ -32,7 +32,7 @@ describe('Panel', () => {
   });
 
   it('Should find component', async () => {
-    render(getComponent({ options: { defaultContent: 'hello' } }));
+    render(getComponent({ options: { defaultContent: 'hello' }, replaceVariables: (str: string) => str }));
 
     expect(screen.getByTestId(TestIds.panel.root)).toBeInTheDocument();
   });
