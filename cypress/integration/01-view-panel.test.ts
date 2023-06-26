@@ -4,7 +4,7 @@ import { TestIds } from '../../src/constants';
 /**
  * Dashboard
  */
-const json = require('../../provisioning/dashboards/events.json');
+const json = require('../../provisioning/dashboards/e2e.json');
 const testedPanel = json.panels[2];
 
 /**
