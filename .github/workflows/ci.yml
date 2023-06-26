@@ -18,17 +18,23 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'yarn'
+          node-version: '18'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
 
-      - name: Build and test frontend
-        run: yarn build
+      - name: Lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test:ci
+
+      - name: Build
+        run: npm run build
 
       - name: Sign plugin
-        run: yarn sign
+        run: npm run sign
         env:
           GRAFANA_API_KEY: ${{ secrets.GRAFANA_API_KEY }}
 

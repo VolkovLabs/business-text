@@ -46,9 +46,9 @@ describe('<Text />', () => {
             config: {},
             values: {
               length: 2,
-              get: (index) => nameData[index],
+              get: (index: any) => nameData[index],
               toArray: () => nameData,
-            },
+            } as any,
           },
           {
             name: 'age',
@@ -56,9 +56,9 @@ describe('<Text />', () => {
             config: {},
             values: {
               length: 2,
-              get: (index) => ageData[index],
+              get: (index: any) => ageData[index],
               toArray: () => ageData,
-            },
+            } as any,
           },
         ],
         length: 2,
@@ -132,9 +132,9 @@ describe('<Text />', () => {
             config: {},
             values: {
               length: 2,
-              get: (index) => nameData[index],
+              get: (index: number) => nameData[index],
               toArray: () => nameData,
-            },
+            } as any,
           },
           {
             name: 'age',
@@ -142,9 +142,9 @@ describe('<Text />', () => {
             config: {},
             values: {
               length: 2,
-              get: (index) => ageData[index],
+              get: (index: number) => ageData[index],
               toArray: () => ageData,
-            },
+            } as any,
           },
         ],
         length: 2,
