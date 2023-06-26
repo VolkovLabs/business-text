@@ -12,10 +12,10 @@
 - Increase Test Coverage and update to testing-library/react (#177)
 - Update to Grafana 9.5.2 (#178)
 - Add Event Bus object to JavaScript function (#179)
-- Migrate to Plugin Tools 1.5.2
-- Update to Grafana 10.0.0
-- Update to Node 18 and npm
-- Remove Grafana 8.5 support
+- Migrate to Plugin Tools 1.5.2 (#183)
+- Update to Grafana 10.0.0 (#183)
+- Update to Node 18 and npm (#183)
+- Remove Grafana 8.5 support (#183)
 
 ## 3.1.0 (2023-03-12)
 
