@@ -50,19 +50,10 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 | Section                  | Description                                                    |
 | ------------------------ | -------------------------------------------------------------- |
-| [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content)       | Explains how to create a visualization template for your data. |
-| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes)      | Useful snippets that you can use in your templates.                                        |
-| [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release) | Stay up to date with the latest features and updates.          |
-
-### Features
-
-| Section                 | Description                                                                                |
-| ----------------------- | ------------------------------------------------------------------------------------------ |
-| [Data](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/data)            | Demonstrates how to use the Every Row and All Rows options.                                |
-| [JavaScript Code](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/code) | Demonstrates how to add Handlebars helpers and Event handlers.                             |
-| [Styles](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/styles)        | Demonstrates how to add CSS styles.                                                        |
-| [Helpers](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/helpers)      | Helpers are functions that let you perform basic text transformation within your template. |
-| [Variables](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/variables)  | Demonstrates how to use variables.                                                         |
+| [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content/)       | Explains how to create a visualization template for your data. |
+| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes/)      | Useful snippets that you can use in your templates.                                        |
+| [Features](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/features/)      | Demonstrates panel features.templates.                                        |
+| [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release/) | Stay up to date with the latest features and updates.          |
 
 ## Tutorial
 
