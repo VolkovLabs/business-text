@@ -2,7 +2,7 @@ import React from 'react';
 import { getTemplateSrv } from '@grafana/runtime';
 import { CodeEditor, CodeEditorSuggestionItemKind } from '@grafana/ui';
 import { render, screen } from '@testing-library/react';
-import { HelpersEditorSuggestions, Format, TestIds } from '../../constants';
+import { Format, HelpersEditorSuggestions, TestIds } from '../../constants';
 import { HelpersEditor } from './HelpersEditor';
 
 /**

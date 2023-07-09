@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import hljs from 'highlight.js';
 import MarkdownIt from 'markdown-it';
-import { getLocale, InterpolateFunction, textUtil, TimeRange, EventBus } from '@grafana/data';
+import { EventBus, getLocale, InterpolateFunction, textUtil, TimeRange } from '@grafana/data';
 import { config, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import { registerHelpers } from './handlebars';
