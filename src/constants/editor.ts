@@ -81,3 +81,12 @@ export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
     detail: 'Event bus for application events.',
   },
 ];
+
+/**
+ * Editor Type
+ */
+export enum EditorType {
+  TEXT = 'text',
+  HELPERS = 'helpers',
+  STYLES = 'styles',
+}
