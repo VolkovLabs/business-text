@@ -4,7 +4,7 @@ import { InterpolateFunction } from '@grafana/data';
 /**
  * Replace Variables
  */
-export const replaceVariablesHelper = (name: any, replaceVariables: InterpolateFunction): string[] => {
+export const replaceVariablesHelper = (name: string, replaceVariables: InterpolateFunction): string[] => {
   const values: string[] = [];
 
   /**
