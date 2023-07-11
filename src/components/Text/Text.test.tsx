@@ -11,7 +11,7 @@ describe('<Text />', () => {
   /**
    * Default Content
    */
-  it('should render default content when there is no dataframe', async () => {
+  it('Should render default content when there is no dataframe', async () => {
     const props: Props = {
       options: {
         ...DefaultOptions,
@@ -31,10 +31,37 @@ describe('<Text />', () => {
     expect(screen.getByTestId(TestIds.text.content)).toHaveTextContent('Test default content');
   });
 
+  it('Should apply styles', async () => {
+    const styles = `
+      color: red;
+    `;
+    const replaceVariables = jest.fn((str: string) => str);
+    const props: Props = {
+      options: {
+        ...DefaultOptions,
+        content: 'Test content',
+        defaultContent: 'Test default content',
+        everyRow: true,
+        styles,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    render(<Text {...props} />);
+
+    expect(replaceVariables).toHaveBeenCalledWith(styles);
+
+    expect(screen.getByTestId(TestIds.text.content)).toBeInTheDocument();
+    expect(screen.getByTestId(TestIds.text.content)).toHaveStyle({ color: 'red' });
+  });
+
   /**
    * Render content twice
    */
-  it('should render content twice when there is a dataframe and everyRow is true', async () => {
+  it('Should render content twice when there is a dataframe and everyRow is true', async () => {
     const nameData: string[] = ['Erik', 'Natasha'];
     const ageData: number[] = [42, 38];
     const props: Props = {
@@ -86,7 +113,7 @@ describe('<Text />', () => {
   /**
    * Render content once
    */
-  it('should render content once when there is a dataframe and everyRow is false', async () => {
+  it('Should render content once when there is a dataframe and everyRow is false', async () => {
     const props: Props = {
       frame: {
         fields: [],
@@ -112,7 +139,7 @@ describe('<Text />', () => {
   /**
    * Render properties
    */
-  it('should render properties of dataframe in template', async () => {
+  it('Should render properties of dataframe in template', async () => {
     const nameData: string[] = ['Erik', 'Natasha'];
     const ageData: number[] = [42, 38];
 

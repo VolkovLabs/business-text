@@ -303,6 +303,29 @@ describe('Panel', () => {
        */
       expect(screen.getByTestId(TestIds.text.content)).toBeInTheDocument();
     });
+
+    it('Should show custom execution error', () => {
+      /**
+       * Render with invalid helpers function
+       */
+      render(
+        getComponent({
+          options: {
+            defaultContent: 'hello',
+            helpers: `throw 'abc'`,
+          },
+          replaceVariables: (str: string) => str,
+          eventBus,
+        })
+      );
+
+      /**
+       * Check if error is shown
+       */
+      expect(screen.getByTestId(TestIds.text.error)).toBeInTheDocument();
+      expect(screen.getByTestId(TestIds.text.errorContent)).toBeInTheDocument();
+      expect(screen.getByTestId(TestIds.text.errorContent)).toHaveTextContent('abc');
+    });
   });
 
   describe('Frames', () => {
