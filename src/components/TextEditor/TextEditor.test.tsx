@@ -61,6 +61,35 @@ describe('Text Editor', () => {
     );
   });
 
+  it('Should not enable formatting if disabled', () => {
+    const runFormatDocument = jest.fn();
+    const editor = {
+      getAction: jest.fn().mockImplementation(() => ({
+        run: runFormatDocument,
+      })),
+    };
+
+    jest.mocked(CodeEditor).mockImplementation(({ onEditorDidMount }: any) => {
+      onEditorDidMount(editor);
+      return null;
+    });
+
+    render(getComponent({}, getContext([])));
+    jest.runAllTimers();
+
+    expect(CodeEditor).toHaveBeenCalledWith(
+      expect.objectContaining({
+        monacoOptions: {
+          formatOnPaste: false,
+          formatOnType: false,
+        },
+      }),
+      expect.anything()
+    );
+    expect(editor.getAction).not.toHaveBeenCalledWith('editor.action.formatDocument');
+    expect(runFormatDocument).not.toHaveBeenCalled();
+  });
+
   it('Should enable formatting if enabled', () => {
     const runFormatDocument = jest.fn();
     const editor = {
