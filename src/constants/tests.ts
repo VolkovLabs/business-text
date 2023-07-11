@@ -4,6 +4,7 @@
 export const TestIds = {
   panel: {
     root: 'data-testid panel',
+    fieldFrame: 'data-testid panel field-frame',
   },
   helpersEditor: {
     root: 'data-testid helpers-editor',

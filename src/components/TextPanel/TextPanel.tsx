@@ -91,7 +91,12 @@ export const TextPanel: React.FC<Props> = ({
 
       {data.series.length > 1 && (
         <div className={styles.frameSelect}>
-          <Select onChange={onChangeFrame} value={frame.refId} options={selectableFrames} />
+          <Select
+            onChange={onChangeFrame}
+            value={frame.refId}
+            options={selectableFrames}
+            data-testid={TestIds.panel.fieldFrame}
+          />
         </div>
       )}
     </div>
