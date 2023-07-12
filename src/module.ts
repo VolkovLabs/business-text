@@ -41,7 +41,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
       })
       .addFieldNamePicker({
         path: 'status',
-        name: 'Field with status value. To be used to get statusColor based on thresholds',
+        name: 'Field with status value. To be used to get statusColor based on thresholds.',
         settings: {
           filter: (f: Field) => f.type === FieldType.number,
           noFieldsMessage: 'No number fields found',

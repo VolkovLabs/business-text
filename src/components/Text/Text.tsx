@@ -113,7 +113,14 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
          */
         const data = frame.fields.reduce((acc, { config, name, values, display }) => {
           values.toArray().forEach((value, i) => {
+            /**
+             * Status Color
+             */
             const statusColor = options.status === name ? display?.(value).color : undefined;
+
+            /**
+             * Set Value and Status Color
+             */
             acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
           });
 
