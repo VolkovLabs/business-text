@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldType } from '@grafana/data';
+import { FieldType, toDataFrame } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
 import { DefaultOptions, TestIds } from '../../constants';
 import { Props, Text } from './Text';
@@ -56,6 +56,40 @@ describe('<Text />', () => {
 
     expect(screen.getByTestId(TestIds.text.content)).toBeInTheDocument();
     expect(screen.getByTestId(TestIds.text.content)).toHaveStyle({ color: 'red' });
+  });
+
+  it('Should apply status field', async () => {
+    const replaceVariables = jest.fn((str: string) => str);
+    const dataFrame = toDataFrame({
+      fields: [
+        {
+          name: 'value',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [80, 90],
+        },
+      ],
+    });
+    const props: Props = {
+      frame: dataFrame,
+      options: {
+        ...DefaultOptions,
+        status: 'value',
+        content: '<div style="background-color: {{statusColor}};" data-testid="status">{{status}}</div>',
+        defaultContent: 'Test default content',
+        everyRow: true,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    render(<Text {...props} />);
+
+    const statuses = screen.getAllByTestId('status');
+    expect(statuses[0]).toHaveStyle({ backgroundColor: 'green' });
+    expect(statuses[1]).toHaveStyle({ backgroundColor: 'red' });
   });
 
   /**
