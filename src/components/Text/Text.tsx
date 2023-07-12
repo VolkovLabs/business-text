@@ -113,13 +113,12 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
          */
         const data = frame.fields.reduce((acc, { config, name, values, display }) => {
           values.toArray().forEach((value, i) => {
-            const statusColor = options.status === name && display ? display(value).color : undefined;
+            const statusColor = options.status === name ? display?.(value).color : undefined;
             acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
           });
 
           return acc;
         }, [] as Array<Record<string, any>>);
-        console.log(data);
 
         if (options.everyRow) {
           /**

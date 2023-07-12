@@ -12,4 +12,5 @@ export const DefaultOptions: PanelOptions = {
   everyRow: true,
   helpers: '',
   styles: '',
+  status: '',
 };
