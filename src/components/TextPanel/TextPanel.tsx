@@ -3,8 +3,9 @@ import { css, cx } from '@emotion/css';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { Select, useStyles2 } from '@grafana/ui';
 import { TestIds } from '../../constants';
+import { useExternalResources } from '../../hooks';
 import { Styles } from '../../styles';
-import { TextOptions } from '../../types';
+import { ResourceType, TextOptions } from '../../types';
 import { Text } from '../Text';
 
 /**
@@ -57,6 +58,22 @@ export const TextPanel: React.FC<Props> = ({
   const frame = data.series[frameIndex];
 
   /**
+   * External Scripts
+   */
+  const { isLoaded: isScriptsLoaded } = useExternalResources({
+    items: options.externalScripts,
+    type: ResourceType.SCRIPTS,
+  });
+
+  /**
+   * External Styles
+   */
+  useExternalResources({
+    items: options.externalStyles,
+    type: ResourceType.STYLES,
+  });
+
+  /**
    * Return
    */
   return (
@@ -70,34 +87,38 @@ export const TextPanel: React.FC<Props> = ({
       )}
       data-testid={TestIds.panel.root}
     >
-      <div
-        className={cx(
-          styles.root,
-          css`
-            flex-grow: 1;
-            overflow: auto;
-          `
-        )}
-      >
-        <Text
-          frame={frame}
-          options={options}
-          timeRange={timeRange}
-          timeZone={timeZone}
-          replaceVariables={replaceVariables}
-          eventBus={eventBus}
-        />
-      </div>
+      {isScriptsLoaded && (
+        <>
+          <div
+            className={cx(
+              styles.root,
+              css`
+                flex-grow: 1;
+                overflow: auto;
+              `
+            )}
+          >
+            <Text
+              frame={frame}
+              options={options}
+              timeRange={timeRange}
+              timeZone={timeZone}
+              replaceVariables={replaceVariables}
+              eventBus={eventBus}
+            />
+          </div>
 
-      {data.series.length > 1 && (
-        <div className={styles.frameSelect}>
-          <Select
-            onChange={onChangeFrame}
-            value={frame.refId}
-            options={selectableFrames}
-            data-testid={TestIds.panel.fieldFrame}
-          />
-        </div>
+          {data.series.length > 1 && (
+            <div className={styles.frameSelect}>
+              <Select
+                onChange={onChangeFrame}
+                value={frame.refId}
+                options={selectableFrames}
+                data-testid={TestIds.panel.fieldFrame}
+              />
+            </div>
+          )}
+        </>
       )}
     </div>
   );
