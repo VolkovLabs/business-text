@@ -6,12 +6,6 @@ export const TestIds = {
     root: 'data-testid panel',
     fieldFrame: 'data-testid panel field-frame',
   },
-  helpersEditor: {
-    root: 'data-testid helpers-editor',
-  },
-  stylesEditor: {
-    root: 'data-testid styles-editor',
-  },
   text: {
     content: 'data-testid text content',
     error: 'data-testid text error',
@@ -19,5 +13,12 @@ export const TestIds = {
   },
   textEditor: {
     root: 'data-testid text-editor',
+  },
+  resourcesEditor: {
+    buttonAddNew: 'data-testid fields-editor button-add-new',
+    buttonRemove: 'data-testid fields-editor button-remove',
+    item: (name: string) => `data-testid fields-editor item-${name}`,
+    newItem: 'data-testid fields-editor new-item',
+    newItemName: 'fields-editor new-item-name',
   },
 };

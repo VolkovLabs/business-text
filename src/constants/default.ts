@@ -12,4 +12,6 @@ export const DefaultOptions: TextOptions = {
   everyRow: true,
   helpers: '',
   styles: '',
+  externalStyles: [],
+  externalScripts: [],
 };

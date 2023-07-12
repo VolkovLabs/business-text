@@ -1,4 +1,5 @@
 import { EditorOptions } from './editor';
+import { Resource } from './resource';
 
 /**
  * Editor Types
@@ -61,4 +62,18 @@ export interface TextOptions {
    * @type {string}
    */
   styles: string;
+
+  /**
+   * External Styles
+   *
+   * @type {Resource[]}
+   */
+  externalStyles: Resource[];
+
+  /**
+   * External Scripts
+   *
+   * @type {Resource[]}
+   */
+  externalScripts: Resource[];
 }
