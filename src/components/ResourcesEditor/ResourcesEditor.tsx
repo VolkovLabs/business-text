@@ -7,18 +7,18 @@ import {
   DropResult,
   NotDraggingStyle,
 } from 'react-beautiful-dnd';
+import { v4 as uuidv4 } from 'uuid';
 import { StandardEditorProps } from '@grafana/data';
 import { Button, Icon, InlineField, InlineFieldRow, Input, useTheme2 } from '@grafana/ui';
-import { v4 as uuidv4 } from 'uuid';
 import { TestIds } from '../../constants';
-import { Resource, ResourceType, TextOptions } from '../../types';
+import { PanelOptions, Resource, ResourceType } from '../../types';
 import { Collapse } from '../Collapse';
 import { Styles } from './styles';
 
 /**
  * Properties
  */
-interface Props extends StandardEditorProps<Resource[], any, TextOptions> {
+interface Props extends StandardEditorProps<Resource[], any, PanelOptions> {
   type: ResourceType;
 }
 
