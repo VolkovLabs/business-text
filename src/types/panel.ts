@@ -10,9 +10,9 @@ export enum EditorType {
 }
 
 /**
- * Options
+ * Panel Options
  */
-export interface TextOptions {
+export interface PanelOptions {
   /**
    * Content
    *
@@ -61,4 +61,11 @@ export interface TextOptions {
    * @type {string}
    */
   styles: string;
+
+  /**
+   * Status
+   *
+   * @type {string};
+   */
+  status: string;
 }
