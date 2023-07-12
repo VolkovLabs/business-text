@@ -1,7 +1,12 @@
-import { PanelPlugin } from '@grafana/data';
+import { Field, FieldType, PanelPlugin } from '@grafana/data';
 import { DefaultOptions } from './constants';
 import { EditorType, PanelOptions } from './types';
 import { plugin } from './module';
+
+/**
+ * Test Field
+ */
+type TestField = Pick<Field, 'name' | 'type'>;
 
 /*
  Plugin
@@ -12,6 +17,7 @@ describe('plugin', () => {
    */
   const builder: any = {
     addCustomEditor: jest.fn().mockImplementation(() => builder),
+    addFieldNamePicker: jest.fn().mockImplementation(() => builder),
     addRadio: jest.fn().mockImplementation(() => builder),
     addSliderInput: jest.fn().mockImplementation(() => builder),
     addMultiSelect: jest.fn().mockImplementation(() => builder),
@@ -103,6 +109,31 @@ describe('plugin', () => {
       plugin['optionsSupplier'](builder);
 
       expect(shownOptionsPaths).toEqual(expect.arrayContaining(['styles']));
+    });
+  });
+
+  describe('Settings', () => {
+    const addFieldNameImplementation =
+      (optionPath: string, allFields: TestField[], shownFields: TestField[]) => (input: any) => {
+        if (optionPath === input.path) {
+          const fields = allFields.filter(input.settings.filter);
+          shownFields.push(...fields);
+        }
+
+        return builder;
+      };
+
+    it('Should return only number fields for status', () => {
+      const fields: TestField[] = [
+        { name: 'string', type: FieldType.string },
+        { name: 'number', type: FieldType.number },
+      ];
+      const shownFields: TestField[] = [];
+
+      builder.addFieldNamePicker.mockImplementation(addFieldNameImplementation('status', fields, shownFields));
+      plugin['optionsSupplier'](builder);
+
+      expect(shownFields).toEqual([{ name: 'number', type: FieldType.number }]);
     });
   });
 });
