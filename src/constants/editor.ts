@@ -4,11 +4,11 @@ import { CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana
  * Supported Languages
  */
 export const enum CodeLanguage {
-  SCSS = 'scss',
   HANDLEBARS = 'handlebars',
   HTML = 'html',
   JAVASCRIPT = 'javascript',
   MARKDOWN = 'markdown',
+  SCSS = 'scss',
 }
 
 /**
@@ -81,3 +81,12 @@ export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
     detail: 'Event bus for application events.',
   },
 ];
+
+/**
+ * Editor Type
+ */
+export enum EditorType {
+  HELPERS = 'helpers',
+  STYLES = 'styles',
+  TEXT = 'text',
+}
