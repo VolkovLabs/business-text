@@ -1,6 +1,6 @@
 import { PanelPlugin } from '@grafana/data';
 import { DefaultOptions } from './constants';
-import { EditorType, TextOptions } from './types';
+import { EditorType, PanelOptions } from './types';
 import { plugin } from './module';
 
 /*
@@ -46,7 +46,7 @@ describe('plugin', () => {
      * @param config
      * @param result
      */
-    const addInputImplementation = (config: Partial<TextOptions>, result: string[]) => (input: any) => {
+    const addInputImplementation = (config: Partial<PanelOptions>, result: string[]) => (input: any) => {
       if (input.showIf) {
         if (input.showIf(config)) {
           result.push(input.path);
