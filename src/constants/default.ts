@@ -7,8 +7,8 @@ import { CodeLanguage, Format } from './editor';
 export const DefaultOptions: TextOptions = {
   content: '```json\n{{{json @root}}}\n```',
   defaultContent: "The query didn't return any results.",
-  editors: [],
   editor: { height: 200, format: Format.AUTO, language: CodeLanguage.MARKDOWN },
+  editors: [],
   everyRow: true,
   helpers: '',
   styles: '',

@@ -35,6 +35,7 @@ describe('Custom Editor', () => {
       format: Format.NONE,
       language: '123',
     };
+
     if (modifiers.includes('enableFormatting')) {
       editor.format = Format.AUTO;
     }
