@@ -1,4 +1,5 @@
 import React from 'react';
+import { config } from '@grafana/runtime';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import { Resource, ResourceType } from '../types';
 import { useExternalResources } from './useExternalResources';
@@ -28,6 +29,7 @@ describe('Use External Resources', () => {
   };
 
   beforeAll(() => {
+    config.disableSanitizeHtml = true;
     jest.spyOn(document, 'createElement');
     jest.spyOn(document.body, 'appendChild');
     jest.spyOn(document.body, 'removeChild');
@@ -186,5 +188,23 @@ describe('Use External Resources', () => {
      * Unmount component
      */
     unmount();
+  });
+
+  it('Should not load resources if sanitizing enabled', async () => {
+    config.disableSanitizeHtml = false;
+
+    const { unmount } = await act(() => render(<Component type={ResourceType.SCRIPTS} items={items} />));
+
+    /**
+     * Should not add any resources
+     */
+    expect(document.body.appendChild).toHaveBeenCalledTimes(1);
+
+    unmount();
+
+    /**
+     * Return default value
+     */
+    config.disableSanitizeHtml = true;
   });
 });

@@ -1,4 +1,5 @@
 import { Field, FieldConfigProperty, FieldType, PanelPlugin } from '@grafana/data';
+import { config } from '@grafana/runtime';
 import { HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
 import { CodeLanguageOptions, DefaultOptions, EditorsOptions, EveryRowOptions, FormatOptions } from './constants';
 import { EditorType, PanelOptions } from './types';
@@ -48,26 +49,28 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         },
       });
 
-  /**
-   * External Resources
-   */
-  builder
-    .addCustomEditor({
-      id: 'externalStyles',
-      path: 'externalStyles',
-      name: 'External Styles',
-      defaultValue: DefaultOptions.externalStyles,
-      editor: ResourcesEditor,
-      category: ['Resources'],
-    })
-    .addCustomEditor({
-      id: 'externalScripts',
-      path: 'externalScripts',
-      name: 'External Scripts',
-      defaultValue: DefaultOptions.externalScripts,
-      editor: ResourcesEditor,
-      category: ['Resources'],
-    });
+    /**
+     * External Resources
+     */
+    builder
+      .addCustomEditor({
+        id: 'externalStyles',
+        path: 'externalStyles',
+        name: 'External Styles',
+        defaultValue: DefaultOptions.externalStyles,
+        editor: ResourcesEditor,
+        category: ['Resources'],
+        showIf: () => config.disableSanitizeHtml,
+      })
+      .addCustomEditor({
+        id: 'externalScripts',
+        path: 'externalScripts',
+        name: 'External Scripts',
+        defaultValue: DefaultOptions.externalScripts,
+        editor: ResourcesEditor,
+        category: ['Resources'],
+        showIf: () => config.disableSanitizeHtml,
+      });
 
     /**
      * Editor
