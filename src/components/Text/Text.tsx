@@ -6,7 +6,7 @@ import { Alert, useStyles2 } from '@grafana/ui';
 import { TestIds } from '../../constants';
 import { generateHtml } from '../../helpers';
 import { Styles } from '../../styles';
-import { TextOptions } from '../../types';
+import { PanelOptions } from '../../types';
 
 /**
  * Properties
@@ -15,9 +15,9 @@ export interface Props {
   /**
    * Options
    *
-   * @type {TextOptions}
+   * @type {PanelOptions}
    */
-  options: TextOptions;
+  options: PanelOptions;
 
   /**
    * Frame
@@ -111,12 +111,20 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
         /**
          * Frame returned
          */
-        const data = frame.fields.reduce((out, { config, name, values }) => {
-          values.toArray().forEach((v, i) => {
-            out[i] = { ...out[i], [config.displayName || name]: v };
+        const data = frame.fields.reduce((acc, { config, name, values, display }) => {
+          values.toArray().forEach((value, i) => {
+            /**
+             * Status Color
+             */
+            const statusColor = options.status === name ? display?.(value).color : undefined;
+
+            /**
+             * Set Value and Status Color
+             */
+            acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
           });
 
-          return out;
+          return acc;
         }, [] as Array<Record<string, any>>);
 
         if (options.everyRow) {
@@ -155,7 +163,15 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
         unsubscribeFn();
       }
     };
-  }, [frame?.fields, frame?.length, getHtml, options.content, options.defaultContent, options.everyRow]);
+  }, [
+    frame?.fields,
+    frame?.length,
+    getHtml,
+    options.content,
+    options.defaultContent,
+    options.everyRow,
+    options.status,
+  ]);
 
   if (error) {
     return (
