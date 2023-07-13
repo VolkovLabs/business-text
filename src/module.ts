@@ -1,12 +1,5 @@
 import { PanelPlugin } from '@grafana/data';
-import {
-  HelpersEditor,
-  ScriptsResourcesEditor,
-  StylesEditor,
-  StylesResourcesEditor,
-  TextEditor,
-  TextPanel,
-} from './components';
+import { HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
 import { CodeLanguageOptions, DefaultOptions, EditorsOptions, EveryRowOptions, FormatOptions } from './constants';
 import { EditorType, TextOptions } from './types';
 
@@ -41,7 +34,7 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setNoPadding().set
       path: 'externalStyles',
       name: 'External Styles',
       defaultValue: DefaultOptions.externalStyles,
-      editor: StylesResourcesEditor,
+      editor: ResourcesEditor,
       category: ['Resources'],
     })
     .addCustomEditor({
@@ -49,7 +42,7 @@ export const plugin = new PanelPlugin<TextOptions>(TextPanel).setNoPadding().set
       path: 'externalScripts',
       name: 'External Scripts',
       defaultValue: DefaultOptions.externalScripts,
-      editor: ScriptsResourcesEditor,
+      editor: ResourcesEditor,
       category: ['Resources'],
     });
 

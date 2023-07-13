@@ -11,16 +11,14 @@ import { StandardEditorProps } from '@grafana/data';
 import { Button, Icon, InlineField, InlineFieldRow, Input, useTheme2 } from '@grafana/ui';
 import { v4 as uuidv4 } from 'uuid';
 import { TestIds } from '../../constants';
-import { Resource, ResourceType, TextOptions } from '../../types';
+import { Resource, TextOptions } from '../../types';
 import { Collapse } from '../Collapse';
 import { Styles } from './styles';
 
 /**
  * Properties
  */
-interface Props extends StandardEditorProps<Resource[], any, TextOptions> {
-  type: ResourceType;
-}
+interface Props extends StandardEditorProps<Resource[], any, TextOptions> {}
 
 /**
  * Reorder
@@ -49,7 +47,7 @@ const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDr
 /**
  * Resources Editor
  */
-export const ResourcesEditor: React.FC<Props> = ({ value, onChange, type }) => {
+export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
   /**
    * Styles and Theme
    */
@@ -106,9 +104,9 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange, type }) => {
    */
   const onAddNewItem = useCallback(() => {
     setNewItem('');
-    onChangeItems(items.concat([{ id: uuidv4(), url: newItem, type }]));
+    onChangeItems(items.concat([{ id: uuidv4(), url: newItem }]));
     onToggleItem(newItem);
-  }, [items, newItem, onChangeItems, onToggleItem, type]);
+  }, [items, newItem, onChangeItems, onToggleItem]);
 
   /**
    * Change item
@@ -173,7 +171,6 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange, type }) => {
                             onChange={(event) => {
                               onChangeItem({
                                 id,
-                                type,
                                 url: event.currentTarget.value,
                               });
                             }}
@@ -212,17 +209,3 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange, type }) => {
     </>
   );
 };
-
-/**
- * Styles Resources Editor
- */
-export const StylesResourcesEditor: React.FC<StandardEditorProps> = (props) => (
-  <ResourcesEditor type={ResourceType.STYLES} {...props} />
-);
-
-/**
- * Scripts Resources Editor
- */
-export const ScriptsResourcesEditor: React.FC<StandardEditorProps> = (props) => (
-  <ResourcesEditor type={ResourceType.SCRIPTS} {...props} />
-);

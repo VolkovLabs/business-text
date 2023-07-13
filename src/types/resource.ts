@@ -18,13 +18,6 @@ export interface Resource {
   id: string;
 
   /**
-   * Type
-   *
-   * @type {ResourceType}
-   */
-  type: ResourceType;
-
-  /**
    * Url
    *
    * @type {string}

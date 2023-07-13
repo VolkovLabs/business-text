@@ -48,12 +48,15 @@ export const createResourcesManager = (type: ResourceType) => {
      */
     add: (url: string): Promise<void> => {
       const handleLoad = (resolve: () => void) => {
-        resolve();
-
         /**
          * Set Loaded State
          */
         resources[url].loaded = true;
+
+        /**
+         * Call callback
+         */
+        resolve();
       };
 
       /**
@@ -78,22 +81,22 @@ export const createResourcesManager = (type: ResourceType) => {
         });
       }
 
+      const element = createElement(url);
+
+      resources[url] = {
+        element,
+        useCount: 1,
+        loaded: false,
+      };
+
+      document.body.appendChild(element);
+
       /**
        * Load Resource
        */
       return new Promise((resolve) => {
-        const element = createElement(url);
-
         element.addEventListener('load', () => handleLoad(resolve));
         element.addEventListener('error', () => handleLoad(resolve));
-
-        document.body.appendChild(element);
-
-        resources[url] = {
-          element,
-          useCount: 1,
-          loaded: false,
-        };
       });
     },
     /**
@@ -117,6 +120,7 @@ export const createResourcesManager = (type: ResourceType) => {
       /**
        * Remove resource
        */
+      delete resources[url];
       document.body.removeChild(resource.element);
     },
   };
