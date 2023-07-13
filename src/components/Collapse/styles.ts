@@ -7,12 +7,13 @@ import { GrafanaTheme2 } from '@grafana/data';
 export const Styles = (theme: GrafanaTheme2) => {
   return {
     root: css`
-      border: 1px solid ${theme.colors.border.weak};
-      background-color: ${theme.colors.background.primary};
+      margin-bottom: ${theme.spacing(1)};
     `,
     header: css`
       label: Header;
       padding: ${theme.spacing(0.5, 0.5)};
+      border-radius: ${theme.shape.borderRadius(1)};
+      background: ${theme.colors.background.secondary};
       min-height: ${theme.spacing(4)};
       display: flex;
       align-items: center;
@@ -39,7 +40,8 @@ export const Styles = (theme: GrafanaTheme2) => {
       align-items: center;
     `,
     content: css`
-      padding: ${theme.spacing(1)};
+      margin-top: ${theme.spacing(0.5)};
+      margin-left: ${theme.spacing(0.5)};
     `,
   };
 };

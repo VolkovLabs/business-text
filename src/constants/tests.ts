@@ -15,10 +15,12 @@ export const TestIds = {
     root: 'data-testid text-editor',
   },
   resourcesEditor: {
-    buttonAddNew: 'data-testid fields-editor button-add-new',
-    buttonRemove: 'data-testid fields-editor button-remove',
-    item: (name: string) => `data-testid fields-editor item-${name}`,
-    newItem: 'data-testid fields-editor new-item',
-    newItemName: 'fields-editor new-item-name',
+    buttonAddNew: 'data-testid resources-editor button-add-new',
+    buttonRemove: 'data-testid resources-editor button-remove',
+    itemLabel: (name: string) => `data-testid resources-editor item-label-${name}`,
+    itemContent: (name: string) => `data-testid resources-editor item-content-${name}`,
+    fieldUrl: 'data-testid resources-editor field-url',
+    newItem: 'data-testid resources-editor new-item',
+    newItemName: 'data-testid resources-editor new-item-name',
   },
 };

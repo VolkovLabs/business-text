@@ -26,7 +26,7 @@ interface Props extends StandardEditorProps<Resource[], any, PanelOptions> {}
  * @param startIndex
  * @param endIndex
  */
-export const reorder = <T,>(list: T[], startIndex: number, endIndex: number) => {
+const reorder = <T,>(list: T[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -145,7 +145,8 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                     >
                       <Collapse
                         title={<div className={styles.groupHeader}>{url}</div>}
-                        headerTestId={TestIds.resourcesEditor.item(url)}
+                        headerTestId={TestIds.resourcesEditor.itemLabel(url)}
+                        contentTestId={TestIds.resourcesEditor.itemContent(url)}
                         actions={
                           <>
                             <Button
@@ -174,6 +175,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                                 url: event.currentTarget.value,
                               });
                             }}
+                            data-testid={TestIds.resourcesEditor.fieldUrl}
                           />
                         </InlineField>
                       </Collapse>
@@ -188,7 +190,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
       </DragDropContext>
 
       <InlineFieldRow className={styles.newGroup} data-testid={TestIds.resourcesEditor.newItem}>
-        <InlineField label="New Item" grow={true} error="Item with the same name already exists.">
+        <InlineField label="New Item" grow={true}>
           <Input
             placeholder="Resource url"
             value={newItem}
