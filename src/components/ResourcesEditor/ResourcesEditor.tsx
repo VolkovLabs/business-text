@@ -166,7 +166,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                         isOpen={collapseState[id]}
                         onToggle={() => onToggleItem(id)}
                       >
-                        <InlineField grow={true}>
+                        <InlineField grow label="URL">
                           <Input
                             value={url}
                             onChange={(event) => {
@@ -190,7 +190,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
       </DragDropContext>
 
       <InlineFieldRow className={styles.newGroup} data-testid={TestIds.resourcesEditor.newItem}>
-        <InlineField label="New Resource" grow={true}>
+        <InlineField label="New Resource" grow>
           <Input
             placeholder="URL"
             value={newItem}
