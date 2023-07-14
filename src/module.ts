@@ -56,19 +56,19 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
       .addCustomEditor({
         id: 'externalStyles',
         path: 'externalStyles',
-        name: 'External Styles',
+        name: 'Styles',
         defaultValue: DefaultOptions.externalStyles,
         editor: ResourcesEditor,
-        category: ['Resources'],
+        category: ['External Resources'],
         showIf: () => config.disableSanitizeHtml,
       })
       .addCustomEditor({
         id: 'externalScripts',
         path: 'externalScripts',
-        name: 'External Scripts',
+        name: 'Scripts',
         defaultValue: DefaultOptions.externalScripts,
         editor: ResourcesEditor,
-        category: ['Resources'],
+        category: ['External Resources'],
         showIf: () => config.disableSanitizeHtml,
       });
 

@@ -7,9 +7,9 @@ import {
   DropResult,
   NotDraggingStyle,
 } from 'react-beautiful-dnd';
+import { v4 as uuidv4 } from 'uuid';
 import { StandardEditorProps } from '@grafana/data';
 import { Button, Icon, InlineField, InlineFieldRow, Input, useTheme2 } from '@grafana/ui';
-import { v4 as uuidv4 } from 'uuid';
 import { TestIds } from '../../constants';
 import { PanelOptions, Resource } from '../../types';
 import { Collapse } from '../Collapse';
@@ -190,9 +190,9 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
       </DragDropContext>
 
       <InlineFieldRow className={styles.newGroup} data-testid={TestIds.resourcesEditor.newItem}>
-        <InlineField label="New Item" grow={true}>
+        <InlineField label="New Resource" grow={true}>
           <Input
-            placeholder="Resource url"
+            placeholder="URL"
             value={newItem}
             onChange={(event) => setNewItem(event.currentTarget.value)}
             data-testid={TestIds.resourcesEditor.newItemName}
@@ -200,7 +200,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
         </InlineField>
         <Button
           icon="plus"
-          title="Add Item"
+          title="Add Resource"
           disabled={!newItem}
           onClick={onAddNewItem}
           data-testid={TestIds.resourcesEditor.buttonAddNew}
