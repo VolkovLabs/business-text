@@ -10,7 +10,9 @@ export const DefaultOptions: PanelOptions = {
   editor: { height: 200, format: Format.AUTO, language: CodeLanguage.MARKDOWN },
   editors: [],
   everyRow: true,
+  externalScripts: [],
+  externalStyles: [],
   helpers: '',
-  styles: '',
   status: '',
+  styles: '',
 };

@@ -7,6 +7,7 @@
 - Update ESLint configuration (#192)
 - Increase Tests Coverage (#194)
 - Add status field (#196)
+- Add External JavaScript, CSS Resources (#197)
 
 ## 4.0.0 (2023-06-26)
 

@@ -1,4 +1,5 @@
 import { EditorOptions } from './editor';
+import { Resource } from './resource';
 
 /**
  * Editor Types
@@ -62,10 +63,23 @@ export interface PanelOptions {
    */
   styles: string;
 
-  /**
-   * Status
+  /** Status
    *
    * @type {string};
    */
   status: string;
+
+  /**
+   * External Styles
+   *
+   * @type {Resource[]}
+   */
+  externalStyles: Resource[];
+
+  /**
+   * External Scripts
+   *
+   * @type {Resource[]}
+   */
+  externalScripts: Resource[];
 }

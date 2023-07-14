@@ -43,6 +43,16 @@ jest.mock('@grafana/ui', () => ({
 }));
 
 /**
+ * Mock Hooks
+ */
+jest.mock('../../hooks', () => ({
+  ...jest.requireActual('../../hooks'),
+  useExternalResources: jest.fn(() => ({
+    isLoaded: true,
+  })),
+}));
+
+/**
  * Panel
  */
 describe('Panel', () => {

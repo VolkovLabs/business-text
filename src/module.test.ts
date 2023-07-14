@@ -1,4 +1,5 @@
 import { Field, FieldType, PanelPlugin } from '@grafana/data';
+import { config } from '@grafana/runtime';
 import { DefaultOptions } from './constants';
 import { EditorType, PanelOptions } from './types';
 import { plugin } from './module';
@@ -109,6 +110,26 @@ describe('plugin', () => {
       plugin['optionsSupplier'](builder);
 
       expect(shownOptionsPaths).toEqual(expect.arrayContaining(['styles']));
+    });
+
+    it('Should show external resources if sanitize disabled', () => {
+      config.disableSanitizeHtml = true;
+      const shownOptionsPaths: string[] = [];
+
+      builder.addCustomEditor.mockImplementation(addInputImplementation({ editors: [] }, shownOptionsPaths));
+      plugin['optionsSupplier'](builder);
+
+      expect(shownOptionsPaths).toEqual(expect.arrayContaining(['externalScripts', 'externalStyles']));
+    });
+
+    it('Should not show external resources if sanitize enabled', () => {
+      config.disableSanitizeHtml = false;
+      const shownOptionsPaths: string[] = [];
+
+      builder.addCustomEditor.mockImplementation(addInputImplementation({ editors: [] }, shownOptionsPaths));
+      plugin['optionsSupplier'](builder);
+
+      expect(shownOptionsPaths).not.toEqual(expect.arrayContaining(['externalScripts', 'externalStyles']));
     });
   });
 

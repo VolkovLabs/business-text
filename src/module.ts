@@ -1,5 +1,6 @@
 import { Field, FieldConfigProperty, FieldType, PanelPlugin } from '@grafana/data';
-import { HelpersEditor, StylesEditor, TextEditor, TextPanel } from './components';
+import { config } from '@grafana/runtime';
+import { HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
 import { CodeLanguageOptions, DefaultOptions, EditorsOptions, EveryRowOptions, FormatOptions } from './constants';
 import { EditorType, PanelOptions } from './types';
 
@@ -46,6 +47,29 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
           filter: (f: Field) => f.type === FieldType.number,
           noFieldsMessage: 'No number fields found',
         },
+      });
+
+    /**
+     * External Resources
+     */
+    builder
+      .addCustomEditor({
+        id: 'externalStyles',
+        path: 'externalStyles',
+        name: 'Styles',
+        defaultValue: DefaultOptions.externalStyles,
+        editor: ResourcesEditor,
+        category: ['External Resources'],
+        showIf: () => config.disableSanitizeHtml,
+      })
+      .addCustomEditor({
+        id: 'externalScripts',
+        path: 'externalScripts',
+        name: 'Scripts',
+        defaultValue: DefaultOptions.externalScripts,
+        editor: ResourcesEditor,
+        category: ['External Resources'],
+        showIf: () => config.disableSanitizeHtml,
       });
 
     /**
