@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.2.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Add ESLint deprecation check (#203)
+
 ## 4.1.0 (2023-07-16)
 
 ### Features / Enhancements
@@ -8,6 +14,7 @@
 - Increase Tests Coverage (#194)
 - Add status field (#196)
 - Add External JavaScript, CSS Resources (#197)
+- Update to Grafana 10.0.2 dependencies (#201)
 
 ## 4.0.0 (2023-06-26)
 
