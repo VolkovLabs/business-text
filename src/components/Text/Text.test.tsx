@@ -99,31 +99,22 @@ describe('<Text />', () => {
     const nameData: string[] = ['Erik', 'Natasha'];
     const ageData: number[] = [42, 38];
     const props: Props = {
-      frame: {
+      frame: toDataFrame({
         fields: [
           {
             name: 'name',
             type: FieldType.string,
             config: {},
-            values: {
-              length: 2,
-              get: (index: any) => nameData[index],
-              toArray: () => nameData,
-            } as any,
+            values: nameData,
           },
           {
             name: 'age',
             type: FieldType.number,
             config: {},
-            values: {
-              length: 2,
-              get: (index: any) => ageData[index],
-              toArray: () => ageData,
-            } as any,
+            values: ageData,
           },
         ],
-        length: 2,
-      },
+      }),
       options: {
         ...DefaultOptions,
         content: 'Test content',
@@ -185,31 +176,23 @@ describe('<Text />', () => {
 `;
 
     const props: Props = {
-      frame: {
+      frame: toDataFrame({
         fields: [
           {
             name: 'name',
             type: FieldType.string,
             config: {},
-            values: {
-              length: 2,
-              get: (index: number) => nameData[index],
-              toArray: () => nameData,
-            } as any,
+            values: nameData,
           },
           {
             name: 'age',
             type: FieldType.number,
             config: {},
-            values: {
-              length: 2,
-              get: (index: number) => ageData[index],
-              toArray: () => ageData,
-            } as any,
+            values: ageData,
           },
         ],
         length: 2,
-      },
+      }),
       options: {
         ...DefaultOptions,
         content: template,
