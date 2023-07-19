@@ -48,6 +48,10 @@ describe('Use External Resources', () => {
   });
 
   beforeEach(() => {
+    /**
+     * Disable deprecation rule for correct working of document.createElement
+     */
+    // eslint-disable-next-line deprecation/deprecation
     jest.mocked(document.createElement).mockClear();
     jest.mocked(document.body.appendChild).mockClear();
     jest.mocked(document.body.removeChild).mockClear();
@@ -182,6 +186,10 @@ describe('Use External Resources', () => {
 
     await waitFor(() => expect(screen.getByTestId(InTestIds.root)).toBeInTheDocument());
 
+    /**
+     * Disable deprecation rule for correct working of document.createElement
+     */
+    // eslint-disable-next-line deprecation/deprecation
     expect(document.createElement).toHaveBeenCalledWith('link');
 
     /**
