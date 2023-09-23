@@ -29,6 +29,21 @@ export const registerHelpers = (handlebars: any) => {
   handlebars.registerHelper('contains', (arr: string[], value: string): boolean => arr.indexOf(value) !== -1);
 
   /**
+   * startsWith
+   */  
+  handlebars.registerHelper('startsWith', (left: string, right: string):  boolean => left.startsWith(right) ) ;
+
+  /**
+   * endsWith
+   */ 
+  handlebars.registerHelper('endsWith', (left: string, right: string): boolean => left.endsWith(right) ) ;
+  
+  /**
+   * match
+   */ 
+  handlebars.registerHelper('match', (left: string, right: string): boolean =>  left.match(right) !== null ) ;  
+   
+  /**
    * Date
    */
   handlebars.registerHelper('date', date);
