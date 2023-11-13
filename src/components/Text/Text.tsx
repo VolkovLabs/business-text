@@ -6,7 +6,8 @@ import { Alert, useStyles2 } from '@grafana/ui';
 import { TestIds } from '../../constants';
 import { generateHtml } from '../../helpers';
 import { Styles } from '../../styles';
-import { PanelOptions } from '../../types';
+import { PanelOptions, RowItem } from '../../types';
+import { Row } from '../Row';
 
 /**
  * Properties
@@ -60,9 +61,9 @@ export interface Props {
  */
 export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, replaceVariables, eventBus }) => {
   /**
-   * Generated html
+   * Generated rows
    */
-  const [html, setHtml] = useState<string[]>([]);
+  const [rows, setRows] = useState<RowItem[]>([]);
 
   /**
    * Generate html error
@@ -85,8 +86,12 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
    * HTML
    */
   const getHtml = useCallback(
-    (data: any, content: string) =>
-      generateHtml({ data, content, helpers: options.helpers, timeRange, timeZone, replaceVariables, eventBus }),
+    (data: any, content: string) => {
+      return {
+        ...generateHtml({ data, content, helpers: options.helpers, timeRange, timeZone, replaceVariables, eventBus }),
+        data,
+      };
+    },
     [eventBus, options.helpers, replaceVariables, timeRange, timeZone]
   );
 
@@ -105,7 +110,12 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
          */
         const { html, unsubscribe } = getHtml({}, options.defaultContent);
 
-        setHtml([html]);
+        setRows([
+          {
+            html,
+            data: {},
+          },
+        ]);
         unsubscribeFn = unsubscribe;
       } else {
         /**
@@ -132,7 +142,12 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
            * For every row in data frame
            */
           const rows = data.map((row) => getHtml(row, options.content));
-          setHtml(rows.map(({ html }) => html));
+          setRows(
+            rows.map(({ html, data }) => ({
+              html,
+              data,
+            }))
+          );
 
           /**
            * Call unsubscribe for all rows
@@ -149,7 +164,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
            * For whole data frame
            */
           const { html, unsubscribe } = getHtml({ data }, options.content);
-          setHtml([html]);
+          setRows([{ html, data }]);
 
           unsubscribeFn = unsubscribe;
         }
@@ -187,12 +202,14 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
 
   return (
     <>
-      {html.map((html, index) => (
-        <div
+      {rows.map((row, index) => (
+        <Row
           key={index}
+          item={row}
           className={className}
-          dangerouslySetInnerHTML={{ __html: html }}
-          data-testid={TestIds.text.content}
+          afterRender={options.afterRender}
+          eventBus={eventBus}
+          replaceVariables={replaceVariables}
         />
       ))}
     </>

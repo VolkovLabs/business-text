@@ -15,4 +15,5 @@ export const DefaultOptions: PanelOptions = {
   helpers: '',
   status: '',
   styles: '',
+  afterRender: '',
 };

@@ -133,11 +133,23 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         id: 'helpers',
         path: 'helpers',
         name: 'JavaScript Code',
-        description: 'Allows to add Handlebars Helpers and event handlers.',
+        description: 'Allows to execute code before content rendering. E.g. add Handlebars Helpers.',
         defaultValue: DefaultOptions.helpers,
         editor: HelpersEditor,
         category: ['Content'],
         showIf: (config) => config.editors.includes(EditorType.HELPERS) || config.helpers !== DefaultOptions.helpers,
+      })
+      .addCustomEditor({
+        id: 'afterRender',
+        path: 'afterRender',
+        name: 'JavaScript Code After Content Ready',
+        description:
+          'Allows to execute code per item after content is ready. E.g. use element for drawing chart or event listeners.',
+        defaultValue: DefaultOptions.afterRender,
+        editor: HelpersEditor,
+        category: ['Content'],
+        showIf: (config) =>
+          config.editors.includes(EditorType.AFTER_RENDER) || config.afterRender !== DefaultOptions.afterRender,
       })
       .addCustomEditor({
         id: 'styles',
