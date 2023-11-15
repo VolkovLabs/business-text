@@ -82,4 +82,11 @@ export interface PanelOptions {
    * @type {Resource[]}
    */
   externalScripts: Resource[];
+
+  /**
+   * Wrap
+   *
+   * @type {boolean}
+   */
+  wrap: boolean;
 }

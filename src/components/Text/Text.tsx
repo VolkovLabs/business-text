@@ -86,8 +86,17 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
    */
   const getHtml = useCallback(
     (data: any, content: string) =>
-      generateHtml({ data, content, helpers: options.helpers, timeRange, timeZone, replaceVariables, eventBus }),
-    [eventBus, options.helpers, replaceVariables, timeRange, timeZone]
+      generateHtml({
+        data,
+        content,
+        helpers: options.helpers,
+        timeRange,
+        timeZone,
+        replaceVariables,
+        eventBus,
+        options,
+      }),
+    [eventBus, replaceVariables, timeRange, timeZone, options]
   );
 
   useEffect(() => {

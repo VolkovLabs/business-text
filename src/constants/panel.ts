@@ -16,3 +16,11 @@ export const EditorsOptions = [
   { value: EditorType.HELPERS, label: 'JavaScript Code' },
   { value: EditorType.STYLES, label: 'Styles' },
 ];
+
+/**
+ * Wrap Options
+ */
+export const WrapOptions = [
+  { value: true, label: 'Enabled' },
+  { value: false, label: 'Disabled' },
+];

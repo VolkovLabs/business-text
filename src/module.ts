@@ -1,7 +1,14 @@
 import { Field, FieldConfigProperty, FieldType, PanelPlugin } from '@grafana/data';
 import { config } from '@grafana/runtime';
 import { HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
-import { CodeLanguageOptions, DefaultOptions, EditorsOptions, EveryRowOptions, FormatOptions } from './constants';
+import {
+  CodeLanguageOptions,
+  DefaultOptions,
+  EditorsOptions,
+  EveryRowOptions,
+  FormatOptions,
+  WrapOptions,
+} from './constants';
 import { EditorType, PanelOptions } from './types';
 
 /**
@@ -110,6 +117,16 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
      * Content
      */
     builder
+      .addRadio({
+        path: 'wrap',
+        name: 'Wrap automatically in paragraphs',
+        description: 'If disabled, result will NOT be wrapped into <p> tags',
+        defaultValue: DefaultOptions.wrap,
+        settings: {
+          options: WrapOptions,
+        },
+        category: ['Content'],
+      })
       .addCustomEditor({
         id: 'content',
         path: 'content',
