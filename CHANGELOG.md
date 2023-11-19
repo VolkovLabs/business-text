@@ -5,6 +5,7 @@
 ### Features / Enhancements
 
 - Add ESLint deprecation check (#203)
+- Add custom code option which is called after content is ready (#231)
 
 ## 4.1.0 (2023-07-16)
 
