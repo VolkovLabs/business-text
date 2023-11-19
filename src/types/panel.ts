@@ -6,10 +6,10 @@ import { DataFrame } from '@grafana/data';
  * Editor Types
  */
 export enum EditorType {
+  AFTER_RENDER = 'afterRender',
   DEFAULT = 'default',
   HELPERS = 'helpers',
   STYLES = 'styles',
-  AFTER_RENDER = 'afterRender',
 }
 
 /**

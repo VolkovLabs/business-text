@@ -9,7 +9,7 @@ import { RowItem } from '../../types';
  */
 interface Props {
   /**
-   * Replace Variables
+   * Event Bus
    *
    * @type {EventBus}
    */
@@ -60,6 +60,7 @@ export const Row: React.FC<Props> = ({ className, item, afterRender, replaceVari
     let unsubscribe: unknown = null;
     if (ref.current && afterRender) {
       const func = new Function('context', afterRender);
+
       unsubscribe = func({
         element: ref.current,
         data: item.data,
