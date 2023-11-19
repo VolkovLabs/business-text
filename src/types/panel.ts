@@ -1,10 +1,12 @@
 import { EditorOptions } from './editor';
 import { Resource } from './resource';
+import { DataFrame } from '@grafana/data';
 
 /**
  * Editor Types
  */
 export enum EditorType {
+  AFTER_RENDER = 'afterRender',
   DEFAULT = 'default',
   HELPERS = 'helpers',
   STYLES = 'styles',
@@ -89,4 +91,30 @@ export interface PanelOptions {
    * @type {boolean}
    */
   wrap: boolean;
+
+  /**
+   * After Render Function
+   *
+   * @type {string}
+   */
+  afterRender: string;
+}
+
+/**
+ * Row Item
+ */
+export interface RowItem {
+  /**
+   * HTML
+   *
+   * @type {string}
+   */
+  html: string;
+
+  /**
+   * Data
+   *
+   * @type {DataFrame | {}}
+   */
+  data: DataFrame | {};
 }

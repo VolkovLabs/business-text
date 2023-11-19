@@ -58,6 +58,65 @@ describe('<Text />', () => {
     expect(screen.getByTestId(TestIds.text.content)).toHaveStyle({ color: 'red' });
   });
 
+  describe('After Render Function', () => {
+    it('Should run after render function', async () => {
+      const eventBus = {
+        publish: jest.fn(() => {}),
+      };
+      const replaceVariables = jest.fn((str: string) => str);
+
+      const props: Props = {
+        options: {
+          ...DefaultOptions,
+          defaultContent: '<div id="element"></div>',
+          afterRender: `
+          context.grafana.eventBus.publish('ready', context.element.querySelector('#element'));
+          `,
+          everyRow: true,
+        },
+        timeRange: {} as any,
+        timeZone: '',
+        replaceVariables,
+        eventBus: eventBus as any,
+      };
+
+      render(<Text {...props} />);
+
+      expect(eventBus.publish).toHaveBeenCalledWith('ready', expect.any(HTMLDivElement));
+    });
+
+    it('Should call unsubscribe function', async () => {
+      const eventBus = {
+        publish: jest.fn(() => {}),
+      };
+      const replaceVariables = jest.fn((str: string) => str);
+
+      const props: Props = {
+        options: {
+          ...DefaultOptions,
+          defaultContent: '<div id="element"></div>',
+          afterRender: `
+          return () => context.grafana.eventBus.publish('destroy');
+          `,
+          everyRow: true,
+        },
+        timeRange: {} as any,
+        timeZone: '',
+        replaceVariables,
+        eventBus: eventBus as any,
+      };
+
+      const { rerender } = render(<Text {...props} />);
+
+      /**
+       * Re-render with updated props
+       */
+      rerender(<Text {...props} timeZone="123" />);
+
+      expect(eventBus.publish).toHaveBeenCalledWith('destroy');
+    });
+  });
+
   it('Should apply status field', async () => {
     const replaceVariables = jest.fn((str: string) => str);
     const dataFrame = toDataFrame({
