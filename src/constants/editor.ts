@@ -32,8 +32,8 @@ export enum Format {
  * Format Options
  */
 export const FormatOptions = [
-  { value: Format.AUTO, label: 'Auto' },
-  { value: Format.NONE, label: 'Disabled' },
+  { value: Format.AUTO, label: 'Auto', icon: 'font' },
+  { value: Format.NONE, label: 'Disabled', icon: 'times-circle' },
 ];
 
 /**

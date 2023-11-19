@@ -128,39 +128,48 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         category: ['Content'],
         showIf: (config) =>
           config.editors.includes(EditorType.DEFAULT) || config.defaultContent !== DefaultOptions.defaultContent,
-      })
+      });
+
+    /**
+     * JavaScript
+     */
+    builder
       .addCustomEditor({
         id: 'helpers',
         path: 'helpers',
-        name: 'JavaScript Code',
+        name: 'Before Content Rendering',
         description: 'Allows to execute code before content rendering. E.g. add Handlebars Helpers.',
         defaultValue: DefaultOptions.helpers,
         editor: HelpersEditor,
-        category: ['Content'],
+        category: ['JavaScript'],
         showIf: (config) => config.editors.includes(EditorType.HELPERS) || config.helpers !== DefaultOptions.helpers,
       })
       .addCustomEditor({
         id: 'afterRender',
         path: 'afterRender',
-        name: 'JavaScript Code After Content Ready',
+        name: 'After Content Ready',
         description:
-          'Allows to execute code per item after content is ready. E.g. use element for drawing chart or event listeners.',
+          'Allows to execute code after content is ready. E.g. use element for drawing chart or event listeners.',
         defaultValue: DefaultOptions.afterRender,
         editor: HelpersEditor,
-        category: ['Content'],
+        category: ['JavaScript'],
         showIf: (config) =>
           config.editors.includes(EditorType.AFTER_RENDER) || config.afterRender !== DefaultOptions.afterRender,
-      })
-      .addCustomEditor({
-        id: 'styles',
-        path: 'styles',
-        name: 'CSS Styles',
-        description: 'Allows to add styles. Use & {} for parent style.',
-        defaultValue: DefaultOptions.styles,
-        editor: StylesEditor,
-        category: ['Content'],
-        showIf: (config) => config.editors.includes(EditorType.STYLES) || config.styles !== DefaultOptions.styles,
       });
+
+    /**
+     * Styles
+     */
+    builder.addCustomEditor({
+      id: 'styles',
+      path: 'styles',
+      name: 'CSS Styles',
+      description: 'Allows to add styles. Use & {} for parent style.',
+      defaultValue: DefaultOptions.styles,
+      editor: StylesEditor,
+      category: ['CSS Styles'],
+      showIf: (config) => config.editors.includes(EditorType.STYLES) || config.styles !== DefaultOptions.styles,
+    });
 
     return builder;
   });
