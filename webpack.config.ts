@@ -1,4 +1,4 @@
-import { Configuration, ProvidePlugin } from 'webpack';
+import { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
 import grafanaConfig from './.config/webpack/webpack.config';
 
