@@ -7,3 +7,8 @@ webpack.config.ts
 coverage/
 cypress/
 dist/
+
+# Tests
+**/*.test.ts
+**/*.test.tsx
+__mocks__

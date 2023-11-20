@@ -115,7 +115,7 @@ export interface RowItem {
   /**
    * Data
    *
-   * @type {DataFrame | {}}
+   * @type {DataFrame | object}
    */
-  data: DataFrame | {};
+  data: DataFrame | object;
 }

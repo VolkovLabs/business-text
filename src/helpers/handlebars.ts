@@ -1,7 +1,7 @@
 /**
  * Helper for Date
  */
-const date = require('helper-date');
+import date from 'helper-date';
 
 /**
  * To Fixed
