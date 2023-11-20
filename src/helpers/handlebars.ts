@@ -30,19 +30,19 @@ export const registerHelpers = (handlebars: any) => {
 
   /**
    * startsWith
-   */  
-  handlebars.registerHelper('startsWith', (left: string, right: string):  boolean => left.startsWith(right) ) ;
+   */
+  handlebars.registerHelper('startsWith', (left: string, right: string): boolean => left.startsWith(right));
 
   /**
    * endsWith
-   */ 
-  handlebars.registerHelper('endsWith', (left: string, right: string): boolean => left.endsWith(right) ) ;
-  
+   */
+  handlebars.registerHelper('endsWith', (left: string, right: string): boolean => left.endsWith(right));
+
   /**
    * match
-   */ 
-  handlebars.registerHelper('match', (left: string, right: string): boolean =>  left.match(right) !== null ) ;  
-   
+   */
+  handlebars.registerHelper('match', (left: string, right: string): boolean => left.match(right) !== null);
+
   /**
    * Date
    */

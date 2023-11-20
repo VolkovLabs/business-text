@@ -43,7 +43,6 @@ describe('Handlebars helpers', () => {
       expect(handler(['hello', 'world'], 'hello1')).toBeFalsy();
     });
 
-
     it('StartsWith', () => {
       const handler = handlebarsMock.getHelper('startsWith');
 
@@ -52,7 +51,6 @@ describe('Handlebars helpers', () => {
       expect(handler('hello world', 'hello')).toBeTruthy();
       expect(handler('hello world', 'bye')).toBeFalsy();
     });
-
 
     it('EndsWith', () => {
       const handler = handlebarsMock.getHelper('endsWith');
@@ -68,10 +66,9 @@ describe('Handlebars helpers', () => {
 
       expect(handler).toBeDefined();
 
-      expect(handler('This is a cool plugin.', '(cool)\s(plugin)')).toBeTruthy();
-      expect(handler('This is a cool plugin.', '^This is a plugin$')).toBeFalsy();
-    });    
-
+      expect(handler('This is a cool plugin.', /(cool)\s(plugin)/)).toBeTruthy();
+      expect(handler('This is a cool plugin.', /^This is a plugin$/)).toBeFalsy();
+    });
 
     it('Date', () => {
       const handler = handlebarsMock.getHelper('date');
