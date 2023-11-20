@@ -1,6 +1,7 @@
-import React from 'react';
 import { config } from '@grafana/runtime';
 import { act, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
+
 import { Resource, ResourceType } from '../types';
 import { useExternalResources } from './useExternalResources';
 

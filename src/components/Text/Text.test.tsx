@@ -1,6 +1,7 @@
-import React from 'react';
 import { FieldType, toDataFrame } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+
 import { DefaultOptions, TestIds } from '../../constants';
 import { Props, Text } from './Text';
 

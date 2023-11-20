@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
 import { config } from '@grafana/runtime';
-import { Resource, ResourceType } from '../types';
+import { useEffect, useState } from 'react';
+
 import { createResourcesManager } from '../helpers';
+import { Resource, ResourceType } from '../types';
 
 /**
  * External Scripts Manager

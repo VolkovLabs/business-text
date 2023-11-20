@@ -1,5 +1,6 @@
 import { Field, FieldConfigProperty, FieldType, PanelPlugin } from '@grafana/data';
 import { config } from '@grafana/runtime';
+
 import { HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
 import {
   CodeLanguageOptions,
@@ -43,7 +44,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         path: 'editors',
         name: 'Select Editors to display. Editors with updated values always displayed.',
         settings: {
-          options: EditorsOptions as any,
+          options: EditorsOptions as never,
         },
         defaultValue: DefaultOptions.editors,
       })

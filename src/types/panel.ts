@@ -1,6 +1,7 @@
+import { DataFrame } from '@grafana/data';
+
 import { EditorOptions } from './editor';
 import { Resource } from './resource';
-import { DataFrame } from '@grafana/data';
 
 /**
  * Editor Types
@@ -114,7 +115,7 @@ export interface RowItem {
   /**
    * Data
    *
-   * @type {DataFrame | {}}
+   * @type {DataFrame | object}
    */
-  data: DataFrame | {};
+  data: DataFrame | object;
 }

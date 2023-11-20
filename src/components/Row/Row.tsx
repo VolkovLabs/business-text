@@ -1,6 +1,7 @@
 import { EventBus, InterpolateFunction } from '@grafana/data';
 import { locationService } from '@grafana/runtime';
 import React, { useEffect, useRef } from 'react';
+
 import { TestIds } from '../../constants';
 import { RowItem } from '../../types';
 

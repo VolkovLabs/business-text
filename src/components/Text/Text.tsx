@@ -1,13 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
 import { css, cx } from '@emotion/css';
 import { DataFrame, EventBus, InterpolateFunction, TimeRange } from '@grafana/data';
 import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
+import React, { useCallback, useEffect, useState } from 'react';
+
 import { TestIds } from '../../constants';
 import { generateHtml } from '../../helpers';
-import { Styles } from './Text.styles';
 import { PanelOptions, RowItem } from '../../types';
 import { Row } from '../Row';
+import { Styles } from './Text.styles';
 
 /**
  * Properties
@@ -86,7 +87,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
    * HTML
    */
   const getHtml = useCallback(
-    (data: any, content: string) => {
+    (data: Record<string, unknown>, content: string) => {
       return {
         ...generateHtml({
           data,
@@ -144,7 +145,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
           });
 
           return acc;
-        }, [] as Array<Record<string, any>>);
+        }, [] as Array<Record<string, unknown>>);
 
         if (options.everyRow) {
           /**

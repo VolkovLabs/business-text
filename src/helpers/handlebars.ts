@@ -1,7 +1,8 @@
+import * as Handlebars from 'handlebars';
 /**
  * Helper for Date
  */
-const date = require('helper-date');
+import date from 'helper-date';
 
 /**
  * To Fixed
@@ -17,7 +18,7 @@ const toFixed = (num: unknown, digits: unknown) => {
 /**
  * Register Helpers
  */
-export const registerHelpers = (handlebars: any) => {
+export const registerHelpers = (handlebars: typeof Handlebars) => {
   /**
    * And
    */
@@ -56,7 +57,7 @@ export const registerHelpers = (handlebars: any) => {
   /**
    * JSON
    */
-  handlebars.registerHelper('json', (context: any) => JSON.stringify(context, null, 2));
+  handlebars.registerHelper('json', (context: unknown) => JSON.stringify(context, null, 2));
 
   /**
    * Greater Than
