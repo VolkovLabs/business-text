@@ -1,6 +1,7 @@
+import { DataFrame } from '@grafana/data';
+
 import { EditorOptions } from './editor';
 import { Resource } from './resource';
-import { DataFrame } from '@grafana/data';
 
 /**
  * Editor Types

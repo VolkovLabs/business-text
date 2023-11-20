@@ -1,5 +1,6 @@
 import { Field, FieldConfigProperty, FieldType, PanelPlugin } from '@grafana/data';
 import { config } from '@grafana/runtime';
+
 import { HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
 import {
   CodeLanguageOptions,

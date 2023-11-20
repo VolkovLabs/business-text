@@ -1,6 +1,7 @@
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import React from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { act, fireEvent, render, screen, within } from '@testing-library/react';
+
 import { TestIds } from '../../constants';
 import { ResourcesEditor } from './ResourcesEditor';
 

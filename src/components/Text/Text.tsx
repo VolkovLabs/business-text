@@ -1,13 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
 import { css, cx } from '@emotion/css';
 import { DataFrame, EventBus, InterpolateFunction, TimeRange } from '@grafana/data';
 import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
+import React, { useCallback, useEffect, useState } from 'react';
+
 import { TestIds } from '../../constants';
 import { generateHtml } from '../../helpers';
-import { Styles } from './Text.styles';
 import { PanelOptions, RowItem } from '../../types';
 import { Row } from '../Row';
+import { Styles } from './Text.styles';
 
 /**
  * Properties

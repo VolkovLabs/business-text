@@ -1,8 +1,9 @@
 import { Field, FieldType, PanelPlugin } from '@grafana/data';
 import { config } from '@grafana/runtime';
+
 import { DefaultOptions } from './constants';
-import { EditorType, PanelOptions } from './types';
 import { plugin } from './module';
+import { EditorType, PanelOptions } from './types';
 
 /**
  * Test Field

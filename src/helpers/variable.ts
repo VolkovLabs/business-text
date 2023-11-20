@@ -1,5 +1,5 @@
-import dayjs from 'dayjs';
 import { InterpolateFunction } from '@grafana/data';
+import dayjs from 'dayjs';
 
 /**
  * Replace Variables
@@ -32,7 +32,7 @@ export const replaceVariablesHelper = (name: string, replaceVariables: Interpola
  * Special date formatting syntax follows Global variables
  */
 const formatDate = (name: string, value: string): string => {
-  let date = new Date(parseInt(value, 10));
+  const date = new Date(parseInt(value, 10));
 
   /**
    * Normal case

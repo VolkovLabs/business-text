@@ -1,12 +1,13 @@
-import Handlebars from 'handlebars';
-import hljs from 'highlight.js';
-import MarkdownIt from 'markdown-it';
 import { EventBus, getLocale, InterpolateFunction, textUtil, TimeRange } from '@grafana/data';
 import { config, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
+import Handlebars from 'handlebars';
+import hljs from 'highlight.js';
+import MarkdownIt from 'markdown-it';
+
+import { PanelOptions } from '../types';
 import { registerHelpers } from './handlebars';
 import { replaceVariablesHelper } from './variable';
-import { PanelOptions } from '../types';
 
 /**
  * Helpers

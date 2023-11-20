@@ -6,7 +6,7 @@ describe('Handlebars helpers', () => {
      * Create Handlebars Mock
      */
     const createHandlebarsMock = () => {
-      let handlers: Record<string, Function> = {};
+      const handlers: Record<string, Function> = {};
 
       return {
         registerHelper: (name: string, handler: Function) => {

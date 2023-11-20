@@ -1,13 +1,13 @@
-import React, { useCallback, useMemo } from 'react';
 import { StandardEditorProps } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
 import { CodeEditor, CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana/ui';
-import { CodeLanguage, EditorType, Format, HelpersEditorSuggestions, TestIds } from '../../constants';
-
 /**
  * Monaco
  */
 import type * as monacoType from 'monaco-editor/esm/vs/editor/editor.api';
+import React, { useCallback, useMemo } from 'react';
+
+import { CodeLanguage, EditorType, Format, HelpersEditorSuggestions, TestIds } from '../../constants';
 
 /**
  * Properties

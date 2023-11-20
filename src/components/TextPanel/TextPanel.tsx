@@ -1,17 +1,18 @@
-import React, { useCallback, useMemo, useState } from 'react';
 import { css, cx } from '@emotion/css';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { Select, useStyles2 } from '@grafana/ui';
+import React, { useCallback, useMemo, useState } from 'react';
+
 import { TestIds } from '../../constants';
 import { useExternalResources } from '../../hooks';
-import { Styles } from './TextPanel.styles';
 import { PanelOptions, ResourceType } from '../../types';
 import { Text } from '../Text';
+import { Styles } from './TextPanel.styles';
 
 /**
  * Properties
  */
-interface Props extends PanelProps<PanelOptions> {}
+type Props = PanelProps<PanelOptions>
 
 /**
  * Panel
