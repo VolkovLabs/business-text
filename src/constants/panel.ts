@@ -22,6 +22,6 @@ export const EditorsOptions = [
  * Wrap Options
  */
 export const WrapOptions = [
-  { value: true, label: 'Enabled' },
-  { value: false, label: 'Disabled' },
+  { value: true, label: 'Enabled', icon: 'file-copy-alt' },
+  { value: false, label: 'Disabled', icon: 'times-circle' },
 ];

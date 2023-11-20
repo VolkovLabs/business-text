@@ -5,7 +5,7 @@ import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
 import { TestIds } from '../../constants';
 import { generateHtml } from '../../helpers';
-import { Styles } from '../../styles';
+import { Styles } from './Text.styles';
 import { PanelOptions, RowItem } from '../../types';
 import { Row } from '../Row';
 

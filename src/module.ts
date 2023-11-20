@@ -120,7 +120,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
       .addRadio({
         path: 'wrap',
         name: 'Wrap automatically in paragraphs',
-        description: 'If disabled, result will NOT be wrapped into <p> tags',
+        description: 'If disabled, result will NOT be wrapped into <p> tags.',
         defaultValue: DefaultOptions.wrap,
         settings: {
           options: WrapOptions,
