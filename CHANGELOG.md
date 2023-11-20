@@ -8,6 +8,9 @@
 - Add custom code option which is called after content is ready (#231)
 - Add option to enabled/disable wrapping to support empty lines in HTML (#235)
 - Add handlebars (startsWith, endsWith, match) (#211)
+- Update ESLint configuration and sort imports (#)
+- Update to Plugin Tools 2.1.1 (#)
+- Use Grafana Access Policy to sign plugin (#)
 
 ## 4.1.0 (2023-07-16)
 
