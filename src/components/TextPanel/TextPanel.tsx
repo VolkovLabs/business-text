@@ -4,7 +4,7 @@ import { PanelProps, SelectableValue } from '@grafana/data';
 import { Select, useStyles2 } from '@grafana/ui';
 import { TestIds } from '../../constants';
 import { useExternalResources } from '../../hooks';
-import { Styles } from '../../styles';
+import { Styles } from './TextPanel.styles';
 import { PanelOptions, ResourceType } from '../../types';
 import { Text } from '../Text';
 

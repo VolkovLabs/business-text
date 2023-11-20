@@ -5,6 +5,8 @@
 ### Features / Enhancements
 
 - Add ESLint deprecation check (#203)
+- Add custom code option which is called after content is ready (#231)
+- Add option to enabled/disable wrapping to support empty lines in HTML (#235)
 
 ## 4.1.0 (2023-07-16)
 

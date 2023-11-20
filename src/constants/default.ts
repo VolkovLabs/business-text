@@ -5,6 +5,7 @@ import { CodeLanguage, Format } from './editor';
  * Default Options
  */
 export const DefaultOptions: PanelOptions = {
+  afterRender: '',
   content: '```json\n{{{json @root}}}\n```',
   defaultContent: "The query didn't return any results.",
   editor: { height: 200, format: Format.AUTO, language: CodeLanguage.MARKDOWN },
@@ -15,4 +16,5 @@ export const DefaultOptions: PanelOptions = {
   helpers: '',
   status: '',
   styles: '',
+  wrap: true,
 };

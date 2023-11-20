@@ -6,6 +6,7 @@ import { config, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import { registerHelpers } from './handlebars';
 import { replaceVariablesHelper } from './variable';
+import { PanelOptions } from '../types';
 
 /**
  * Helpers
@@ -23,6 +24,7 @@ export const generateHtml = ({
   timeZone,
   replaceVariables,
   eventBus,
+  options,
 }: {
   data: Record<string, any>;
   content: string;
@@ -31,6 +33,7 @@ export const generateHtml = ({
   timeZone: TimeZone;
   replaceVariables: InterpolateFunction;
   eventBus: EventBus;
+  options: PanelOptions;
 }): { html: string; unsubscribe?: unknown } => {
   /**
    * Variable
@@ -93,7 +96,7 @@ export const generateHtml = ({
   /**
    * Render Markdown
    */
-  const html = md.render(markdown);
+  const html = options.wrap ? md.render(markdown) : md.renderInline(markdown);
 
   /**
    * Skip sanitizing if disabled in Grafana
