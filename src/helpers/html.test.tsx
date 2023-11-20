@@ -1,6 +1,8 @@
 import Handlebars from 'handlebars';
+import React from 'react';
 import { textUtil } from '@grafana/data';
 import { config } from '@grafana/runtime';
+import { render, screen } from '@testing-library/react';
 import { generateHtml } from './html';
 
 /**
@@ -32,6 +34,13 @@ jest.mock('@grafana/data', () => ({
 }));
 
 describe('HTML helpers', () => {
+  /**
+   * Options
+   */
+  const options = {
+    wrap: true,
+  };
+
   describe('Generate HTML', () => {
     beforeEach(() => {
       jest.mocked(textUtil.sanitize).mockClear();
@@ -42,10 +51,49 @@ describe('HTML helpers', () => {
 
       generateHtml({
         content,
+        options,
       } as any);
 
       expect(textUtil.sanitize).toHaveBeenCalledWith(content);
     });
+
+    it('Should wrap lines', () => {
+      const content = `
+        line 1
+        
+        line 2
+      `;
+
+      const { html } = generateHtml({
+        content,
+        options,
+      } as any);
+
+      render(<div data-testid="root" dangerouslySetInnerHTML={{ __html: html }} />);
+
+      expect(screen.getByTestId('root').querySelector('pre')).toBeInTheDocument();
+    });
+
+    it('Should wrap lines', () => {
+      const content = `
+        line 1
+        
+        line 2
+      `;
+
+      const { html } = generateHtml({
+        content,
+        options: {
+          ...options,
+          wrap: false,
+        },
+      } as any);
+
+      render(<div data-testid="root" dangerouslySetInnerHTML={{ __html: html }} />);
+
+      expect(screen.getByTestId('root').querySelector('pre')).not.toBeInTheDocument();
+    });
+
     it('Should not sanitize html if disabled', () => {
       const content = `<div></div>`;
 
@@ -56,6 +104,7 @@ describe('HTML helpers', () => {
 
       generateHtml({
         content,
+        options,
       } as any);
 
       expect(textUtil.sanitize).not.toHaveBeenCalled();
@@ -76,6 +125,7 @@ describe('HTML helpers', () => {
     generateHtml({
       content: '<div></div>',
       replaceVariables: (str: string) => str,
+      options,
     } as any);
 
     expect(Handlebars.registerHelper).toHaveBeenCalledWith('variable', expect.any(Function));

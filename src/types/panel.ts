@@ -86,6 +86,13 @@ export interface PanelOptions {
   externalScripts: Resource[];
 
   /**
+   * Wrap
+   *
+   * @type {boolean}
+   */
+  wrap: boolean;
+
+  /**
    * After Render Function
    *
    * @type {string}

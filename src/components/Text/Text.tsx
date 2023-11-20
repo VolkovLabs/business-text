@@ -5,7 +5,7 @@ import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
 import { TestIds } from '../../constants';
 import { generateHtml } from '../../helpers';
-import { Styles } from '../../styles';
+import { Styles } from './Text.styles';
 import { PanelOptions, RowItem } from '../../types';
 import { Row } from '../Row';
 
@@ -88,11 +88,20 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
   const getHtml = useCallback(
     (data: any, content: string) => {
       return {
-        ...generateHtml({ data, content, helpers: options.helpers, timeRange, timeZone, replaceVariables, eventBus }),
+        ...generateHtml({
+          data,
+          content,
+          helpers: options.helpers,
+          timeRange,
+          timeZone,
+          replaceVariables,
+          eventBus,
+          options,
+        }),
         data,
       };
     },
-    [eventBus, options.helpers, replaceVariables, timeRange, timeZone]
+    [eventBus, replaceVariables, timeRange, timeZone, options]
   );
 
   useEffect(() => {

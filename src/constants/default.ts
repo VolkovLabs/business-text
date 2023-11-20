@@ -16,4 +16,5 @@ export const DefaultOptions: PanelOptions = {
   helpers: '',
   status: '',
   styles: '',
+  wrap: true,
 };

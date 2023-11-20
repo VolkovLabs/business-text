@@ -17,3 +17,11 @@ export const EditorsOptions = [
   { value: EditorType.AFTER_RENDER, label: 'JavaScript code after content ready' },
   { value: EditorType.STYLES, label: 'Styles' },
 ];
+
+/**
+ * Wrap Options
+ */
+export const WrapOptions = [
+  { value: true, label: 'Enabled', icon: 'file-copy-alt' },
+  { value: false, label: 'Disabled', icon: 'times-circle' },
+];
