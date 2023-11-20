@@ -44,7 +44,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         path: 'editors',
         name: 'Select Editors to display. Editors with updated values always displayed.',
         settings: {
-          options: EditorsOptions as any,
+          options: EditorsOptions as never,
         },
         defaultValue: DefaultOptions.editors,
       })

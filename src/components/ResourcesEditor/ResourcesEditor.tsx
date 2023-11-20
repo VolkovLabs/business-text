@@ -19,7 +19,7 @@ import { Styles } from './styles';
 /**
  * Properties
  */
-type Props = StandardEditorProps<Resource[], any, PanelOptions>
+type Props = StandardEditorProps<Resource[], null, PanelOptions>;
 
 /**
  * Reorder

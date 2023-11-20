@@ -87,7 +87,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
    * HTML
    */
   const getHtml = useCallback(
-    (data: any, content: string) => {
+    (data: Record<string, unknown>, content: string) => {
       return {
         ...generateHtml({
           data,
@@ -145,7 +145,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
           });
 
           return acc;
-        }, [] as Array<Record<string, any>>);
+        }, [] as Array<Record<string, unknown>>);
 
         if (options.everyRow) {
           /**

@@ -20,7 +20,7 @@ describe('Handlebars helpers', () => {
      * Handlebars Mock
      */
     const handlebarsMock = createHandlebarsMock();
-    registerHelpers(handlebarsMock);
+    registerHelpers(handlebarsMock as never);
 
     it('And', () => {
       const handler = handlebarsMock.getHelper('and');

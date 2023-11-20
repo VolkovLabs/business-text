@@ -27,7 +27,7 @@ export const generateHtml = ({
   eventBus,
   options,
 }: {
-  data: Record<string, any>;
+  data: Record<string, unknown>;
   content: string;
   helpers: string;
   timeRange: TimeRange;
