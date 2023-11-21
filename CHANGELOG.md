@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.2.0 (IN PROGRESS)
+## 4.2.0 (2023-11-20)
 
 ### Features / Enhancements
 
@@ -11,6 +11,7 @@
 - Update ESLint configuration and sort imports (#236)
 - Update to Plugin Tools 2.1.1 (#236)
 - Use Grafana Access Policy to sign plugin (#236)
+- Update to Grafana 10.2.1 (#237)
 
 ## 4.1.0 (2023-07-16)
 

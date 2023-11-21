@@ -2,7 +2,7 @@
 
 ![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
 
-![Grafana](https://img.shields.io/badge/Grafana-10.0.2-orange)
+![Grafana](https://img.shields.io/badge/Grafana-10.2-orange)
 ![CI](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/CI/badge.svg)
 ![E2E](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/E2E/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel)
@@ -48,11 +48,11 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Documentation
 
-| Section                  | Description                                                    |
-| ------------------------ | -------------------------------------------------------------- |
+| Section                                                                              | Description                                                    |
+| ------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
 | [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content/)       | Explains how to create a visualization template for your data. |
-| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes/)      | Useful snippets that you can use in your templates.                                        |
-| [Features](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/features/)      | Demonstrates panel features.templates.                                        |
+| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes/)       | Useful snippets that you can use in your templates.            |
+| [Features](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/features/)     | Demonstrates panel features.templates.                         |
 | [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release/) | Stay up to date with the latest features and updates.          |
 
 ## Tutorial
