@@ -84,7 +84,7 @@ export const Row: React.FC<Props> = ({ className, item, afterRender, replaceVari
     <div
       ref={ref}
       className={className}
-      dangerouslySetInnerHTML={{ __html: item.html }} // eslint-disable-line
+      dangerouslySetInnerHTML={{ __html: item.html }}
       data-testid={TEST_IDS.text.content}
     />
   );

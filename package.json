@@ -39,7 +39,7 @@
     "@types/react-beautiful-dnd": "^13.1.7",
     "@types/uuid": "^9.0.7",
     "@volkovlabs/components": "^1.1.0",
-    "@volkovlabs/eslint-config": "^1.2.0",
+    "@volkovlabs/eslint-config": "^1.2.1",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "eslint-webpack-plugin": "^4.0.1",
