@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import React from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 
-import { TestIds } from '../../constants';
+import { TEST_IDS } from '../../constants';
 import { ResourcesEditor } from './ResourcesEditor';
 
 /**
@@ -50,8 +50,8 @@ describe('ResourcesEditor', () => {
       })
     );
 
-    expect(screen.getByTestId(TestIds.resourcesEditor.itemLabel('abc'))).toBeInTheDocument();
-    expect(screen.getByTestId(TestIds.resourcesEditor.itemLabel('aaa'))).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.resourcesEditor.itemLabel('abc'))).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.resourcesEditor.itemLabel('aaa'))).toBeInTheDocument();
   });
 
   it('Should render component if no value', () => {
@@ -61,7 +61,7 @@ describe('ResourcesEditor', () => {
       })
     );
 
-    expect(screen.getByTestId(TestIds.resourcesEditor.newItem)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.resourcesEditor.newItem)).toBeInTheDocument();
   });
 
   it('Should add new item', async () => {
@@ -84,13 +84,13 @@ describe('ResourcesEditor', () => {
     );
 
     await act(() =>
-      fireEvent.change(screen.getByTestId(TestIds.resourcesEditor.newItemName), { target: { value: 'bbb' } })
+      fireEvent.change(screen.getByTestId(TEST_IDS.resourcesEditor.newItemName), { target: { value: 'bbb' } })
     );
 
-    expect(screen.getByTestId(TestIds.resourcesEditor.buttonAddNew)).toBeInTheDocument();
-    expect(screen.getByTestId(TestIds.resourcesEditor.buttonAddNew)).not.toBeDisabled();
+    expect(screen.getByTestId(TEST_IDS.resourcesEditor.buttonAddNew)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.resourcesEditor.buttonAddNew)).not.toBeDisabled();
 
-    await act(() => fireEvent.click(screen.getByTestId(TestIds.resourcesEditor.buttonAddNew)));
+    await act(() => fireEvent.click(screen.getByTestId(TEST_IDS.resourcesEditor.buttonAddNew)));
 
     expect(onChange).toHaveBeenCalledWith(
       expect.arrayContaining([
@@ -120,7 +120,7 @@ describe('ResourcesEditor', () => {
       })
     );
 
-    const itemLabel = screen.getByTestId(TestIds.resourcesEditor.itemLabel('aaa'));
+    const itemLabel = screen.getByTestId(TEST_IDS.resourcesEditor.itemLabel('aaa'));
 
     /**
      * Check item presence
@@ -129,7 +129,7 @@ describe('ResourcesEditor', () => {
 
     await act(() => fireEvent.click(itemLabel));
 
-    const itemContent = screen.getByTestId(TestIds.resourcesEditor.itemContent('aaa'));
+    const itemContent = screen.getByTestId(TEST_IDS.resourcesEditor.itemContent('aaa'));
     /**
      * Check content presence
      */
@@ -139,7 +139,7 @@ describe('ResourcesEditor', () => {
      * Change
      */
     await act(() =>
-      fireEvent.change(within(itemContent).getByTestId(TestIds.resourcesEditor.fieldUrl), {
+      fireEvent.change(within(itemContent).getByTestId(TEST_IDS.resourcesEditor.fieldUrl), {
         target: { value: 'aaa123' },
       })
     );
@@ -173,7 +173,7 @@ describe('ResourcesEditor', () => {
       })
     );
 
-    const item = screen.getByTestId(TestIds.resourcesEditor.itemLabel('aaa'));
+    const item = screen.getByTestId(TEST_IDS.resourcesEditor.itemLabel('aaa'));
 
     /**
      * Check item presence
@@ -183,7 +183,7 @@ describe('ResourcesEditor', () => {
     /**
      * Remove
      */
-    await act(() => fireEvent.click(within(item).getByTestId(TestIds.resourcesEditor.buttonRemove)));
+    await act(() => fireEvent.click(within(item).getByTestId(TEST_IDS.resourcesEditor.buttonRemove)));
 
     expect(onChange).toHaveBeenCalledWith([
       {

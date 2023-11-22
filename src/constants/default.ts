@@ -4,7 +4,7 @@ import { CodeLanguage, Format } from './editor';
 /**
  * Default Options
  */
-export const DefaultOptions: PanelOptions = {
+export const DEFAULT_OPTIONS: PanelOptions = {
   afterRender: '',
   content: '```json\n{{{json @root}}}\n```',
   defaultContent: "The query didn't return any results.",

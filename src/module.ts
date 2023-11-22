@@ -3,12 +3,12 @@ import { config } from '@grafana/runtime';
 
 import { HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
 import {
-  CodeLanguageOptions,
-  DefaultOptions,
-  EditorsOptions,
-  EveryRowOptions,
-  FormatOptions,
-  WrapOptions,
+  CODE_LANGUAGE_OPTIONS,
+  DEFAULT_OPTIONS,
+  EDITORS_OPTIONS,
+  EVERY_ROW_OPTIONS,
+  FORMAT_OPTIONS,
+  WRAP_OPTIONS,
 } from './constants';
 import { EditorType, PanelOptions } from './types';
 
@@ -36,17 +36,17 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         path: 'everyRow',
         name: 'Render template',
         settings: {
-          options: EveryRowOptions,
+          options: EVERY_ROW_OPTIONS,
         },
-        defaultValue: DefaultOptions.everyRow,
+        defaultValue: DEFAULT_OPTIONS.everyRow,
       })
       .addMultiSelect({
         path: 'editors',
         name: 'Select Editors to display. Editors with updated values always displayed.',
         settings: {
-          options: EditorsOptions as never,
+          options: EDITORS_OPTIONS as never,
         },
-        defaultValue: DefaultOptions.editors,
+        defaultValue: DEFAULT_OPTIONS.editors,
       })
       .addFieldNamePicker({
         path: 'status',
@@ -65,7 +65,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         id: 'externalStyles',
         path: 'externalStyles',
         name: 'Styles',
-        defaultValue: DefaultOptions.externalStyles,
+        defaultValue: DEFAULT_OPTIONS.externalStyles,
         editor: ResourcesEditor,
         category: ['External Resources'],
         showIf: () => config.disableSanitizeHtml,
@@ -74,7 +74,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         id: 'externalScripts',
         path: 'externalScripts',
         name: 'Scripts',
-        defaultValue: DefaultOptions.externalScripts,
+        defaultValue: DEFAULT_OPTIONS.externalScripts,
         editor: ResourcesEditor,
         category: ['External Resources'],
         showIf: () => config.disableSanitizeHtml,
@@ -89,24 +89,24 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         name: 'Primary Content Language',
         description: 'Used for formatting and suggestions.',
         settings: {
-          options: CodeLanguageOptions,
+          options: CODE_LANGUAGE_OPTIONS,
         },
-        defaultValue: DefaultOptions.editor.language,
+        defaultValue: DEFAULT_OPTIONS.editor.language,
         category: ['Editor'],
       })
       .addRadio({
         path: 'editor.format',
         name: 'Formatting',
         settings: {
-          options: FormatOptions,
+          options: FORMAT_OPTIONS,
         },
-        defaultValue: DefaultOptions.editor.format,
+        defaultValue: DEFAULT_OPTIONS.editor.format,
         category: ['Editor'],
       })
       .addSliderInput({
         path: 'editor.height',
         name: 'Height, px',
-        defaultValue: DefaultOptions.editor.height,
+        defaultValue: DEFAULT_OPTIONS.editor.height,
         settings: {
           min: 100,
           max: 2000,
@@ -122,9 +122,9 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         path: 'wrap',
         name: 'Wrap automatically in paragraphs',
         description: 'If disabled, result will NOT be wrapped into <p> tags.',
-        defaultValue: DefaultOptions.wrap,
+        defaultValue: DEFAULT_OPTIONS.wrap,
         settings: {
-          options: WrapOptions,
+          options: WRAP_OPTIONS,
         },
         category: ['Content'],
       })
@@ -132,7 +132,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         id: 'content',
         path: 'content',
         name: 'Content',
-        defaultValue: DefaultOptions.content,
+        defaultValue: DEFAULT_OPTIONS.content,
         editor: TextEditor,
         category: ['Content'],
       })
@@ -141,11 +141,11 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         path: 'defaultContent',
         name: 'Default Content',
         description: 'Displayed when query result is empty.',
-        defaultValue: DefaultOptions.defaultContent,
+        defaultValue: DEFAULT_OPTIONS.defaultContent,
         editor: TextEditor,
         category: ['Content'],
         showIf: (config) =>
-          config.editors.includes(EditorType.DEFAULT) || config.defaultContent !== DefaultOptions.defaultContent,
+          config.editors.includes(EditorType.DEFAULT) || config.defaultContent !== DEFAULT_OPTIONS.defaultContent,
       });
 
     /**
@@ -157,10 +157,10 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         path: 'helpers',
         name: 'Before Content Rendering',
         description: 'Allows to execute code before content rendering. E.g. add Handlebars Helpers.',
-        defaultValue: DefaultOptions.helpers,
+        defaultValue: DEFAULT_OPTIONS.helpers,
         editor: HelpersEditor,
         category: ['JavaScript'],
-        showIf: (config) => config.editors.includes(EditorType.HELPERS) || config.helpers !== DefaultOptions.helpers,
+        showIf: (config) => config.editors.includes(EditorType.HELPERS) || config.helpers !== DEFAULT_OPTIONS.helpers,
       })
       .addCustomEditor({
         id: 'afterRender',
@@ -168,11 +168,11 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         name: 'After Content Ready',
         description:
           'Allows to execute code after content is ready. E.g. use element for drawing chart or event listeners.',
-        defaultValue: DefaultOptions.afterRender,
+        defaultValue: DEFAULT_OPTIONS.afterRender,
         editor: HelpersEditor,
         category: ['JavaScript'],
         showIf: (config) =>
-          config.editors.includes(EditorType.AFTER_RENDER) || config.afterRender !== DefaultOptions.afterRender,
+          config.editors.includes(EditorType.AFTER_RENDER) || config.afterRender !== DEFAULT_OPTIONS.afterRender,
       });
 
     /**
@@ -183,10 +183,10 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
       path: 'styles',
       name: 'CSS Styles',
       description: 'Allows to add styles. Use & {} for parent style.',
-      defaultValue: DefaultOptions.styles,
+      defaultValue: DEFAULT_OPTIONS.styles,
       editor: StylesEditor,
       category: ['CSS Styles'],
-      showIf: (config) => config.editors.includes(EditorType.STYLES) || config.styles !== DefaultOptions.styles,
+      showIf: (config) => config.editors.includes(EditorType.STYLES) || config.styles !== DEFAULT_OPTIONS.styles,
     });
 
     return builder;

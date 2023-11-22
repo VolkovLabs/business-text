@@ -38,7 +38,8 @@
     "@types/node": "^18.18.10",
     "@types/react-beautiful-dnd": "^13.1.7",
     "@types/uuid": "^9.0.7",
-    "@volkovlabs/eslint-config": "^1.1.0",
+    "@volkovlabs/components": "^1.1.0",
+    "@volkovlabs/eslint-config": "^1.2.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "eslint-webpack-plugin": "^4.0.1",
@@ -80,5 +81,5 @@
     "test:ci": "jest --maxWorkers 4 --coverage",
     "upgrade": "npm upgrade --save"
   },
-  "version": "4.2.0"
+  "version": "4.3.0"
 }

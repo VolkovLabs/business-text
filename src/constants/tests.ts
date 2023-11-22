@@ -1,7 +1,7 @@
 /**
  * Tests Identifiers
  */
-export const TestIds = {
+export const TEST_IDS = {
   panel: {
     root: 'data-testid panel',
     fieldFrame: 'data-testid panel field-frame',

@@ -3,16 +3,16 @@ import { PanelProps, SelectableValue } from '@grafana/data';
 import { Select, useStyles2 } from '@grafana/ui';
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { TestIds } from '../../constants';
+import { TEST_IDS } from '../../constants';
 import { useExternalResources } from '../../hooks';
 import { PanelOptions, ResourceType } from '../../types';
 import { Text } from '../Text';
-import { Styles } from './TextPanel.styles';
+import { getStyles } from './TextPanel.styles';
 
 /**
  * Properties
  */
-type Props = PanelProps<PanelOptions>
+type Props = PanelProps<PanelOptions>;
 
 /**
  * Panel
@@ -35,7 +35,7 @@ export const TextPanel: React.FC<Props> = ({
   /**
    * Styles
    */
-  const styles = useStyles2(Styles);
+  const styles = useStyles2(getStyles);
 
   /**
    * Change Frame
@@ -93,7 +93,7 @@ export const TextPanel: React.FC<Props> = ({
           height: ${height}px;
         `
       )}
-      data-testid={TestIds.panel.root}
+      data-testid={TEST_IDS.panel.root}
     >
       {isScriptsLoaded && (
         <>
@@ -122,7 +122,7 @@ export const TextPanel: React.FC<Props> = ({
                 onChange={onChangeFrame}
                 value={frame.refId}
                 options={selectableFrames}
-                data-testid={TestIds.panel.fieldFrame}
+                data-testid={TEST_IDS.panel.fieldFrame}
               />
             </div>
           )}

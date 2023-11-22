@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.3.0 (IS PROGRESS)
+
+### Features / Enhancements
+
+- Update ESLint configuration and refactor
+- Update Collapse from @volkovlabs/components
+
 ## 4.2.0 (2023-11-20)
 
 ### Features / Enhancements

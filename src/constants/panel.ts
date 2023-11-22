@@ -3,7 +3,7 @@ import { EditorType } from '../types';
 /**
  * Rows Options
  */
-export const EveryRowOptions = [
+export const EVERY_ROW_OPTIONS = [
   { value: true, label: 'Every row', icon: 'list-ul' },
   { value: false, label: 'All rows', icon: 'book' },
 ];
@@ -11,7 +11,7 @@ export const EveryRowOptions = [
 /**
  * Editors Options
  */
-export const EditorsOptions = [
+export const EDITORS_OPTIONS = [
   { value: EditorType.DEFAULT, label: 'Default content' },
   { value: EditorType.HELPERS, label: 'JavaScript code before content rendering' },
   { value: EditorType.AFTER_RENDER, label: 'JavaScript code after content ready' },
@@ -21,7 +21,7 @@ export const EditorsOptions = [
 /**
  * Wrap Options
  */
-export const WrapOptions = [
+export const WRAP_OPTIONS = [
   { value: true, label: 'Enabled', icon: 'file-copy-alt' },
   { value: false, label: 'Disabled', icon: 'times-circle' },
 ];

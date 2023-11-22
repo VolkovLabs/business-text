@@ -4,11 +4,11 @@ import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { TestIds } from '../../constants';
+import { TEST_IDS } from '../../constants';
 import { generateHtml } from '../../helpers';
 import { PanelOptions, RowItem } from '../../types';
 import { Row } from '../Row';
-import { Styles } from './Text.styles';
+import { getStyles } from './Text.styles';
 
 /**
  * Properties
@@ -74,7 +74,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
   /**
    * Styles
    */
-  const styles = useStyles2(Styles);
+  const styles = useStyles2(getStyles);
   const className = cx(
     styles.highlight,
     styles.frame,
@@ -131,21 +131,24 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
         /**
          * Frame returned
          */
-        const data = frame.fields.reduce((acc, { config, name, values, display }) => {
-          values.toArray().forEach((value, i) => {
-            /**
-             * Status Color
-             */
-            const statusColor = options.status === name ? display?.(value).color : undefined;
+        const data = frame.fields.reduce(
+          (acc, { config, name, values, display }) => {
+            values.toArray().forEach((value, i) => {
+              /**
+               * Status Color
+               */
+              const statusColor = options.status === name ? display?.(value).color : undefined;
 
-            /**
-             * Set Value and Status Color
-             */
-            acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
-          });
+              /**
+               * Set Value and Status Color
+               */
+              acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
+            });
 
-          return acc;
-        }, [] as Array<Record<string, unknown>>);
+            return acc;
+          },
+          [] as Array<Record<string, unknown>>
+        );
 
         if (options.everyRow) {
           /**
@@ -201,11 +204,11 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
   if (error) {
     return (
       <div className={styles.frame}>
-        <Alert title="Couldn't build text from template" severity="error" data-testid={TestIds.text.error}>
+        <Alert title="Couldn't build text from template" severity="error" data-testid={TEST_IDS.text.error}>
           Please make sure the Content is a valid template and Helpers are correct.
         </Alert>
 
-        {<pre data-testid={TestIds.text.errorContent}>{error instanceof Error ? error.message : `${error}`}</pre>}
+        {<pre data-testid={TEST_IDS.text.errorContent}>{error instanceof Error ? error.message : `${error}`}</pre>}
       </div>
     );
   }

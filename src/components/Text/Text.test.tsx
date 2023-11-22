@@ -2,7 +2,7 @@ import { FieldType, toDataFrame } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { DefaultOptions, TestIds } from '../../constants';
+import { DEFAULT_OPTIONS, TEST_IDS } from '../../constants';
 import { Props, Text } from './Text';
 
 /**
@@ -15,7 +15,7 @@ describe('<Text />', () => {
   it('Should render default content when there is no dataframe', async () => {
     const props: Props = {
       options: {
-        ...DefaultOptions,
+        ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
         everyRow: true,
@@ -28,8 +28,8 @@ describe('<Text />', () => {
 
     render(<Text {...props} />);
 
-    expect(screen.getByTestId(TestIds.text.content)).toBeInTheDocument();
-    expect(screen.getByTestId(TestIds.text.content)).toHaveTextContent('Test default content');
+    expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.text.content)).toHaveTextContent('Test default content');
   });
 
   it('Should apply styles', async () => {
@@ -39,7 +39,7 @@ describe('<Text />', () => {
     const replaceVariables = jest.fn((str: string) => str);
     const props: Props = {
       options: {
-        ...DefaultOptions,
+        ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
         everyRow: true,
@@ -55,8 +55,8 @@ describe('<Text />', () => {
 
     expect(replaceVariables).toHaveBeenCalledWith(styles);
 
-    expect(screen.getByTestId(TestIds.text.content)).toBeInTheDocument();
-    expect(screen.getByTestId(TestIds.text.content)).toHaveStyle({ color: 'red' });
+    expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.text.content)).toHaveStyle({ color: 'red' });
   });
 
   describe('After Render Function', () => {
@@ -68,7 +68,7 @@ describe('<Text />', () => {
 
       const props: Props = {
         options: {
-          ...DefaultOptions,
+          ...DEFAULT_OPTIONS,
           defaultContent: '<div id="element"></div>',
           afterRender: `
           context.grafana.eventBus.publish('ready', context.element.querySelector('#element'));
@@ -94,7 +94,7 @@ describe('<Text />', () => {
 
       const props: Props = {
         options: {
-          ...DefaultOptions,
+          ...DEFAULT_OPTIONS,
           defaultContent: '<div id="element"></div>',
           afterRender: `
           return () => context.grafana.eventBus.publish('destroy');
@@ -133,7 +133,7 @@ describe('<Text />', () => {
     const props: Props = {
       frame: dataFrame,
       options: {
-        ...DefaultOptions,
+        ...DEFAULT_OPTIONS,
         status: 'value',
         content: '<div style="background-color: {{statusColor}};" data-testid="status">{{status}}</div>',
         defaultContent: 'Test default content',
@@ -176,7 +176,7 @@ describe('<Text />', () => {
         ],
       }),
       options: {
-        ...DefaultOptions,
+        ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
         everyRow: true,
@@ -189,10 +189,10 @@ describe('<Text />', () => {
 
     render(<Text {...props} />);
 
-    expect(screen.getAllByTestId(TestIds.text.content)[0]).toBeInTheDocument();
-    expect(screen.getAllByTestId(TestIds.text.content)[0]).toHaveTextContent('Test content');
-    expect(screen.getAllByTestId(TestIds.text.content)[1]).toBeInTheDocument();
-    expect(screen.getAllByTestId(TestIds.text.content)[1]).toHaveTextContent('Test content');
+    expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toBeInTheDocument();
+    expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toHaveTextContent('Test content');
+    expect(screen.getAllByTestId(TEST_IDS.text.content)[1]).toBeInTheDocument();
+    expect(screen.getAllByTestId(TEST_IDS.text.content)[1]).toHaveTextContent('Test content');
   });
 
   /**
@@ -205,7 +205,7 @@ describe('<Text />', () => {
         length: 2,
       },
       options: {
-        ...DefaultOptions,
+        ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
         everyRow: false,
@@ -254,7 +254,7 @@ describe('<Text />', () => {
         length: 2,
       }),
       options: {
-        ...DefaultOptions,
+        ...DEFAULT_OPTIONS,
         content: template,
         defaultContent: 'Test default content',
         everyRow: false,

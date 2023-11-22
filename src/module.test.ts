@@ -1,7 +1,7 @@
 import { Field, FieldType, PanelPlugin } from '@grafana/data';
 import { config } from '@grafana/runtime';
 
-import { DefaultOptions } from './constants';
+import { DEFAULT_OPTIONS } from './constants';
 import { plugin } from './module';
 import { EditorType, PanelOptions } from './types';
 
@@ -82,7 +82,7 @@ describe('plugin', () => {
 
       builder.addCustomEditor.mockImplementation(
         addInputImplementation(
-          { defaultContent: DefaultOptions.defaultContent + '123', editors: [] },
+          { defaultContent: DEFAULT_OPTIONS.defaultContent + '123', editors: [] },
           shownOptionsPaths
         )
       );

@@ -3,7 +3,7 @@ import { CodeEditor, CodeEditorSuggestionItemKind } from '@grafana/ui';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { CodeLanguage, Format, HelpersEditorSuggestions, TestIds } from '../../constants';
+import { CodeLanguage, Format, HELPERS_EDITOR_SUGGESTIONS, TEST_IDS } from '../../constants';
 import { CustomEditor, HelpersEditor, StylesEditor, TextEditor } from './CustomEditor';
 
 /**
@@ -65,7 +65,7 @@ describe('Custom Editor', () => {
 
   it('Should find component', async () => {
     render(getComponent({}));
-    expect(screen.getByTestId(TestIds.textEditor.root)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.textEditor.root)).toBeInTheDocument();
   });
 
   it('Should show mini map if value more than 100 symbols', () => {
@@ -204,7 +204,7 @@ describe('Custom Editor', () => {
         () =>
           ({
             getVariables: jest.fn().mockImplementation(() => variables),
-          } as any)
+          }) as any
       );
 
       render(<TextEditor {...props} />);
@@ -244,12 +244,12 @@ describe('Custom Editor', () => {
         () =>
           ({
             getVariables: jest.fn().mockImplementation(() => variables),
-          } as any)
+          }) as any
       );
 
       render(<HelpersEditor {...props} />);
 
-      expect(suggestionsResult).toEqual(expect.arrayContaining(HelpersEditorSuggestions));
+      expect(suggestionsResult).toEqual(expect.arrayContaining(HELPERS_EDITOR_SUGGESTIONS));
       expect(suggestionsResult).toEqual(
         expect.arrayContaining([
           {
@@ -302,7 +302,7 @@ describe('Custom Editor', () => {
         () =>
           ({
             getVariables: jest.fn().mockImplementation(() => variables),
-          } as any)
+          }) as any
       );
 
       render(<StylesEditor {...props} />);

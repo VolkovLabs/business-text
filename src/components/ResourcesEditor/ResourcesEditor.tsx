@@ -1,5 +1,6 @@
 import { StandardEditorProps } from '@grafana/data';
-import { Button, Icon, InlineField, InlineFieldRow, Input, useTheme2 } from '@grafana/ui';
+import { Button, Icon, InlineField, InlineFieldRow, Input, useStyles2 } from '@grafana/ui';
+import { Collapse } from '@volkovlabs/components';
 import React, { useCallback, useState } from 'react';
 import {
   DragDropContext,
@@ -11,10 +12,9 @@ import {
 } from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 
-import { TestIds } from '../../constants';
+import { TEST_IDS } from '../../constants';
 import { PanelOptions, Resource } from '../../types';
-import { Collapse } from '../Collapse';
-import { Styles } from './styles';
+import { getStyles } from './ResourceEditor.styles';
 
 /**
  * Properties
@@ -52,8 +52,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
   /**
    * Styles and Theme
    */
-  const theme = useTheme2();
-  const styles = Styles(theme);
+  const styles = useStyles2(getStyles);
 
   /**
    * States
@@ -146,8 +145,8 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                     >
                       <Collapse
                         title={<div className={styles.groupHeader}>{url}</div>}
-                        headerTestId={TestIds.resourcesEditor.itemLabel(url)}
-                        contentTestId={TestIds.resourcesEditor.itemContent(url)}
+                        headerTestId={TEST_IDS.resourcesEditor.itemLabel(url)}
+                        contentTestId={TEST_IDS.resourcesEditor.itemContent(url)}
                         actions={
                           <>
                             <Button
@@ -159,7 +158,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                               onClick={() => {
                                 onRemoveItem(id);
                               }}
-                              data-testid={TestIds.resourcesEditor.buttonRemove}
+                              data-testid={TEST_IDS.resourcesEditor.buttonRemove}
                             />
                             <Icon name="draggabledots" {...provided.dragHandleProps} className={styles.dragIcon} />
                           </>
@@ -176,7 +175,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                                 url: event.currentTarget.value,
                               });
                             }}
-                            data-testid={TestIds.resourcesEditor.fieldUrl}
+                            data-testid={TEST_IDS.resourcesEditor.fieldUrl}
                           />
                         </InlineField>
                       </Collapse>
@@ -190,13 +189,13 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
         </Droppable>
       </DragDropContext>
 
-      <InlineFieldRow className={styles.newGroup} data-testid={TestIds.resourcesEditor.newItem}>
+      <InlineFieldRow className={styles.newGroup} data-testid={TEST_IDS.resourcesEditor.newItem}>
         <InlineField label="New Resource" grow>
           <Input
             placeholder="URL"
             value={newItem}
             onChange={(event) => setNewItem(event.currentTarget.value)}
-            data-testid={TestIds.resourcesEditor.newItemName}
+            data-testid={TEST_IDS.resourcesEditor.newItemName}
           />
         </InlineField>
         <Button
@@ -204,7 +203,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
           title="Add Resource"
           disabled={!newItem}
           onClick={onAddNewItem}
-          data-testid={TestIds.resourcesEditor.buttonAddNew}
+          data-testid={TEST_IDS.resourcesEditor.buttonAddNew}
         >
           Add
         </Button>
