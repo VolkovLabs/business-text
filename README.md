@@ -10,23 +10,23 @@
 
 ## Introduction
 
-A Dynamic Text visualization panel is a Grafana plugin that transforms monotone text/table data into vibrant, easy-to-read information cards. The panel supports variables, Markdown and Handlebars.
+Dynamic Text Panel is a Grafana visualization plugin that converts plain text and table data into visually appealing, easy-to-read information cards.
 
-The Dynamic Text visualization panel lets you define a text template using the data from your data source query.
+The Dynamic Text Panel plugin allows you to construct a text visualization template from the values of a dataset returned by a data source query.
 
-[![Dynamic Text Plugin for Grafana | Markdown, HTML and Handlebars to transform data visualizations](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/video.png)](https://youtu.be/MpNZ4Yl-p0U)
+[![Dynamic Text plugin for Grafana | Use HTML, Markdown, JavaScript and CSS | Community use cases](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/video.png)](https://youtu.be/AcQi-6GCrNU)
 
 ## Requirements
 
-- **Grafana 9** and **Grafana 10** are required for major version 4.
-- **Grafana 8.5** and **Grafana 9** are required for major versions 2 and 3.
-- **Grafana 7** is required for major version 1.
+- Dynamic Text Panel 4.X requires **Grafana 9** or **Grafana 10**.
+- Dynamic Text Panel 2.X and 3.X require **Grafana 8.5** or **Grafana 9**.
+- Dynamic Text Panel 1.X requires **Grafana 7**.
 
 ## Getting Started
 
-The Dynamic Text visualization panel can be installed from the [Grafana Catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or utilizing the Grafana command line tool.
+You can install Dynamic Text Panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or using the Grafana command line tool.
 
-For the latter, use the following command.
+For the latter, please use the following command:
 
 ```bash
 grafana-cli plugins install marcusolsson-dynamictext-panel
@@ -34,17 +34,18 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Highlights
 
-- Uses Monaco Code Editor with Auto formatting to update Templates, JavaScript Code and Styles.
+- Uses Monaco Code Editor with automatic formatting supporting templates, JS code snippets, and CSS styling.
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
-- Uses [markdown-it](https://github.com/markdown-it/markdown-it) for rendering Markdown to HTML.
-  - Supports Code syntax highlight using a11y styles.
-- Sanitizing
+- Renders [markdown-it](https://github.com/markdown-it/markdown-it) into HTML elements.
+  - Supports the highlighting of code syntax using A11Y styles.
+- Provides code sanitization:
   - HTML inside templates is sanitized using [XSS](https://jsxss.com/en/index.html).
-  - Can be disabled using Grafana configuration `disable_sanitize_html`.
-- Allows to display nested objects using `{{json object}}` Handlebars helper.
-- Allows displaying Time global variables (`__to` and `__from`) as seconds, ISO, and formatted using `dayjs`.
-- Allows adding Handlebars helpers and Event handlers.
-- Allows adding CSS styles.
+  - Can be disabled in the Grafana configuration through the `disable_sanitize_html` parameter.
+- Supports display of nested objects using the `{{json object}}` Handlebars helper.
+- Supports display of time global variables (`__to` and `__from`) as seconds, ISO timestamps, or formatted using the `dayjs` library.
+- Supports adding the Handlebars helpers and event handlers.
+- Supports adding CSS styles.
+- Supports internationalization using custom helpers.
 
 ## Documentation
 
@@ -55,24 +56,14 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 | [Features](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/features/)     | Demonstrates panel features.templates.                         |
 | [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release/) | Stay up to date with the latest features and updates.          |
 
-## Tutorial
-
-This video outlines all the new features we implemented, including the most asked-for JavaScript area code.
-
-[![JavaScript code in the Dynamic text panel | Grafana functionality explodes](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/javascript.png)](https://youtu.be/lJqk5Gobec4)
-
-Three plugins that make Grafana complete. Dynamic Text, Data Manipulation, and Apache ECharts are all you need to create functional real-world web applications.
-
-[![Magic JavaScript trio for Grafana | Dynamic Text, Data Manipulation and Apache ECharts plugins](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/magic-trio.png)](https://youtu.be/wPr4gZYzUVA)
-
 ## Feedback
 
-We love to hear from you. There are various ways to get in touch with us.
+We're looking forward to hearing from you. You can use different ways to get in touch with us.
 
-- Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues/new/choose).
-- Subscribe to our [YouTube Channel](https://www.youtube.com/@volkovlabs) and add a comment.
-- Sponsor our open-source plugins for Grafana with [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
-- Star the repository to show your support.
+- Ask a question, request a new feature, or report an issue at [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues).
+- Subscribe to our [YouTube Channel](https://www.youtube.com/@volkovlabs) and leave your comments.
+- Sponsor our open-source plugins for Grafana at [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
+- Support our project by starring the repository.
 
 ## License
 

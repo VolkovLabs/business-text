@@ -6,6 +6,7 @@
 
 - Update ESLint configuration and refactor (#239)
 - Update Collapse from @volkovlabs/components (#239)
+- Update Introduction video in README (#240)
 
 ## 4.2.0 (2023-11-20)
 
