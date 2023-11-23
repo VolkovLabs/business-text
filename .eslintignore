@@ -12,3 +12,6 @@ dist/
 **/*.test.ts
 **/*.test.tsx
 __mocks__
+
+# Declarations
+**/*.d.ts

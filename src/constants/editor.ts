@@ -14,7 +14,7 @@ export const enum CodeLanguage {
 /**
  * Supported Languages Options
  */
-export const CodeLanguageOptions = [
+export const CODE_LANGUAGE_OPTIONS = [
   { value: CodeLanguage.HANDLEBARS, label: 'Handlebars' },
   { value: CodeLanguage.HTML, label: 'HTML' },
   { value: CodeLanguage.MARKDOWN, label: 'Markdown' },
@@ -31,7 +31,7 @@ export enum Format {
 /**
  * Format Options
  */
-export const FormatOptions = [
+export const FORMAT_OPTIONS = [
   { value: Format.AUTO, label: 'Auto', icon: 'font' },
   { value: Format.NONE, label: 'Disabled', icon: 'times-circle' },
 ];
@@ -39,7 +39,7 @@ export const FormatOptions = [
 /**
  * Helpers Suggestions
  */
-export const HelpersEditorSuggestions: CodeEditorSuggestionItem[] = [
+export const HELPERS_EDITOR_SUGGESTIONS: CodeEditorSuggestionItem[] = [
   {
     label: 'data',
     kind: CodeEditorSuggestionItemKind.Property,

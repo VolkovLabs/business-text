@@ -2,7 +2,7 @@ import { FieldType, toDataFrame } from '@grafana/data';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { TestIds } from '../../constants';
+import { TEST_IDS } from '../../constants';
 import { TextPanel } from './TextPanel';
 
 /**
@@ -76,7 +76,7 @@ describe('Panel', () => {
   it('Should find component', async () => {
     render(getComponent({ options: { defaultContent: 'hello' }, replaceVariables: (str: string) => str }));
 
-    expect(screen.getByTestId(TestIds.panel.root)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.panel.root)).toBeInTheDocument();
   });
 
   describe('Helpers execution', () => {
@@ -286,9 +286,9 @@ describe('Panel', () => {
       /**
        * Check if error is shown
        */
-      expect(screen.getByTestId(TestIds.text.error)).toBeInTheDocument();
-      expect(screen.getByTestId(TestIds.text.errorContent)).toBeInTheDocument();
-      expect(screen.queryByTestId(TestIds.text.content)).not.toBeInTheDocument();
+      expect(screen.getByTestId(TEST_IDS.text.error)).toBeInTheDocument();
+      expect(screen.getByTestId(TEST_IDS.text.errorContent)).toBeInTheDocument();
+      expect(screen.queryByTestId(TEST_IDS.text.content)).not.toBeInTheDocument();
 
       /**
        * Render without errors
@@ -307,12 +307,12 @@ describe('Panel', () => {
       /**
        * Check if error is not rendered
        */
-      expect(screen.queryByTestId(TestIds.text.error)).not.toBeInTheDocument();
+      expect(screen.queryByTestId(TEST_IDS.text.error)).not.toBeInTheDocument();
 
       /**
        * Check if content is rendered
        */
-      expect(screen.getByTestId(TestIds.text.content)).toBeInTheDocument();
+      expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
     });
 
     it('Should show custom execution error', () => {
@@ -333,9 +333,9 @@ describe('Panel', () => {
       /**
        * Check if error is shown
        */
-      expect(screen.getByTestId(TestIds.text.error)).toBeInTheDocument();
-      expect(screen.getByTestId(TestIds.text.errorContent)).toBeInTheDocument();
-      expect(screen.getByTestId(TestIds.text.errorContent)).toHaveTextContent('abc');
+      expect(screen.getByTestId(TEST_IDS.text.error)).toBeInTheDocument();
+      expect(screen.getByTestId(TEST_IDS.text.errorContent)).toBeInTheDocument();
+      expect(screen.getByTestId(TEST_IDS.text.errorContent)).toHaveTextContent('abc');
     });
   });
 
@@ -358,7 +358,7 @@ describe('Panel', () => {
         })
       );
 
-      const fieldFrame = screen.getByTestId(TestIds.panel.fieldFrame);
+      const fieldFrame = screen.getByTestId(TEST_IDS.panel.fieldFrame);
       expect(fieldFrame).toBeInTheDocument();
       expect(fieldFrame).toHaveValue('A');
     });
@@ -381,7 +381,7 @@ describe('Panel', () => {
         })
       );
 
-      const fieldFrame = screen.getByTestId(TestIds.panel.fieldFrame);
+      const fieldFrame = screen.getByTestId(TEST_IDS.panel.fieldFrame);
 
       fireEvent.change(fieldFrame, { target: { value: 'B' } });
 

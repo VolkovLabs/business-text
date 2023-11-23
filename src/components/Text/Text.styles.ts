@@ -1,12 +1,12 @@
 import { css } from '@emotion/css';
 import { GrafanaTheme2 } from '@grafana/data';
 
-import { HighlightDark, HighlightLight } from '../../constants';
+import { HIGHLIGHT_DARK, HIGHLIGHT_LIGHT } from '../../constants';
 
 /**
  * Styles
  */
-export const Styles = (theme: GrafanaTheme2) => {
+export const getStyles = (theme: GrafanaTheme2) => {
   /**
    * Frame
    */
@@ -63,7 +63,7 @@ export const Styles = (theme: GrafanaTheme2) => {
   /**
    * Highlight
    */
-  const highlight = theme.isDark ? HighlightDark : HighlightLight;
+  const highlight = theme.isDark ? HIGHLIGHT_DARK : HIGHLIGHT_LIGHT;
 
   return {
     frame,

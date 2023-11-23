@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 
-export const HighlightLight = css`
+export const HIGHLIGHT_LIGHT = css`
   pre code.hljs {
     display: block;
     overflow-x: auto;
@@ -87,7 +87,7 @@ Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlig
   }
 `;
 
-export const HighlightDark = css`
+export const HIGHLIGHT_DARK = css`
   pre code.hljs {
     display: block;
     overflow-x: auto;

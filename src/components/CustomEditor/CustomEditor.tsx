@@ -7,7 +7,7 @@ import { CodeEditor, CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } fr
 import type * as monacoType from 'monaco-editor/esm/vs/editor/editor.api';
 import React, { useCallback, useMemo } from 'react';
 
-import { CodeLanguage, EditorType, Format, HelpersEditorSuggestions, TestIds } from '../../constants';
+import { CodeLanguage, EditorType, Format, HELPERS_EDITOR_SUGGESTIONS, TEST_IDS } from '../../constants';
 
 /**
  * Properties
@@ -64,7 +64,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
       return suggestions;
     }
 
-    return HelpersEditorSuggestions.concat(suggestions);
+    return HELPERS_EDITOR_SUGGESTIONS.concat(suggestions);
   }, [templateSrv, type]);
 
   /**
@@ -92,7 +92,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
   }, [context.options.editor.language, type]);
 
   return (
-    <div data-testid={TestIds.textEditor.root}>
+    <div data-testid={TEST_IDS.textEditor.root}>
       <CodeEditor
         language={language}
         showLineNumbers={true}

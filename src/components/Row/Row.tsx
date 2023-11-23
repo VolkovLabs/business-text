@@ -2,7 +2,7 @@ import { EventBus, InterpolateFunction } from '@grafana/data';
 import { locationService } from '@grafana/runtime';
 import React, { useEffect, useRef } from 'react';
 
-import { TestIds } from '../../constants';
+import { TEST_IDS } from '../../constants';
 import { RowItem } from '../../types';
 
 /**
@@ -85,7 +85,7 @@ export const Row: React.FC<Props> = ({ className, item, afterRender, replaceVari
       ref={ref}
       className={className}
       dangerouslySetInnerHTML={{ __html: item.html }}
-      data-testid={TestIds.text.content}
+      data-testid={TEST_IDS.text.content}
     />
   );
 };
