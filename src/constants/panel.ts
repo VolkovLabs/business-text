@@ -6,6 +6,7 @@ import { EditorType, RenderMode } from '../types';
 export const RENDER_MODE_OPTIONS = [
   { value: RenderMode.EVERY_ROW, label: 'Every row', icon: 'list-ul' },
   { value: RenderMode.ALL_ROWS, label: 'All rows', icon: 'book' },
+  { value: RenderMode.DATA, label: 'All data', icon: 'gf-layout-simple' },
 ];
 
 /**

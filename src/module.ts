@@ -34,7 +34,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
   })
   .setPanelOptions((builder) => {
     builder
-      .addRadio({
+      .addSelect({
         path: 'renderMode',
         name: 'Render template',
         settings: {

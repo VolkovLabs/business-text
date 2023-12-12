@@ -18,7 +18,8 @@ export enum EditorType {
  */
 export enum RenderMode {
   EVERY_ROW = 'everyRow',
-  ALL_ROWS = 'allRow',
+  ALL_ROWS = 'allRows',
+  DATA = 'data',
 }
 
 /**

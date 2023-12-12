@@ -4,12 +4,12 @@ import { PanelOptions, RenderMode } from './types';
 
 /**
  * Outdated Panel Options
- *
- * Removed in *version*
  */
 interface OutdatedPanelOptions {
   /**
-   * 4.3.0
+   * Every row
+   *
+   * Removed in 4.3.0
    */
   everyRow?: boolean;
 }
@@ -27,9 +27,11 @@ export const getMigratedOptions = (panel: PanelModel<OutdatedPanelOptions & Pane
   if (everyRow !== undefined) {
     return {
       ...actualOptions,
-      renderMode: panel.options.everyRow ? RenderMode.EVERY_ROW : RenderMode.ALL_ROWS,
+      renderMode: everyRow ? RenderMode.EVERY_ROW : RenderMode.ALL_ROWS,
     };
   }
 
-  return actualOptions;
+  return {
+    ...actualOptions,
+  };
 };
