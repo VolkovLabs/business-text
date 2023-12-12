@@ -2,8 +2,14 @@ import { FieldType, toDataFrame } from '@grafana/data';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { TEST_IDS } from '../../constants';
+import { CodeLanguage, Format, TEST_IDS } from '../../constants';
+import { PanelOptions, RenderMode } from '../../types';
 import { TextPanel } from './TextPanel';
+
+/**
+ * Props
+ */
+type Props = React.ComponentProps<typeof TextPanel>;
 
 /**
  * Mock @grafana/runtime
@@ -57,7 +63,33 @@ jest.mock('../../hooks', () => ({
  * Panel
  */
 describe('Panel', () => {
-  const getComponent = ({ options = { name: 'data' }, ...restProps }: any) => {
+  /**
+   * Default options
+   */
+  const defaultOptions: PanelOptions = {
+    content: '',
+    defaultContent: '',
+    renderMode: RenderMode.ALL_ROWS,
+    editors: [],
+    helpers: '',
+    editor: {
+      height: 300,
+      format: Format.AUTO,
+      language: CodeLanguage.JAVASCRIPT,
+    },
+    styles: '',
+    status: '',
+    externalScripts: [],
+    externalStyles: [],
+    wrap: false,
+    afterRender: '',
+  };
+
+  /**
+   * Get Component
+   * @param props
+   */
+  const getComponent = ({ options = defaultOptions, ...restProps }: Partial<Props>) => {
     const data = {
       series: [
         toDataFrame({
@@ -66,7 +98,7 @@ describe('Panel', () => {
         }),
       ],
     };
-    return <TextPanel data={data} {...restProps} options={options} />;
+    return <TextPanel data={data} options={options} {...(restProps as any)} />;
   };
 
   afterAll(() => {
@@ -74,7 +106,9 @@ describe('Panel', () => {
   });
 
   it('Should find component', async () => {
-    render(getComponent({ options: { defaultContent: 'hello' }, replaceVariables: (str: string) => str }));
+    render(
+      getComponent({ options: { ...defaultOptions, defaultContent: 'hello' }, replaceVariables: (str: string) => str })
+    );
 
     expect(screen.getByTestId(TEST_IDS.panel.root)).toBeInTheDocument();
   });
@@ -85,7 +119,7 @@ describe('Panel', () => {
       unsubscribe,
     }));
 
-    const eventBus = {
+    const eventBus: any = {
       subscribe,
     };
 
@@ -106,6 +140,7 @@ describe('Panel', () => {
       render(
         getComponent({
           options: {
+            ...defaultOptions,
             defaultContent: 'hello',
             helpers,
           },
@@ -130,6 +165,7 @@ describe('Panel', () => {
       const { rerender } = render(
         getComponent({
           options: {
+            ...defaultOptions,
             defaultContent: 'hello',
             helpers,
           },
@@ -146,6 +182,7 @@ describe('Panel', () => {
       rerender(
         getComponent({
           options: {
+            ...defaultOptions,
             defaultContent: 'hello',
             helpers,
           },
@@ -162,7 +199,7 @@ describe('Panel', () => {
 
     it('Should call unsubscribe function for every row', () => {
       const values = ['111', '222'];
-      const data = {
+      const data: any = {
         series: [
           toDataFrame({
             name: 'data',
@@ -179,9 +216,10 @@ describe('Panel', () => {
       const { rerender } = render(
         getComponent({
           options: {
+            ...defaultOptions,
             content: 'hello',
             helpers,
-            everyRow: true,
+            renderMode: RenderMode.EVERY_ROW,
           },
           replaceVariables: (str: string) => str,
           data,
@@ -198,9 +236,10 @@ describe('Panel', () => {
       rerender(
         getComponent({
           options: {
+            ...defaultOptions,
             content: 'hello',
             helpers,
-            everyRow: true,
+            renderMode: RenderMode.EVERY_ROW,
           },
           replaceVariables: (str: string) => str,
           data,
@@ -216,7 +255,7 @@ describe('Panel', () => {
 
     it('Should call unsubscribe function for data frame', () => {
       const values = ['111', '222'];
-      const data = {
+      const data: any = {
         series: [
           toDataFrame({
             name: 'data',
@@ -233,9 +272,10 @@ describe('Panel', () => {
       const { rerender } = render(
         getComponent({
           options: {
+            ...defaultOptions,
             content: 'hello',
             helpers,
-            everyRow: false,
+            renderMode: RenderMode.ALL_ROWS,
           },
           replaceVariables: (str: string) => str,
           data,
@@ -252,9 +292,10 @@ describe('Panel', () => {
       rerender(
         getComponent({
           options: {
+            ...defaultOptions,
             content: 'hello',
             helpers,
-            everyRow: false,
+            renderMode: RenderMode.EVERY_ROW,
           },
           replaceVariables: (str: string) => str,
           data,
@@ -275,6 +316,7 @@ describe('Panel', () => {
       const { rerender } = render(
         getComponent({
           options: {
+            ...defaultOptions,
             defaultContent: 'hello',
             helpers: `abc()`,
           },
@@ -296,6 +338,7 @@ describe('Panel', () => {
       rerender(
         getComponent({
           options: {
+            ...defaultOptions,
             defaultContent: 'hello',
             helpers,
           },
@@ -322,6 +365,7 @@ describe('Panel', () => {
       render(
         getComponent({
           options: {
+            ...defaultOptions,
             defaultContent: 'hello',
             helpers: `throw 'abc'`,
           },
@@ -343,7 +387,7 @@ describe('Panel', () => {
     it('Should show field frame if frames are several', () => {
       render(
         getComponent({
-          options: { defaultContent: 'hello' },
+          options: { ...defaultOptions, defaultContent: 'hello' },
           replaceVariables: (str: string) => str,
           data: {
             series: [
@@ -354,7 +398,7 @@ describe('Panel', () => {
                 refId: 'B',
               },
             ],
-          },
+          } as any,
         })
       );
 
@@ -366,7 +410,7 @@ describe('Panel', () => {
     it('Should change frame', () => {
       render(
         getComponent({
-          options: { defaultContent: 'hello' },
+          options: { ...defaultOptions, defaultContent: 'hello' },
           replaceVariables: (str: string) => str,
           data: {
             series: [
@@ -377,7 +421,7 @@ describe('Panel', () => {
                 refId: 'B',
               },
             ],
-          },
+          } as any,
         })
       );
 
