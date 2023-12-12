@@ -14,6 +14,14 @@ export enum EditorType {
 }
 
 /**
+ * Render Mode
+ */
+export enum RenderMode {
+  EVERY_ROW = 'everyRow',
+  ALL_ROWS = 'allRow',
+}
+
+/**
  * Panel Options
  */
 export interface PanelOptions {
@@ -32,11 +40,11 @@ export interface PanelOptions {
   defaultContent: string;
 
   /**
-   * Every Row
+   * Render Mode
    *
-   * @type {boolean}
+   * @type {RenderMode}
    */
-  everyRow: boolean;
+  renderMode: RenderMode;
 
   /**
    * Editors to Display

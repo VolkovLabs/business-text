@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { DEFAULT_OPTIONS, TEST_IDS } from '../../constants';
+import { RenderMode } from '../../types';
 import { Props, Text } from './Text';
 
 /**
@@ -18,7 +19,7 @@ describe('<Text />', () => {
         ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
-        everyRow: true,
+        renderMode: RenderMode.ALL_ROWS,
       },
       timeRange: {} as any,
       timeZone: '',
@@ -42,7 +43,7 @@ describe('<Text />', () => {
         ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
-        everyRow: true,
+        renderMode: RenderMode.EVERY_ROW,
         styles,
       },
       timeRange: {} as any,
@@ -73,7 +74,7 @@ describe('<Text />', () => {
           afterRender: `
           context.grafana.eventBus.publish('ready', context.element.querySelector('#element'));
           `,
-          everyRow: true,
+          renderMode: RenderMode.EVERY_ROW,
         },
         timeRange: {} as any,
         timeZone: '',
@@ -99,7 +100,7 @@ describe('<Text />', () => {
           afterRender: `
           return () => context.grafana.eventBus.publish('destroy');
           `,
-          everyRow: true,
+          renderMode: RenderMode.EVERY_ROW,
         },
         timeRange: {} as any,
         timeZone: '',
@@ -137,7 +138,7 @@ describe('<Text />', () => {
         status: 'value',
         content: '<div style="background-color: {{statusColor}};" data-testid="status">{{status}}</div>',
         defaultContent: 'Test default content',
-        everyRow: true,
+        renderMode: RenderMode.EVERY_ROW,
       },
       timeRange: {} as any,
       timeZone: '',
@@ -179,7 +180,7 @@ describe('<Text />', () => {
         ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
-        everyRow: true,
+        renderMode: RenderMode.EVERY_ROW,
       },
       timeRange: {} as any,
       timeZone: '',
@@ -208,7 +209,7 @@ describe('<Text />', () => {
         ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
-        everyRow: false,
+        renderMode: RenderMode.ALL_ROWS,
       },
       timeRange: {} as any,
       timeZone: '',
@@ -257,7 +258,7 @@ describe('<Text />', () => {
         ...DEFAULT_OPTIONS,
         content: template,
         defaultContent: 'Test default content',
-        everyRow: false,
+        renderMode: RenderMode.ALL_ROWS,
       },
       timeRange: {} as any,
       timeZone: '',

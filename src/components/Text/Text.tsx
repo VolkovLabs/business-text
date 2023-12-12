@@ -6,7 +6,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
 import { generateHtml } from '../../helpers';
-import { PanelOptions, RowItem } from '../../types';
+import { PanelOptions, RenderMode, RowItem } from '../../types';
 import { Row } from '../Row';
 import { getStyles } from './Text.styles';
 
@@ -150,7 +150,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
           [] as Array<Record<string, unknown>>
         );
 
-        if (options.everyRow) {
+        if (options.renderMode === RenderMode.EVERY_ROW) {
           /**
            * For every row in data frame
            */
@@ -197,7 +197,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
     getHtml,
     options.content,
     options.defaultContent,
-    options.everyRow,
+    options.renderMode,
     options.status,
   ]);
 
