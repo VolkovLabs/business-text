@@ -1,4 +1,4 @@
-import { DataFrame } from '@grafana/data';
+import { DataFrame, PanelData } from '@grafana/data';
 
 import { EditorOptions } from './editor';
 import { Resource } from './resource';
@@ -127,4 +127,11 @@ export interface RowItem {
    * @type {DataFrame | object}
    */
   data: DataFrame | object;
+
+  /**
+   * Panel Data
+   *
+   * @type {PanelData}
+   */
+  panelData: PanelData;
 }

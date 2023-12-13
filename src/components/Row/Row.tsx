@@ -65,6 +65,7 @@ export const Row: React.FC<Props> = ({ className, item, afterRender, replaceVari
       unsubscribe = func({
         element: ref.current,
         data: item.data,
+        panelData: item.panelData,
         grafana: {
           replaceVariables,
           eventBus,
@@ -78,7 +79,7 @@ export const Row: React.FC<Props> = ({ className, item, afterRender, replaceVari
         unsubscribe();
       }
     };
-  }, [afterRender, eventBus, item.data, replaceVariables]);
+  }, [afterRender, eventBus, item.data, item.panelData, replaceVariables]);
 
   return (
     <div

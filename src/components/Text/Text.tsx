@@ -67,7 +67,15 @@ export interface Props {
 /**
  * Text
  */
-export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, replaceVariables, eventBus, data }) => {
+export const Text: React.FC<Props> = ({
+  options,
+  frame,
+  timeRange,
+  timeZone,
+  replaceVariables,
+  eventBus,
+  data: panelData,
+}) => {
   /**
    * Generated rows
    */
@@ -94,10 +102,10 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
    * HTML
    */
   const getHtml = useCallback(
-    (data: Record<string, unknown>, content: string) => {
+    (htmlData: Record<string, unknown>, content: string) => {
       return {
         ...generateHtml({
-          data,
+          data: htmlData,
           content,
           helpers: options.helpers,
           timeRange,
@@ -105,11 +113,12 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
           replaceVariables,
           eventBus,
           options,
+          panelData,
         }),
-        data,
+        data: htmlData,
       };
     },
-    [eventBus, replaceVariables, timeRange, timeZone, options]
+    [options, timeRange, timeZone, replaceVariables, eventBus, panelData]
   );
 
   useEffect(() => {
@@ -131,6 +140,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
           {
             html,
             data: {},
+            panelData,
           },
         ]);
         unsubscribeFn = unsubscribe;
@@ -138,7 +148,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
         /**
          * Frame returned
          */
-        const frames = options.renderMode === RenderMode.DATA ? data.series : [frame];
+        const frames = options.renderMode === RenderMode.DATA ? panelData.series : [frame];
         const templateData = frames.map((frame) =>
           frame.fields.reduce(
             (acc, { config, name, values, display }) => {
@@ -169,6 +179,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
             rows.map(({ html, data }) => ({
               html,
               data,
+              panelData,
             }))
           );
 
@@ -188,7 +199,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
            */
           const data = options.renderMode === RenderMode.DATA ? templateData : templateData[0];
           const { html, unsubscribe } = getHtml({ data }, options.content);
-          setRows([{ html, data }]);
+          setRows([{ html, data, panelData }]);
 
           unsubscribeFn = unsubscribe;
         }
@@ -203,7 +214,6 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
       }
     };
   }, [
-    data.series,
     frame,
     frame?.fields,
     frame?.length,
@@ -212,6 +222,7 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
     options.defaultContent,
     options.renderMode,
     options.status,
+    panelData,
   ]);
 
   if (error) {
