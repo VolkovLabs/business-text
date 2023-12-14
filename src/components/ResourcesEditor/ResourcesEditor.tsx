@@ -160,7 +160,9 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                               }}
                               data-testid={TEST_IDS.resourcesEditor.buttonRemove}
                             />
-                            <Icon name="draggabledots" {...provided.dragHandleProps} className={styles.dragIcon} />
+                            <div className={styles.dragHandle} {...provided.dragHandleProps}>
+                              <Icon name="draggabledots" className={styles.dragIcon} />
+                            </div>
                           </>
                         }
                         isOpen={collapseState[id]}
