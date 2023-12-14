@@ -63,7 +63,7 @@ export const TextPanel: React.FC<Props> = ({
   /**
    * Selected Frame
    */
-  const frame = data.series[frameIndex];
+  const frame = data.series[frameIndex] ? data.series[frameIndex] : undefined;
 
   /**
    * External Scripts
@@ -121,7 +121,7 @@ export const TextPanel: React.FC<Props> = ({
             <div className={styles.frameSelect}>
               <Select
                 onChange={onChangeFrame}
-                value={frame.refId}
+                value={frame?.refId}
                 options={selectableFrames}
                 data-testid={TEST_IDS.panel.fieldFrame}
               />

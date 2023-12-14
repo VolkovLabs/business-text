@@ -134,4 +134,11 @@ export interface RowItem {
    * @type {PanelData}
    */
   panelData: PanelData;
+
+  /**
+   * Selected Data Frame
+   *
+   * @type {DataFrame}
+   */
+  dataFrame?: DataFrame;
 }

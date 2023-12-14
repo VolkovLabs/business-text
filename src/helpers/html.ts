@@ -1,4 +1,4 @@
-import { EventBus, getLocale, InterpolateFunction, PanelData, textUtil, TimeRange } from '@grafana/data';
+import { DataFrame, EventBus, getLocale, InterpolateFunction, PanelData, textUtil, TimeRange } from '@grafana/data';
 import { config, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import Handlebars from 'handlebars';
@@ -27,6 +27,7 @@ export const generateHtml = ({
   eventBus,
   options,
   panelData,
+  dataFrame,
 }: {
   data: Record<string, unknown>;
   content: string;
@@ -37,6 +38,7 @@ export const generateHtml = ({
   eventBus: EventBus;
   options: PanelOptions;
   panelData: PanelData;
+  dataFrame?: DataFrame;
 }): { html: string; unsubscribe?: unknown } => {
   /**
    * Variable
@@ -62,6 +64,7 @@ export const generateHtml = ({
       'locationService',
       'eventBus',
       'panelData',
+      'dataFrame',
       helpers
     );
     unsubscribe = func(
@@ -74,6 +77,7 @@ export const generateHtml = ({
       locationService,
       eventBus,
       panelData,
+      dataFrame,
       helpers
     );
   }

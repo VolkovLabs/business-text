@@ -114,11 +114,12 @@ export const Text: React.FC<Props> = ({
           eventBus,
           options,
           panelData,
+          dataFrame: frame,
         }),
         data: htmlData,
       };
     },
-    [options, timeRange, timeZone, replaceVariables, eventBus, panelData]
+    [options, timeRange, timeZone, replaceVariables, eventBus, panelData, frame]
   );
 
   useEffect(() => {
@@ -141,6 +142,7 @@ export const Text: React.FC<Props> = ({
             html,
             data: {},
             panelData,
+            dataFrame: frame,
           },
         ]);
         unsubscribeFn = unsubscribe;
@@ -180,6 +182,7 @@ export const Text: React.FC<Props> = ({
               html,
               data,
               panelData,
+              dataFrame: frame,
             }))
           );
 
@@ -199,7 +202,7 @@ export const Text: React.FC<Props> = ({
            */
           const data = options.renderMode === RenderMode.DATA ? templateData : templateData[0];
           const { html, unsubscribe } = getHtml({ data }, options.content);
-          setRows([{ html, data, panelData }]);
+          setRows([{ html, data, panelData, dataFrame: frame }]);
 
           unsubscribeFn = unsubscribe;
         }
