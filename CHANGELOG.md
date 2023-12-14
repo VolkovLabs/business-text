@@ -8,6 +8,10 @@
 - Update Collapse from @volkovlabs/components (#239)
 - Update Introduction video in README (#240)
 
+### Bug fixes
+
+- Fix draggable icon in Grafana 10.3 (#249)
+
 ## 4.2.0 (2023-11-20)
 
 ### Features / Enhancements
