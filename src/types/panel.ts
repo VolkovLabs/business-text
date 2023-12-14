@@ -1,4 +1,4 @@
-import { DataFrame } from '@grafana/data';
+import { DataFrame, PanelData } from '@grafana/data';
 
 import { EditorOptions } from './editor';
 import { Resource } from './resource';
@@ -11,6 +11,15 @@ export enum EditorType {
   DEFAULT = 'default',
   HELPERS = 'helpers',
   STYLES = 'styles',
+}
+
+/**
+ * Render Mode
+ */
+export enum RenderMode {
+  EVERY_ROW = 'everyRow',
+  ALL_ROWS = 'allRows',
+  DATA = 'data',
 }
 
 /**
@@ -32,11 +41,11 @@ export interface PanelOptions {
   defaultContent: string;
 
   /**
-   * Every Row
+   * Render Mode
    *
-   * @type {boolean}
+   * @type {RenderMode}
    */
-  everyRow: boolean;
+  renderMode: RenderMode;
 
   /**
    * Editors to Display
@@ -118,4 +127,18 @@ export interface RowItem {
    * @type {DataFrame | object}
    */
   data: DataFrame | object;
+
+  /**
+   * Panel Data
+   *
+   * @type {PanelData}
+   */
+  panelData: PanelData;
+
+  /**
+   * Selected Data Frame
+   *
+   * @type {DataFrame}
+   */
+  dataFrame?: DataFrame;
 }

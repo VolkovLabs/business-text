@@ -3,22 +3,24 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { DEFAULT_OPTIONS, TEST_IDS } from '../../constants';
+import { RenderMode } from '../../types';
 import { Props, Text } from './Text';
 
 /**
  * Text
  */
-describe('<Text />', () => {
+describe('Text', () => {
   /**
    * Default Content
    */
   it('Should render default content when there is no dataframe', async () => {
     const props: Props = {
+      data: {} as any,
       options: {
         ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
-        everyRow: true,
+        renderMode: RenderMode.ALL_ROWS,
       },
       timeRange: {} as any,
       timeZone: '',
@@ -38,11 +40,12 @@ describe('<Text />', () => {
     `;
     const replaceVariables = jest.fn((str: string) => str);
     const props: Props = {
+      data: {} as any,
       options: {
         ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
-        everyRow: true,
+        renderMode: RenderMode.EVERY_ROW,
         styles,
       },
       timeRange: {} as any,
@@ -67,13 +70,14 @@ describe('<Text />', () => {
       const replaceVariables = jest.fn((str: string) => str);
 
       const props: Props = {
+        data: {} as any,
         options: {
           ...DEFAULT_OPTIONS,
           defaultContent: '<div id="element"></div>',
           afterRender: `
           context.grafana.eventBus.publish('ready', context.element.querySelector('#element'));
           `,
-          everyRow: true,
+          renderMode: RenderMode.EVERY_ROW,
         },
         timeRange: {} as any,
         timeZone: '',
@@ -93,13 +97,14 @@ describe('<Text />', () => {
       const replaceVariables = jest.fn((str: string) => str);
 
       const props: Props = {
+        data: {} as any,
         options: {
           ...DEFAULT_OPTIONS,
           defaultContent: '<div id="element"></div>',
           afterRender: `
           return () => context.grafana.eventBus.publish('destroy');
           `,
-          everyRow: true,
+          renderMode: RenderMode.EVERY_ROW,
         },
         timeRange: {} as any,
         timeZone: '',
@@ -131,13 +136,14 @@ describe('<Text />', () => {
       ],
     });
     const props: Props = {
+      data: {} as any,
       frame: dataFrame,
       options: {
         ...DEFAULT_OPTIONS,
         status: 'value',
         content: '<div style="background-color: {{statusColor}};" data-testid="status">{{status}}</div>',
         defaultContent: 'Test default content',
-        everyRow: true,
+        renderMode: RenderMode.EVERY_ROW,
       },
       timeRange: {} as any,
       timeZone: '',
@@ -153,12 +159,13 @@ describe('<Text />', () => {
   });
 
   /**
-   * Render content twice
+   * Render every row
    */
-  it('Should render content twice when there is a dataframe and everyRow is true', async () => {
+  it('Should render content twice when there is a dataframe and every row enabled', async () => {
     const nameData: string[] = ['Erik', 'Natasha'];
     const ageData: number[] = [42, 38];
     const props: Props = {
+      data: {} as any,
       frame: toDataFrame({
         fields: [
           {
@@ -179,7 +186,7 @@ describe('<Text />', () => {
         ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
-        everyRow: true,
+        renderMode: RenderMode.EVERY_ROW,
       },
       timeRange: {} as any,
       timeZone: '',
@@ -196,10 +203,11 @@ describe('<Text />', () => {
   });
 
   /**
-   * Render content once
+   * Render all rows
    */
-  it('Should render content once when there is a dataframe and everyRow is false', async () => {
+  it('Should render content once when there is a dataframe and all rows enabled', async () => {
     const props: Props = {
+      data: {} as any,
       frame: {
         fields: [],
         length: 2,
@@ -208,7 +216,46 @@ describe('<Text />', () => {
         ...DEFAULT_OPTIONS,
         content: 'Test content',
         defaultContent: 'Test default content',
-        everyRow: false,
+        renderMode: RenderMode.ALL_ROWS,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables: (str: string) => str,
+      eventBus: {} as any,
+    };
+
+    render(<Text {...props} />);
+
+    expect(screen.getAllByText('Test content')).toHaveLength(1);
+  });
+
+  /**
+   * Render all data
+   */
+  it('Should render content once when there is a dataframe and all data enabled', async () => {
+    const props: Props = {
+      data: {
+        series: [
+          toDataFrame({
+            fields: [
+              {
+                type: FieldType.string,
+                name: 'text',
+                values: ['hello', 'hello2'],
+              },
+            ],
+          }),
+        ],
+      } as any,
+      frame: {
+        fields: [],
+        length: 2,
+      },
+      options: {
+        ...DEFAULT_OPTIONS,
+        content: 'Test content',
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.DATA,
       },
       timeRange: {} as any,
       timeZone: '',
@@ -236,6 +283,7 @@ describe('<Text />', () => {
 `;
 
     const props: Props = {
+      data: {} as any,
       frame: toDataFrame({
         fields: [
           {
@@ -257,7 +305,68 @@ describe('<Text />', () => {
         ...DEFAULT_OPTIONS,
         content: template,
         defaultContent: 'Test default content',
-        everyRow: false,
+        renderMode: RenderMode.ALL_ROWS,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables: (str: string) => str,
+      eventBus: {} as any,
+    };
+
+    render(<Text {...props} />);
+
+    expect(screen.getAllByRole('row')[1]).toHaveTextContent('Erik');
+    expect(screen.getAllByRole('row')[2]).toHaveTextContent('Natasha');
+  });
+
+  /**
+   * Render all data properties
+   */
+  it('Should render properties of all panel data in template', async () => {
+    const nameData: string[] = ['Erik', 'Natasha'];
+    const ageData: number[] = [42, 38];
+
+    const template = `| Name | Age |
+| ---- | --- |
+{{#each data.[0]}}
+{{name}} - {{#with (lookup ../data.[1] @index)}}{{age}}{{/with}}
+{{/each}}
+`;
+
+    const frames = [
+      toDataFrame({
+        fields: [
+          {
+            name: 'name',
+            type: FieldType.string,
+            config: {},
+            values: nameData,
+          },
+        ],
+        length: 2,
+      }),
+      toDataFrame({
+        fields: [
+          {
+            name: 'age',
+            type: FieldType.number,
+            config: {},
+            values: ageData,
+          },
+        ],
+        length: 2,
+      }),
+    ];
+    const props: Props = {
+      data: {
+        series: frames,
+      } as any,
+      frame: frames[0],
+      options: {
+        ...DEFAULT_OPTIONS,
+        content: template,
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.DATA,
       },
       timeRange: {} as any,
       timeZone: '',

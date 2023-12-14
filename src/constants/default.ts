@@ -1,4 +1,4 @@
-import { PanelOptions } from '../types';
+import { PanelOptions, RenderMode } from '../types';
 import { CodeLanguage, Format } from './editor';
 
 /**
@@ -10,7 +10,7 @@ export const DEFAULT_OPTIONS: PanelOptions = {
   defaultContent: "The query didn't return any results.",
   editor: { height: 200, format: Format.AUTO, language: CodeLanguage.MARKDOWN },
   editors: [],
-  everyRow: true,
+  renderMode: RenderMode.EVERY_ROW,
   externalScripts: [],
   externalStyles: [],
   helpers: '',

@@ -1,12 +1,12 @@
 import { css, cx } from '@emotion/css';
-import { DataFrame, EventBus, InterpolateFunction, TimeRange } from '@grafana/data';
+import { DataFrame, EventBus, InterpolateFunction, PanelData, TimeRange } from '@grafana/data';
 import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
 import { generateHtml } from '../../helpers';
-import { PanelOptions, RowItem } from '../../types';
+import { PanelOptions, RenderMode, RowItem } from '../../types';
 import { Row } from '../Row';
 import { getStyles } from './Text.styles';
 
@@ -55,12 +55,27 @@ export interface Props {
    * @type {EventBus}
    */
   eventBus: EventBus;
+
+  /**
+   * Data
+   *
+   * @type {PanelData}
+   */
+  data: PanelData;
 }
 
 /**
  * Text
  */
-export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, replaceVariables, eventBus }) => {
+export const Text: React.FC<Props> = ({
+  options,
+  frame,
+  timeRange,
+  timeZone,
+  replaceVariables,
+  eventBus,
+  data: panelData,
+}) => {
   /**
    * Generated rows
    */
@@ -87,10 +102,10 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
    * HTML
    */
   const getHtml = useCallback(
-    (data: Record<string, unknown>, content: string) => {
+    (htmlData: Record<string, unknown>, content: string) => {
       return {
         ...generateHtml({
-          data,
+          data: htmlData,
           content,
           helpers: options.helpers,
           timeRange,
@@ -98,11 +113,13 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
           replaceVariables,
           eventBus,
           options,
+          panelData,
+          dataFrame: frame,
         }),
-        data,
+        data: htmlData,
       };
     },
-    [eventBus, replaceVariables, timeRange, timeZone, options]
+    [options, timeRange, timeZone, replaceVariables, eventBus, panelData, frame]
   );
 
   useEffect(() => {
@@ -124,6 +141,8 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
           {
             html,
             data: {},
+            panelData,
+            dataFrame: frame,
           },
         ]);
         unsubscribeFn = unsubscribe;
@@ -131,34 +150,39 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
         /**
          * Frame returned
          */
-        const data = frame.fields.reduce(
-          (acc, { config, name, values, display }) => {
-            values.toArray().forEach((value, i) => {
-              /**
-               * Status Color
-               */
-              const statusColor = options.status === name ? display?.(value).color : undefined;
+        const frames = options.renderMode === RenderMode.DATA ? panelData.series : [frame];
+        const templateData = frames.map((frame) =>
+          frame.fields.reduce(
+            (acc, { config, name, values, display }) => {
+              values.toArray().forEach((value, i) => {
+                /**
+                 * Status Color
+                 */
+                const statusColor = options.status === name ? display?.(value).color : undefined;
 
-              /**
-               * Set Value and Status Color
-               */
-              acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
-            });
+                /**
+                 * Set Value and Status Color
+                 */
+                acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
+              });
 
-            return acc;
-          },
-          [] as Array<Record<string, unknown>>
+              return acc;
+            },
+            [] as Array<Record<string, unknown>>
+          )
         );
 
-        if (options.everyRow) {
+        if (options.renderMode === RenderMode.EVERY_ROW) {
           /**
            * For every row in data frame
            */
-          const rows = data.map((row) => getHtml(row, options.content));
+          const rows = templateData[0].map((row) => getHtml(row, options.content));
           setRows(
             rows.map(({ html, data }) => ({
               html,
               data,
+              panelData,
+              dataFrame: frame,
             }))
           );
 
@@ -176,8 +200,9 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
           /**
            * For whole data frame
            */
+          const data = options.renderMode === RenderMode.DATA ? templateData : templateData[0];
           const { html, unsubscribe } = getHtml({ data }, options.content);
-          setRows([{ html, data }]);
+          setRows([{ html, data, panelData, dataFrame: frame }]);
 
           unsubscribeFn = unsubscribe;
         }
@@ -192,13 +217,15 @@ export const Text: React.FC<Props> = ({ options, frame, timeRange, timeZone, rep
       }
     };
   }, [
+    frame,
     frame?.fields,
     frame?.length,
     getHtml,
     options.content,
     options.defaultContent,
-    options.everyRow,
+    options.renderMode,
     options.status,
+    panelData,
   ]);
 
   if (error) {

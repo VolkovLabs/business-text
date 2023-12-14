@@ -5,7 +5,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
 import { useExternalResources } from '../../hooks';
-import { PanelOptions, ResourceType } from '../../types';
+import { PanelOptions, RenderMode, ResourceType } from '../../types';
 import { Text } from '../Text';
 import { getStyles } from './TextPanel.styles';
 
@@ -63,7 +63,7 @@ export const TextPanel: React.FC<Props> = ({
   /**
    * Selected Frame
    */
-  const frame = data.series[frameIndex];
+  const frame = data.series[frameIndex] ? data.series[frameIndex] : undefined;
 
   /**
    * External Scripts
@@ -113,14 +113,15 @@ export const TextPanel: React.FC<Props> = ({
               timeZone={timeZone}
               replaceVariables={replaceVariables}
               eventBus={eventBus}
+              data={data}
             />
           </div>
 
-          {data.series.length > 1 && (
+          {options.renderMode !== RenderMode.DATA && data.series.length > 1 && (
             <div className={styles.frameSelect}>
               <Select
                 onChange={onChangeFrame}
-                value={frame.refId}
+                value={frame?.refId}
                 options={selectableFrames}
                 data-testid={TEST_IDS.panel.fieldFrame}
               />

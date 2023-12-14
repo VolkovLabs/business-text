@@ -1,11 +1,12 @@
-import { EditorType } from '../types';
+import { EditorType, RenderMode } from '../types';
 
 /**
- * Rows Options
+ * Render Mode Options
  */
-export const EVERY_ROW_OPTIONS = [
-  { value: true, label: 'Every row', icon: 'list-ul' },
-  { value: false, label: 'All rows', icon: 'book' },
+export const RENDER_MODE_OPTIONS = [
+  { value: RenderMode.EVERY_ROW, label: 'Every row', icon: 'list-ul' },
+  { value: RenderMode.ALL_ROWS, label: 'All rows', icon: 'book' },
+  { value: RenderMode.DATA, label: 'All data', icon: 'gf-layout-simple' },
 ];
 
 /**

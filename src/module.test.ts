@@ -23,6 +23,7 @@ describe('plugin', () => {
     addRadio: jest.fn().mockImplementation(() => builder),
     addSliderInput: jest.fn().mockImplementation(() => builder),
     addMultiSelect: jest.fn().mockImplementation(() => builder),
+    addSelect: jest.fn().mockImplementation(() => builder),
   };
 
   it('Should be instance of PanelPlugin', () => {

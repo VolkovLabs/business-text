@@ -6,10 +6,11 @@ import {
   CODE_LANGUAGE_OPTIONS,
   DEFAULT_OPTIONS,
   EDITORS_OPTIONS,
-  EVERY_ROW_OPTIONS,
   FORMAT_OPTIONS,
+  RENDER_MODE_OPTIONS,
   WRAP_OPTIONS,
 } from './constants';
+import { getMigratedOptions } from './migration';
 import { EditorType, PanelOptions } from './types';
 
 /**
@@ -17,6 +18,7 @@ import { EditorType, PanelOptions } from './types';
  */
 export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
   .setNoPadding()
+  .setMigrationHandler(getMigratedOptions)
   .useFieldConfig({
     disableStandardOptions: [
       FieldConfigProperty.Unit,
@@ -32,13 +34,13 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
   })
   .setPanelOptions((builder) => {
     builder
-      .addRadio({
-        path: 'everyRow',
+      .addSelect({
+        path: 'renderMode',
         name: 'Render template',
         settings: {
-          options: EVERY_ROW_OPTIONS,
+          options: RENDER_MODE_OPTIONS,
         },
-        defaultValue: DEFAULT_OPTIONS.everyRow,
+        defaultValue: DEFAULT_OPTIONS.renderMode,
       })
       .addMultiSelect({
         path: 'editors',

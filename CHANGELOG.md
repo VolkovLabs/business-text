@@ -7,6 +7,7 @@
 - Update ESLint configuration and refactor (#239)
 - Update Collapse from @volkovlabs/components (#239)
 - Update Introduction video in README (#240)
+- Add data render mode and passing selected data frame (#246)
 
 ### Bug fixes
 
