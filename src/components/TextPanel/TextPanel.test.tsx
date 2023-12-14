@@ -107,7 +107,11 @@ describe('Panel', () => {
 
   it('Should find component', async () => {
     render(
-      getComponent({ options: { ...defaultOptions, defaultContent: 'hello' }, replaceVariables: (str: string) => str })
+      getComponent({
+        options: { ...defaultOptions, defaultContent: 'hello' },
+        replaceVariables: (str: string) => str,
+        data: { series: [] } as any,
+      })
     );
 
     expect(screen.getByTestId(TEST_IDS.panel.root)).toBeInTheDocument();
