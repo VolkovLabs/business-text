@@ -78,7 +78,72 @@ export const HELPERS_EDITOR_SUGGESTIONS: CodeEditorSuggestionItem[] = [
   {
     label: 'eventBus',
     kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Event bus for application events.',
+    detail: 'Panels events.',
+  },
+  {
+    label: 'dataFrame',
+    kind: CodeEditorSuggestionItemKind.Constant,
+    detail: 'Selected data frame.',
+  },
+  {
+    label: 'panelData',
+    kind: CodeEditorSuggestionItemKind.Constant,
+    detail: 'Panel data.',
+  },
+];
+
+/**
+ * After Render Editor Suggestions
+ */
+export const AFTER_RENDER_EDITOR_SUGGESTIONS: CodeEditorSuggestionItem[] = [
+  {
+    label: 'context',
+    kind: CodeEditorSuggestionItemKind.Constant,
+    detail: 'All passed possible properties and methods.',
+  },
+  {
+    label: 'context.element',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Row html element.',
+  },
+  {
+    label: 'context.data',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Row data.',
+  },
+  {
+    label: 'context.dataFrame',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Selected data frame.',
+  },
+  {
+    label: 'context.panelData',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Panel data.',
+  },
+
+  /**
+   * Grafana
+   */
+  {
+    label: 'context.grafana',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Grafana properties and methods.',
+  },
+  {
+    label: 'context.grafana.eventBus',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Panels events.',
+  },
+  {
+    label: 'context.grafana.locationService',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Location service.',
+  },
+  {
+    label: 'context.grafana.replaceVariables',
+    kind: CodeEditorSuggestionItemKind.Method,
+    detail: 'Interpolate variables.',
   },
 ];
 
@@ -87,6 +152,7 @@ export const HELPERS_EDITOR_SUGGESTIONS: CodeEditorSuggestionItem[] = [
  */
 export enum EditorType {
   HELPERS = 'helpers',
+  AFTER_RENDER = 'AFTER_RENDER',
   STYLES = 'styles',
   TEXT = 'text',
 }
