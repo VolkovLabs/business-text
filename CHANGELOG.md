@@ -9,6 +9,8 @@
 - Update Introduction video in README (#240)
 - Add data render mode and passing selected data frame (#246)
 - Update to Grafana 10.2.2 and Volkov labs packages (#247)
+- Add variableValue helper (#252)
+- Add re-render on dashboard refresh (#252)
 
 ### Bug fixes
 

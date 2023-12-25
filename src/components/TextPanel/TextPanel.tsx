@@ -1,7 +1,8 @@
 import { css, cx } from '@emotion/css';
 import { PanelProps, SelectableValue } from '@grafana/data';
+import { RefreshEvent } from '@grafana/runtime';
 import { Select, useStyles2 } from '@grafana/ui';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
 import { useExternalResources } from '../../hooks';
@@ -31,6 +32,7 @@ export const TextPanel: React.FC<Props> = ({
    * States
    */
   const [frameIndex, setFrameIndex] = useState(0);
+  const [, setRenderCount] = useState(0);
 
   /**
    * Styles
@@ -80,6 +82,22 @@ export const TextPanel: React.FC<Props> = ({
     items: options.externalStyles,
     type: ResourceType.STYLES,
   });
+
+  /**
+   * Re-render on dashboard refresh
+   */
+  useEffect(() => {
+    /**
+     * On Refresh
+     */
+    const subscriber = eventBus.getStream(RefreshEvent).subscribe(() => {
+      setRenderCount((prev) => prev + 1);
+    });
+
+    return () => {
+      subscriber.unsubscribe();
+    };
+  }, [eventBus]);
 
   /**
    * Return
