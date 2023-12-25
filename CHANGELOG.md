@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.3.0 (IN PROGRESS)
+## 4.3.0 (2023-12-25)
 
 ### Features / Enhancements
 
@@ -8,6 +8,7 @@
 - Update Collapse from @volkovlabs/components (#239)
 - Update Introduction video in README (#240)
 - Add data render mode and passing selected data frame (#246)
+- Update to Grafana 10.2.2 and Volkov labs packages (#247)
 
 ### Bug fixes
 

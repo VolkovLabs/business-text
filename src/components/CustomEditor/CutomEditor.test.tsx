@@ -3,8 +3,14 @@ import { CodeEditor, CodeEditorSuggestionItemKind } from '@grafana/ui';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { CodeLanguage, Format, HELPERS_EDITOR_SUGGESTIONS, TEST_IDS } from '../../constants';
-import { CustomEditor, HelpersEditor, StylesEditor, TextEditor } from './CustomEditor';
+import {
+  AFTER_RENDER_EDITOR_SUGGESTIONS,
+  CodeLanguage,
+  Format,
+  HELPERS_EDITOR_SUGGESTIONS,
+  TEST_IDS,
+} from '../../constants';
+import { CustomEditor, HelpersEditor, StylesEditor, TextEditor, AfterRenderEditor } from './CustomEditor';
 
 /**
  * Mock @grafana/ui
@@ -250,6 +256,64 @@ describe('Custom Editor', () => {
       render(<HelpersEditor {...props} />);
 
       expect(suggestionsResult).toEqual(expect.arrayContaining(HELPERS_EDITOR_SUGGESTIONS));
+      expect(suggestionsResult).toEqual(
+        expect.arrayContaining([
+          {
+            label: `\$\{${variableWithDescription.name}\}`,
+            kind: CodeEditorSuggestionItemKind.Property,
+            detail: variableWithDescription.description,
+          },
+        ])
+      );
+      expect(suggestionsResult).toEqual(
+        expect.arrayContaining([
+          {
+            label: `\$\{${variableWithoutDescription.name}\}`,
+            kind: CodeEditorSuggestionItemKind.Property,
+            detail: variableWithoutDescription.label,
+          },
+        ])
+      );
+    });
+  });
+
+  describe('After Render Editor', () => {
+    /**
+     * Properties
+     */
+    const props: any = { context: { options: { editor: {} } }, onChange };
+
+    it('Should use javascript language', () => {
+      render(<AfterRenderEditor {...props} />);
+
+      expect(CodeEditor).toHaveBeenCalledWith(
+        expect.objectContaining({
+          language: CodeLanguage.JAVASCRIPT,
+        }),
+        expect.anything()
+      );
+    });
+
+    it('Should make correct suggestions', () => {
+      let suggestionsResult;
+      const variableWithDescription = { name: 'var1', description: 'Var description', label: 'Var Label' };
+      const variableWithoutDescription = { name: 'var2', description: '', label: 'Var 2' };
+      const variables = [variableWithDescription, variableWithoutDescription];
+
+      jest.mocked(CodeEditor).mockImplementation(({ getSuggestions }: any) => {
+        suggestionsResult = getSuggestions();
+        return null;
+      });
+      jest.mocked(getTemplateSrv).mockImplementation(
+        () =>
+          ({
+            getVariables: jest.fn().mockImplementation(() => variables),
+          }) as any
+      );
+
+      render(<AfterRenderEditor {...props} />);
+
+      expect(suggestionsResult).toEqual(expect.arrayContaining(AFTER_RENDER_EDITOR_SUGGESTIONS));
       expect(suggestionsResult).toEqual(
         expect.arrayContaining([
           {

@@ -5,7 +5,7 @@ import Handlebars from 'handlebars';
 import hljs from 'highlight.js';
 import MarkdownIt from 'markdown-it';
 
-import { PanelOptions } from '../types';
+import { HelpersEditorContext, PanelOptions } from '../types';
 import { registerHelpers } from './handlebars';
 import { replaceVariablesHelper } from './variable';
 
@@ -65,8 +65,31 @@ export const generateHtml = ({
       'eventBus',
       'panelData',
       'dataFrame',
+      'context',
       helpers
     );
+
+    /**
+     * Context
+     */
+    const context: HelpersEditorContext = {
+      data,
+      handlebars: Handlebars,
+      panelData,
+      dataFrame,
+      grafana: {
+        getLocale,
+        timeZone,
+        timeRange,
+        replaceVariables,
+        locationService,
+        eventBus,
+      },
+    };
+
+    /**
+     * Unsubscribe
+     */
     unsubscribe = func(
       data,
       Handlebars,
@@ -78,6 +101,7 @@ export const generateHtml = ({
       eventBus,
       panelData,
       dataFrame,
+      context,
       helpers
     );
   }
