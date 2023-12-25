@@ -69,6 +69,9 @@ export const generateHtml = ({
       helpers
     );
 
+    /**
+     * Context
+     */
     const context: HelpersEditorContext = {
       data,
       handlebars: Handlebars,
@@ -84,6 +87,9 @@ export const generateHtml = ({
       },
     };
 
+    /**
+     * Unsubscribe
+     */
     unsubscribe = func(
       data,
       Handlebars,

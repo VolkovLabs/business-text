@@ -191,8 +191,8 @@ export const AFTER_RENDER_EDITOR_SUGGESTIONS: CodeEditorSuggestionItem[] = [
  * Editor Type
  */
 export enum EditorType {
-  HELPERS = 'helpers',
   AFTER_RENDER = 'AFTER_RENDER',
+  HELPERS = 'helpers',
   STYLES = 'styles',
   TEXT = 'text',
 }
