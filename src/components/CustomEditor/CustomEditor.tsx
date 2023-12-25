@@ -7,7 +7,14 @@ import { CodeEditor, CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } fr
 import type * as monacoType from 'monaco-editor/esm/vs/editor/editor.api';
 import React, { useCallback, useMemo } from 'react';
 
-import { CodeLanguage, EditorType, Format, HELPERS_EDITOR_SUGGESTIONS, TEST_IDS } from '../../constants';
+import {
+  AFTER_RENDER_EDITOR_SUGGESTIONS,
+  CodeLanguage,
+  EditorType,
+  Format,
+  HELPERS_EDITOR_SUGGESTIONS,
+  TEST_IDS,
+} from '../../constants';
 
 /**
  * Properties
@@ -64,6 +71,10 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
       return suggestions;
     }
 
+    if (type === EditorType.AFTER_RENDER) {
+      return AFTER_RENDER_EDITOR_SUGGESTIONS.concat(suggestions);
+    }
+
     return HELPERS_EDITOR_SUGGESTIONS.concat(suggestions);
   }, [templateSrv, type]);
 
@@ -80,7 +91,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
    * Language
    */
   const language = useMemo(() => {
-    if (type === EditorType.HELPERS) {
+    if (type === EditorType.HELPERS || type === EditorType.AFTER_RENDER) {
       return CodeLanguage.JAVASCRIPT;
     }
 
@@ -123,6 +134,15 @@ export const TextEditor: React.FC<StandardEditorProps> = (props) => <CustomEdito
  */
 export const HelpersEditor: React.FC<StandardEditorProps> = (props) => (
   <CustomEditor {...props} type={EditorType.HELPERS} />
+);
+
+/**
+ * After Render Editor
+ * @param props
+ * @constructor
+ */
+export const AfterRenderEditor: React.FC<StandardEditorProps> = (props) => (
+  <CustomEditor {...props} type={EditorType.AFTER_RENDER} />
 );
 
 /**

@@ -1,7 +1,7 @@
 import { Field, FieldConfigProperty, FieldType, PanelPlugin } from '@grafana/data';
 import { config } from '@grafana/runtime';
 
-import { HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
+import { AfterRenderEditor, HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
 import {
   CODE_LANGUAGE_OPTIONS,
   DEFAULT_OPTIONS,
@@ -171,7 +171,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         description:
           'Allows to execute code after content is ready. E.g. use element for drawing chart or event listeners.',
         defaultValue: DEFAULT_OPTIONS.afterRender,
-        editor: HelpersEditor,
+        editor: AfterRenderEditor,
         category: ['JavaScript'],
         showIf: (config) =>
           config.editors.includes(EditorType.AFTER_RENDER) || config.afterRender !== DEFAULT_OPTIONS.afterRender,
