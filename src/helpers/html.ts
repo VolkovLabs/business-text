@@ -43,7 +43,16 @@ export const generateHtml = ({
   /**
    * Variable
    */
-  Handlebars.registerHelper('variable', (name: string) => replaceVariablesHelper(name, replaceVariables));
+  Handlebars.registerHelper('variable', (name: string) => {
+    return replaceVariablesHelper(name, replaceVariables);
+  });
+
+  /**
+   * Variable value
+   */
+  Handlebars.registerHelper('variableValue', (name: string) => {
+    return replaceVariables(`${name}`);
+  });
 
   /**
    * Unsubscribe

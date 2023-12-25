@@ -119,8 +119,15 @@ describe('HTML helpers', () => {
 
   it('Should use variable handler', () => {
     let variableHandler: any;
+    let variableValueHandler: any;
+
     jest.mocked(Handlebars.registerHelper).mockImplementation(((name: any, handler: any) => {
-      variableHandler = handler;
+      if (name === 'variable') {
+        variableHandler = handler;
+      }
+      if (name === 'variableValue') {
+        variableValueHandler = handler;
+      }
     }) as any);
 
     generateHtml({
@@ -130,7 +137,9 @@ describe('HTML helpers', () => {
     } as any);
 
     expect(Handlebars.registerHelper).toHaveBeenCalledWith('variable', expect.any(Function));
+    expect(Handlebars.registerHelper).toHaveBeenCalledWith('variableValue', expect.any(Function));
 
     expect(variableHandler('varName')).toEqual([]);
+    expect(variableValueHandler('varName')).toEqual('varName');
   });
 });

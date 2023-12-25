@@ -1,5 +1,6 @@
 import { FieldType, toDataFrame } from '@grafana/data';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { RefreshEvent } from '@grafana/runtime';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { CodeLanguage, Format, TEST_IDS } from '../../constants';
@@ -86,6 +87,23 @@ describe('Panel', () => {
   };
 
   /**
+   * Event Bus
+   */
+  const unsubscribe = jest.fn();
+  const subscribe = jest.fn(() => ({
+    unsubscribe,
+  }));
+
+  const eventBus: any = {
+    getStream: jest.fn(() => ({
+      subscribe: jest.fn(() => ({
+        unsubscribe: jest.fn(),
+      })),
+    })),
+    subscribe,
+  };
+
+  /**
    * Get Component
    * @param props
    */
@@ -98,35 +116,50 @@ describe('Panel', () => {
         }),
       ],
     };
-    return <TextPanel data={data} options={options} {...(restProps as any)} />;
+    return <TextPanel data={data} options={options} eventBus={eventBus} {...(restProps as any)} />;
   };
+
+  beforeEach(() => {
+    subscribe.mockClear();
+    unsubscribe.mockClear();
+  });
 
   afterAll(() => {
     jest.resetAllMocks();
   });
 
   it('Should find component', async () => {
-    render(
-      getComponent({
-        options: { ...defaultOptions, defaultContent: 'hello' },
-        replaceVariables: (str: string) => str,
-        data: { series: [] } as any,
-      })
+    const streamSubscribe = jest.fn(() => ({
+      unsubscribe: jest.fn(),
+    }));
+
+    const eventBus = {
+      getStream: jest.fn(() => ({
+        subscribe: streamSubscribe,
+      })),
+    };
+
+    await act(async () =>
+      render(
+        getComponent({
+          options: { ...defaultOptions, defaultContent: 'hello' },
+          replaceVariables: (str: string) => str,
+          data: { series: [] } as any,
+          eventBus: eventBus as any,
+        })
+      )
     );
 
     expect(screen.getByTestId(TEST_IDS.panel.root)).toBeInTheDocument();
+
+    /**
+     * Should subscribe on dashboard refresh
+     */
+    expect(eventBus.getStream).toHaveBeenCalledWith(RefreshEvent);
+    expect(streamSubscribe).toHaveBeenCalled();
   });
 
   describe('Helpers execution', () => {
-    const unsubscribe = jest.fn();
-    const subscribe = jest.fn(() => ({
-      unsubscribe,
-    }));
-
-    const eventBus: any = {
-      subscribe,
-    };
-
     const helpers = `
       const subscription = eventBus.subscribe('event', () => {});
       
@@ -134,11 +167,6 @@ describe('Panel', () => {
         subscription.unsubscribe();
       }
     `;
-
-    beforeEach(() => {
-      subscribe.mockClear();
-      unsubscribe.mockClear();
-    });
 
     it('Should execute code for empty data frame', () => {
       render(
