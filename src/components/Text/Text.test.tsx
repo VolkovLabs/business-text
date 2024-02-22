@@ -4,7 +4,7 @@ import React from 'react';
 
 import { DEFAULT_OPTIONS, TEST_IDS } from '../../constants';
 import { RenderMode } from '../../types';
-import { Props, Text } from './Text';
+import { Text } from './Text';
 import { getAppEvents } from '@grafana/runtime';
 
 /**
@@ -18,6 +18,11 @@ jest.mock('@grafana/runtime', () => ({
   ...jest.requireActual('@grafana/runtime'),
   getAppEvents: jest.fn().mockImplementation(() => appEvents),
 }));
+
+/**
+ * Props
+ */
+type Props = React.ComponentProps<typeof Text>;
 
 /**
  * Text

@@ -23,7 +23,7 @@ import { getStyles } from './Text.styles';
 /**
  * Properties
  */
-export interface Props {
+interface Props {
   /**
    * Options
    *
