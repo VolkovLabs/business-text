@@ -1,19 +1,83 @@
 import { css, cx } from '@emotion/css';
-import { AlertErrorPayload, AlertPayload, AppEvents } from '@grafana/data';
+import {
+  AlertErrorPayload,
+  AlertPayload,
+  AppEvents,
+  DataFrame,
+  EventBus,
+  InterpolateFunction,
+  PanelData,
+  TimeRange,
+} from '@grafana/data';
 import { getAppEvents } from '@grafana/runtime';
+import { TimeZone } from '@grafana/schema';
 import { Alert, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
 import { generateHtml } from '../../helpers';
-import { RenderMode, RowItem, TextProperties } from '../../types';
+import { PanelOptions, RenderMode, RowItem } from '../../types';
 import { Row } from '../Row';
 import { getStyles } from './Text.styles';
 
 /**
+ * Properties
+ */
+export interface Props {
+  /**
+   * Options
+   *
+   * @type {PanelOptions}
+   */
+  options: PanelOptions;
+
+  /**
+   * Frame
+   *
+   * @type {DataFrame}
+   */
+  frame?: DataFrame;
+
+  /**
+   * Time range of the current dashboard
+   *
+   * @type {TimeRange}
+   */
+  timeRange: TimeRange;
+
+  /**
+   * Time zone of the current dashboard
+   *
+   * @type {TimeZone}
+   */
+  timeZone: TimeZone;
+
+  /**
+   * Replace Variables
+   *
+   * @type {InterpolateFunction}
+   */
+  replaceVariables: InterpolateFunction;
+
+  /**
+   * Event Bus
+   *
+   * @type {EventBus}
+   */
+  eventBus: EventBus;
+
+  /**
+   * Data
+   *
+   * @type {PanelData}
+   */
+  data: PanelData;
+}
+
+/**
  * Text
  */
-export const Text: React.FC<TextProperties> = ({
+export const Text: React.FC<Props> = ({
   options,
   frame,
   timeRange,

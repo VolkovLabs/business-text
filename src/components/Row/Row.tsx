@@ -1,15 +1,78 @@
-import { AlertErrorPayload, AlertPayload, AppEvents, getLocale } from '@grafana/data';
+import {
+  AlertErrorPayload,
+  AlertPayload,
+  AppEvents,
+  EventBus,
+  getLocale,
+  InterpolateFunction,
+  TimeRange,
+} from '@grafana/data';
 import { getAppEvents, locationService } from '@grafana/runtime';
+import { TimeZone } from '@grafana/schema';
 import { useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useRef } from 'react';
+import { RowItem } from 'types';
 
 import { TEST_IDS } from '../../constants';
-import { RowProperties } from '../../types';
+
+/**
+ * Properties
+ */
+export interface Props {
+  /**
+   * Event Bus
+   *
+   * @type {EventBus}
+   */
+  eventBus: EventBus;
+
+  /**
+   * Replace Variables
+   *
+   * @type {InterpolateFunction}
+   */
+  replaceVariables: InterpolateFunction;
+
+  /**
+   * Item
+   *
+   * @type {RowItem}
+   */
+  item: RowItem;
+
+  /**
+   * Class Name
+   *
+   * @type {string}
+   */
+  className: string;
+
+  /**
+   * After Render Function
+   *
+   * @type {string}
+   */
+  afterRender: string;
+
+  /**
+   * Time range of the current dashboard
+   *
+   * @type {TimeRange}
+   */
+  timeRange: TimeRange;
+
+  /**
+   * Time zone of the current dashboard
+   *
+   * @type {TimeZone}
+   */
+  timeZone: TimeZone;
+}
 
 /**
  * Row
  */
-export const Row: React.FC<RowProperties> = ({
+export const Row: React.FC<Props> = ({
   className,
   item,
   afterRender,
