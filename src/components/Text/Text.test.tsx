@@ -178,6 +178,49 @@ describe('Text', () => {
     });
   });
 
+  describe('Before Render Function', () => {
+    it('Should run notify Events', async () => {
+      const eventBus = {
+        publish: jest.fn(() => {}),
+      };
+      const replaceVariables = jest.fn((str: string) => str);
+
+      const publish = jest.fn();
+      const appEvents = {
+        publish,
+      };
+      jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
+
+      const props: TextProperties = {
+        data: {} as any,
+        options: {
+          ...DEFAULT_OPTIONS,
+          defaultContent: '<div id="element"></div>',
+          helpers: `
+          context.grafana.notifyError(['error']);
+          context.grafana.notifySuccess(['success'])
+          `,
+          renderMode: RenderMode.EVERY_ROW,
+        },
+        timeRange: {} as any,
+        timeZone: '',
+        replaceVariables,
+        eventBus: eventBus as any,
+      };
+
+      render(<Text {...props} />);
+      expect(publish).toHaveBeenCalledTimes(2);
+      expect(publish).toHaveBeenCalledWith({
+        type: AppEvents.alertError.name,
+        payload: ['error'],
+      });
+      expect(publish).toHaveBeenCalledWith({
+        type: AppEvents.alertSuccess.name,
+        payload: ['success'],
+      });
+    });
+  });
+
   it('Should apply status field', async () => {
     const replaceVariables = jest.fn((str: string) => str);
     const dataFrame = toDataFrame({
