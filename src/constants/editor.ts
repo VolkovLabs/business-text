@@ -84,6 +84,36 @@ export const EDITOR_CONTEXT_SUGGESTIONS: CodeEditorSuggestionItem[] = [
     kind: CodeEditorSuggestionItemKind.Method,
     detail: 'Interpolate variables.',
   },
+  {
+    label: 'context.grafana.theme',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Grafana theme.',
+  },
+  {
+    label: 'context.grafana.notifySuccess',
+    kind: CodeEditorSuggestionItemKind.Method,
+    detail: 'Display successful notification.',
+  },
+  {
+    label: 'context.grafana.notifyError',
+    kind: CodeEditorSuggestionItemKind.Method,
+    detail: 'Display error notification.',
+  },
+  {
+    label: 'context.grafana.getLocale',
+    kind: CodeEditorSuggestionItemKind.Method,
+    detail: 'Returns locale.',
+  },
+  {
+    label: 'context.grafana.timeZone',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Selected time zone.',
+  },
+  {
+    label: 'context.grafana.timeRange',
+    kind: CodeEditorSuggestionItemKind.Property,
+    detail: 'Selected time range.',
+  },
 ];
 
 /**
@@ -153,21 +183,6 @@ export const HELPERS_EDITOR_SUGGESTIONS: CodeEditorSuggestionItem[] = [
     label: 'context.handlebars',
     kind: CodeEditorSuggestionItemKind.Property,
     detail: 'Handlebars library.',
-  },
-  {
-    label: 'context.grafana.getLocale',
-    kind: CodeEditorSuggestionItemKind.Method,
-    detail: 'Returns locale.',
-  },
-  {
-    label: 'context.grafana.timeZone',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Selected time zone.',
-  },
-  {
-    label: 'context.grafana.timeRange',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Selected time range.',
   },
 ];
 

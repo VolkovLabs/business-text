@@ -1,20 +1,34 @@
-import { FieldType, toDataFrame } from '@grafana/data';
+import { AppEvents, FieldType, toDataFrame } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { DEFAULT_OPTIONS, TEST_IDS } from '../../constants';
-import { RenderMode } from '../../types';
-import { Props, Text } from './Text';
+import { RenderMode, TextProperties } from '../../types';
+import { Text } from './Text';
+import { getAppEvents } from '@grafana/runtime';
+
+const appEvents = {
+  publish: jest.fn(),
+};
+
+jest.mock('@grafana/runtime', () => ({
+  ...jest.requireActual('@grafana/runtime'),
+  getAppEvents: jest.fn().mockImplementation(() => appEvents),
+}));
 
 /**
  * Text
  */
 describe('Text', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   /**
    * Default Content
    */
   it('Should render default content when there is no dataframe', async () => {
-    const props: Props = {
+    const props: TextProperties = {
       data: {} as any,
       options: {
         ...DEFAULT_OPTIONS,
@@ -39,7 +53,7 @@ describe('Text', () => {
       color: red;
     `;
     const replaceVariables = jest.fn((str: string) => str);
-    const props: Props = {
+    const props: TextProperties = {
       data: {} as any,
       options: {
         ...DEFAULT_OPTIONS,
@@ -69,7 +83,7 @@ describe('Text', () => {
       };
       const replaceVariables = jest.fn((str: string) => str);
 
-      const props: Props = {
+      const props: TextProperties = {
         data: {} as any,
         options: {
           ...DEFAULT_OPTIONS,
@@ -90,13 +104,54 @@ describe('Text', () => {
       expect(eventBus.publish).toHaveBeenCalledWith('ready', expect.any(HTMLDivElement));
     });
 
+    it('Should run notify Events', async () => {
+      const eventBus = {
+        publish: jest.fn(() => {}),
+      };
+      const replaceVariables = jest.fn((str: string) => str);
+
+      const publish = jest.fn();
+      const appEvents = {
+        publish,
+      };
+      jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
+
+      const props: TextProperties = {
+        data: {} as any,
+        options: {
+          ...DEFAULT_OPTIONS,
+          defaultContent: '<div id="element"></div>',
+          afterRender: `
+          context.grafana.notifyError(['error']);
+          context.grafana.notifySuccess(['success'])
+          `,
+          renderMode: RenderMode.EVERY_ROW,
+        },
+        timeRange: {} as any,
+        timeZone: '',
+        replaceVariables,
+        eventBus: eventBus as any,
+      };
+
+      render(<Text {...props} />);
+      expect(publish).toHaveBeenCalledTimes(2);
+      expect(publish).toHaveBeenCalledWith({
+        type: AppEvents.alertError.name,
+        payload: ['error'],
+      });
+      expect(publish).toHaveBeenCalledWith({
+        type: AppEvents.alertSuccess.name,
+        payload: ['success'],
+      });
+    });
+
     it('Should call unsubscribe function', async () => {
       const eventBus = {
         publish: jest.fn(() => {}),
       };
       const replaceVariables = jest.fn((str: string) => str);
 
-      const props: Props = {
+      const props: TextProperties = {
         data: {} as any,
         options: {
           ...DEFAULT_OPTIONS,
@@ -135,7 +190,7 @@ describe('Text', () => {
         },
       ],
     });
-    const props: Props = {
+    const props: TextProperties = {
       data: {} as any,
       frame: dataFrame,
       options: {
@@ -164,7 +219,7 @@ describe('Text', () => {
   it('Should render content twice when there is a dataframe and every row enabled', async () => {
     const nameData: string[] = ['Erik', 'Natasha'];
     const ageData: number[] = [42, 38];
-    const props: Props = {
+    const props: TextProperties = {
       data: {} as any,
       frame: toDataFrame({
         fields: [
@@ -206,7 +261,7 @@ describe('Text', () => {
    * Render all rows
    */
   it('Should render content once when there is a dataframe and all rows enabled', async () => {
-    const props: Props = {
+    const props: TextProperties = {
       data: {} as any,
       frame: {
         fields: [],
@@ -233,7 +288,7 @@ describe('Text', () => {
    * Render all data
    */
   it('Should render content once when there is a dataframe and all data enabled', async () => {
-    const props: Props = {
+    const props: TextProperties = {
       data: {
         series: [
           toDataFrame({
@@ -282,7 +337,7 @@ describe('Text', () => {
 {{/each}}
 `;
 
-    const props: Props = {
+    const props: TextProperties = {
       data: {} as any,
       frame: toDataFrame({
         fields: [
@@ -357,7 +412,7 @@ describe('Text', () => {
         length: 2,
       }),
     ];
-    const props: Props = {
+    const props: TextProperties = {
       data: {
         series: frames,
       } as any,

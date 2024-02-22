@@ -1,4 +1,5 @@
-import { DataFrame, PanelData } from '@grafana/data';
+import { DataFrame, EventBus, InterpolateFunction, PanelData, TimeRange } from '@grafana/data';
+import { TimeZone } from '@grafana/schema';
 
 import { EditorOptions } from './editor';
 import { Resource } from './resource';
@@ -111,34 +112,55 @@ export interface PanelOptions {
 }
 
 /**
- * Row Item
+ * Text Properties
  */
-export interface RowItem {
+export interface TextProperties {
   /**
-   * HTML
+   * Options
    *
-   * @type {string}
+   * @type {PanelOptions}
    */
-  html: string;
+  options: PanelOptions;
+
+  /**
+   * Frame
+   *
+   * @type {DataFrame}
+   */
+  frame?: DataFrame;
+
+  /**
+   * Time range of the current dashboard
+   *
+   * @type {TimeRange}
+   */
+  timeRange: TimeRange;
+
+  /**
+   * Time zone of the current dashboard
+   *
+   * @type {TimeZone}
+   */
+  timeZone: TimeZone;
+
+  /**
+   * Replace Variables
+   *
+   * @type {InterpolateFunction}
+   */
+  replaceVariables: InterpolateFunction;
+
+  /**
+   * Event Bus
+   *
+   * @type {EventBus}
+   */
+  eventBus: EventBus;
 
   /**
    * Data
    *
-   * @type {DataFrame | object}
-   */
-  data: DataFrame | object;
-
-  /**
-   * Panel Data
-   *
    * @type {PanelData}
    */
-  panelData: PanelData;
-
-  /**
-   * Selected Data Frame
-   *
-   * @type {DataFrame}
-   */
-  dataFrame?: DataFrame;
+  data: PanelData;
 }
