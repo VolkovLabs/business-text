@@ -12,8 +12,9 @@ import {
 } from '@grafana/data';
 import { config, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
-import Handlebars from 'handlebars';
+import handlebars from 'handlebars';
 import hljs from 'highlight.js';
+// eslint-disable-next-line @typescript-eslint/naming-convention
 import MarkdownIt from 'markdown-it';
 
 import { HelpersEditorContext, PanelOptions } from '../types';
@@ -23,7 +24,7 @@ import { replaceVariablesHelper } from './variable';
 /**
  * Helpers
  */
-registerHelpers(Handlebars);
+registerHelpers(handlebars);
 
 /**
  * Generate HTML
@@ -60,14 +61,14 @@ export const generateHtml = ({
   /**
    * Variable
    */
-  Handlebars.registerHelper('variable', (name: string) => {
+  handlebars.registerHelper('variable', (name: string) => {
     return replaceVariablesHelper(name, replaceVariables);
   });
 
   /**
    * Variable value
    */
-  Handlebars.registerHelper('variableValue', (name: string) => {
+  handlebars.registerHelper('variableValue', (name: string) => {
     return replaceVariables(`${name}`);
   });
 
@@ -100,7 +101,7 @@ export const generateHtml = ({
      */
     const context: HelpersEditorContext = {
       data,
-      handlebars: Handlebars,
+      handlebars: handlebars,
       panelData,
       dataFrame,
       grafana: {
@@ -121,7 +122,7 @@ export const generateHtml = ({
      */
     unsubscribe = func(
       data,
-      Handlebars,
+      handlebars,
       getLocale,
       timeZone,
       timeRange,
@@ -138,7 +139,7 @@ export const generateHtml = ({
   /**
    * Handlebars
    */
-  const template = Handlebars.compile(content);
+  const template = handlebars.compile(content);
   const markdown = template(data);
 
   /**

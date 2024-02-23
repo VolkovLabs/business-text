@@ -11,7 +11,7 @@ import {
 } from '@grafana/data';
 import { LocationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
-import Handlebars from 'handlebars';
+import handlebars from 'handlebars';
 
 import { CodeLanguage, Format } from '../constants';
 
@@ -53,7 +53,7 @@ export interface HelpersEditorContext {
   /**
    * Handlebars
    */
-  handlebars: typeof Handlebars;
+  handlebars: typeof handlebars;
 
   /**
    * Panel Data
