@@ -187,19 +187,31 @@ describe('Panel', () => {
           options: {
             ...defaultOptions,
             defaultContent: 'hello',
-            styles: 'styles-test',
+            styles: '.styles-test{}',
           },
           replaceVariables: (str: string) => str,
           data: { series: [] } as any,
           eventBus: eventBus as any,
+          id: 5,
         })
       )
     );
 
-    expect(screen.getByTestId(TEST_IDS.panel.root)).toBeInTheDocument();
+    const panel = screen.getByTestId(TEST_IDS.panel.root);
+    expect(panel).toBeInTheDocument();
+
+    const rowContainerIdClass = panel.querySelectorAll('.dt-row-container-5');
+    expect(rowContainerIdClass.length).toBeGreaterThan(0);
+
+    const rowContainerClass = panel.querySelectorAll('.dt-row-container');
+    expect(rowContainerClass.length).toBeGreaterThan(0);
+
+    const rowClass = panel.querySelectorAll('.dt-row');
+    expect(rowClass.length).toBeGreaterThan(0);
+
     expect(injectGlobal).toHaveBeenCalledTimes(2);
     expect(injectGlobal).toHaveBeenCalledWith('');
-    expect(injectGlobal).toHaveBeenCalledWith('styles-test');
+    expect(injectGlobal).toHaveBeenCalledWith('.styles-test{}');
   });
 
   describe('Helpers execution', () => {
