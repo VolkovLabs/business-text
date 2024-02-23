@@ -95,7 +95,8 @@ export const Text: React.FC<Props> = ({
     styles.frame,
     css`
       ${options.styles ? replaceVariables(options.styles) : ''}
-    `
+    `,
+    'dt-row'
   );
 
   /**

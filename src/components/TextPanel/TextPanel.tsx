@@ -1,4 +1,4 @@
-import { css, cx } from '@emotion/css';
+import { css, cx, injectGlobal } from '@emotion/css';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { RefreshEvent } from '@grafana/runtime';
 import { Select, useStyles2 } from '@grafana/ui';
@@ -26,6 +26,7 @@ export const TextPanel: React.FC<Props> = ({
   timeRange,
   timeZone,
   eventBus,
+  id,
   replaceVariables,
 }) => {
   /**
@@ -38,6 +39,12 @@ export const TextPanel: React.FC<Props> = ({
    * Styles
    */
   const styles = useStyles2(getStyles);
+  const panelStyles = options.styles ? replaceVariables(options.styles) : '';
+
+  /**
+   * Injects styles into the global scope (need for dt-row-___ classes)
+   */
+  injectGlobal(panelStyles);
 
   /**
    * Change Frame
@@ -121,7 +128,9 @@ export const TextPanel: React.FC<Props> = ({
               css`
                 flex-grow: 1;
                 overflow: auto;
-              `
+              `,
+              'dt-row-container',
+              `dt-row-container-${id}`
             )}
           >
             <Text
