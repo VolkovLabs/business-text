@@ -122,6 +122,7 @@ export const Text: React.FC<Props> = ({
     (payload: AlertPayload) => appEvents.publish({ type: AppEvents.alertSuccess.name, payload }),
     [appEvents]
   );
+
   const notifyError = useCallback(
     (payload: AlertErrorPayload) => appEvents.publish({ type: AppEvents.alertError.name, payload }),
     [appEvents]

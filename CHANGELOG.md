@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.4.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Update context (#270)
+- Added theme object, notifySuccess & notifyError (#270)
+
 ## 4.3.0 (2023-12-25)
 
 ### Features / Enhancements
