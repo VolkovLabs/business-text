@@ -6,6 +6,7 @@ import React from 'react';
 import { CodeLanguage, Format, TEST_IDS } from '../../constants';
 import { PanelOptions, RenderMode } from '../../types';
 import { TextPanel } from './TextPanel';
+import { injectGlobal } from '@emotion/css';
 
 /**
  * Props
@@ -17,6 +18,14 @@ type Props = React.ComponentProps<typeof TextPanel>;
  */
 jest.mock('@grafana/runtime', () => ({
   ...jest.requireActual('@grafana/runtime'),
+}));
+
+/**
+ * Mock @emotion/css
+ */
+jest.mock('@emotion/css', () => ({
+  ...jest.requireActual('@emotion/css'),
+  injectGlobal: jest.fn(),
 }));
 
 /**
@@ -157,6 +166,40 @@ describe('Panel', () => {
      */
     expect(eventBus.getStream).toHaveBeenCalledWith(RefreshEvent);
     expect(streamSubscribe).toHaveBeenCalled();
+  });
+
+  it('Should apply css for component', async () => {
+    jest.mocked(injectGlobal);
+
+    const streamSubscribe = jest.fn(() => ({
+      unsubscribe: jest.fn(),
+    }));
+
+    const eventBus = {
+      getStream: jest.fn(() => ({
+        subscribe: streamSubscribe,
+      })),
+    };
+
+    await act(async () =>
+      render(
+        getComponent({
+          options: {
+            ...defaultOptions,
+            defaultContent: 'hello',
+            styles: 'styles-test',
+          },
+          replaceVariables: (str: string) => str,
+          data: { series: [] } as any,
+          eventBus: eventBus as any,
+        })
+      )
+    );
+
+    expect(screen.getByTestId(TEST_IDS.panel.root)).toBeInTheDocument();
+    expect(injectGlobal).toHaveBeenCalledTimes(2);
+    expect(injectGlobal).toHaveBeenCalledWith('');
+    expect(injectGlobal).toHaveBeenCalledWith('styles-test');
   });
 
   describe('Helpers execution', () => {
