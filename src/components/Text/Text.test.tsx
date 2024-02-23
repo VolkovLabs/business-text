@@ -1,15 +1,37 @@
-import { FieldType, toDataFrame } from '@grafana/data';
+import { AppEvents, FieldType, toDataFrame } from '@grafana/data';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { DEFAULT_OPTIONS, TEST_IDS } from '../../constants';
 import { RenderMode } from '../../types';
-import { Props, Text } from './Text';
+import { Text } from './Text';
+import { getAppEvents } from '@grafana/runtime';
+
+/**
+ * Mock @grafana/runtime
+ */
+const appEvents = {
+  publish: jest.fn(),
+};
+
+jest.mock('@grafana/runtime', () => ({
+  ...jest.requireActual('@grafana/runtime'),
+  getAppEvents: jest.fn().mockImplementation(() => appEvents),
+}));
+
+/**
+ * Props
+ */
+type Props = React.ComponentProps<typeof Text>;
 
 /**
  * Text
  */
 describe('Text', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   /**
    * Default Content
    */
@@ -90,6 +112,48 @@ describe('Text', () => {
       expect(eventBus.publish).toHaveBeenCalledWith('ready', expect.any(HTMLDivElement));
     });
 
+    it('Should run notify Events', async () => {
+      const eventBus = {
+        publish: jest.fn(() => {}),
+      };
+      const replaceVariables = jest.fn((str: string) => str);
+
+      const publish = jest.fn();
+      const appEvents = {
+        publish,
+      };
+      jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
+
+      const props: Props = {
+        data: {} as any,
+        options: {
+          ...DEFAULT_OPTIONS,
+          defaultContent: '<div id="element"></div>',
+          afterRender: `
+          context.grafana.notifyError(['error']);
+          context.grafana.notifySuccess(['success'])
+          `,
+          renderMode: RenderMode.EVERY_ROW,
+        },
+        timeRange: {} as any,
+        timeZone: '',
+        replaceVariables,
+        eventBus: eventBus as any,
+      };
+
+      render(<Text {...props} />);
+
+      expect(publish).toHaveBeenCalledTimes(2);
+      expect(publish).toHaveBeenCalledWith({
+        type: AppEvents.alertError.name,
+        payload: ['error'],
+      });
+      expect(publish).toHaveBeenCalledWith({
+        type: AppEvents.alertSuccess.name,
+        payload: ['success'],
+      });
+    });
+
     it('Should call unsubscribe function', async () => {
       const eventBus = {
         publish: jest.fn(() => {}),
@@ -120,6 +184,50 @@ describe('Text', () => {
       rerender(<Text {...props} timeZone="123" />);
 
       expect(eventBus.publish).toHaveBeenCalledWith('destroy');
+    });
+  });
+
+  describe('Before Render Function', () => {
+    it('Should run notify Events', async () => {
+      const eventBus = {
+        publish: jest.fn(() => {}),
+      };
+      const replaceVariables = jest.fn((str: string) => str);
+
+      const publish = jest.fn();
+      const appEvents = {
+        publish,
+      };
+      jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
+
+      const props: Props = {
+        data: {} as any,
+        options: {
+          ...DEFAULT_OPTIONS,
+          defaultContent: '<div id="element"></div>',
+          helpers: `
+          context.grafana.notifyError(['error']);
+          context.grafana.notifySuccess(['success'])
+          `,
+          renderMode: RenderMode.EVERY_ROW,
+        },
+        timeRange: {} as any,
+        timeZone: '',
+        replaceVariables,
+        eventBus: eventBus as any,
+      };
+
+      render(<Text {...props} />);
+
+      expect(publish).toHaveBeenCalledTimes(2);
+      expect(publish).toHaveBeenCalledWith({
+        type: AppEvents.alertError.name,
+        payload: ['error'],
+      });
+      expect(publish).toHaveBeenCalledWith({
+        type: AppEvents.alertSuccess.name,
+        payload: ['success'],
+      });
     });
   });
 

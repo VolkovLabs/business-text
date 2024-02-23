@@ -1,4 +1,14 @@
-import { DataFrame, EventBus, getLocale, InterpolateFunction, PanelData, TimeRange } from '@grafana/data';
+import {
+  AlertErrorPayload,
+  AlertPayload,
+  DataFrame,
+  EventBus,
+  getLocale,
+  GrafanaTheme2,
+  InterpolateFunction,
+  PanelData,
+  TimeRange,
+} from '@grafana/data';
 import { LocationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import Handlebars from 'handlebars';
@@ -67,6 +77,11 @@ export interface HelpersEditorContext {
     /**
      * Time Zone
      */
+    theme: GrafanaTheme2;
+
+    /**
+     * Time Zone
+     */
     timeZone: TimeZone;
 
     /**
@@ -88,5 +103,15 @@ export interface HelpersEditorContext {
      * Event Bus
      */
     eventBus: EventBus;
+
+    /**
+     * notifySuccess
+     */
+    notifySuccess: (payload: AlertPayload) => void;
+
+    /**
+     * notifyError
+     */
+    notifyError: (payload: AlertErrorPayload) => void;
   };
 }

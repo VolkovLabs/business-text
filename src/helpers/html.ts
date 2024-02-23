@@ -1,4 +1,15 @@
-import { DataFrame, EventBus, getLocale, InterpolateFunction, PanelData, textUtil, TimeRange } from '@grafana/data';
+import {
+  AlertErrorPayload,
+  AlertPayload,
+  DataFrame,
+  EventBus,
+  getLocale,
+  GrafanaTheme2,
+  InterpolateFunction,
+  PanelData,
+  textUtil,
+  TimeRange,
+} from '@grafana/data';
 import { config, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import Handlebars from 'handlebars';
@@ -28,6 +39,9 @@ export const generateHtml = ({
   options,
   panelData,
   dataFrame,
+  notifySuccess,
+  notifyError,
+  theme,
 }: {
   data: Record<string, unknown>;
   content: string;
@@ -39,6 +53,9 @@ export const generateHtml = ({
   options: PanelOptions;
   panelData: PanelData;
   dataFrame?: DataFrame;
+  notifySuccess: (payload: AlertPayload) => void;
+  notifyError: (payload: AlertErrorPayload) => void;
+  theme: GrafanaTheme2;
 }): { html: string; unsubscribe?: unknown } => {
   /**
    * Variable
@@ -89,6 +106,9 @@ export const generateHtml = ({
       grafana: {
         getLocale,
         timeZone,
+        theme,
+        notifySuccess,
+        notifyError,
         timeRange,
         replaceVariables,
         locationService,

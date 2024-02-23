@@ -1,7 +1,17 @@
 import { css, cx } from '@emotion/css';
-import { DataFrame, EventBus, InterpolateFunction, PanelData, TimeRange } from '@grafana/data';
+import {
+  AlertErrorPayload,
+  AlertPayload,
+  AppEvents,
+  DataFrame,
+  EventBus,
+  InterpolateFunction,
+  PanelData,
+  TimeRange,
+} from '@grafana/data';
+import { getAppEvents } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
-import { Alert, useStyles2 } from '@grafana/ui';
+import { Alert, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
@@ -13,7 +23,7 @@ import { getStyles } from './Text.styles';
 /**
  * Properties
  */
-export interface Props {
+interface Props {
   /**
    * Options
    *
@@ -87,6 +97,11 @@ export const Text: React.FC<Props> = ({
   const [error, setError] = useState<unknown | null>(null);
 
   /**
+   * Theme and Styles
+   */
+  const theme = useTheme2();
+
+  /**
    * Styles
    */
   const styles = useStyles2(getStyles);
@@ -97,6 +112,21 @@ export const Text: React.FC<Props> = ({
       ${options.styles ? replaceVariables(options.styles) : ''}
     `,
     'dt-row'
+  );
+
+  /**
+   * Events
+   */
+  const appEvents = getAppEvents();
+
+  const notifySuccess = useCallback(
+    (payload: AlertPayload) => appEvents.publish({ type: AppEvents.alertSuccess.name, payload }),
+    [appEvents]
+  );
+
+  const notifyError = useCallback(
+    (payload: AlertErrorPayload) => appEvents.publish({ type: AppEvents.alertError.name, payload }),
+    [appEvents]
   );
 
   /**
@@ -116,11 +146,14 @@ export const Text: React.FC<Props> = ({
           options,
           panelData,
           dataFrame: frame,
+          notifySuccess,
+          notifyError,
+          theme,
         }),
         data: htmlData,
       };
     },
-    [options, timeRange, timeZone, replaceVariables, eventBus, panelData, frame]
+    [options, timeRange, timeZone, replaceVariables, eventBus, panelData, frame, notifySuccess, notifyError, theme]
   );
 
   useEffect(() => {
@@ -250,6 +283,8 @@ export const Text: React.FC<Props> = ({
           className={className}
           afterRender={options.afterRender}
           eventBus={eventBus}
+          timeRange={timeRange}
+          timeZone={timeZone}
           replaceVariables={replaceVariables}
         />
       ))}

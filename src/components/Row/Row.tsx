@@ -1,14 +1,24 @@
-import { EventBus, InterpolateFunction } from '@grafana/data';
-import { locationService } from '@grafana/runtime';
-import React, { useEffect, useRef } from 'react';
+import {
+  AlertErrorPayload,
+  AlertPayload,
+  AppEvents,
+  EventBus,
+  getLocale,
+  InterpolateFunction,
+  TimeRange,
+} from '@grafana/data';
+import { getAppEvents, locationService } from '@grafana/runtime';
+import { TimeZone } from '@grafana/schema';
+import { useTheme2 } from '@grafana/ui';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { RowItem } from 'types';
 
 import { TEST_IDS } from '../../constants';
-import { RowItem } from '../../types';
 
 /**
  * Properties
  */
-interface Props {
+export interface Props {
   /**
    * Event Bus
    *
@@ -43,16 +53,58 @@ interface Props {
    * @type {string}
    */
   afterRender: string;
+
+  /**
+   * Time range of the current dashboard
+   *
+   * @type {TimeRange}
+   */
+  timeRange: TimeRange;
+
+  /**
+   * Time zone of the current dashboard
+   *
+   * @type {TimeZone}
+   */
+  timeZone: TimeZone;
 }
 
 /**
  * Row
  */
-export const Row: React.FC<Props> = ({ className, item, afterRender, replaceVariables, eventBus }) => {
+export const Row: React.FC<Props> = ({
+  className,
+  item,
+  afterRender,
+  replaceVariables,
+  eventBus,
+  timeRange,
+  timeZone,
+}) => {
   /**
    * Row Ref
    */
   const ref = useRef<HTMLDivElement>(null);
+
+  /**
+   * Theme and Styles
+   */
+  const theme = useTheme2();
+
+  /**
+   * Events
+   */
+  const appEvents = getAppEvents();
+
+  const notifySuccess = useCallback(
+    (payload: AlertPayload) => appEvents.publish({ type: AppEvents.alertSuccess.name, payload }),
+    [appEvents]
+  );
+
+  const notifyError = useCallback(
+    (payload: AlertErrorPayload) => appEvents.publish({ type: AppEvents.alertError.name, payload }),
+    [appEvents]
+  );
 
   /**
    * Run After Render Function
@@ -68,6 +120,12 @@ export const Row: React.FC<Props> = ({ className, item, afterRender, replaceVari
         panelData: item.panelData,
         dataFrame: item.dataFrame,
         grafana: {
+          theme,
+          notifySuccess,
+          notifyError,
+          timeRange,
+          timeZone,
+          getLocale,
           replaceVariables,
           eventBus,
           locationService,
@@ -80,7 +138,19 @@ export const Row: React.FC<Props> = ({ className, item, afterRender, replaceVari
         unsubscribe();
       }
     };
-  }, [afterRender, eventBus, item.data, item.dataFrame, item.panelData, replaceVariables]);
+  }, [
+    afterRender,
+    eventBus,
+    item.data,
+    item.dataFrame,
+    item.panelData,
+    notifyError,
+    notifySuccess,
+    replaceVariables,
+    theme,
+    timeRange,
+    timeZone,
+  ]);
 
   return (
     <div
