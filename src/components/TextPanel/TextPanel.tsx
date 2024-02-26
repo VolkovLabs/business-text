@@ -2,7 +2,7 @@ import { css, cx } from '@emotion/css';
 import { Global } from '@emotion/react';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { RefreshEvent } from '@grafana/runtime';
-import { Select, useStyles2 } from '@grafana/ui';
+import { Select, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
@@ -37,11 +37,23 @@ export const TextPanel: React.FC<Props> = ({
   const [, setRenderCount] = useState(0);
 
   /**
+   * Theme and scoped vars to replace
+   */
+  const theme = useTheme2();
+  const scopedVars = {
+    theme: {
+      value: theme,
+    },
+    id: {
+      value: id,
+    },
+  };
+
+  /**
    * Styles
    */
   const styles = useStyles2(getStyles);
-  const panelStyles = options.styles ? replaceVariables(options.styles) : '';
-
+  const panelStyles = options.styles ? replaceVariables(options.styles, scopedVars) : '';
   /**
    * Change Frame
    */
