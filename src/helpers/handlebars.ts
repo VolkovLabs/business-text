@@ -1,4 +1,4 @@
-import * as Handlebars from 'handlebars';
+import * as handlebars from 'handlebars';
 /**
  * Helper for Date
  */
@@ -18,94 +18,94 @@ const toFixed = (num: unknown, digits: unknown) => {
 /**
  * Register Helpers
  */
-export const registerHelpers = (handlebars: typeof Handlebars) => {
+export const registerHelpers = (handleBars: typeof handlebars) => {
   /**
    * And
    */
-  handlebars.registerHelper('and', (left: boolean, right: boolean): boolean => left && right);
+  handleBars.registerHelper('and', (left: boolean, right: boolean): boolean => left && right);
 
   /**
    * Contains
    */
-  handlebars.registerHelper('contains', (arr: string[], value: string): boolean => arr.indexOf(value) !== -1);
+  handleBars.registerHelper('contains', (arr: string[], value: string): boolean => arr.indexOf(value) !== -1);
 
   /**
    * startsWith
    */
-  handlebars.registerHelper('startsWith', (left: string, right: string): boolean => left.startsWith(right));
+  handleBars.registerHelper('startsWith', (left: string, right: string): boolean => left.startsWith(right));
 
   /**
    * endsWith
    */
-  handlebars.registerHelper('endsWith', (left: string, right: string): boolean => left.endsWith(right));
+  handleBars.registerHelper('endsWith', (left: string, right: string): boolean => left.endsWith(right));
 
   /**
    * match
    */
-  handlebars.registerHelper('match', (left: string, right: string): boolean => left.match(right) !== null);
+  handleBars.registerHelper('match', (left: string, right: string): boolean => left.match(right) !== null);
 
   /**
    * Date
    */
-  handlebars.registerHelper('date', date);
+  handleBars.registerHelper('date', date);
 
   /**
    * Equal
    */
-  handlebars.registerHelper('eq', (left: string, right: string): boolean => left === right);
+  handleBars.registerHelper('eq', (left: string, right: string): boolean => left === right);
 
   /**
    * JSON
    */
-  handlebars.registerHelper('json', (context: unknown) => JSON.stringify(context, null, 2));
+  handleBars.registerHelper('json', (context: unknown) => JSON.stringify(context, null, 2));
 
   /**
    * Greater Than
    */
-  handlebars.registerHelper('gt', (left: number, right: number): boolean => left > right);
+  handleBars.registerHelper('gt', (left: number, right: number): boolean => left > right);
 
   /**
    * Greater or Equal
    */
-  handlebars.registerHelper('gte', (left: number, right: number): boolean => left >= right);
+  handleBars.registerHelper('gte', (left: number, right: number): boolean => left >= right);
 
   /**
    * Join
    */
-  handlebars.registerHelper('join', (arr: string[], sep: string): string => arr.join(sep));
+  handleBars.registerHelper('join', (arr: string[], sep: string): string => arr.join(sep));
 
   /**
    * Less Than
    */
-  handlebars.registerHelper('lt', (left: number, right: number): boolean => left < right);
+  handleBars.registerHelper('lt', (left: number, right: number): boolean => left < right);
 
   /**
    * Less or Equal
    */
-  handlebars.registerHelper('lte', (left: number, right: number): boolean => left <= right);
+  handleBars.registerHelper('lte', (left: number, right: number): boolean => left <= right);
 
   /**
    * Not
    */
-  handlebars.registerHelper('not', (left: boolean): boolean => !left);
+  handleBars.registerHelper('not', (left: boolean): boolean => !left);
 
   /**
    * Or
    */
-  handlebars.registerHelper('or', (left: boolean, right: boolean): boolean => left || right);
+  handleBars.registerHelper('or', (left: boolean, right: boolean): boolean => left || right);
 
   /**
    * Split
    */
-  handlebars.registerHelper('split', (str: string, sep: string): string[] => str.split(sep));
+  handleBars.registerHelper('split', (str: string, sep: string): string[] => str.split(sep));
 
   /**
    * To Fixed
    */
-  handlebars.registerHelper('toFixed', toFixed);
+  handleBars.registerHelper('toFixed', toFixed);
 
   /**
    * Unless Equal
    */
-  handlebars.registerHelper('unlessEq', (left: string, right: string): boolean => left !== right);
+  handleBars.registerHelper('unlessEq', (left: string, right: string): boolean => left !== right);
 };
