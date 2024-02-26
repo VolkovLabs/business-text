@@ -1,4 +1,5 @@
-import { css, cx, injectGlobal } from '@emotion/css';
+import { css, cx } from '@emotion/css';
+import { Global } from '@emotion/react';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { RefreshEvent } from '@grafana/runtime';
 import { Select, useStyles2 } from '@grafana/ui';
@@ -40,11 +41,6 @@ export const TextPanel: React.FC<Props> = ({
    */
   const styles = useStyles2(getStyles);
   const panelStyles = options.styles ? replaceVariables(options.styles) : '';
-
-  /**
-   * Injects styles into the global scope (need for dt-row-___ classes)
-   */
-  injectGlobal(panelStyles);
 
   /**
    * Change Frame
@@ -110,52 +106,55 @@ export const TextPanel: React.FC<Props> = ({
    * Return
    */
   return (
-    <div
-      className={cx(
-        styles.root,
-        css`
-          width: ${width}px;
-          height: ${height}px;
-        `
-      )}
-      data-testid={TEST_IDS.panel.root}
-    >
-      {isScriptsLoaded && (
-        <>
-          <div
-            className={cx(
-              styles.root,
-              css`
-                flex-grow: 1;
-                overflow: auto;
-              `,
-              'dt-row-container',
-              `dt-row-container-${id}`
-            )}
-          >
-            <Text
-              frame={frame}
-              options={options}
-              timeRange={timeRange}
-              timeZone={timeZone}
-              replaceVariables={replaceVariables}
-              eventBus={eventBus}
-              data={data}
-            />
-          </div>
-
-          {options.renderMode !== RenderMode.DATA && data.series.length > 1 && (
-            <div className={styles.frameSelect}>
-              <Select
-                onChange={onChangeFrame}
-                value={frame?.refId}
-                options={selectableFrames}
-                data-testid={TEST_IDS.panel.fieldFrame}
+    <>
+      <Global styles={panelStyles} />
+      <div
+        className={cx(
+          styles.root,
+          css`
+            width: ${width}px;
+            height: ${height}px;
+          `
+        )}
+        data-testid={TEST_IDS.panel.root}
+      >
+        {isScriptsLoaded && (
+          <>
+            <div
+              className={cx(
+                styles.root,
+                css`
+                  flex-grow: 1;
+                  overflow: auto;
+                `,
+                'dt-container',
+                `dt-container-${id}`
+              )}
+            >
+              <Text
+                frame={frame}
+                options={options}
+                timeRange={timeRange}
+                timeZone={timeZone}
+                replaceVariables={replaceVariables}
+                eventBus={eventBus}
+                data={data}
               />
             </div>
-          )}
-        </>
-      )}
-    </div>
+
+            {options.renderMode !== RenderMode.DATA && data.series.length > 1 && (
+              <div className={styles.frameSelect}>
+                <Select
+                  onChange={onChangeFrame}
+                  value={frame?.refId}
+                  options={selectableFrames}
+                  data-testid={TEST_IDS.panel.fieldFrame}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
 };
