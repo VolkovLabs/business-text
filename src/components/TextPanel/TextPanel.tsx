@@ -1,5 +1,4 @@
 import { css, cx } from '@emotion/css';
-import { Global } from '@emotion/react';
 import { PanelProps, SelectableValue } from '@grafana/data';
 import { RefreshEvent } from '@grafana/runtime';
 import { Select, useStyles2 } from '@grafana/ui';
@@ -27,7 +26,6 @@ export const TextPanel: React.FC<Props> = ({
   timeRange,
   timeZone,
   eventBus,
-  id,
   replaceVariables,
 }) => {
   /**
@@ -40,7 +38,6 @@ export const TextPanel: React.FC<Props> = ({
    * Styles
    */
   const styles = useStyles2(getStyles);
-  const panelStyles = options.styles ? replaceVariables(options.styles) : '';
 
   /**
    * Change Frame
@@ -106,55 +103,53 @@ export const TextPanel: React.FC<Props> = ({
    * Return
    */
   return (
-    <>
-      <Global styles={panelStyles} />
-      <div
-        className={cx(
-          styles.root,
-          css`
-            width: ${width}px;
-            height: ${height}px;
-          `
-        )}
-        data-testid={TEST_IDS.panel.root}
-      >
-        {isScriptsLoaded && (
-          <>
-            <div
-              className={cx(
-                styles.root,
-                css`
-                  flex-grow: 1;
-                  overflow: auto;
-                `,
-                'dt-container',
-                `dt-container-${id}`
-              )}
-            >
-              <Text
-                frame={frame}
-                options={options}
-                timeRange={timeRange}
-                timeZone={timeZone}
-                replaceVariables={replaceVariables}
-                eventBus={eventBus}
-                data={data}
+    <div
+      className={cx(
+        styles.root,
+        css`
+          width: ${width}px;
+          height: ${height}px;
+        `
+      )}
+      data-testid={TEST_IDS.panel.root}
+    >
+      {isScriptsLoaded && (
+        <>
+          <div
+            className={cx(
+              styles.root,
+              css`
+                ${options.styles ? replaceVariables(options.styles) : ''}
+              `,
+              css`
+                flex-grow: 1;
+                overflow: auto;
+              `
+            )}
+          >
+            <Text
+              frame={frame}
+              options={options}
+              timeRange={timeRange}
+              timeZone={timeZone}
+              replaceVariables={replaceVariables}
+              eventBus={eventBus}
+              data={data}
+            />
+          </div>
+
+          {options.renderMode !== RenderMode.DATA && data.series.length > 1 && (
+            <div className={styles.frameSelect}>
+              <Select
+                onChange={onChangeFrame}
+                value={frame?.refId}
+                options={selectableFrames}
+                data-testid={TEST_IDS.panel.fieldFrame}
               />
             </div>
-
-            {options.renderMode !== RenderMode.DATA && data.series.length > 1 && (
-              <div className={styles.frameSelect}>
-                <Select
-                  onChange={onChangeFrame}
-                  value={frame?.refId}
-                  options={selectableFrames}
-                  data-testid={TEST_IDS.panel.fieldFrame}
-                />
-              </div>
-            )}
-          </>
-        )}
-      </div>
-    </>
+          )}
+        </>
+      )}
+    </div>
   );
 };

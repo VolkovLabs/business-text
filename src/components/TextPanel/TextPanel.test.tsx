@@ -189,12 +189,6 @@ describe('Panel', () => {
     const panel = screen.getByTestId(TEST_IDS.panel.root);
     expect(panel).toBeInTheDocument();
 
-    const rowContainerIdClass = panel.querySelectorAll('.dt-container-5');
-    expect(rowContainerIdClass.length).toBeGreaterThan(0);
-
-    const rowContainerClass = panel.querySelectorAll('.dt-container');
-    expect(rowContainerClass.length).toBeGreaterThan(0);
-
     const rowClass = panel.querySelectorAll('.dt-row');
     expect(rowClass.length).toBeGreaterThan(0);
   });
