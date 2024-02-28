@@ -196,11 +196,7 @@ export const Text: React.FC<Props> = ({
                 /**
                  * Set Value and Status Color
                  */
-                if (acc[i]?.statusColor) {
-                  acc[i] = { ...acc[i], [config.displayName || name]: value };
-                } else {
-                  acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
-                }
+                acc[i] = { statusColor, ...acc[i], [config.displayName || name]: value };
               });
 
               return acc;
