@@ -170,15 +170,17 @@ describe('Panel', () => {
       })),
     };
 
+    const replaceVariables = jest.fn((str: string) => str);
+
     await act(async () =>
       render(
         getComponent({
           options: {
             ...defaultOptions,
             defaultContent: 'hello',
-            styles: '.styles-test{}',
+            styles: '.styles-test{}; .dt-row{color:red}',
           },
-          replaceVariables: (str: string) => str,
+          replaceVariables,
           data: { series: [] } as any,
           eventBus: eventBus as any,
           id: 5,
@@ -186,11 +188,16 @@ describe('Panel', () => {
       )
     );
 
+    expect(replaceVariables).toHaveBeenCalledWith('.styles-test{}; .dt-row{color:red}');
+
     const panel = screen.getByTestId(TEST_IDS.panel.root);
     expect(panel).toBeInTheDocument();
 
     const rowClass = panel.querySelectorAll('.dt-row');
     expect(rowClass.length).toBeGreaterThan(0);
+
+    expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.text.content)).toHaveStyle({ color: 'red' });
   });
 
   describe('Helpers execution', () => {
