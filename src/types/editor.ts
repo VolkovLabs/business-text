@@ -20,13 +20,6 @@ import { CodeLanguage, Format } from '../constants';
  */
 export interface EditorOptions {
   /**
-   * Height
-   *
-   * @type {number}
-   */
-  height: number;
-
-  /**
    * Format
    *
    * @type {Format}
