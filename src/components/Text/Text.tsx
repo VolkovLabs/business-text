@@ -191,12 +191,12 @@ export const Text: React.FC<Props> = ({
                 /**
                  * Status Color
                  */
-                const statusColor = options.status === name ? display?.(value).color : undefined;
+                const statusColor = options.status === name ? display?.(value).color : acc[i]?.statusColor;
 
                 /**
                  * Set Value and Status Color
                  */
-                acc[i] = { statusColor, ...acc[i], [config.displayName || name]: value };
+                acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
               });
 
               return acc;
