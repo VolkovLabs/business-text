@@ -215,6 +215,7 @@ describe('Text', () => {
         },
       ],
     });
+
     const props: Props = {
       data: {} as any,
       frame: dataFrame,
@@ -236,6 +237,54 @@ describe('Text', () => {
     const statuses = screen.getAllByTestId('status');
     expect(statuses[0]).toHaveStyle({ backgroundColor: 'green' });
     expect(statuses[1]).toHaveStyle({ backgroundColor: 'red' });
+  });
+
+  it('Should apply status in row', async () => {
+    const replaceVariables = jest.fn((str: string) => str);
+    const dataFrame = toDataFrame({
+      fields: [
+        {
+          name: 'number',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [90],
+        },
+        {
+          name: 'test',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [70],
+        },
+        {
+          name: 'value',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [60],
+        },
+      ],
+    });
+
+    const props: Props = {
+      data: {} as any,
+      frame: dataFrame,
+      options: {
+        ...DEFAULT_OPTIONS,
+        status: 'number',
+        content: '<div style="background-color: {{statusColor}};" data-testid="status">{{test}}{{number}}</div>',
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.EVERY_ROW,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    render(<Text {...props} />);
+
+    const statuses = screen.getAllByTestId('status');
+
+    expect(statuses[0]).toHaveStyle({ backgroundColor: 'red' });
   });
 
   /**
@@ -437,6 +486,7 @@ describe('Text', () => {
         length: 2,
       }),
     ];
+
     const props: Props = {
       data: {
         series: frames,

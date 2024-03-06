@@ -185,7 +185,7 @@ export const Text: React.FC<Props> = ({
                 /**
                  * Status Color
                  */
-                const statusColor = options.status === name ? display?.(value).color : undefined;
+                const statusColor = options.status === name ? display?.(value).color : acc[i]?.statusColor;
 
                 /**
                  * Set Value and Status Color

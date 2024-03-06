@@ -9,6 +9,11 @@
 - Update dependencies and Actions (#271)
 - Replace custom code parameters with Code Parameters Builder (#285)
 - Update CSS class for the Panel instead of a Row (#272)
+- Update Editor auto height from fixed value (#278)
+
+### Bug fixes
+
+- Fix statusColor for Row (#280)
 
 ## 4.3.0 (2023-12-25)
 
