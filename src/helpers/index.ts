@@ -1,3 +1,4 @@
+export * from './code-parameters';
 export * from './externalResource';
 export * from './handlebars';
 export * from './html';

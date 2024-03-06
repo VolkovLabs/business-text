@@ -104,16 +104,6 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         },
         defaultValue: DEFAULT_OPTIONS.editor.format,
         category: ['Editor'],
-      })
-      .addSliderInput({
-        path: 'editor.height',
-        name: 'Height, px',
-        defaultValue: DEFAULT_OPTIONS.editor.height,
-        settings: {
-          min: 100,
-          max: 2000,
-        },
-        category: ['Editor'],
       });
 
     /**

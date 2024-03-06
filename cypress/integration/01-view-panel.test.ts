@@ -1,5 +1,5 @@
 import { e2e } from '@grafana/e2e';
-import { TEST_IDS } from '../../src/constants';
+import { TEST_IDS } from '../../src/constants/tests';
 
 /**
  * Dashboard

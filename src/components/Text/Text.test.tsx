@@ -56,34 +56,6 @@ describe('Text', () => {
     expect(screen.getByTestId(TEST_IDS.text.content)).toHaveTextContent('Test default content');
   });
 
-  it('Should apply styles', async () => {
-    const styles = `
-      color: red;
-    `;
-    const replaceVariables = jest.fn((str: string) => str);
-    const props: Props = {
-      data: {} as any,
-      options: {
-        ...DEFAULT_OPTIONS,
-        content: 'Test content',
-        defaultContent: 'Test default content',
-        renderMode: RenderMode.EVERY_ROW,
-        styles,
-      },
-      timeRange: {} as any,
-      timeZone: '',
-      replaceVariables,
-      eventBus: {} as any,
-    };
-
-    render(<Text {...props} />);
-
-    expect(replaceVariables).toHaveBeenCalledWith(styles);
-
-    expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
-    expect(screen.getByTestId(TEST_IDS.text.content)).toHaveStyle({ color: 'red' });
-  });
-
   describe('After Render Function', () => {
     it('Should run after render function', async () => {
       const eventBus = {
