@@ -14,6 +14,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { RowItem } from 'types';
 
 import { TEST_IDS } from '../../constants';
+import { afterRenderCodeParameters } from '../../helpers';
 
 /**
  * Properties
@@ -114,23 +115,25 @@ export const Row: React.FC<Props> = ({
     if (ref.current && afterRender) {
       const func = new Function('context', afterRender);
 
-      unsubscribe = func({
-        element: ref.current,
-        data: item.data,
-        panelData: item.panelData,
-        dataFrame: item.dataFrame,
-        grafana: {
-          theme,
-          notifySuccess,
-          notifyError,
-          timeRange,
-          timeZone,
-          getLocale,
-          replaceVariables,
-          eventBus,
-          locationService,
-        },
-      });
+      unsubscribe = func(
+        afterRenderCodeParameters.create({
+          element: ref.current,
+          data: item.data,
+          panelData: item.panelData,
+          dataFrame: item.dataFrame,
+          grafana: {
+            theme,
+            notifySuccess,
+            notifyError,
+            timeRange,
+            timeZone,
+            getLocale,
+            replaceVariables,
+            eventBus,
+            locationService,
+          },
+        })
+      );
     }
 
     return () => {
