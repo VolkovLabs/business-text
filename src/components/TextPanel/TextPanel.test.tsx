@@ -74,7 +74,6 @@ describe('Panel', () => {
     editors: [],
     helpers: '',
     editor: {
-      height: 300,
       format: Format.AUTO,
       language: CodeLanguage.JAVASCRIPT,
     },
