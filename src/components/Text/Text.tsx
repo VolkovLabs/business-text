@@ -1,4 +1,4 @@
-import { css, cx } from '@emotion/css';
+import { cx } from '@emotion/css';
 import {
   AlertErrorPayload,
   AlertPayload,
@@ -105,13 +105,7 @@ export const Text: React.FC<Props> = ({
    * Styles
    */
   const styles = useStyles2(getStyles);
-  const className = cx(
-    styles.highlight,
-    styles.frame,
-    css`
-      ${options.styles ? replaceVariables(options.styles) : ''}
-    `
-  );
+  const className = cx(styles.highlight, styles.frame, 'dt-row');
 
   /**
    * Events

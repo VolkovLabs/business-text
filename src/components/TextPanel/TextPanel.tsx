@@ -119,6 +119,9 @@ export const TextPanel: React.FC<Props> = ({
             className={cx(
               styles.root,
               css`
+                ${options.styles ? replaceVariables(options.styles) : ''}
+              `,
+              css`
                 flex-grow: 1;
                 overflow: auto;
               `
