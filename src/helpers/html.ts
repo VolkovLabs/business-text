@@ -17,7 +17,8 @@ import hljs from 'highlight.js';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 import MarkdownIt from 'markdown-it';
 
-import { HelpersEditorContext, PanelOptions } from '../types';
+import { PanelOptions } from '../types';
+import { beforeRenderCodeParameters } from './code-parameters';
 import { registerHelpers } from './handlebars';
 import { replaceVariablesHelper } from './variable';
 
@@ -97,27 +98,6 @@ export const generateHtml = ({
     );
 
     /**
-     * Context
-     */
-    const context: HelpersEditorContext = {
-      data,
-      handlebars: handlebars,
-      panelData,
-      dataFrame,
-      grafana: {
-        getLocale,
-        timeZone,
-        theme,
-        notifySuccess,
-        notifyError,
-        timeRange,
-        replaceVariables,
-        locationService,
-        eventBus,
-      },
-    };
-
-    /**
      * Unsubscribe
      */
     unsubscribe = func(
@@ -131,7 +111,23 @@ export const generateHtml = ({
       eventBus,
       panelData,
       dataFrame,
-      context,
+      beforeRenderCodeParameters.create({
+        data,
+        handlebars: handlebars,
+        panelData,
+        dataFrame,
+        grafana: {
+          getLocale,
+          timeZone,
+          theme,
+          notifySuccess,
+          notifyError,
+          timeRange,
+          replaceVariables,
+          locationService,
+          eventBus,
+        },
+      }),
       helpers
     );
   }

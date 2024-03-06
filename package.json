@@ -8,7 +8,7 @@
     "@grafana/ui": "^10.3.3",
     "@types/highlight.js": "^10.1.0",
     "@types/markdown-it": "^13.0.7",
-    "@volkovlabs/components": "^1.5.0",
+    "@volkovlabs/components": "^1.6.0",
     "dayjs": "^1.11.10",
     "handlebars": "^4.7.8",
     "helper-date": "^1.0.1",
@@ -62,7 +62,7 @@
     "webpack-livereload-plugin": "^3.0.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "license": "Apache-2.0",
   "name": "marcusolsson-dynamictext-panel",

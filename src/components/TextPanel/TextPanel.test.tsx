@@ -158,6 +158,47 @@ describe('Panel', () => {
     expect(streamSubscribe).toHaveBeenCalled();
   });
 
+  it('Should apply css for component', async () => {
+    const streamSubscribe = jest.fn(() => ({
+      unsubscribe: jest.fn(),
+    }));
+
+    const eventBus = {
+      getStream: jest.fn(() => ({
+        subscribe: streamSubscribe,
+      })),
+    };
+
+    const replaceVariables = jest.fn((str: string) => str);
+
+    await act(async () =>
+      render(
+        getComponent({
+          options: {
+            ...defaultOptions,
+            defaultContent: 'hello',
+            styles: '.styles-test{}; .dt-row{color:red}',
+          },
+          replaceVariables,
+          data: { series: [] } as any,
+          eventBus: eventBus as any,
+          id: 5,
+        })
+      )
+    );
+
+    expect(replaceVariables).toHaveBeenCalledWith('.styles-test{}; .dt-row{color:red}');
+
+    const panel = screen.getByTestId(TEST_IDS.panel.root);
+    expect(panel).toBeInTheDocument();
+
+    const rowClass = panel.querySelectorAll('.dt-row');
+    expect(rowClass.length).toBeGreaterThan(0);
+
+    expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.text.content)).toHaveStyle({ color: 'red' });
+  });
+
   describe('Helpers execution', () => {
     const helpers = `
       const subscription = eventBus.subscribe('event', () => {});
