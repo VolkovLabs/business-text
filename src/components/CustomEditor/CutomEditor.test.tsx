@@ -47,7 +47,6 @@ jest.useFakeTimers();
 describe('Custom Editor', () => {
   const getContext = (modifiers: string[] = []) => {
     const editor = {
-      height: 300,
       format: Format.NONE,
       language: '123',
     };
