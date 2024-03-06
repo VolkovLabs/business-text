@@ -215,6 +215,7 @@ describe('Text', () => {
         },
       ],
     });
+
     const props: Props = {
       data: {} as any,
       frame: dataFrame,
@@ -262,6 +263,7 @@ describe('Text', () => {
         },
       ],
     });
+
     const props: Props = {
       data: {} as any,
       frame: dataFrame,
@@ -484,6 +486,7 @@ describe('Text', () => {
         length: 2,
       }),
     ];
+
     const props: Props = {
       data: {
         series: frames,
