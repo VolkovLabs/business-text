@@ -2,6 +2,10 @@
 
 ## 4.4.0 (2024-03-06)
 
+### Breaking changes
+
+- Requires Grafana 9.2 and Grafana 10
+
 ### Features / Enhancements
 
 - Update context parameter (#270)
