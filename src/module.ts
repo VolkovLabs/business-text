@@ -30,6 +30,8 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
       FieldConfigProperty.NoValue,
       FieldConfigProperty.Links,
       FieldConfigProperty.Mappings,
+      'unitScale' as never,
+      'fieldMinMax' as never,
     ],
   })
   .setPanelOptions((builder) => {

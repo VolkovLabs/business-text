@@ -1,6 +1,10 @@
 # Changelog
 
-## 4.4.0 (IN PROGRESS)
+## 4.4.0 (2024-03-06)
+
+### Breaking changes
+
+- Requires Grafana 9.2 and Grafana 10
 
 ### Features / Enhancements
 
@@ -10,6 +14,7 @@
 - Replace custom code parameters with Code Parameters Builder (#285)
 - Update CSS class for the Panel instead of a Row (#272)
 - Update Editor auto height from fixed value (#278)
+- Disable unitScale and fieldMinMax standard panel options (#286)
 
 ### Bug fixes
 
