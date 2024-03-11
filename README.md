@@ -18,7 +18,7 @@ The Dynamic Text Panel plugin allows you to construct a text visualization templ
 
 ## Requirements
 
-- Dynamic Text Panel 4.X requires **Grafana 9** or **Grafana 10**.
+- Dynamic Text Panel 4.X requires **Grafana 9.2** or **Grafana 10**.
 - Dynamic Text Panel 2.X and 3.X require **Grafana 8.5** or **Grafana 9**.
 - Dynamic Text Panel 1.X requires **Grafana 7**.
 

@@ -30,6 +30,8 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
       FieldConfigProperty.NoValue,
       FieldConfigProperty.Links,
       FieldConfigProperty.Mappings,
+      'unitScale' as never,
+      'fieldMinMax' as never,
     ],
   })
   .setPanelOptions((builder) => {
@@ -103,16 +105,6 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
           options: FORMAT_OPTIONS,
         },
         defaultValue: DEFAULT_OPTIONS.editor.format,
-        category: ['Editor'],
-      })
-      .addSliderInput({
-        path: 'editor.height',
-        name: 'Height, px',
-        defaultValue: DEFAULT_OPTIONS.editor.height,
-        settings: {
-          min: 100,
-          max: 2000,
-        },
         category: ['Editor'],
       });
 

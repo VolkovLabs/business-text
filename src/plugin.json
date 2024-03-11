@@ -1,7 +1,7 @@
 {
   "$schema": "https://github.com/grafana/grafana/raw/main/docs/sources/developers/plugins/plugin.schema.json",
   "dependencies": {
-    "grafanaDependency": ">=9.0.0",
+    "grafanaDependency": ">=9.2.0",
     "plugins": []
   },
   "id": "marcusolsson-dynamictext-panel",

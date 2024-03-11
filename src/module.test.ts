@@ -41,7 +41,6 @@ describe('plugin', () => {
      */
     expect(builder.addCustomEditor).toHaveBeenCalled();
     expect(builder.addRadio).toHaveBeenCalled();
-    expect(builder.addSliderInput).toHaveBeenCalled();
     expect(builder.addMultiSelect).toHaveBeenCalled();
   });
 

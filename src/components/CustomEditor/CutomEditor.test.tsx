@@ -1,5 +1,6 @@
 import { getTemplateSrv } from '@grafana/runtime';
-import { CodeEditor, CodeEditorSuggestionItemKind } from '@grafana/ui';
+import { CodeEditorSuggestionItemKind } from '@grafana/ui';
+import { AutosizeCodeEditor } from '@volkovlabs/components';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
@@ -21,6 +22,14 @@ jest.mock('@grafana/ui', () => ({
 }));
 
 /**
+ * Mock @volkovlabs/components
+ */
+jest.mock('@volkovlabs/components', () => ({
+  ...jest.requireActual('@volkovlabs/components'),
+  AutosizeCodeEditor: jest.fn().mockImplementation(() => null),
+}));
+
+/**
  * Mock @grafana/runtime
  */
 jest.mock('@grafana/runtime', () => ({
@@ -38,7 +47,6 @@ jest.useFakeTimers();
 describe('Custom Editor', () => {
   const getContext = (modifiers: string[] = []) => {
     const editor = {
-      height: 300,
       format: Format.NONE,
       language: '123',
     };
@@ -77,7 +85,7 @@ describe('Custom Editor', () => {
   it('Should show mini map if value more than 100 symbols', () => {
     render(getComponent({ value: new Array(102).join('1') }));
 
-    expect(CodeEditor).toHaveBeenCalledWith(
+    expect(AutosizeCodeEditor).toHaveBeenCalledWith(
       expect.objectContaining({
         showMiniMap: true,
       }),
@@ -93,7 +101,7 @@ describe('Custom Editor', () => {
       })),
     };
 
-    jest.mocked(CodeEditor).mockImplementation(({ onEditorDidMount }: any) => {
+    jest.mocked(AutosizeCodeEditor).mockImplementation(({ onEditorDidMount }: any) => {
       onEditorDidMount(editor);
       return null;
     });
@@ -101,7 +109,7 @@ describe('Custom Editor', () => {
     render(getComponent({}, getContext([])));
     jest.runAllTimers();
 
-    expect(CodeEditor).toHaveBeenCalledWith(
+    expect(AutosizeCodeEditor).toHaveBeenCalledWith(
       expect.objectContaining({
         monacoOptions: {
           formatOnPaste: false,
@@ -122,7 +130,7 @@ describe('Custom Editor', () => {
       })),
     };
 
-    jest.mocked(CodeEditor).mockImplementation(({ onEditorDidMount }: any) => {
+    jest.mocked(AutosizeCodeEditor).mockImplementation(({ onEditorDidMount }: any) => {
       onEditorDidMount(editor);
       return null;
     });
@@ -130,7 +138,7 @@ describe('Custom Editor', () => {
     render(getComponent({}, getContext(['enableFormatting'])));
     jest.runAllTimers();
 
-    expect(CodeEditor).toHaveBeenCalledWith(
+    expect(AutosizeCodeEditor).toHaveBeenCalledWith(
       expect.objectContaining({
         monacoOptions: {
           formatOnPaste: true,
@@ -147,7 +155,7 @@ describe('Custom Editor', () => {
     const value = 'some value';
     const onChange = jest.fn();
 
-    jest.mocked(CodeEditor).mockImplementation(({ onBlur }: any) => {
+    jest.mocked(AutosizeCodeEditor).mockImplementation(({ onBlur }: any) => {
       onBlur(value);
       return null;
     });
@@ -165,7 +173,7 @@ describe('Custom Editor', () => {
     const value = 'some value';
     const onChange = jest.fn();
 
-    jest.mocked(CodeEditor).mockImplementation(({ onSave }: any) => {
+    jest.mocked(AutosizeCodeEditor).mockImplementation(({ onSave }: any) => {
       onSave(value);
       return null;
     });
@@ -188,7 +196,7 @@ describe('Custom Editor', () => {
     it('Should use language from options', () => {
       render(<TextEditor {...props} />);
 
-      expect(CodeEditor).toHaveBeenCalledWith(
+      expect(AutosizeCodeEditor).toHaveBeenCalledWith(
         expect.objectContaining({
           language: '123',
         }),
@@ -202,7 +210,7 @@ describe('Custom Editor', () => {
       const variableWithoutDescription = { name: 'var2', description: '', label: 'Var 2' };
       const variables = [variableWithDescription, variableWithoutDescription];
 
-      jest.mocked(CodeEditor).mockImplementation(({ getSuggestions }: any) => {
+      jest.mocked(AutosizeCodeEditor).mockImplementation(({ getSuggestions }: any) => {
         suggestionsResult = getSuggestions();
         return null;
       });
@@ -228,7 +236,7 @@ describe('Custom Editor', () => {
     it('Should use javascript language', () => {
       render(<HelpersEditor {...props} />);
 
-      expect(CodeEditor).toHaveBeenCalledWith(
+      expect(AutosizeCodeEditor).toHaveBeenCalledWith(
         expect.objectContaining({
           language: CodeLanguage.JAVASCRIPT,
         }),
@@ -242,7 +250,7 @@ describe('Custom Editor', () => {
       const variableWithoutDescription = { name: 'var2', description: '', label: 'Var 2' };
       const variables = [variableWithDescription, variableWithoutDescription];
 
-      jest.mocked(CodeEditor).mockImplementation(({ getSuggestions }: any) => {
+      jest.mocked(AutosizeCodeEditor).mockImplementation(({ getSuggestions }: any) => {
         suggestionsResult = getSuggestions();
         return null;
       });
@@ -286,7 +294,7 @@ describe('Custom Editor', () => {
     it('Should use javascript language', () => {
       render(<AfterRenderEditor {...props} />);
 
-      expect(CodeEditor).toHaveBeenCalledWith(
+      expect(AutosizeCodeEditor).toHaveBeenCalledWith(
         expect.objectContaining({
           language: CodeLanguage.JAVASCRIPT,
         }),
@@ -300,7 +308,7 @@ describe('Custom Editor', () => {
       const variableWithoutDescription = { name: 'var2', description: '', label: 'Var 2' };
       const variables = [variableWithDescription, variableWithoutDescription];
 
-      jest.mocked(CodeEditor).mockImplementation(({ getSuggestions }: any) => {
+      jest.mocked(AutosizeCodeEditor).mockImplementation(({ getSuggestions }: any) => {
         suggestionsResult = getSuggestions();
         return null;
       });
@@ -344,7 +352,7 @@ describe('Custom Editor', () => {
     it('Should use javascript language', () => {
       render(<StylesEditor {...props} />);
 
-      expect(CodeEditor).toHaveBeenCalledWith(
+      expect(AutosizeCodeEditor).toHaveBeenCalledWith(
         expect.objectContaining({
           language: CodeLanguage.SCSS,
         }),
@@ -358,7 +366,7 @@ describe('Custom Editor', () => {
       const variableWithoutDescription = { name: 'var2', description: '', label: 'Var 2' };
       const variables = [variableWithDescription, variableWithoutDescription];
 
-      jest.mocked(CodeEditor).mockImplementation(({ getSuggestions }: any) => {
+      jest.mocked(AutosizeCodeEditor).mockImplementation(({ getSuggestions }: any) => {
         suggestionsResult = getSuggestions();
         return null;
       });
