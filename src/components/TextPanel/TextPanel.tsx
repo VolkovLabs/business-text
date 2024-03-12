@@ -52,6 +52,7 @@ export const TextPanel: React.FC<Props> = ({
    * Styles
    */
   const styles = useStyles2(getStyles);
+
   /**
    * Change Frame
    */
