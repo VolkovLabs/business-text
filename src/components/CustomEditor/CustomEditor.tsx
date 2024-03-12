@@ -105,17 +105,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
     });
 
     if (type === EditorType.STYLES) {
-      return suggestions.concat([
-        {
-          label: '${theme}',
-          detail: 'Theme object',
-          kind: CodeEditorSuggestionItemKind.Property,
-        },
-        /**
-         * TODO: should be added all possible string and number properties from theme
-         */
-        ...extractProperties(Object.entries(theme)),
-      ]);
+      return suggestions.concat([...extractProperties(Object.entries(theme))]);
     }
 
     if (type === EditorType.AFTER_RENDER) {
