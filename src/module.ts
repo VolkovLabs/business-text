@@ -82,6 +82,30 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         editor: ResourcesEditor,
         category: ['External Resources'],
         showIf: () => config.disableSanitizeHtml,
+      })
+      .addCustomEditor({
+        id: 'externalStyles',
+        path: 'externalStyles',
+        name: 'Styles',
+        defaultValue: DEFAULT_OPTIONS.externalStyles,
+        editor: ResourcesEditor,
+        settings: {
+          sanitize: !config.disableSanitizeHtml,
+        },
+        category: ['External Resources'],
+        showIf: () => !config.disableSanitizeHtml,
+      })
+      .addCustomEditor({
+        id: 'externalScripts',
+        path: 'externalScripts',
+        name: 'Scripts',
+        defaultValue: DEFAULT_OPTIONS.externalScripts,
+        editor: ResourcesEditor,
+        settings: {
+          sanitize: !config.disableSanitizeHtml,
+        },
+        category: ['External Resources'],
+        showIf: () => !config.disableSanitizeHtml,
       });
 
     /**

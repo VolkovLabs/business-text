@@ -16,6 +16,12 @@ import { TEST_IDS } from '../../constants';
 import { PanelOptions, Resource } from '../../types';
 import { getStyles } from './ResourceEditor.styles';
 
+interface Item {
+  settings?: {
+    sanitize?: boolean;
+  };
+}
+
 /**
  * Properties
  */
@@ -48,7 +54,7 @@ const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDr
 /**
  * Resources Editor
  */
-export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
+export const ResourcesEditor: React.FC<Props> = ({ value, item, onChange }) => {
   /**
    * Styles and Theme
    */
@@ -127,6 +133,25 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
     },
     [items, onChangeItems]
   );
+
+  if ((item as Item)?.settings?.sanitize) {
+    return (
+      <div className={styles.infoContainer}>
+        <div className={styles.infoTitleContainer}>
+          <svg viewBox="0 0 14 16" width={24} height={24}>
+            <path
+              fillRule="evenodd"
+              d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"
+            ></path>
+          </svg>
+          <p className={styles.infoTitle}>Sanitization</p>
+        </div>
+        <span className={styles.infoMessage}>
+          You need to disable the sanitization configuration to see external resources in the plugin options.
+        </span>
+      </div>
+    );
+  }
 
   return (
     <>
