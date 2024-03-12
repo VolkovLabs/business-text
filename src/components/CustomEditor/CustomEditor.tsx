@@ -1,7 +1,6 @@
 import { StandardEditorProps } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
 import {
-  CodeEditor,
   CodeEditorMonacoOptions,
   CodeEditorSuggestionItem,
   CodeEditorSuggestionItemKind,
