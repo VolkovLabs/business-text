@@ -35,10 +35,14 @@ export const TextPanel: React.FC<Props> = ({
   const [, setRenderCount] = useState(0);
 
   /**
-   * Theme and scoped vars to replace
+   * Theme
    */
   const theme = useTheme2();
-  const scopedVars = {
+
+  /**
+   * Styles Scoped Vars
+   */
+  const stylesScopedVars = {
     theme: {
       value: theme,
     },
@@ -128,7 +132,7 @@ export const TextPanel: React.FC<Props> = ({
             className={cx(
               styles.root,
               css`
-                ${options.styles ? replaceVariables(options.styles, scopedVars) : ''}
+                ${options.styles ? replaceVariables(options.styles, stylesScopedVars) : ''}
               `,
               css`
                 flex-grow: 1;
