@@ -62,12 +62,9 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
   /**
    * Add all possible string and number properties from theme
    */
-  const extractProperties = useCallback(
-    (
-      entries: Array<[string, unknown]>,
-      parentLabel = 'theme'
-    ): Array<{ label: string; detail: string; kind: CodeEditorSuggestionItemKind.Property }> => {
-      const properties: Array<{ label: string; detail: string; kind: CodeEditorSuggestionItemKind.Property }> = [];
+  const getStylesThemeSuggestions = useCallback(
+    (entries: Array<[string, unknown]>, parentLabel = 'theme'): CodeEditorSuggestionItem[] => {
+      const properties: CodeEditorSuggestionItem[] = [];
 
       for (const [key, value] of entries) {
         const label = `${parentLabel}.${key}`;
@@ -76,7 +73,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
           properties.push({ label: `\${${label}}`, detail: key, kind: CodeEditorSuggestionItemKind.Property });
         } else if (typeof value === 'object' && value !== null) {
           const nestedEntries = Object.entries(value as Record<string, unknown>);
-          properties.push(...extractProperties(nestedEntries, label));
+          properties.push(...getStylesThemeSuggestions(nestedEntries, label));
         }
       }
 
@@ -105,7 +102,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
     });
 
     if (type === EditorType.STYLES) {
-      return suggestions.concat([...extractProperties(Object.entries(theme))]);
+      return [...suggestions, ...getStylesThemeSuggestions(Object.entries(theme))];
     }
 
     if (type === EditorType.AFTER_RENDER) {
@@ -113,7 +110,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
     }
 
     return HELPERS_EDITOR_SUGGESTIONS.concat(suggestions);
-  }, [extractProperties, templateSrv, theme, type]);
+  }, [getStylesThemeSuggestions, templateSrv, theme, type]);
 
   /**
    * Format Options
