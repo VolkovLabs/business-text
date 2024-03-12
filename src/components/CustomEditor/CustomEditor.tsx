@@ -7,6 +7,7 @@ import {
   CodeEditorSuggestionItemKind,
   useTheme2,
 } from '@grafana/ui';
+import { AutosizeCodeEditor } from '@volkovlabs/components';
 /**
  * Monaco
  */
@@ -136,12 +137,11 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
 
   return (
     <div data-testid={TEST_IDS.textEditor.root}>
-      <CodeEditor
+      <AutosizeCodeEditor
         language={language}
         showLineNumbers={true}
         showMiniMap={(value && value.length) > 100}
         value={value}
-        height={`${context.options.editor.height}px`}
         onBlur={onChange}
         onSave={onChange}
         monacoOptions={monacoOptions}

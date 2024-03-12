@@ -124,9 +124,9 @@ export interface RowItem {
   /**
    * Data
    *
-   * @type {DataFrame | object}
+   * @type {object | object[]}
    */
-  data: DataFrame | object;
+  data: object | object[];
 
   /**
    * Panel Data

@@ -20,10 +20,23 @@ jest.mock('@grafana/runtime', () => ({
 }));
 
 /**
+ * Mock @grafana/ui theme
+ */
+const theme = {
+  color: 'blue',
+};
+
+/**
  * Mock @grafana/ui
  */
 jest.mock('@grafana/ui', () => ({
   ...jest.requireActual('@grafana/ui'),
+
+  /**
+   * Mock useTheme2
+   */
+  useTheme2: jest.fn().mockImplementation(() => theme),
+
   /**
    * Mock Select component
    */
@@ -74,7 +87,6 @@ describe('Panel', () => {
     editors: [],
     helpers: '',
     editor: {
-      height: 300,
       format: Format.AUTO,
       language: CodeLanguage.JAVASCRIPT,
     },
@@ -170,15 +182,17 @@ describe('Panel', () => {
       })),
     };
 
+    const replaceVariables = jest.fn((str: string) => str);
+
     await act(async () =>
       render(
         getComponent({
           options: {
             ...defaultOptions,
             defaultContent: 'hello',
-            styles: '.styles-test{}',
+            styles: '.styles-test{}; .dt-row{color:red}',
           },
-          replaceVariables: (str: string) => str,
+          replaceVariables,
           data: { series: [] } as any,
           eventBus: eventBus as any,
           id: 5,
@@ -186,11 +200,18 @@ describe('Panel', () => {
       )
     );
 
+    expect(replaceVariables).toHaveBeenCalledWith('.styles-test{}; .dt-row{color:red}', {
+      theme: { value: { color: 'blue' } },
+    });
+
     const panel = screen.getByTestId(TEST_IDS.panel.root);
     expect(panel).toBeInTheDocument();
 
     const rowClass = panel.querySelectorAll('.dt-row');
     expect(rowClass.length).toBeGreaterThan(0);
+
+    expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.text.content)).toHaveStyle({ color: 'red' });
   });
 
   describe('Helpers execution', () => {
