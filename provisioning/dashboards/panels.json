@@ -50,7 +50,8 @@
                 "value": 50
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -62,6 +63,7 @@
       },
       "id": 19,
       "options": {
+        "afterRender": "",
         "content": "<div style=\"background-color: {{statusColor}}\">\n  {{A-series}}\n</div>",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -70,11 +72,15 @@
           "language": "markdown"
         },
         "editors": [],
-        "everyRow": true,
+        "externalScripts": [],
+        "externalStyles": [],
         "helpers": "",
+        "renderMode": "everyRow",
         "status": "A-series",
-        "styles": ""
+        "styles": "",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "repeat": "test",
       "repeatDirection": "h",
       "targets": [
@@ -108,7 +114,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -120,6 +127,7 @@
       },
       "id": 15,
       "options": {
+        "afterRender": "",
         "content": "{{replace Test \"Pattern\" \"Replaced\"}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -128,10 +136,14 @@
           "language": "markdown"
         },
         "editors": [],
-        "everyRow": true,
+        "externalScripts": [],
+        "externalStyles": [],
         "helpers": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n",
-        "styles": ""
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -145,7 +157,9 @@
                 "config": {},
                 "name": "Test",
                 "type": "string",
-                "values": ["Here is the Pattern to replace"]
+                "values": [
+                  "Here is the Pattern to replace"
+                ]
               }
             ],
             "meta": {},
@@ -176,7 +190,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -188,6 +203,7 @@
       },
       "id": 7,
       "options": {
+        "afterRender": "",
         "content": "- Timestamp: {{variable \"__from\"}}\n- Parsed: {{variable \"__from:date:YYYY\"}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -196,10 +212,14 @@
           "language": "html"
         },
         "editors": [],
-        "everyRow": false,
+        "externalScripts": [],
+        "externalStyles": [],
         "helpers": "",
-        "styles": ""
+        "renderMode": "allRows",
+        "styles": "",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -231,7 +251,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -243,6 +264,7 @@
       },
       "id": 13,
       "options": {
+        "afterRender": "",
         "content": "# {{app}}\n\n> {{description}}\n\n{{#if (eq tier \"frontend\")}}\nLink: <a href='https://{{cluster}}.example.com/{{app}}'>https://{{cluster}}.example.com/{{app}}</a>\n{{/if}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -251,10 +273,14 @@
           "language": "markdown"
         },
         "editors": [],
-        "everyRow": true,
+        "externalScripts": [],
+        "externalStyles": [],
         "helpers": "",
-        "styles": ""
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -268,25 +294,33 @@
                 "config": {},
                 "name": "app",
                 "type": "string",
-                "values": ["auth"]
+                "values": [
+                  "auth"
+                ]
               },
               {
                 "config": {},
                 "name": "description",
                 "type": "string",
-                "values": ["Handles user authentication."]
+                "values": [
+                  "Handles user authentication."
+                ]
               },
               {
                 "config": {},
                 "name": "cluster",
                 "type": "string",
-                "values": ["prod"]
+                "values": [
+                  "prod"
+                ]
               },
               {
                 "config": {},
                 "name": "tier",
                 "type": "string",
-                "values": ["frontend"]
+                "values": [
+                  "frontend"
+                ]
               }
             ],
             "meta": {},
@@ -317,7 +351,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -329,6 +364,7 @@
       },
       "id": 8,
       "options": {
+        "afterRender": "",
         "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"}}\n\n## {{test}}\n\n{{json @root}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -337,11 +373,15 @@
           "language": "markdown"
         },
         "editors": [],
-        "everyRow": true,
+        "externalScripts": [],
+        "externalStyles": [],
         "handlebars": "",
         "helpers": "",
-        "styles": ""
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -354,7 +394,9 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": ["test"]
+                "values": [
+                  "test"
+                ]
               }
             ],
             "meta": {},
@@ -373,7 +415,9 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": ["test2"]
+                "values": [
+                  "test2"
+                ]
               }
             ],
             "meta": {},
@@ -405,7 +449,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -417,6 +462,7 @@
       },
       "id": 17,
       "options": {
+        "afterRender": "",
         "content": "```json\n{{{json @root}}}\n```",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -424,11 +470,17 @@
           "height": 100,
           "language": "markdown"
         },
-        "editors": ["styles"],
-        "everyRow": false,
+        "editors": [
+          "styles"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
         "helpers": "",
-        "styles": "& {\n  padding: 0;\n  margin: 0;\n}"
+        "renderMode": "allRows",
+        "styles": "& {\n  padding: 0;\n  margin: 0;\n}",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -459,7 +511,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -471,6 +524,7 @@
       },
       "id": 11,
       "options": {
+        "afterRender": "",
         "content": "<a type=\"button\" onclick=\"myFunc()\" class=\"btn btn-danger\">{{test}}</a>\n\n<button onclick=\"myFunc()\">{{test}}</button>",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -479,10 +533,14 @@
           "language": "markdown"
         },
         "editors": [],
-        "everyRow": true,
+        "externalScripts": [],
+        "externalStyles": [],
         "helpers": "myFunc = () => {\n  alert('Bonjour!');\n};\n",
-        "styles": ""
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -496,7 +554,9 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": ["Hello"]
+                "values": [
+                  "Hello"
+                ]
               }
             ],
             "meta": {},
@@ -527,7 +587,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -539,6 +600,7 @@
       },
       "id": 5,
       "options": {
+        "afterRender": "",
         "content": "<table width=100% style='border:2px solid #5D3FC4'>\n   <tr>\n      <td class='name'>\n         <p style='margin:0'><b class='name'>{{first_name}} {{last_name}}</b>\n         </p>\n      </td>\n      <td rowspan=3 class='photo' width=200px>\n         <img width=120px src=\"{{photo}}\">\n      </td>\n   </tr>\n   <tr>\n      <td style='background-color:#f6f2ff;color:#5F3DC4'>login\n         <b style='font-family: silom;font-size:14px'>{{login}}</b>\n         <br>role <b style='font-family: silom;font-size:14px'>{{role}}</b>\n      </td>\n   </tr>\n   <tr>\n      <td class='desc'>\n         <p style='margin:0'>\n            {{#if (eq status 'active')}}\n         <p style='px;color:#549728; font-size:22px; font-family:Roboto;margin:0'><b>Active</b></p>\n         {{/if}}\n         {{#if (eq status 'not active')}}\n         <p style='px;color:#FF5656; font-size:22px; font-family:Roboto;margin:0'><b>Not Active</b></p>\n         {{/if}}\n         Last Login Date <br><b> {{date last_login_date 'YYYY-MM-DD HH:MM'}}</b></p>\n      </td>\n   </tr>\n</table>",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -546,12 +608,18 @@
           "height": 400,
           "language": "html"
         },
-        "editors": ["styles"],
-        "everyRow": true,
+        "editors": [
+          "styles"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
         "handlebars": "",
         "helpers": "",
-        "styles": "td.name {\n  border: 0;\n  background-color: #5d3fc4;\n  color: white;\n}\n\nb.name {\n  font-family: silom;\n  font-size:20px;\n}\n\ntd.photo {\n  border:2px solid #5D3FC4;\n  text-align:center;\n}\n\ntd.desc {\n  text-align:right;\n  border:0;\n  background-color:#f6f2ff;\n  color:#5F3DC4;\n}"
+        "renderMode": "everyRow",
+        "styles": "td.name {\n  border: 0;\n  background-color: #5d3fc4;\n  color: white;\n}\n\nb.name {\n  font-family: silom;\n  font-size:20px;\n}\n\ntd.photo {\n  border:2px solid #5D3FC4;\n  text-align:center;\n}\n\ntd.desc {\n  text-align:right;\n  border:0;\n  background-color:#f6f2ff;\n  color:#5F3DC4;\n}",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -565,49 +633,73 @@
                 "config": {},
                 "name": "Id",
                 "type": "number",
-                "values": [1, 2]
+                "values": [
+                  1,
+                  2
+                ]
               },
               {
                 "config": {},
                 "name": "first_name",
                 "type": "string",
-                "values": ["John", "Jessica"]
+                "values": [
+                  "John",
+                  "Jessica"
+                ]
               },
               {
                 "config": {},
                 "name": "last_name",
                 "type": "string",
-                "values": ["Smith", "Johnson"]
+                "values": [
+                  "Smith",
+                  "Johnson"
+                ]
               },
               {
                 "config": {},
                 "name": "login",
                 "type": "string",
-                "values": ["j.smith", "j.johnson"]
+                "values": [
+                  "j.smith",
+                  "j.johnson"
+                ]
               },
               {
                 "config": {},
                 "name": "last_login_date",
                 "type": "time",
-                "values": [1667444288509, 1667242005907]
+                "values": [
+                  1667444288509,
+                  1667242005907
+                ]
               },
               {
                 "config": {},
                 "name": "status",
                 "type": "string",
-                "values": ["active", "not active"]
+                "values": [
+                  "active",
+                  "not active"
+                ]
               },
               {
                 "config": {},
                 "name": "role",
                 "type": "string",
-                "values": ["admin", "analyst"]
+                "values": [
+                  "admin",
+                  "analyst"
+                ]
               },
               {
                 "config": {},
                 "name": "email",
                 "type": "string",
-                "values": ["j.smith@company.io", "j.johnson@company.io"]
+                "values": [
+                  "j.smith@company.io",
+                  "j.johnson@company.io"
+                ]
               },
               {
                 "config": {},
@@ -647,7 +739,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -659,6 +752,7 @@
       },
       "id": 9,
       "options": {
+        "afterRender": "",
         "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"\n\n## {{test}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -667,11 +761,15 @@
           "language": "markdown"
         },
         "editors": [],
-        "everyRow": true,
+        "externalScripts": [],
+        "externalStyles": [],
         "handlebars": "",
         "helpers": "",
-        "styles": ""
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
       },
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -684,7 +782,9 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": ["test"]
+                "values": [
+                  "test"
+                ]
               }
             ],
             "meta": {},
@@ -703,7 +803,9 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": ["test2"]
+                "values": [
+                  "test2"
+                ]
               }
             ],
             "meta": {},
@@ -735,7 +837,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -747,6 +850,7 @@
       },
       "id": 3,
       "options": {
+        "afterRender": "",
         "content": "<table width=100% style='border:0'>\n<tr>\n<td style='border:0'><h3><a target=\"_blank\" style=\"color: blue\" href=\"{{link}}\">{{title}}</a></h3>\n{{{content:h4}}}</td>\n<td rowspan=2 style='border:0' width=200px>\n<div style='max-width: 100%; display: inline; height: auto '><img width=200px src=\"{{media:group:media:thumbnail:url}}\"></div></td>\n</tr>\n<tr>\n<td style='border:0'><b>{{date updated 'MMM, DD YYYY'}} by {{author}}</b></td>\n</table>",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -755,12 +859,15 @@
           "language": "html"
         },
         "editors": [],
-        "everyRow": true,
+        "externalScripts": [],
+        "externalStyles": [],
         "handlebars": "",
         "helpers": "",
-        "styles": ""
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -810,7 +917,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": []
       },
@@ -822,6 +930,7 @@
       },
       "id": 2,
       "options": {
+        "afterRender": "",
         "content": "| Title | Date | Category |\n| ----- | ------ | ---- |\n{{#each data}}\n| {{title}} | {{date pubDate 'MMM, DD YYYY'}} | {{category}}\n{{/each}}",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -830,12 +939,15 @@
           "language": "html"
         },
         "editors": [],
-        "everyRow": false,
+        "externalScripts": [],
+        "externalStyles": [],
         "handlebars": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n",
         "helpers": "",
-        "styles": ""
+        "renderMode": "allRows",
+        "styles": "",
+        "wrap": true
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "4.4.0",
       "targets": [
         {
           "datasource": {
@@ -865,20 +977,99 @@
         }
       ],
       "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 38
+      },
+      "id": 22,
+      "options": {
+        "afterRender": "",
+        "content": "<button class=\"button\">Button</button>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "none",
+          "height": 200,
+          "language": "html"
+        },
+        "editors": [
+          "styles"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "data",
+        "styles": ".button {\n  background-color: ${theme.colors.primary.main};\n  border: none;\n  color: ${theme.colors.primary.contrastText};\n  padding: 4px 8px;\n  border-radius: ${theme.shape.radius.default};\n}",
+        "wrap": true
+      },
+      "pluginVersion": "4.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": [
+                  ""
+                ]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Theme",
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 38,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": ["All"],
-          "value": ["$__all"]
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "hide": 0,
         "includeAll": true,

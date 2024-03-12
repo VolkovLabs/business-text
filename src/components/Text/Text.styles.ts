@@ -14,6 +14,7 @@ export const getStyles = (theme: GrafanaTheme2) => {
     border-bottom: 1px solid ${theme.colors.border.medium};
     margin-bottom: 1rem;
     padding: ${theme.spacing(1)};
+    border-radius: ${theme.shape.radius.default};
 
     &:last-child {
       margin-bottom: 0;

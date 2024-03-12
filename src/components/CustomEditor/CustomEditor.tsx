@@ -1,6 +1,12 @@
 import { StandardEditorProps } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
-import { CodeEditor, CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana/ui';
+import {
+  CodeEditor,
+  CodeEditorMonacoOptions,
+  CodeEditorSuggestionItem,
+  CodeEditorSuggestionItemKind,
+  useTheme2,
+} from '@grafana/ui';
 /**
  * Monaco
  */
@@ -33,11 +39,16 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
   const templateSrv = getTemplateSrv();
 
   /**
+   * Theme
+   */
+  const theme = useTheme2();
+
+  /**
    * Format On Mount
    */
   const onEditorMount = useCallback(
     (editor: monacoType.editor.IStandaloneCodeEditor) => {
-      if (context.options.editor.format !== Format.AUTO) {
+      if (context.options.editor.format !== Format.AUTO || type === EditorType.STYLES) {
         return;
       }
 
@@ -45,7 +56,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
         editor.getAction('editor.action.formatDocument').run();
       }, 100);
     },
-    [context.options.editor.format]
+    [context.options.editor.format, type]
   );
 
   /**
@@ -68,7 +79,21 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
     });
 
     if (type === EditorType.STYLES) {
-      return suggestions;
+      return suggestions.concat([
+        {
+          label: '${theme}',
+          detail: 'Theme object',
+          kind: CodeEditorSuggestionItemKind.Property,
+        },
+        /**
+         * TODO: should be added all possible string and number properties from theme
+         */
+        ...Object.entries(theme).map(([key]) => ({
+          label: `\${theme.${key}}`,
+          detail: `${key}`,
+          kind: CodeEditorSuggestionItemKind.Property,
+        })),
+      ]);
     }
 
     if (type === EditorType.AFTER_RENDER) {
@@ -76,16 +101,23 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
     }
 
     return HELPERS_EDITOR_SUGGESTIONS.concat(suggestions);
-  }, [templateSrv, type]);
+  }, [templateSrv, theme, type]);
 
   /**
    * Format Options
    */
-  const monacoOptions = useMemo(() => {
+  const monacoOptions = useMemo((): CodeEditorMonacoOptions => {
+    if (type === EditorType.STYLES) {
+      return {
+        formatOnPaste: false,
+        formatOnType: false,
+        renderValidationDecorations: 'off',
+      };
+    }
     return context.options.editor.format === Format.AUTO
       ? { formatOnPaste: true, formatOnType: true }
       : { formatOnPaste: false, formatOnType: false };
-  }, [context.options.editor.format]);
+  }, [context.options.editor.format, type]);
 
   /**
    * Language
