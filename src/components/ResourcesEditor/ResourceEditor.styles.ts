@@ -30,30 +30,5 @@ export const getStyles = (theme: GrafanaTheme2) => {
     removeButton: css`
       color: ${theme.colors.text.secondary};
     `,
-    infoContainer: css`
-      margin-bottom: ${theme.spacing(1)};
-      background: ${theme.colors.info.transparent};
-      padding: ${theme.spacing(1)} ${theme.spacing(1)} ${theme.spacing(0.5)} ${theme.spacing(1)};
-      border-left: 5px solid ${theme.colors.info.border};
-      border-radius: 10px;
-      width: 100%;
-      max-width: 600px;
-    `,
-    infoTitleContainer: css`
-      display: flex;
-      align-items: center;
-    `,
-    infoTitle: css`
-      margin: 0 0 0 ${theme.spacing(1)};
-      font-size: ${theme.typography.h5.fontSize};
-      font-weight: 500;
-      line-height: ${theme.typography.h5.lineHeight};
-    `,
-    infoMessage: css`
-      padding: ${theme.spacing(1)} 0 ${theme.spacing(1)} ${theme.spacing(0.5)};
-      font-size: ${theme.typography.bodySmall.fontSize};
-      font-weight: ${theme.typography.bodySmall.fontWeight};
-      line-height: ${theme.typography.bodySmall.lineHeight};
-    `,
   };
 };
