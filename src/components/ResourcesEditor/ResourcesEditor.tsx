@@ -131,8 +131,8 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
 
   if (!config?.disableSanitizeHtml) {
     return (
-      <Alert title="Sanitization" severity="info" data-testid={TEST_IDS.resourcesEditor.infoMessage}>
-        You need to disable the sanitization configuration to see external resources in the plugin options.
+      <Alert title="Unavailable" severity="info" data-testid={TEST_IDS.resourcesEditor.infoMessage}>
+        Please disable sanitize html to use external resources.
       </Alert>
     );
   }
