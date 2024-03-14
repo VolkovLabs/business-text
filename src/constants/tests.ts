@@ -22,5 +22,6 @@ export const TEST_IDS = {
     fieldUrl: 'data-testid resources-editor field-url',
     newItem: 'data-testid resources-editor new-item',
     newItemName: 'data-testid resources-editor new-item-name',
+    infoMessage: 'data-testid resources-editor info-message',
   },
 };
