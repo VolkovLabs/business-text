@@ -2,7 +2,7 @@
 
 ## 4.5.0 (2024-03-13)
 
-### Breaking changes
+### Features / Enhancements
 
 - Add Info message if sanitize enabled (#290)
 - Update CSS styles responsive and supporting themes (#281)
