@@ -1,6 +1,11 @@
 import { StandardEditorProps } from '@grafana/data';
 import { getTemplateSrv } from '@grafana/runtime';
-import { CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana/ui';
+import {
+  CodeEditorMonacoOptions,
+  CodeEditorSuggestionItem,
+  CodeEditorSuggestionItemKind,
+  useTheme2,
+} from '@grafana/ui';
 import { AutosizeCodeEditor } from '@volkovlabs/components';
 /**
  * Monaco
@@ -34,11 +39,16 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
   const templateSrv = getTemplateSrv();
 
   /**
+   * Theme
+   */
+  const theme = useTheme2();
+
+  /**
    * Format On Mount
    */
   const onEditorMount = useCallback(
     (editor: monacoType.editor.IStandaloneCodeEditor) => {
-      if (context.options.editor.format !== Format.AUTO) {
+      if (context.options.editor.format !== Format.AUTO || type === EditorType.STYLES) {
         return;
       }
 
@@ -46,7 +56,30 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
         editor.getAction('editor.action.formatDocument').run();
       }, 100);
     },
-    [context.options.editor.format]
+    [context.options.editor.format, type]
+  );
+
+  /**
+   * Add all possible string and number properties from theme
+   */
+  const getStylesThemeSuggestions = useCallback(
+    (entries: Array<[string, unknown]>, parentLabel = 'theme'): CodeEditorSuggestionItem[] => {
+      const properties: CodeEditorSuggestionItem[] = [];
+
+      for (const [key, value] of entries) {
+        const label = `${parentLabel}.${key}`;
+
+        if (typeof value === 'string' || typeof value === 'number') {
+          properties.push({ label: `\${${label}}`, detail: key, kind: CodeEditorSuggestionItemKind.Property });
+        } else if (typeof value === 'object' && value !== null) {
+          const nestedEntries = Object.entries(value as Record<string, unknown>);
+          properties.push(...getStylesThemeSuggestions(nestedEntries, label));
+        }
+      }
+
+      return properties;
+    },
+    []
   );
 
   /**
@@ -69,7 +102,7 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
     });
 
     if (type === EditorType.STYLES) {
-      return suggestions;
+      return [...suggestions, ...getStylesThemeSuggestions(Object.entries(theme))];
     }
 
     if (type === EditorType.AFTER_RENDER) {
@@ -77,16 +110,23 @@ export const CustomEditor: React.FC<Props> = ({ value, onChange, context, type =
     }
 
     return HELPERS_EDITOR_SUGGESTIONS.concat(suggestions);
-  }, [templateSrv, type]);
+  }, [getStylesThemeSuggestions, templateSrv, theme, type]);
 
   /**
    * Format Options
    */
-  const monacoOptions = useMemo(() => {
+  const monacoOptions = useMemo((): CodeEditorMonacoOptions => {
+    if (type === EditorType.STYLES) {
+      return {
+        formatOnPaste: false,
+        formatOnType: false,
+        renderValidationDecorations: 'off',
+      };
+    }
     return context.options.editor.format === Format.AUTO
       ? { formatOnPaste: true, formatOnType: true }
       : { formatOnPaste: false, formatOnType: false };
-  }, [context.options.editor.format]);
+  }, [context.options.editor.format, type]);
 
   /**
    * Language

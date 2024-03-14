@@ -20,10 +20,23 @@ jest.mock('@grafana/runtime', () => ({
 }));
 
 /**
+ * Mock @grafana/ui theme
+ */
+const theme = {
+  color: 'blue',
+};
+
+/**
  * Mock @grafana/ui
  */
 jest.mock('@grafana/ui', () => ({
   ...jest.requireActual('@grafana/ui'),
+
+  /**
+   * Mock useTheme2
+   */
+  useTheme2: jest.fn().mockImplementation(() => theme),
+
   /**
    * Mock Select component
    */
@@ -187,7 +200,9 @@ describe('Panel', () => {
       )
     );
 
-    expect(replaceVariables).toHaveBeenCalledWith('.styles-test{}; .dt-row{color:red}');
+    expect(replaceVariables).toHaveBeenCalledWith('.styles-test{}; .dt-row{color:red}', {
+      theme: { value: { color: 'blue' } },
+    });
 
     const panel = screen.getByTestId(TEST_IDS.panel.root);
     expect(panel).toBeInTheDocument();
