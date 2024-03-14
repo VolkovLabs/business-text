@@ -129,10 +129,13 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
     [items, onChangeItems]
   );
 
+  /**
+   * Disabled sanitize
+   */
   if (!config?.disableSanitizeHtml) {
     return (
       <Alert title="Unavailable" severity="info" data-testid={TEST_IDS.resourcesEditor.infoMessage}>
-        Please disable sanitize html to use external resources.
+        Please disable sanitize HTML to use external resources.
       </Alert>
     );
   }

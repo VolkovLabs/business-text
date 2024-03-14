@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.5.0 (IN PROGRESS)
+
+### Breaking changes
+
+- Add Info message if sanitize enabled (#290)
+
 ## 4.4.0 (2024-03-06)
 
 ### Breaking changes
