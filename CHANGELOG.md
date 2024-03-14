@@ -1,10 +1,12 @@
 # Changelog
 
-## 4.5.0 (IN PROGRESS)
+## 4.5.0 (2024-03-13)
 
-### Breaking changes
+### Features / Enhancements
 
 - Add Info message if sanitize enabled (#290)
+- Update CSS styles responsive and supporting themes (#281)
+- Update to Grafana 10.4.0 (#291)
 
 ## 4.4.0 (2024-03-06)
 
