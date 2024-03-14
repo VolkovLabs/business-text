@@ -1,3 +1,4 @@
+import { config } from '@grafana/runtime';
 import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import React from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
@@ -33,6 +34,10 @@ describe('ResourcesEditor', () => {
    * @param props
    */
   const getComponent = (props: Partial<Props>) => <ResourcesEditor name="Default" {...(props as any)} />;
+
+  beforeAll(() => {
+    config.disableSanitizeHtml = true;
+  });
 
   it('Should render items', () => {
     render(
@@ -280,5 +285,30 @@ describe('ResourcesEditor', () => {
     );
 
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  describe('ResourcesEditor when sanitize setting is true', () => {
+    beforeAll(() => {
+      config.disableSanitizeHtml = false;
+    });
+
+    it('Should not render items when sanitize setting is true', () => {
+      render(
+        getComponent({
+          value: [
+            {
+              id: '1',
+              url: 'abc',
+            },
+            {
+              id: '2',
+              url: 'aaa',
+            },
+          ],
+        })
+      );
+
+      expect(screen.getByTestId(TEST_IDS.resourcesEditor.infoMessage)).toBeInTheDocument();
+    });
   });
 });
