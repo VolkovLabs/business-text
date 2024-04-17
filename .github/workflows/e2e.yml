@@ -38,10 +38,3 @@ jobs:
 
       - name: Stop Grafana
         run: docker-compose down
-
-      - uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          path: |
-            cypress/videos
-            cypress/screenshots/actual
