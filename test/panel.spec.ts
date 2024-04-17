@@ -19,7 +19,7 @@ test.describe('Volkovlabs Dynamictext Panel', () => {
      * Check and compare image
      */
     await expect(
-      await dashboardPage.getPanelByTitle('Random Walk').locator.getByTestId(TEST_IDS.panel.root).screenshot()
-    ).toMatchSnapshot('actual-screenshot.png', { threshold: 0.6 });
+      dashboardPage.getPanelByTitle('Random Walk').locator.getByTestId(TEST_IDS.panel.root)
+    ).toHaveScreenshot('actual-screenshot.png');
   });
 });
