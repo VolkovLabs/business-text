@@ -15,3 +15,7 @@ __mocks__
 
 # Declarations
 **/*.d.ts
+
+# Playwright tests
+playwright.config.ts
+test/panel.spec.ts

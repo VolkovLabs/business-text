@@ -18,22 +18,42 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
-        "type": "grafana",
-        "uid": "grafana"
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 12,
         "x": 0,
         "y": 0
       },
       "id": 1,
       "options": {
+        "afterRender": "",
         "content": "```json\n{{{json @root}}}\n```",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -42,17 +62,40 @@
           "language": "markdown"
         },
         "editors": [],
-        "everyRow": false,
+        "externalScripts": [],
+        "externalStyles": [],
         "helpers": "",
-        "styles": ""
+        "renderMode": "allRows",
+        "styles": "",
+        "wrap": true
       },
+      "pluginVersion": "4.5.0",
       "targets": [
         {
           "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
           },
-          "queryType": "randomWalk",
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "time",
+                "type": "number",
+                "values": [1713328742800, 1713328762800, 1713328782800, 1713328802800, 1713328822800, 1713328842800]
+              },
+              {
+                "config": {},
+                "name": "series",
+                "type": "number",
+                "values": [
+                  71.60611982291123, 71.61689011800895, 72.01347581897211, 71.86455471820847, 72.16478293268965,
+                  71.71156805525236
+                ]
+              }
+            ],
+            "meta": {}
+          },
           "refId": "A"
         }
       ],
@@ -61,8 +104,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 38,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
@@ -75,6 +117,6 @@
   "timezone": "",
   "title": "E2E",
   "uid": "e0b41aac-0785-4bbe-81d7-e1df69efa571",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
