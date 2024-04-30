@@ -216,7 +216,7 @@ describe('Panel', () => {
 
   describe('Helpers execution', () => {
     const helpers = `
-      const subscription = eventBus.subscribe('event', () => {});
+      const subscription = context.grafana.eventBus.subscribe('event', () => {});
       
       return () => {
         subscription.unsubscribe();
