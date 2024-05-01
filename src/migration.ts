@@ -20,8 +20,7 @@ interface OutdatedPanelOptions {
  */
 const normalizeGetOption = (code: string): string => {
   const search =
-    /(dataFrame\.|data\.|handlebars|panelData|getLocale\(|timezone|timeRange|eventBus|locationService|replaceVariables\()/gm;
-
+    /(handlebars|panelData|dataFrame\.|data.|getLocale\(|timezone|timeRange|eventBus|locationService|replaceVariables\()/gm;
   return code.replace(search, (value) => {
     switch (value) {
       case 'data.': {
