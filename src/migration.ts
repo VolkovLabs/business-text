@@ -16,9 +16,9 @@ interface OutdatedPanelOptions {
 }
 
 /**
- * Normalize Get Option
+ * Normalize Helpers Option
  */
-const normalizeGetOption = (code: string): string => {
+const normalizeHelpersOption = (code: string): string => {
   const search =
     /(handlebars|panelData|dataFrame\.|data.|getLocale\(|timezone|timeRange|eventBus|locationService|replaceVariables\()/gm;
   return code.replace(search, (value) => {
@@ -71,7 +71,7 @@ export const getMigratedOptions = (panel: PanelModel<OutdatedPanelOptions & Pane
    * Normalize non context code parameters before 6.0.0
    */
   if (panel.pluginVersion && semver.lt(panel.pluginVersion, '6.0.0')) {
-    actualOptions.helpers = normalizeGetOption(actualOptions.helpers);
+    actualOptions.helpers = normalizeHelpersOption(actualOptions.helpers);
   }
 
   /**
