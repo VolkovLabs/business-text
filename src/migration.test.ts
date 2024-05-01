@@ -27,7 +27,7 @@ describe('Migration', () => {
     });
   });
 
-  describe('6.0.0', () => {
+  describe('5.0.0', () => {
     describe('helpers', () => {
       it.each([
         {
@@ -127,7 +127,7 @@ describe('Migration', () => {
       ])('Should migrate $name', ({ initial, expected }) => {
         expect(
           getMigratedOptions({
-            pluginVersion: '5.2.0',
+            pluginVersion: '4.8.0',
             options: {
               helpers: initial,
             },
