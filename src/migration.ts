@@ -70,7 +70,7 @@ export const getMigratedOptions = (panel: PanelModel<OutdatedPanelOptions & Pane
   /**
    * Normalize non context code parameters before 6.0.0
    */
-  if (panel.pluginVersion && semver.lt(panel.pluginVersion, '6.0.0')) {
+  if (panel.pluginVersion && semver.lt(panel.pluginVersion, '5.0.0')) {
     actualOptions.helpers = normalizeHelpersOption(actualOptions.helpers);
   }
 
