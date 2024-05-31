@@ -24,6 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 6,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -336,8 +337,8 @@
       "gridPos": {
         "h": 7,
         "w": 4,
-        "x": 0,
-        "y": 7
+        "x": 12,
+        "y": 0
       },
       "id": 28,
       "options": {
@@ -385,6 +386,186 @@
         }
       ],
       "title": "Mass: gram",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "pressurepa"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 16,
+        "y": 0
+      },
+      "id": 33,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Pressure 1", "Pressure 2", "Pressure 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["173", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Pressure: pascals",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "lengthmm"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 0,
+        "y": 7
+      },
+      "id": 31,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Length 1", "Length 2", "Length 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["173", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Length: millimeter",
       "type": "marcusolsson-dynamictext-panel"
     },
     {
@@ -597,96 +778,6 @@
             "properties": [
               {
                 "id": "unit",
-                "value": "lengthmm"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 4,
-        "x": 0,
-        "y": 14
-      },
-      "id": 31,
-      "options": {
-        "afterRender": "",
-        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "language": "handlebars"
-        },
-        "editors": ["helpers"],
-        "externalScripts": [],
-        "externalStyles": [],
-        "helpers": "",
-        "renderMode": "everyRow",
-        "styles": "",
-        "wrap": true
-      },
-      "pluginVersion": "5.0.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "marcusolsson-static-datasource",
-            "uid": "U0HP2Rv4z"
-          },
-          "frame": {
-            "fields": [
-              {
-                "config": {},
-                "name": "Text",
-                "type": "string",
-                "values": ["Length 1", "Length 2", "Length 3"]
-              },
-              {
-                "config": {},
-                "name": "Value",
-                "type": "string",
-                "values": ["173", "1600", "100000"]
-              }
-            ],
-            "meta": {},
-            "name": "Value"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "Length: millimeter",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "U0HP2Rv4z"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value"
-            },
-            "properties": [
-              {
-                "id": "unit",
                 "value": "rothz"
               }
             ]
@@ -696,8 +787,8 @@
       "gridPos": {
         "h": 7,
         "w": 4,
-        "x": 4,
-        "y": 14
+        "x": 12,
+        "y": 7
       },
       "id": 32,
       "options": {
@@ -749,11 +840,12 @@
     },
     {
       "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "U0HP2Rv4z"
+        "type": "datasource",
+        "uid": "grafana"
       },
       "fieldConfig": {
         "defaults": {
+          "decimals": 5,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -768,37 +860,24 @@
             ]
           }
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "pressurepa"
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 7,
         "w": 4,
-        "x": 8,
-        "y": 14
+        "x": 16,
+        "y": 7
       },
-      "id": 33,
+      "id": 34,
       "options": {
         "afterRender": "",
-        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "content": "{{!-- Return --}}\n{{A-series}}\n",
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
           "language": "handlebars"
         },
-        "editors": ["helpers"],
+        "editors": [],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
@@ -810,31 +889,14 @@
       "targets": [
         {
           "datasource": {
-            "type": "marcusolsson-static-datasource",
-            "uid": "U0HP2Rv4z"
+            "type": "datasource",
+            "uid": "grafana"
           },
-          "frame": {
-            "fields": [
-              {
-                "config": {},
-                "name": "Text",
-                "type": "string",
-                "values": ["Pressure 1", "Pressure 2", "Pressure 3"]
-              },
-              {
-                "config": {},
-                "name": "Value",
-                "type": "string",
-                "values": ["173", "1600", "100000"]
-              }
-            ],
-            "meta": {},
-            "name": "Value"
-          },
+          "queryType": "randomWalk",
           "refId": "A"
         }
       ],
-      "title": "Pressure: pascals",
+      "title": "Time Series: decimals",
       "type": "marcusolsson-dynamictext-panel"
     }
   ],
@@ -853,6 +915,6 @@
   "timezone": "",
   "title": "Units",
   "uid": "d2296f50-eee2-4171-b894-5b0f62312c83",
-  "version": 39,
+  "version": 40,
   "weekStart": ""
 }

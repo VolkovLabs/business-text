@@ -29,6 +29,7 @@
       },
       "fieldConfig": {
         "defaults": {
+          "decimals": 5,
           "thresholds": {
             "mode": "absolute",
             "steps": [
