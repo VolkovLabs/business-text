@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -82,7 +81,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('console >>> handlebars transformedValue', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -172,7 +171,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -262,7 +261,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -352,7 +351,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -442,7 +441,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -532,7 +531,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -622,7 +621,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -712,7 +711,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -802,7 +801,7 @@
         "editors": ["helpers"],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Override value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "helpers": "",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
@@ -854,6 +853,6 @@
   "timezone": "",
   "title": "Units",
   "uid": "d2296f50-eee2-4171-b894-5b0f62312c83",
-  "version": 37,
+  "version": 39,
   "weekStart": ""
 }
