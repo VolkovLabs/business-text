@@ -844,45 +844,7 @@
   "schemaVersion": 39,
   "tags": [],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "selected": true,
-          "text": ["All"],
-          "value": ["$__all"]
-        },
-        "hide": 0,
-        "includeAll": true,
-        "multi": true,
-        "name": "test",
-        "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "test1",
-            "value": "test1"
-          },
-          {
-            "selected": false,
-            "text": "test2",
-            "value": "test2"
-          },
-          {
-            "selected": false,
-            "text": "test3",
-            "value": "test3"
-          }
-        ],
-        "query": "test1,test2,test3",
-        "queryValue": "",
-        "skipUrlSync": false,
-        "type": "custom"
-      }
-    ]
+    "list": []
   },
   "time": {
     "from": "now-1y",
@@ -892,6 +854,6 @@
   "timezone": "",
   "title": "Units",
   "uid": "d2296f50-eee2-4171-b894-5b0f62312c83",
-  "version": 36,
+  "version": 37,
   "weekStart": ""
 }
