@@ -1,0 +1,897 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 6,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "decbytes"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 25,
+      "options": {
+        "afterRender": "",
+        "content": "{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('console >>> handlebars transformedValue', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Value 1", "Value 2", "Value 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["1048576", "2048576", "3048576"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Bytes",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "watt"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 4,
+        "y": 0
+      },
+      "id": 26,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Watt 1", "Watt 2", "Watt 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["1500", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Energy: Watt",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "forceN"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 8,
+        "y": 0
+      },
+      "id": 27,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Force 1", "Force 2", "Force 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["1500", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Force: Newtons",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "massg"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 0,
+        "y": 7
+      },
+      "id": 28,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Mass 1", "Mass 2", "Mass 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["1500", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Mass: gram",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "litre"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 4,
+        "y": 7
+      },
+      "id": 29,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Volume 1", "Volume 2", "Volume 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["1", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Volume: litre",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "s"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 8,
+        "y": 7
+      },
+      "id": 30,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Time 1", "Time 2", "Time 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["173", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Time: seconds",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "lengthmm"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 0,
+        "y": 14
+      },
+      "id": 31,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Length 1", "Length 2", "Length 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["173", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Length: millimeter",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "rothz"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 4,
+        "y": 14
+      },
+      "id": 32,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Rotation Speed 1", "Rotation Speed 2", "Rotation Speed 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["10", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Rotation Speed: Hertz",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "pressurepa"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 8,
+        "y": 14
+      },
+      "id": 33,
+      "options": {
+        "afterRender": "",
+        "content": "{{!-- Return --}}\n{{Text}}: {{Value}}\n",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": ["helpers"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "/**\n * Get data field for \"Value\"\n * \n */\nconst dataValueField = context.dataFrame.fields.find(field => field.name === 'Value')\n\ncontext.handlebars.registerHelper(\"Value\", (context) => {\n  /**\n   * Use 'display' method from field for \"Value\"\n   * display transform value based on Overide value\n   * ex: 1048576 --> 1.05 MB\n   */\n  const transformedValue = dataValueField.display?.(context.data.root[\"Value\"])\n  console.log('transformedValue:', transformedValue)\n\n  /**\n   * Return transformed value\n   * \n   */\n  return `${transformedValue.prefix || ''}${transformedValue.text}${transformedValue.suffix}`\n}\n);\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Text",
+                "type": "string",
+                "values": ["Pressure 1", "Pressure 2", "Pressure 3"]
+              },
+              {
+                "config": {},
+                "name": "Value",
+                "type": "string",
+                "values": ["173", "1600", "100000"]
+              }
+            ],
+            "meta": {},
+            "name": "Value"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Pressure: pascals",
+      "type": "marcusolsson-dynamictext-panel"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "test",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "test1",
+            "value": "test1"
+          },
+          {
+            "selected": false,
+            "text": "test2",
+            "value": "test2"
+          },
+          {
+            "selected": false,
+            "text": "test3",
+            "value": "test3"
+          }
+        ],
+        "query": "test1,test2,test3",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1y",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Units",
+  "uid": "d2296f50-eee2-4171-b894-5b0f62312c83",
+  "version": 36,
+  "weekStart": ""
+}
