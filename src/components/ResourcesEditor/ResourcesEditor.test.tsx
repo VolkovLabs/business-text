@@ -33,7 +33,7 @@ describe('ResourcesEditor', () => {
    * Get Tested Component
    * @param props
    */
-  const getComponent = (props: Partial<Props>) => <ResourcesEditor name="Default" {...(props as any)} />;
+  const getComponent = (props: Partial<Props>) => <ResourcesEditor name="Default" item={{}} {...(props as any)} />;
 
   beforeAll(() => {
     config.disableSanitizeHtml = true;
