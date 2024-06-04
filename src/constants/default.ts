@@ -11,7 +11,6 @@ export const DEFAULT_OPTIONS: PanelOptions = {
   editor: { format: Format.AUTO, language: CodeLanguage.MARKDOWN },
   editors: [],
   renderMode: RenderMode.EVERY_ROW,
-  externalScripts: [],
   externalStyles: [],
   helpers: '',
   status: '',
