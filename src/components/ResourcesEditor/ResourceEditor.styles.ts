@@ -30,5 +30,8 @@ export const getStyles = (theme: GrafanaTheme2) => {
     removeButton: css`
       color: ${theme.colors.text.secondary};
     `,
+    link: css`
+      text-decoration: underline;
+    `,
   };
 };

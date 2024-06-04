@@ -79,6 +79,9 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         defaultValue: DEFAULT_OPTIONS.externalScripts,
         editor: ResourcesEditor,
         category: ['External Resources'],
+        settings: {
+          isDeprecated: true,
+        },
       });
 
     /**

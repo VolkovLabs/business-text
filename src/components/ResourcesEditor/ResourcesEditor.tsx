@@ -20,7 +20,7 @@ import { getStyles } from './ResourceEditor.styles';
 /**
  * Properties
  */
-type Props = StandardEditorProps<Resource[], null, PanelOptions>;
+type Props = StandardEditorProps<Resource[], { isDeprecated: boolean }, PanelOptions>;
 
 /**
  * Reorder
@@ -49,7 +49,7 @@ const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDr
 /**
  * Resources Editor
  */
-export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
+export const ResourcesEditor: React.FC<Props> = ({ value, onChange, item: { settings } }) => {
   /**
    * Styles and Theme
    */
@@ -222,6 +222,18 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
           Add
         </Button>
       </InlineFieldRow>
+      {settings?.isDeprecated && (
+        <Alert title="Deprecation" severity="warning">
+          External Scripts are deprecated and will be removed in the upcoming release. Please follow{' '}
+          <a
+            href="https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/external/"
+            className={styles.link}
+            target="__blank"
+          >
+            on the documentation
+          </a>
+        </Alert>
+      )}
     </>
   );
 };
