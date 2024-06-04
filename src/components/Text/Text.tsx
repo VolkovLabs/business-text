@@ -198,7 +198,8 @@ export const Text: React.FC<Props> = ({
                  */
                 acc[i] = {
                   ...acc[i],
-                  [config.displayName || name]: formattedValue ? formattedValueToString(formattedValue) : value,
+                  [config.displayName || name]:
+                    config.unit && formattedValue ? formattedValueToString(formattedValue) : value,
                   statusColor,
                 };
               });

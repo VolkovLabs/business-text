@@ -316,6 +316,9 @@ describe('Text', () => {
             text: '1.05',
           }),
           values: [1048576],
+          config: {
+            unit: 'mb',
+          },
         },
       ],
     });
