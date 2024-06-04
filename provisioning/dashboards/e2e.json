@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -44,7 +43,24 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "series"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 3
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 9,
@@ -70,7 +86,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.5.0",
+      "pluginVersion": "5.0.0",
       "targets": [
         {
           "datasource": {
@@ -83,14 +99,25 @@
                 "config": {},
                 "name": "time",
                 "type": "number",
-                "values": [1713328742800, 1713328762800, 1713328782800, 1713328802800, 1713328822800, 1713328842800]
+                "values": [
+                  1713328742800,
+                  1713328762800,
+                  1713328782800,
+                  1713328802800,
+                  1713328822800,
+                  1713328842800
+                ]
               },
               {
                 "config": {},
                 "name": "series",
                 "type": "number",
                 "values": [
-                  71.60611982291123, 71.61689011800895, 72.01347581897211, 71.86455471820847, 72.16478293268965,
+                  71.60611982291123,
+                  71.61689011800895,
+                  72.01347581897211,
+                  71.86455471820847,
+                  72.16478293268965,
                   71.71156805525236
                 ]
               }
@@ -114,6 +141,7 @@
     "from": "now-6h",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {},
   "timezone": "",
   "title": "E2E",
