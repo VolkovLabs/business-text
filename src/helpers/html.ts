@@ -18,6 +18,7 @@ import hljs from 'highlight.js';
 import MarkdownIt from 'markdown-it';
 
 import { PanelOptions } from '../types';
+import { createExecutionCode } from './code';
 import { beforeRenderCodeParameters } from './code-parameters';
 import { registerHelpers } from './handlebars';
 import { replaceVariablesHelper } from './variable';
@@ -82,7 +83,7 @@ export const generateHtml = ({
    * Add Custom Helpers
    */
   if (helpers) {
-    const func = new Function(
+    const func = createExecutionCode(
       'data',
       'handlebars',
       'getLocale',

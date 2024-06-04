@@ -1,0 +1,488 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "afterRender": "import('https://esm.sh/leaflet').then(({ default: L }) => {\n  /**\n   * Cleanup\n   */\n  if (this.map) {\n    this.map.remove();\n  }\n\n  const map = L.map(\"leaflet\").setView([9.024857, 38.737607], 13);\n  this.map = map;\n\n  L.tileLayer(\"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\", {\n    attribution:\n      'Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors',\n    maxZoom: 18,\n  }).addTo(map);\n\n  //if you want to use inline data\n  const geojson = {\n    type: \"FeatureCollection\",\n    crs: { type: \"name\", properties: { name: \"urn:ogc:def:crs:OGC:1.3:CRS84\" } },\n    features: [\n      {\n        type: \"Feature\",\n        properties: { AOIs: \"bbb\", daily: \"33\" },\n        geometry: {\n          type: \"Polygon\",\n          coordinates: [\n            [\n              [33.5, 32.0],\n              [33.5, 29.0],\n              [36.0, 29.0],\n              [36.0, 27.5],\n              [33.5, 27.5],\n              [32.5, 27.5],\n              [29.0, 27.5],\n              [29.0, 32.0],\n              [33.5, 32.0],\n            ],\n          ],\n        },\n      },\n      {\n        type: \"Feature\",\n        properties: { AOIs: \"aaa\", daily: \"23\" },\n        geometry: {\n          type: \"Polygon\",\n          coordinates: [\n            [\n              [34.5, 32.5],\n              [36.0, 32.5],\n              [36.0, 29.0],\n              [33.5, 29.0],\n              [33.5, 32.0],\n              [33.5, 32.5],\n              [34.5, 32.5],\n            ],\n          ],\n        },\n      },\n    ],\n  };\n\n  var myStyle = {\n    color: \"black\",\n    weight: 10,\n  };\n\n  var geojsonLayer = L.geoJSON(geojson).addTo(map);\n})",
+        "content": "<div id=\"leaflet\" />",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "html"
+        },
+        "editors": [
+          "afterRender",
+          "styles"
+        ],
+        "externalScripts": [],
+        "externalStyles": [
+          {
+            "id": "1b6c0069-a2f3-4a93-971b-f35b057f5c08",
+            "url": "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          }
+        ],
+        "helpers": "",
+        "renderMode": "data",
+        "styles": "#leaflet {\n  height: 480px;\n  display: flex;\n  flex-direction: row;\n}",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Field 1",
+                "type": "string",
+                "values": [
+                  ""
+                ]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Leaflet",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "afterRender": "import('https://esm.sh/chart.js').then(({ Chart, registerables }) => {\n  Chart.register(...registerables);\n\n  /**\n   * Cleanup\n   */\n  if (this.chartInstance) {\n    this.chartInstance.destroy();\n  }\n\n  const ctx = document.getElementById(\"myChart\");\n\n  this.chartInstance = new Chart(ctx, {\n    type: \"bar\",\n    data: {\n      labels: [\"Red\", \"Blue\", \"Yellow\", \"Green\", \"Purple\", \"Orange\"],\n      datasets: [\n        {\n          label: \"# of Votes\",\n          data: [12, 19, 3, 5, 2, 3],\n          borderWidth: 1,\n        },\n      ],\n    },\n    options: {\n      scales: {\n        y: {\n          beginAtZero: true,\n        },\n      },\n    },\n  });\n})",
+        "content": "<canvas id=\"myChart\" />",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "html"
+        },
+        "editors": [
+          "afterRender"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "data",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Field 1",
+                "type": "string",
+                "values": [
+                  ""
+                ]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Chart.js",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 5,
+      "options": {
+        "afterRender": "import('https://esm.sh/youtube-player').then(({ default: YouTubePlayer }) => {\n  const player = YouTubePlayer('player');\n\n  const videoList = [\"AcQi-6GCrNU\", \"1ogv2jstrlI\", \"vky-7-DfvXE\"];\n\n  const randomVideoId = videoList[Math.floor(Math.random() * videoList.length)];\n\n  player.loadVideoById(randomVideoId);\n})",
+        "content": "<h1>Volkov Labs Latest videos</h1>\n<div id=\"player\"></div>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "html"
+        },
+        "editors": [
+          "afterRender"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "data",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Field 1",
+                "type": "string",
+                "values": [
+                  ""
+                ]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Youtube",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "afterRender": "import('https://esm.sh/flowchart.js').then(async (flowchart) => {\n  await import('https://esm.sh/raphael');\n\n  const flow = `\nst=>start: Start:>http://www.google.com[blank]\ne=>end:>http://www.google.com\nop1=>operation: My Operation\nsub1=>subroutine: My Subroutine\ncond=>condition: Yes\nor No?:>http://www.google.com\nio=>inputoutput: catch something...\npara=>parallel: parallel tasks\nin=>input: some in\nout=>output: some out\n\nst->op1->cond\ncond(yes)->io->e\ncond(no)->para\npara(path1, bottom)->sub1(right)->op1\npara(path2, top)->op1\npara(path3, right)->in->out->e`\n\n  const diagram = flowchart.parse(flow);\n  diagram.drawSVG('flowchart');\n})",
+        "content": "<div id=\"flowchart\" />",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "html"
+        },
+        "editors": [
+          "afterRender"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "data",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Field 1",
+                "type": "string",
+                "values": [
+                  ""
+                ]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Flowchart",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 23
+      },
+      "id": 1,
+      "options": {
+        "afterRender": "const unpack = (rows, key) => {\n  return rows.map(function (row) {\n    return row[key];\n  });\n};\n\nconst csvToJson = (data, delimiter = \",\") => {\n  const titles = data.slice(0, data.indexOf(\"\\r\\n\")).split(delimiter);\n  return data\n    .slice(data.indexOf(\"\\n\") + 1)\n    .split(\"\\r\\n\")\n    .map((v) => {\n      const values = v.split(delimiter);\n      return titles.reduce(\n        (obj, title, index) => ((obj[title] = values[index]), obj),\n        {}\n      );\n    });\n};\n\n/**\n * Load plotly\n */\nimport('https://esm.sh/plotly.js-dist-min').then(async ({ default: Plotly }) => {\n  let url =\n    \"https://raw.githubusercontent.com/plotly/datasets/master/3d-scatter.csv\";\n\n  let fetchData = await fetch(url);\n  let csvData = await fetchData.text();\n  let rows = csvToJson(csvData);\n\n  var trace1 = {\n    x: unpack(rows, \"x1\"),\n    y: unpack(rows, \"y1\"),\n    z: unpack(rows, \"z1\"),\n    mode: \"markers\",\n    marker: {\n      size: 12,\n      line: {\n        color: \"rgba(217, 217, 217, 0.14)\",\n        width: 0.5,\n      },\n      opacity: 0.8,\n    },\n    type: \"scatter3d\",\n  };\n\n  var trace2 = {\n    x: unpack(rows, \"x2\"),\n    y: unpack(rows, \"y2\"),\n    z: unpack(rows, \"z2\"),\n    mode: \"markers\",\n    marker: {\n      color: \"rgb(127, 127, 127)\",\n      size: 12,\n      symbol: \"circle\",\n      line: {\n        color: \"rgb(204, 204, 204)\",\n        width: 1,\n      },\n      opacity: 0.8,\n    },\n    type: \"scatter3d\",\n  };\n\n  var data = [trace1, trace2];\n\n  var layout = {\n    margin: {\n      l: 0,\n      r: 0,\n      b: 0,\n      t: 0,\n    },\n  };\n\n  var config = { responsive: true }\n\n  Plotly.newPlot(\"plotly-chart\", data, layout, config);\n})",
+        "content": "<div id=\"plotly-chart\" />",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "html"
+        },
+        "editors": [
+          "afterRender"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "data",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Field 1",
+                "type": "string",
+                "values": [
+                  ""
+                ]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Plotly 3D Scatter",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 28
+      },
+      "id": 2,
+      "options": {
+        "afterRender": "import('https://esm.sh/mermaid').then(({ default: mermaid }) => {\n  mermaid.initialize({ startOnLoad: true });\n\n  mermaid.run({\n    querySelector: \".mermaid\",\n    suppressErrors: false,\n  });\n})",
+        "content": "flowchart LR\n<pre class=\"mermaid\">\n    graph LR\n    A --- B\n    B-->C[fa:fa-ban {{data.0.test}}]\n    B-->D(fa:fa-spinner);\n</pre>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "html"
+        },
+        "editors": [
+          "afterRender"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "data",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Field 1",
+                "type": "string",
+                "values": [
+                  ""
+                ]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Mermaid",
+      "type": "marcusolsson-dynamictext-panel"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timeRangeUpdatedDuringEditOrView": true,
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Libraries",
+  "uid": "fdnq3ouaz48owb",
+  "version": 43,
+  "weekStart": ""
+}
