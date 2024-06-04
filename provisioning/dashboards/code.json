@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -61,97 +60,18 @@
           "height": 200,
           "language": "markdown"
         },
-        "editors": ["afterRender"],
-        "everyRow": true,
+        "editors": [
+          "afterRender"
+        ],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
+        "renderMode": "everyRow",
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.0.0",
       "title": "Panel Title",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "U0HP2Rv4z"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "id": 2,
-      "links": [
-        {
-          "title": "https://www.chartjs.org/docs/latest/getting-started/",
-          "url": "https://www.chartjs.org/docs/latest/getting-started/"
-        }
-      ],
-      "options": {
-        "afterRender": "const ctx = document.getElementById('myChart');\n\nnew Chart(ctx, {\n  type: 'bar',\n  data: {\n    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],\n    datasets: [{\n      label: '# of Votes',\n      data: [12, 19, 3, 5, 2, 3],\n      borderWidth: 1\n    }]\n  },\n  options: {\n    scales: {\n      y: {\n        beginAtZero: true\n      }\n    }\n  }\n});",
-        "content": "<canvas id=\"myChart\"></canvas>",
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 436,
-          "language": "markdown"
-        },
-        "editors": ["afterRender"],
-        "everyRow": false,
-        "externalScripts": [
-          {
-            "id": "03972fe9-6f7b-49cd-92e5-3fd0e6e998e0",
-            "url": "https://cdn.jsdelivr.net/npm/chart.js"
-          }
-        ],
-        "externalStyles": [],
-        "helpers": "",
-        "styles": "",
-        "wrap": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "marcusolsson-static-datasource",
-            "uid": "U0HP2Rv4z"
-          },
-          "frame": {
-            "fields": [
-              {
-                "config": {},
-                "name": "test",
-                "type": "string",
-                "values": ["test"]
-              }
-            ],
-            "meta": {},
-            "name": "Test"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "Chart.js",
       "type": "marcusolsson-dynamictext-panel"
     },
     {
@@ -180,8 +100,8 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
-        "y": 8
+        "x": 12,
+        "y": 0
       },
       "id": 1,
       "options": {
@@ -193,14 +113,17 @@
           "height": 200,
           "language": "markdown"
         },
-        "editors": ["afterRender"],
-        "everyRow": false,
+        "editors": [
+          "afterRender"
+        ],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
+        "renderMode": "allRows",
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.0.0",
       "targets": [
         {
           "datasource": {
@@ -213,7 +136,9 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": ["test"]
+                "values": [
+                  "test"
+                ]
               }
             ],
             "meta": {},
@@ -223,83 +148,6 @@
         }
       ],
       "title": "Dynamic Form",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "U0HP2Rv4z"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 12,
-        "x": 12,
-        "y": 13
-      },
-      "id": 3,
-      "links": [],
-      "options": {
-        "afterRender": "mermaid.initialize({ startOnLoad: true });\n\nmermaid.run({\n  querySelector: '.mermaid',\n  suppressErrors: false,\n});",
-        "content": "<pre class=\"mermaid\">\n    graph LR\n    A --- B\n    B-->C[fa:fa-ban {{data.0.test}}]\n    B-->D(fa:fa-spinner);\n</pre>",
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 436,
-          "language": "markdown"
-        },
-        "editors": ["afterRender"],
-        "everyRow": false,
-        "externalScripts": [
-          {
-            "id": "5d5a88bf-6198-453a-bc73-1071319a8f3a",
-            "url": "https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"
-          }
-        ],
-        "externalStyles": [],
-        "helpers": "",
-        "styles": "",
-        "wrap": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "marcusolsson-static-datasource",
-            "uid": "U0HP2Rv4z"
-          },
-          "frame": {
-            "fields": [
-              {
-                "config": {},
-                "name": "test",
-                "type": "string",
-                "values": ["test"]
-              }
-            ],
-            "meta": {},
-            "name": "Test"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "Mermaid",
       "type": "marcusolsson-dynamictext-panel"
     },
     {
@@ -329,7 +177,7 @@
         "h": 18,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 8
       },
       "id": 4,
       "options": {
@@ -341,14 +189,17 @@
           "height": 200,
           "language": "markdown"
         },
-        "editors": ["styles"],
-        "everyRow": true,
+        "editors": [
+          "styles"
+        ],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
+        "renderMode": "everyRow",
         "styles": ".container {\n  display: flex;\n  justify-content: center;\n  font-size: 1rem;\n  list-style-type: none;\n  display: flex;\n  gap: 20px;\n}\n\n/* <!-- Using the custom property `--i` to calculate the animation duration. --> */\nli {\n  animation-name: falling;\n  animation-duration: calc(var(--i) * 1s);\n}\n\n/* keyframes */\n@keyframes falling {\n  0% {\n    opacity: 0;\n    transform: translateY(-100px);\n  }\n\n  70% {\n    opacity: 1;\n  }\n\n  100% {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}",
         "wrap": true
       },
+      "pluginVersion": "5.0.0",
       "targets": [
         {
           "datasource": {
@@ -364,8 +215,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 38,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
@@ -374,10 +224,11 @@
     "from": "now-6h",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {},
   "timezone": "",
   "title": "Dynamic Text 4.2.0",
   "uid": "fc33aa7b-d57e-4623-886a-4c55f46bf604",
-  "version": 14,
+  "version": 1,
   "weekStart": ""
 }

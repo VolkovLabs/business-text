@@ -1,4 +1,3 @@
-import { config } from '@grafana/runtime';
 import { useEffect, useState } from 'react';
 
 import { createResourcesManager } from '../helpers';
@@ -48,13 +47,9 @@ export const useExternalResources = ({ type, items }: { type: ResourceType; item
     };
 
     /**
-     * Load resources if sanitizing disabled
+     * Load resources
      */
-    if (config.disableSanitizeHtml) {
-      loadResources();
-    } else {
-      setIsLoaded(true);
-    }
+    loadResources();
 
     return () => {
       /**

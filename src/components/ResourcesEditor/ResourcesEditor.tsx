@@ -1,6 +1,5 @@
 import { StandardEditorProps } from '@grafana/data';
-import { config } from '@grafana/runtime';
-import { Alert, Button, Icon, InlineField, InlineFieldRow, Input, useStyles2 } from '@grafana/ui';
+import { Button, Icon, InlineField, InlineFieldRow, Input, useStyles2 } from '@grafana/ui';
 import { Collapse } from '@volkovlabs/components';
 import React, { useCallback, useState } from 'react';
 import {
@@ -20,7 +19,7 @@ import { getStyles } from './ResourceEditor.styles';
 /**
  * Properties
  */
-type Props = StandardEditorProps<Resource[], { isDeprecated: boolean }, PanelOptions>;
+type Props = StandardEditorProps<Resource[], PanelOptions>;
 
 /**
  * Reorder
@@ -49,7 +48,7 @@ const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDr
 /**
  * Resources Editor
  */
-export const ResourcesEditor: React.FC<Props> = ({ value, onChange, item: { settings } }) => {
+export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
   /**
    * Styles and Theme
    */
@@ -128,17 +127,6 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange, item: { sett
     },
     [items, onChangeItems]
   );
-
-  /**
-   * Disabled sanitize
-   */
-  if (!config?.disableSanitizeHtml) {
-    return (
-      <Alert title="Unavailable" severity="info" data-testid={TEST_IDS.resourcesEditor.infoMessage}>
-        Please disable sanitize HTML to use external resources.
-      </Alert>
-    );
-  }
 
   return (
     <>
@@ -222,18 +210,6 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange, item: { sett
           Add
         </Button>
       </InlineFieldRow>
-      {settings?.isDeprecated && (
-        <Alert title="Deprecation" severity="warning">
-          External Scripts are deprecated and will be removed in the upcoming release. Please follow{' '}
-          <a
-            href="https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/external/"
-            className={styles.link}
-            target="__blank"
-          >
-            on the documentation
-          </a>
-        </Alert>
-      )}
     </>
   );
 };

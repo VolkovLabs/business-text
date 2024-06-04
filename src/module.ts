@@ -63,26 +63,14 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
     /**
      * External Resources
      */
-    builder
-      .addCustomEditor({
-        id: 'externalStyles',
-        path: 'externalStyles',
-        name: 'Styles',
-        defaultValue: DEFAULT_OPTIONS.externalStyles,
-        editor: ResourcesEditor,
-        category: ['External Resources'],
-      })
-      .addCustomEditor({
-        id: 'externalScripts',
-        path: 'externalScripts',
-        name: 'Scripts',
-        defaultValue: DEFAULT_OPTIONS.externalScripts,
-        editor: ResourcesEditor,
-        category: ['External Resources'],
-        settings: {
-          isDeprecated: true,
-        },
-      });
+    builder.addCustomEditor({
+      id: 'externalStyles',
+      path: 'externalStyles',
+      name: 'Styles',
+      defaultValue: DEFAULT_OPTIONS.externalStyles,
+      editor: ResourcesEditor,
+      category: ['External Resources'],
+    });
 
     /**
      * Editor

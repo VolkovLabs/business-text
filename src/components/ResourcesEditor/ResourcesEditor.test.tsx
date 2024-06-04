@@ -286,29 +286,4 @@ describe('ResourcesEditor', () => {
 
     expect(onChange).not.toHaveBeenCalled();
   });
-
-  describe('ResourcesEditor when sanitize setting is true', () => {
-    beforeAll(() => {
-      config.disableSanitizeHtml = false;
-    });
-
-    it('Should not render items when sanitize setting is true', () => {
-      render(
-        getComponent({
-          value: [
-            {
-              id: '1',
-              url: 'abc',
-            },
-            {
-              id: '2',
-              url: 'aaa',
-            },
-          ],
-        })
-      );
-
-      expect(screen.getByTestId(TEST_IDS.resourcesEditor.infoMessage)).toBeInTheDocument();
-    });
-  });
 });
