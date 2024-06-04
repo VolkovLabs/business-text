@@ -51,7 +51,7 @@
       },
       "id": 6,
       "options": {
-        "afterRender": "import('https://esm.sh/leaflet').then(({ default: L }) => {\n  /**\n   * Cleanup\n   */\n  if (this.map) {\n    this.map.remove();\n  }\n\n  const map = L.map(\"leaflet\").setView([9.024857, 38.737607], 13);\n  this.map = map;\n\n  L.tileLayer(\"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\", {\n    attribution:\n      'Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors',\n    maxZoom: 18,\n  }).addTo(map);\n\n  //if you want to use inline data\n  const geojson = {\n    type: \"FeatureCollection\",\n    crs: { type: \"name\", properties: { name: \"urn:ogc:def:crs:OGC:1.3:CRS84\" } },\n    features: [\n      {\n        type: \"Feature\",\n        properties: { AOIs: \"bbb\", daily: \"33\" },\n        geometry: {\n          type: \"Polygon\",\n          coordinates: [\n            [\n              [33.5, 32.0],\n              [33.5, 29.0],\n              [36.0, 29.0],\n              [36.0, 27.5],\n              [33.5, 27.5],\n              [32.5, 27.5],\n              [29.0, 27.5],\n              [29.0, 32.0],\n              [33.5, 32.0],\n            ],\n          ],\n        },\n      },\n      {\n        type: \"Feature\",\n        properties: { AOIs: \"aaa\", daily: \"23\" },\n        geometry: {\n          type: \"Polygon\",\n          coordinates: [\n            [\n              [34.5, 32.5],\n              [36.0, 32.5],\n              [36.0, 29.0],\n              [33.5, 29.0],\n              [33.5, 32.0],\n              [33.5, 32.5],\n              [34.5, 32.5],\n            ],\n          ],\n        },\n      },\n    ],\n  };\n\n  var myStyle = {\n    color: \"black\",\n    weight: 10,\n  };\n\n  var geojsonLayer = L.geoJSON(geojson).addTo(map);\n})",
+        "afterRender": "// This data is coming from the data source.\n// const geojson = JSON.parse(context.data[0][0].data);\n\nimport('https://esm.sh/leaflet').then(({ default: L }) => {\n  /**\n   * Cleanup\n   */\n  if (this.map) {\n    this.map.remove();\n  }\n\n  const map = L.map(\"leaflet\").setView([9.024857, 38.737607], 13);\n  this.map = map;\n\n  L.tileLayer(\"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\", {\n    attribution:\n      'Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors',\n    maxZoom: 18,\n  }).addTo(map);\n\n  //if you want to use inline data\n  const geojson = {\n    type: \"FeatureCollection\",\n    crs: { type: \"name\", properties: { name: \"urn:ogc:def:crs:OGC:1.3:CRS84\" } },\n    features: [\n      {\n        type: \"Feature\",\n        properties: { AOIs: \"bbb\", daily: \"33\" },\n        geometry: {\n          type: \"Polygon\",\n          coordinates: [\n            [\n              [33.5, 32.0],\n              [33.5, 29.0],\n              [36.0, 29.0],\n              [36.0, 27.5],\n              [33.5, 27.5],\n              [32.5, 27.5],\n              [29.0, 27.5],\n              [29.0, 32.0],\n              [33.5, 32.0],\n            ],\n          ],\n        },\n      },\n      {\n        type: \"Feature\",\n        properties: { AOIs: \"aaa\", daily: \"23\" },\n        geometry: {\n          type: \"Polygon\",\n          coordinates: [\n            [\n              [34.5, 32.5],\n              [36.0, 32.5],\n              [36.0, 29.0],\n              [33.5, 29.0],\n              [33.5, 32.0],\n              [33.5, 32.5],\n              [34.5, 32.5],\n            ],\n          ],\n        },\n      },\n    ],\n  };\n\n  var myStyle = {\n    color: \"black\",\n    weight: 10,\n  };\n\n  var geojsonLayer = L.geoJSON(geojson).addTo(map);\n})",
         "content": "<div id=\"leaflet\" />",
         "defaultContent": "The query didn't return any results.",
         "editor": {
@@ -85,10 +85,10 @@
             "fields": [
               {
                 "config": {},
-                "name": "Field 1",
+                "name": "data",
                 "type": "string",
                 "values": [
-                  ""
+                  "{   \"type\": \"Feature\",   \"geometry\": {     \"type\": \"Point\",     \"coordinates\": [125.6, 10.1]   },   \"properties\": {     \"name\": \"Dinagat Islands\"   } }"
                 ]
               }
             ],
@@ -111,8 +111,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -185,8 +184,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -259,8 +257,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -426,7 +423,7 @@
       "id": 2,
       "options": {
         "afterRender": "import('https://esm.sh/mermaid').then(({ default: mermaid }) => {\n  mermaid.initialize({ startOnLoad: true });\n\n  mermaid.run({\n    querySelector: \".mermaid\",\n    suppressErrors: false,\n  });\n})",
-        "content": "flowchart LR\n<pre class=\"mermaid\">\n    graph LR\n    A --- B\n    B-->C[fa:fa-ban {{data.0.test}}]\n    B-->D(fa:fa-spinner);\n</pre>",
+        "content": "<pre class=\"mermaid\">\n    graph LR\n    A --- B\n    B-->C[fa:fa-ban {{data.0.test}}]\n    B-->D(fa:fa-spinner);\n</pre>",
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -478,11 +475,11 @@
     "from": "now-6h",
     "to": "now"
   },
-  "timeRangeUpdatedDuringEditOrView": true,
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {},
   "timezone": "browser",
   "title": "Libraries",
   "uid": "fdnq3ouaz48owb",
-  "version": 43,
+  "version": 45,
   "weekStart": ""
 }
