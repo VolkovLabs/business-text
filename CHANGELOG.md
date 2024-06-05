@@ -2,9 +2,16 @@
 
 ## 5.0.0 (IN PROGRESS)
 
+### Breaking changes
+
+- Requires Grafana 10 and Grafana 11
+- Removed non-context code parameters. Please update parameters to use `context`.
+
 ### Features / Enhancements
 
 - Add plugin e2e tests and remove cypress (#301)
+- Updated name to Business Text Panel (#304)
+- Prepare for Grafana 11 (#304)
 
 ## 4.5.0 (2024-03-13)
 
