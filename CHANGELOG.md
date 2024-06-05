@@ -6,12 +6,14 @@
 
 - Requires Grafana 10 and Grafana 11
 - Removed non-context code parameters. Please update parameters to use `context`.
+- Removed external scripts deprecated in Grafana 11. Use import instead.
 
 ### Features / Enhancements
 
 - Added plugin e2e tests and remove cypress (#301)
 - Updated name to Business Text Panel (#304)
 - Prepared for Grafana 11 (#304)
+- Added ES6 Modules Support (#312)
 
 ## 4.5.0 (2024-03-13)
 
