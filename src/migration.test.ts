@@ -26,4 +26,114 @@ describe('Migration', () => {
       );
     });
   });
+
+  describe('5.0.0', () => {
+    describe('helpers', () => {
+      it.each([
+        {
+          name: 'data',
+          initial: `
+          const data = [];
+          data.series.forEach();
+          `,
+          expected: `
+          const data = [];
+          context.data.series.forEach();
+          `,
+        },
+        {
+          name: 'handlebars',
+          initial: `
+          const helpers = handlebars.helpers;
+          `,
+          expected: `
+          const helpers = context.handlebars.helpers;
+          `,
+        },
+        {
+          name: 'panelData',
+          initial: `
+          const state = panelData.state;
+          `,
+          expected: `
+          const state = context.panelData.state;
+          `,
+        },
+        {
+          name: 'dataFrame',
+          initial: `
+          const id = dataFrame.refId
+          `,
+          expected: `
+          const id = context.dataFrame.refId
+          `,
+        },
+        {
+          name: 'timezone',
+          initial: `
+          const zone = timezone
+          `,
+          expected: `
+          const zone = context.grafana.timezone
+          `,
+        },
+        {
+          name: 'timeRange',
+          initial: `
+          const zoneRaw = timeRange.raw
+          `,
+          expected: `
+          const zoneRaw = context.grafana.timeRange.raw
+          `,
+        },
+        {
+          name: 'locale',
+          initial: `
+          const locale = getLocale();
+          `,
+          expected: `
+          const locale = context.grafana.getLocale();
+          `,
+        },
+        {
+          name: 'grafana.replaceVariables',
+          initial: `
+          const replaceVariables = () => {};
+          replaceVariables('123')
+          `,
+          expected: `
+          const replaceVariables = () => {};
+          context.grafana.replaceVariables('123')
+          `,
+        },
+        {
+          name: 'grafana.eventBus',
+          initial: `
+          eventBus.subscribe();
+          `,
+          expected: `
+          context.grafana.eventBus.subscribe();
+          `,
+        },
+        {
+          name: 'grafana.locationService',
+          initial: `
+          locationService.replace()
+          `,
+          expected: `
+          context.grafana.locationService.replace()
+          `,
+        },
+      ])('Should migrate $name', ({ initial, expected }) => {
+        expect(
+          getMigratedOptions({
+            pluginVersion: '4.8.0',
+            options: {
+              helpers: initial,
+            },
+          } as any).helpers
+        ).toEqual(expected);
+      });
+    });
+  });
 });

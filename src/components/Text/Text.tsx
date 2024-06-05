@@ -181,7 +181,7 @@ export const Text: React.FC<Props> = ({
         const templateData = frames.map((frame) =>
           frame.fields.reduce(
             (acc, { config, name, values, display }) => {
-              values.toArray().forEach((value, i) => {
+              values.forEach((value, i) => {
                 /**
                  * Status Color
                  */

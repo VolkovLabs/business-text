@@ -221,7 +221,7 @@
         },
         "editors": ["helpers"],
         "everyRow": false,
-        "helpers": "const subscription = eventBus.subscribe({ type: \"theme-changed\" }, () => {\n  console.log(\"React to Theme Changed\");\n});\n\nconst subscription2 = eventBus.subscribe({ type: 'data-hover' }, (data) => {\n  console.log('React to Data Hover', data);\n});\n\nconsole.log(subscription);\n\nreturn () => {\n  subscription.unsubscribe();\n  subscription2.unsubscribe();\n  console.log(\"Unsubscribed\");\n}\n",
+        "helpers": "const subscription = context.grafana.eventBus.subscribe({ type: \"theme-changed\" }, () => {\n  console.log(\"React to Theme Changed\");\n});\n\nconst subscription2 = context.grafana.eventBus.subscribe({ type: 'data-hover' }, (data) => {\n  console.log('React to Data Hover', data);\n});\n\nconsole.log(subscription);\n\nreturn () => {\n  subscription.unsubscribe();\n  subscription2.unsubscribe();\n  console.log(\"Unsubscribed\");\n}\n",
         "styles": ""
       },
       "targets": [
@@ -259,7 +259,7 @@
         },
         "editors": ["helpers"],
         "everyRow": false,
-        "helpers": "eventBus.publish({ type: 'data-hover' })",
+        "helpers": "context.grafana.eventBus.publish({ type: 'data-hover' })",
         "styles": ""
       },
       "targets": [

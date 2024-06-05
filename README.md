@@ -1,4 +1,4 @@
-# Dynamic Text Panel for Grafana
+# Business Text Panel for Grafana
 
 ![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
 
@@ -10,21 +10,22 @@
 
 ## Introduction
 
-Dynamic Text Panel is a Grafana visualization plugin that converts plain text and table data into visually appealing, easy-to-read information cards.
+Business Text Panel is a Grafana visualization plugin that converts plain text and table data into visually appealing, easy-to-read information cards.
 
-The Dynamic Text Panel plugin allows you to construct a text visualization template from the values of a dataset returned by a data source query.
+The Business Text Panel plugin allows you to construct a text visualization template from the values of a dataset returned by a data source query.
 
-[![Dynamic Text plugin for Grafana | Use HTML, Markdown, JavaScript and CSS | Community use cases](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/video.png)](https://youtu.be/AcQi-6GCrNU)
+[![Business Text plugin for Grafana | Use HTML, Markdown, JavaScript and CSS | Community use cases](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/video.png)](https://youtu.be/AcQi-6GCrNU)
 
 ## Requirements
 
+- Business Text Panel 5.X requires **Grafana 10** or **Grafana 11**.
 - Dynamic Text Panel 4.X requires **Grafana 9.2** or **Grafana 10**.
 - Dynamic Text Panel 2.X and 3.X require **Grafana 8.5** or **Grafana 9**.
 - Dynamic Text Panel 1.X requires **Grafana 7**.
 
 ## Getting Started
 
-You can install Dynamic Text Panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or using the Grafana command line tool.
+You can install the Business Text Panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or using the Grafana command line tool.
 
 For the latter, please use the following command:
 
