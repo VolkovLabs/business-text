@@ -1,4 +1,4 @@
-import { CodeEditorSuggestionItem, CodeEditorSuggestionItemKind } from '@grafana/ui';
+import { CodeEditorSuggestionItem } from '@grafana/ui';
 
 import { afterRenderCodeParameters, beforeRenderCodeParameters } from '../helpers';
 
@@ -41,63 +41,7 @@ export const FORMAT_OPTIONS = [
 /**
  * Helpers Suggestions
  */
-export const HELPERS_EDITOR_SUGGESTIONS: CodeEditorSuggestionItem[] = [
-  {
-    label: 'data',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Result set of panel queries.',
-  },
-  {
-    label: 'handlebars',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Handlebars library.',
-  },
-  {
-    label: 'getLocale',
-    kind: CodeEditorSuggestionItemKind.Method,
-    detail: 'Returns locale.',
-  },
-  {
-    label: 'timeRange',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Selected time range.',
-  },
-  {
-    label: 'timeZone',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Selected time zone.',
-  },
-  {
-    label: 'locationService',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Browser location and history.',
-  },
-  {
-    label: 'replaceVariables',
-    kind: CodeEditorSuggestionItemKind.Method,
-    detail: 'Interpolate variables.',
-  },
-  {
-    label: 'eventBus',
-    kind: CodeEditorSuggestionItemKind.Property,
-    detail: 'Panels events.',
-  },
-  {
-    label: 'dataFrame',
-    kind: CodeEditorSuggestionItemKind.Constant,
-    detail: 'Selected data frame.',
-  },
-  {
-    label: 'panelData',
-    kind: CodeEditorSuggestionItemKind.Constant,
-    detail: 'Panel data.',
-  },
-
-  /**
-   * Context Suggestions
-   */
-  ...beforeRenderCodeParameters.suggestions,
-];
+export const HELPERS_EDITOR_SUGGESTIONS: CodeEditorSuggestionItem[] = beforeRenderCodeParameters.suggestions;
 
 /**
  * After Render Editor Suggestions
