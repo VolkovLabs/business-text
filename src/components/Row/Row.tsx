@@ -14,7 +14,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { RowItem } from 'types';
 
 import { TEST_IDS } from '../../constants';
-import { afterRenderCodeParameters } from '../../helpers';
+import { afterRenderCodeParameters, createExecutionCode } from '../../helpers';
 
 /**
  * Properties
@@ -108,14 +108,20 @@ export const Row: React.FC<Props> = ({
   );
 
   /**
+   * Function This
+   */
+  const functionThis = useRef({});
+
+  /**
    * Run After Render Function
    */
   useEffect(() => {
     let unsubscribe: unknown = null;
     if (ref.current && afterRender) {
-      const func = new Function('context', afterRender);
+      const func = createExecutionCode('context', afterRender);
 
-      unsubscribe = func(
+      unsubscribe = func.call(
+        functionThis.current,
         afterRenderCodeParameters.create({
           element: ref.current,
           data: item.data,

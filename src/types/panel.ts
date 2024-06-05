@@ -89,13 +89,6 @@ export interface PanelOptions {
   externalStyles: Resource[];
 
   /**
-   * External Scripts
-   *
-   * @type {Resource[]}
-   */
-  externalScripts: Resource[];
-
-  /**
    * Wrap
    *
    * @type {boolean}

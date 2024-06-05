@@ -82,14 +82,6 @@ export const TextPanel: React.FC<Props> = ({
   const frame = data.series[frameIndex] ? data.series[frameIndex] : undefined;
 
   /**
-   * External Scripts
-   */
-  const { isLoaded: isScriptsLoaded } = useExternalResources({
-    items: options.externalScripts,
-    type: ResourceType.SCRIPTS,
-  });
-
-  /**
    * External Styles
    */
   useExternalResources({
@@ -127,42 +119,38 @@ export const TextPanel: React.FC<Props> = ({
       )}
       data-testid={TEST_IDS.panel.root}
     >
-      {isScriptsLoaded && (
-        <>
-          <div
-            className={cx(
-              styles.root,
-              css`
-                ${options.styles ? replaceVariables(options.styles, stylesScopedVars) : ''}
-              `,
-              css`
-                flex-grow: 1;
-                overflow: auto;
-              `
-            )}
-          >
-            <Text
-              frame={frame}
-              options={options}
-              timeRange={timeRange}
-              timeZone={timeZone}
-              replaceVariables={replaceVariables}
-              eventBus={eventBus}
-              data={data}
-            />
-          </div>
+      <div
+        className={cx(
+          styles.root,
+          css`
+            ${options.styles ? replaceVariables(options.styles, stylesScopedVars) : ''}
+          `,
+          css`
+            flex-grow: 1;
+            overflow: auto;
+          `
+        )}
+      >
+        <Text
+          frame={frame}
+          options={options}
+          timeRange={timeRange}
+          timeZone={timeZone}
+          replaceVariables={replaceVariables}
+          eventBus={eventBus}
+          data={data}
+        />
+      </div>
 
-          {options.renderMode !== RenderMode.DATA && data.series.length > 1 && (
-            <div className={styles.frameSelect}>
-              <Select
-                onChange={onChangeFrame}
-                value={frame?.refId}
-                options={selectableFrames}
-                data-testid={TEST_IDS.panel.fieldFrame}
-              />
-            </div>
-          )}
-        </>
+      {options.renderMode !== RenderMode.DATA && data.series.length > 1 && (
+        <div className={styles.frameSelect}>
+          <Select
+            onChange={onChangeFrame}
+            value={frame?.refId}
+            options={selectableFrames}
+            data-testid={TEST_IDS.panel.fieldFrame}
+          />
+        </div>
       )}
     </div>
   );
