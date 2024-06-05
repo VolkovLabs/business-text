@@ -138,12 +138,12 @@
         "editors": [],
         "externalScripts": [],
         "externalStyles": [],
-        "helpers": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n",
+        "helpers": "context.handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n",
         "renderMode": "everyRow",
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "6.4.0",
       "targets": [
         {
           "datasource": {
@@ -157,9 +157,7 @@
                 "config": {},
                 "name": "Test",
                 "type": "string",
-                "values": [
-                  "Here is the Pattern to replace"
-                ]
+                "values": ["Here is the Pattern to replace"]
               }
             ],
             "meta": {},
@@ -294,33 +292,25 @@
                 "config": {},
                 "name": "app",
                 "type": "string",
-                "values": [
-                  "auth"
-                ]
+                "values": ["auth"]
               },
               {
                 "config": {},
                 "name": "description",
                 "type": "string",
-                "values": [
-                  "Handles user authentication."
-                ]
+                "values": ["Handles user authentication."]
               },
               {
                 "config": {},
                 "name": "cluster",
                 "type": "string",
-                "values": [
-                  "prod"
-                ]
+                "values": ["prod"]
               },
               {
                 "config": {},
                 "name": "tier",
                 "type": "string",
-                "values": [
-                  "frontend"
-                ]
+                "values": ["frontend"]
               }
             ],
             "meta": {},
@@ -394,9 +384,7 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": [
-                  "test"
-                ]
+                "values": ["test"]
               }
             ],
             "meta": {},
@@ -415,9 +403,7 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": [
-                  "test2"
-                ]
+                "values": ["test2"]
               }
             ],
             "meta": {},
@@ -470,9 +456,7 @@
           "height": 100,
           "language": "markdown"
         },
-        "editors": [
-          "styles"
-        ],
+        "editors": ["styles"],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
@@ -554,9 +538,7 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": [
-                  "Hello"
-                ]
+                "values": ["Hello"]
               }
             ],
             "meta": {},
@@ -608,9 +590,7 @@
           "height": 400,
           "language": "html"
         },
-        "editors": [
-          "styles"
-        ],
+        "editors": ["styles"],
         "externalScripts": [],
         "externalStyles": [],
         "handlebars": "",
@@ -633,73 +613,49 @@
                 "config": {},
                 "name": "Id",
                 "type": "number",
-                "values": [
-                  1,
-                  2
-                ]
+                "values": [1, 2]
               },
               {
                 "config": {},
                 "name": "first_name",
                 "type": "string",
-                "values": [
-                  "John",
-                  "Jessica"
-                ]
+                "values": ["John", "Jessica"]
               },
               {
                 "config": {},
                 "name": "last_name",
                 "type": "string",
-                "values": [
-                  "Smith",
-                  "Johnson"
-                ]
+                "values": ["Smith", "Johnson"]
               },
               {
                 "config": {},
                 "name": "login",
                 "type": "string",
-                "values": [
-                  "j.smith",
-                  "j.johnson"
-                ]
+                "values": ["j.smith", "j.johnson"]
               },
               {
                 "config": {},
                 "name": "last_login_date",
                 "type": "time",
-                "values": [
-                  1667444288509,
-                  1667242005907
-                ]
+                "values": [1667444288509, 1667242005907]
               },
               {
                 "config": {},
                 "name": "status",
                 "type": "string",
-                "values": [
-                  "active",
-                  "not active"
-                ]
+                "values": ["active", "not active"]
               },
               {
                 "config": {},
                 "name": "role",
                 "type": "string",
-                "values": [
-                  "admin",
-                  "analyst"
-                ]
+                "values": ["admin", "analyst"]
               },
               {
                 "config": {},
                 "name": "email",
                 "type": "string",
-                "values": [
-                  "j.smith@company.io",
-                  "j.johnson@company.io"
-                ]
+                "values": ["j.smith@company.io", "j.johnson@company.io"]
               },
               {
                 "config": {},
@@ -782,9 +738,7 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": [
-                  "test"
-                ]
+                "values": ["test"]
               }
             ],
             "meta": {},
@@ -803,9 +757,7 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": [
-                  "test2"
-                ]
+                "values": ["test2"]
               }
             ],
             "meta": {},
@@ -947,7 +899,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "6.4.0",
       "targets": [
         {
           "datasource": {
@@ -1018,9 +970,7 @@
           "height": 200,
           "language": "html"
         },
-        "editors": [
-          "styles"
-        ],
+        "editors": ["styles"],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
@@ -1041,9 +991,7 @@
                 "config": {},
                 "name": "Value",
                 "type": "string",
-                "values": [
-                  ""
-                ]
+                "values": [""]
               }
             ],
             "meta": {}
@@ -1064,12 +1012,8 @@
       {
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "hide": 0,
         "includeAll": true,

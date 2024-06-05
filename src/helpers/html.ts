@@ -82,35 +82,12 @@ export const generateHtml = ({
    * Add Custom Helpers
    */
   if (helpers) {
-    const func = new Function(
-      'data',
-      'handlebars',
-      'getLocale',
-      'timeZone',
-      'timeRange',
-      'replaceVariables',
-      'locationService',
-      'eventBus',
-      'panelData',
-      'dataFrame',
-      'context',
-      helpers
-    );
+    const func = new Function('context', helpers);
 
     /**
      * Unsubscribe
      */
     unsubscribe = func(
-      data,
-      handlebars,
-      getLocale,
-      timeZone,
-      timeRange,
-      replaceVariables,
-      locationService,
-      eventBus,
-      panelData,
-      dataFrame,
       beforeRenderCodeParameters.create({
         data,
         handlebars: handlebars,
