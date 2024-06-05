@@ -9,9 +9,9 @@
 
 ### Features / Enhancements
 
-- Add plugin e2e tests and remove cypress (#301)
+- Added plugin e2e tests and remove cypress (#301)
 - Updated name to Business Text Panel (#304)
-- Prepare for Grafana 11 (#304)
+- Prepared for Grafana 11 (#304)
 
 ## 4.5.0 (2024-03-13)
 
