@@ -20,11 +20,9 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
   .setMigrationHandler(getMigratedOptions)
   .useFieldConfig({
     disableStandardOptions: [
-      FieldConfigProperty.Unit,
       FieldConfigProperty.Color,
       FieldConfigProperty.Min,
       FieldConfigProperty.Max,
-      FieldConfigProperty.Decimals,
       FieldConfigProperty.DisplayName,
       FieldConfigProperty.NoValue,
       FieldConfigProperty.Links,

@@ -287,6 +287,101 @@ describe('Text', () => {
     expect(statuses[0]).toHaveStyle({ backgroundColor: 'red' });
   });
 
+  it('Should apply formatted value', async () => {
+    const replaceVariables = jest.fn((str: string) => str);
+    const dataFrame = toDataFrame({
+      fields: [
+        {
+          name: 'Text',
+          type: FieldType.string,
+          display: (value: number) => ({
+            color: '#E02F44',
+            numeric: NaN,
+            percent: 0,
+            prefix: undefined,
+            suffix: undefined,
+            text: 'Value 1',
+          }),
+          values: ['Value 1'],
+        },
+        {
+          name: 'Value',
+          type: FieldType.number,
+          display: (value: number) => ({
+            color: '#E02F44',
+            numeric: 1048576,
+            percent: 1,
+            prefix: undefined,
+            suffix: ' MB',
+            text: '1.05',
+          }),
+          values: [1048576],
+          config: {
+            unit: 'mb',
+          },
+        },
+      ],
+    });
+
+    const props: Props = {
+      data: {} as any,
+      frame: dataFrame,
+      options: {
+        ...DEFAULT_OPTIONS,
+        status: 'number',
+        content: '<div data-testid="status">{{Text}} {{Value}}</div>',
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.EVERY_ROW,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    render(<Text {...props} />);
+    expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toBeInTheDocument();
+    expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toHaveTextContent('Value 1 1.05 MB');
+  });
+
+  it('Should apply value instead formatted value if display unavailable', async () => {
+    const replaceVariables = jest.fn((str: string) => str);
+    const dataFrame = toDataFrame({
+      fields: [
+        {
+          name: 'Text',
+          type: FieldType.string,
+          values: ['Value 1'],
+        },
+        {
+          name: 'Value',
+          type: FieldType.number,
+          values: [1048576],
+        },
+      ],
+    });
+
+    const props: Props = {
+      data: {} as any,
+      frame: dataFrame,
+      options: {
+        ...DEFAULT_OPTIONS,
+        status: 'number',
+        content: '<div data-testid="status">{{Text}} {{Value}}</div>',
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.EVERY_ROW,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    render(<Text {...props} />);
+    expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toBeInTheDocument();
+    expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toHaveTextContent('Value 1 1048576');
+  });
+
   /**
    * Render every row
    */
@@ -405,11 +500,11 @@ describe('Text', () => {
     const ageData: number[] = [42, 38];
 
     const template = `| Name | Age |
-| ---- | --- |
-{{#each data}}
-| {{name}} | {{age}} |
-{{/each}}
-`;
+  | ---- | --- |
+  {{#each data}}
+  | {{name}} | {{age}} |
+  {{/each}}
+  `;
 
     const props: Props = {
       data: {} as any,
@@ -456,11 +551,11 @@ describe('Text', () => {
     const ageData: number[] = [42, 38];
 
     const template = `| Name | Age |
-| ---- | --- |
-{{#each data.[0]}}
-{{name}} - {{#with (lookup ../data.[1] @index)}}{{age}}{{/with}}
-{{/each}}
-`;
+  | ---- | --- |
+  {{#each data.[0]}}
+  {{name}} - {{#with (lookup ../data.[1] @index)}}{{age}}{{/with}}
+  {{/each}}
+  `;
 
     const frames = [
       toDataFrame({

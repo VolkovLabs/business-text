@@ -5,6 +5,7 @@ import {
   AppEvents,
   DataFrame,
   EventBus,
+  formattedValueToString,
   InterpolateFunction,
   PanelData,
   TimeRange,
@@ -183,14 +184,24 @@ export const Text: React.FC<Props> = ({
             (acc, { config, name, values, display }) => {
               values.forEach((value, i) => {
                 /**
+                 * Formatted Value
+                 */
+                const formattedValue = display?.(value);
+
+                /**
                  * Status Color
                  */
-                const statusColor = options.status === name ? display?.(value).color : acc[i]?.statusColor;
+                const statusColor = options.status === name ? formattedValue?.color : acc[i]?.statusColor;
 
                 /**
                  * Set Value and Status Color
                  */
-                acc[i] = { ...acc[i], [config.displayName || name]: value, statusColor };
+                acc[i] = {
+                  ...acc[i],
+                  [config.displayName || name]:
+                    config.unit && formattedValue ? formattedValueToString(formattedValue) : value,
+                  statusColor,
+                };
               });
 
               return acc;

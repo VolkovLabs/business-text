@@ -14,6 +14,7 @@
 - Updated name to Business Text Panel (#304)
 - Prepared for Grafana 11 (#304)
 - Added ES6 Modules Support (#312)
+- Added Units and Decimal in panel options (#311)
 
 ## 4.5.0 (2024-03-13)
 
