@@ -59,18 +59,6 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
       });
 
     /**
-     * External Resources
-     */
-    builder.addCustomEditor({
-      id: 'externalStyles',
-      path: 'externalStyles',
-      name: 'Styles',
-      defaultValue: DEFAULT_OPTIONS.externalStyles,
-      editor: ResourcesEditor,
-      category: ['External Resources'],
-    });
-
-    /**
      * Editor
      */
     builder
@@ -158,16 +146,25 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
     /**
      * Styles
      */
-    builder.addCustomEditor({
-      id: 'styles',
-      path: 'styles',
-      name: 'CSS Styles',
-      description: 'Allows to add styles. Use & {} for parent style.',
-      defaultValue: DEFAULT_OPTIONS.styles,
-      editor: StylesEditor,
-      category: ['CSS Styles'],
-      showIf: (config) => config.editors.includes(EditorType.STYLES) || config.styles !== DEFAULT_OPTIONS.styles,
-    });
+    builder
+      .addCustomEditor({
+        id: 'externalStyles',
+        path: 'externalStyles',
+        name: 'CSS Styles',
+        defaultValue: DEFAULT_OPTIONS.externalStyles,
+        editor: ResourcesEditor,
+        category: ['CSS Styles'],
+      })
+      .addCustomEditor({
+        id: 'styles',
+        path: 'styles',
+        name: 'Styles editor',
+        description: 'Allows to add styles. Use & {} for parent style.',
+        defaultValue: DEFAULT_OPTIONS.styles,
+        editor: StylesEditor,
+        category: ['CSS Styles'],
+        showIf: (config) => config.editors.includes(EditorType.STYLES) || config.styles !== DEFAULT_OPTIONS.styles,
+      });
 
     return builder;
   });
