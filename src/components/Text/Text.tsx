@@ -184,7 +184,7 @@ export const Text: React.FC<Props> = ({
             (acc, { config, name, values, display }) => {
               values.forEach((value, i) => {
                 /**
-                 * Status Color
+                 * Formatted Value
                  */
                 const formattedValue = display?.(value);
 
