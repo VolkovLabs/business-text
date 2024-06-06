@@ -1,12 +1,25 @@
 # Changelog
 
-## 5.0.0 (IN PROGRESS)
+## 5.0.0 (2024-06-06)
 
 ### Breaking changes
 
-- Requires Grafana 10 and Grafana 11
-- Removed non-context code parameters. Please update parameters to use `context`.
+- Requires Grafana 10 and Grafana 11.
 - Removed external scripts deprecated in Grafana 11. Use import instead.
+- Removed non-context code parameters. Please update parameters to use `context`.
+
+### Code parameters migration guide
+
+- data -> context.data
+- dataFrame -> context.dataFrame
+- eventBus -> context.grafana.eventBus
+- getLocale -> context.grafana.getLocale
+- handlebars -> context.handlebars
+- locationService -> context.grafana.locationService
+- panelData -> context.panelData
+- replaceVariables -> context.grafana.replaceVariables
+- timeRange -> context.grafana.timeRange
+- timezone -> context.grafana.timezone
 
 ### Features / Enhancements
 
@@ -15,6 +28,7 @@
 - Prepared for Grafana 11 (#304)
 - Added ES6 Modules Support (#312)
 - Added Units and Decimal in panel options (#311)
+- Updated to Grafana 11.0 and dependencies ()
 
 ## 4.5.0 (2024-03-13)
 
