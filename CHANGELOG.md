@@ -28,7 +28,7 @@
 - Prepared for Grafana 11 (#304)
 - Added ES6 Modules Support (#312)
 - Added Units and Decimal in panel options (#311)
-- Updated to Grafana 11.0 and dependencies ()
+- Updated to Grafana 11.0 and dependencies (#315)
 
 ## 4.5.0 (2024-03-13)
 
