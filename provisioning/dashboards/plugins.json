@@ -1,0 +1,116 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 7,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "afterRender": "",
+        "content": "- [x] task 1\n- [ ] task 2\n- [x] task 3",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "markdown"
+        },
+        "editors": [
+          "helpers",
+          "styles"
+        ],
+        "externalStyles": [],
+        "helpers": "return import('https://cdn.jsdelivr.net/npm/@mdit/plugin-tasklist').then(({ tasklist }) => {\n  context.markdown.use(tasklist, {\n    containerClass: 'tasklist',\n    itemClass: 'tasklist-item'\n  });\n\n  return () => {\n    console.log('unsubscribe');\n  }\n})",
+        "renderMode": "everyRow",
+        "styles": ".tasklist {\n  list-style: none;\n  padding: 0;\n}\n\n.tasklist-item {\n  margin: 0;\n  display: flex;\n  gap: 4px;\n}",
+        "wrap": true
+      },
+      "pluginVersion": "5.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "Field 1",
+                "type": "string",
+                "values": [
+                  ""
+                ]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Tasklist",
+      "type": "marcusolsson-dynamictext-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Plugins",
+  "uid": "b7b805e3-5d83-486d-9a58-e10f7dfe2b09",
+  "version": 12,
+  "weekStart": ""
+}

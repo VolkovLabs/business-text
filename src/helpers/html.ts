@@ -31,7 +31,7 @@ registerHelpers(handlebars);
 /**
  * Generate HTML
  */
-export const generateHtml = ({
+export const generateHtml = async ({
   data,
   content,
   helpers,
@@ -59,7 +59,7 @@ export const generateHtml = ({
   notifySuccess: (payload: AlertPayload) => void;
   notifyError: (payload: AlertErrorPayload) => void;
   theme: GrafanaTheme2;
-}): { html: string; unsubscribe?: unknown } => {
+}): Promise<{ html: string; unsubscribe?: unknown }> => {
   /**
    * Variable
    */
@@ -72,6 +72,20 @@ export const generateHtml = ({
    */
   handlebars.registerHelper('variableValue', (name: string) => {
     return replaceVariables(`${name}`);
+  });
+
+  /**
+   * Create Markdown with Syntax Highlighting
+   */
+  const md = new MarkdownIt({
+    html: true,
+    highlight: (str, lang) => {
+      if (lang && hljs.getLanguage(lang)) {
+        return hljs.highlight(str, { language: lang }).value;
+      }
+
+      return '';
+    },
   });
 
   /**
@@ -88,10 +102,11 @@ export const generateHtml = ({
     /**
      * Unsubscribe
      */
-    unsubscribe = func(
+    const result = func(
       beforeRenderCodeParameters.create({
         data,
         handlebars: handlebars,
+        markdown: md,
         panelData,
         dataFrame,
         grafana: {
@@ -108,6 +123,12 @@ export const generateHtml = ({
       }),
       helpers
     );
+
+    if (result instanceof Promise) {
+      unsubscribe = await result;
+    } else {
+      unsubscribe = result;
+    }
   }
 
   /**
@@ -115,20 +136,6 @@ export const generateHtml = ({
    */
   const template = handlebars.compile(content);
   const markdown = template(data);
-
-  /**
-   * Create Markdown with Syntax Highlighting
-   */
-  const md = new MarkdownIt({
-    html: true,
-    highlight: (str, lang) => {
-      if (lang && hljs.getLanguage(lang)) {
-        return hljs.highlight(str, { language: lang }).value;
-      }
-
-      return '';
-    },
-  });
 
   /**
    * Render Markdown
