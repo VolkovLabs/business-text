@@ -14,7 +14,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { RowItem } from 'types';
 
 import { TEST_IDS } from '../../constants';
-import { afterRenderCodeParameters, createExecutionCode } from '../../helpers';
+import { afterRenderCodeParameters, createExecutionCode } from '../../utils';
 
 /**
  * Properties

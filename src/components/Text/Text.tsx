@@ -16,8 +16,8 @@ import { Alert, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
-import { generateHtml } from '../../helpers';
 import { PanelOptions, RenderMode, RowItem } from '../../types';
+import { generateHtml } from '../../utils';
 import { Row } from '../Row';
 import { getStyles } from './Text.styles';
 
