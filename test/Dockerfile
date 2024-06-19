@@ -15,5 +15,3 @@ RUN npx playwright install --with-deps chromium
 
 # Run tests
 CMD ["npm", "run", "test:e2e"]
-
-

@@ -35,7 +35,8 @@ services:
       context: .
       dockerfile: test/Dockerfile
     environment:
-      - GRAFANA_URL=http://host.docker.internal:3000
+      - GRAFANA_URL=http://127.0.0.1:3000
     volumes:
       - ./test:/app/test
       - ./playwright-report:/app/playwright-report
+    network_mode: host
