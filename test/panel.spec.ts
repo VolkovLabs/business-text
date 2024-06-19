@@ -20,11 +20,13 @@ test.describe('Volkovlabs Dynamictext Panel', () => {
      */
     await expect(dashboardPage.getPanelByTitle('Random Walk').locator.getByTestId(TEST_IDS.panel.root)).toBeVisible();
 
+    await page.waitForTimeout(2000);
+
     /**
      * Check and compare image
      */
     await expect(
-      dashboardPage.getPanelByTitle('Random Walk').locator.getByTestId(TEST_IDS.panel.root).waitFor({ timeout: 2000 })
+      dashboardPage.getPanelByTitle('Random Walk').locator.getByTestId(TEST_IDS.panel.root)
     ).toHaveScreenshot('actual-screenshot.png');
   });
 });
