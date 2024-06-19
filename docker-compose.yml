@@ -1,5 +1,3 @@
-version: '3.4'
-
 services:
   grafana:
     container_name: grafana
@@ -40,3 +38,5 @@ services:
       - ./test:/app/test
       - ./playwright-report:/app/playwright-report
     network_mode: host
+    profiles:
+      - e2e
