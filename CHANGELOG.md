@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Update before render code async and pass markdown instance (#322)
+
 ## 5.0.0 (2024-06-06)
 
 ### Breaking changes
