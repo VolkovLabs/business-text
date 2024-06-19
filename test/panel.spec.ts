@@ -24,7 +24,7 @@ test.describe('Volkovlabs Dynamictext Panel', () => {
      * Check and compare image
      */
     await expect(
-      dashboardPage.getPanelByTitle('Random Walk').locator.getByTestId(TEST_IDS.panel.root)
+      dashboardPage.getPanelByTitle('Random Walk').locator.getByTestId(TEST_IDS.panel.root).waitFor({ timeout: 2000 })
     ).toHaveScreenshot('actual-screenshot.png');
   });
 });
