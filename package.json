@@ -74,13 +74,13 @@
     "lint": "eslint --ignore-path ./.eslintignore --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint --fix --ignore-path ./.eslintignore --ext .js,.jsx,.ts,.tsx .",
     "sign": "npx --yes @grafana/sign-plugin@latest",
-    "start": "docker-compose pull && docker-compose up",
-    "start:e2e": "docker-compose -f test/docker-compose.yml up",
-    "stop": "docker-compose down",
-    "stop:e2e": "docker-compose -f test/docker-compose.yml down",
+    "start": "docker compose pull && docker compose --profile dev up",
+    "start:prod": "docker compose pull && docker compose --profile prod up",
+    "stop": "docker compose down",
     "test": "jest --watch --onlyChanged",
     "test:ci": "jest --maxWorkers 4 --coverage",
     "test:e2e": "npx playwright test",
+    "test:e2e:docker": "docker compose run test",
     "upgrade": "npm upgrade --save"
   },
   "version": "5.0.0"

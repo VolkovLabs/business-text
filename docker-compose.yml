@@ -14,3 +14,28 @@ services:
     volumes:
       - ./dist:/var/lib/grafana/plugins/marcusolsson-dynamictext-panel
       - ./provisioning:/etc/grafana/provisioning
+    profiles:
+      - dev
+  grafana-main:
+    container_name: grafana-main
+    image: grafana/grafana:main
+    ports:
+      - 3000:3000/tcp
+    environment:
+      - GF_USERS_DEFAULT_THEME=light
+      - GF_INSTALL_PLUGINS=marcusolsson-static-datasource
+    volumes:
+      - ./dist:/var/lib/grafana/plugins/marcusolsson-dynamictext-panel
+      - ./provisioning:/etc/grafana/provisioning
+    profiles:
+      - prod
+  test:
+    container_name: test-e2e
+    build:
+      context: .
+      dockerfile: test/Dockerfile
+    environment:
+      - GRAFANA_URL=http://host.docker.internal:3000
+    volumes:
+      - ./test:/app/test
+      - ./playwright-report:/app/playwright-report
