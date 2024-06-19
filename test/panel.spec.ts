@@ -16,6 +16,11 @@ test.describe('Volkovlabs Dynamictext Panel', () => {
     await expect(dashboardPage.getPanelByTitle('Random Walk').locator).toBeVisible();
 
     /**
+     * Check if plugin is rendered
+     */
+    await expect(dashboardPage.getPanelByTitle('Random Walk').locator.getByTestId(TEST_IDS.panel.root)).toBeVisible();
+
+    /**
      * Check and compare image
      */
     await expect(
