@@ -1,6 +1,6 @@
 import { CodeEditorSuggestionItem } from '@grafana/ui';
 
-import { afterRenderCodeParameters, beforeRenderCodeParameters } from '../helpers';
+import { afterRenderCodeParameters, beforeRenderCodeParameters } from '../utils';
 
 /**
  * Supported Languages

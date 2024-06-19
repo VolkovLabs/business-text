@@ -222,17 +222,19 @@ describe('Panel', () => {
       }
     `;
 
-    it('Should execute code for empty data frame', () => {
-      render(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            defaultContent: 'hello',
-            helpers,
-          },
-          replaceVariables: (str: string) => str,
-          eventBus,
-        })
+    it('Should execute code for empty data frame', async () => {
+      await act(async () =>
+        render(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              defaultContent: 'hello',
+              helpers,
+            },
+            replaceVariables: (str: string) => str,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -247,17 +249,19 @@ describe('Panel', () => {
       expect(unsubscribe).not.toHaveBeenCalled();
     });
 
-    it('Should call unsubscribe function on component update', () => {
-      const { rerender } = render(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            defaultContent: 'hello',
-            helpers,
-          },
-          replaceVariables: (str: string) => str,
-          eventBus,
-        })
+    it('Should call unsubscribe function on component update', async () => {
+      const { rerender } = await act(async () =>
+        render(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              defaultContent: 'hello',
+              helpers,
+            },
+            replaceVariables: (str: string) => str,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -265,16 +269,18 @@ describe('Panel', () => {
        */
       expect(unsubscribe).not.toHaveBeenCalled();
 
-      rerender(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            defaultContent: 'hello',
-            helpers,
-          },
-          replaceVariables: (str: string) => str,
-          eventBus,
-        })
+      await act(async () =>
+        rerender(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              defaultContent: 'hello',
+              helpers,
+            },
+            replaceVariables: (str: string) => str,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -283,7 +289,7 @@ describe('Panel', () => {
       expect(unsubscribe).toHaveBeenCalledTimes(1);
     });
 
-    it('Should call unsubscribe function for every row', () => {
+    it('Should call unsubscribe function for every row', async () => {
       const values = ['111', '222'];
       const data: any = {
         series: [
@@ -299,18 +305,20 @@ describe('Panel', () => {
           }),
         ],
       };
-      const { rerender } = render(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            content: 'hello',
-            helpers,
-            renderMode: RenderMode.EVERY_ROW,
-          },
-          replaceVariables: (str: string) => str,
-          data,
-          eventBus,
-        })
+      const { rerender } = await act(async () =>
+        render(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              content: 'hello',
+              helpers,
+              renderMode: RenderMode.EVERY_ROW,
+            },
+            replaceVariables: (str: string) => str,
+            data,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -319,18 +327,20 @@ describe('Panel', () => {
       expect(unsubscribe).not.toHaveBeenCalled();
       expect(subscribe).toHaveBeenCalledTimes(values.length);
 
-      rerender(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            content: 'hello',
-            helpers,
-            renderMode: RenderMode.EVERY_ROW,
-          },
-          replaceVariables: (str: string) => str,
-          data,
-          eventBus,
-        })
+      await act(async () =>
+        rerender(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              content: 'hello',
+              helpers,
+              renderMode: RenderMode.EVERY_ROW,
+            },
+            replaceVariables: (str: string) => str,
+            data,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -339,7 +349,7 @@ describe('Panel', () => {
       expect(unsubscribe).toHaveBeenCalledTimes(values.length);
     });
 
-    it('Should call unsubscribe function for data frame', () => {
+    it('Should call unsubscribe function for data frame', async () => {
       const values = ['111', '222'];
       const data: any = {
         series: [
@@ -355,18 +365,20 @@ describe('Panel', () => {
           }),
         ],
       };
-      const { rerender } = render(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            content: 'hello',
-            helpers,
-            renderMode: RenderMode.ALL_ROWS,
-          },
-          replaceVariables: (str: string) => str,
-          data,
-          eventBus,
-        })
+      const { rerender } = await act(async () =>
+        render(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              content: 'hello',
+              helpers,
+              renderMode: RenderMode.ALL_ROWS,
+            },
+            replaceVariables: (str: string) => str,
+            data,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -375,18 +387,20 @@ describe('Panel', () => {
       expect(unsubscribe).not.toHaveBeenCalled();
       expect(subscribe).toHaveBeenCalledTimes(1);
 
-      rerender(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            content: 'hello',
-            helpers,
-            renderMode: RenderMode.EVERY_ROW,
-          },
-          replaceVariables: (str: string) => str,
-          data,
-          eventBus,
-        })
+      await act(async () =>
+        rerender(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              content: 'hello',
+              helpers,
+              renderMode: RenderMode.EVERY_ROW,
+            },
+            replaceVariables: (str: string) => str,
+            data,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -395,20 +409,22 @@ describe('Panel', () => {
       expect(unsubscribe).toHaveBeenCalledTimes(1);
     });
 
-    it('Should show execution error', () => {
+    it('Should show execution error', async () => {
       /**
        * Render with invalid helpers function
        */
-      const { rerender } = render(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            defaultContent: 'hello',
-            helpers: `abc()`,
-          },
-          replaceVariables: (str: string) => str,
-          eventBus,
-        })
+      const { rerender } = await act(async () =>
+        render(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              defaultContent: 'hello',
+              helpers: `abc()`,
+            },
+            replaceVariables: (str: string) => str,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -421,16 +437,18 @@ describe('Panel', () => {
       /**
        * Render without errors
        */
-      rerender(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            defaultContent: 'hello',
-            helpers,
-          },
-          replaceVariables: (str: string) => str,
-          eventBus,
-        })
+      await act(async () =>
+        rerender(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              defaultContent: 'hello',
+              helpers,
+            },
+            replaceVariables: (str: string) => str,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -444,20 +462,22 @@ describe('Panel', () => {
       expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
     });
 
-    it('Should show custom execution error', () => {
+    it('Should show custom execution error', async () => {
       /**
        * Render with invalid helpers function
        */
-      render(
-        getComponent({
-          options: {
-            ...defaultOptions,
-            defaultContent: 'hello',
-            helpers: `throw 'abc'`,
-          },
-          replaceVariables: (str: string) => str,
-          eventBus,
-        })
+      await act(async () =>
+        render(
+          getComponent({
+            options: {
+              ...defaultOptions,
+              defaultContent: 'hello',
+              helpers: `throw 'abc'`,
+            },
+            replaceVariables: (str: string) => str,
+            eventBus,
+          })
+        )
       );
 
       /**
@@ -470,22 +490,24 @@ describe('Panel', () => {
   });
 
   describe('Frames', () => {
-    it('Should show field frame if frames are several', () => {
-      render(
-        getComponent({
-          options: { ...defaultOptions, defaultContent: 'hello' },
-          replaceVariables: (str: string) => str,
-          data: {
-            series: [
-              {
-                refId: 'A',
-              },
-              {
-                refId: 'B',
-              },
-            ],
-          } as any,
-        })
+    it('Should show field frame if frames are several', async () => {
+      await act(async () =>
+        render(
+          getComponent({
+            options: { ...defaultOptions, defaultContent: 'hello' },
+            replaceVariables: (str: string) => str,
+            data: {
+              series: [
+                {
+                  refId: 'A',
+                },
+                {
+                  refId: 'B',
+                },
+              ],
+            } as any,
+          })
+        )
       );
 
       const fieldFrame = screen.getByTestId(TEST_IDS.panel.fieldFrame);
@@ -493,27 +515,29 @@ describe('Panel', () => {
       expect(fieldFrame).toHaveValue('A');
     });
 
-    it('Should change frame', () => {
-      render(
-        getComponent({
-          options: { ...defaultOptions, defaultContent: 'hello' },
-          replaceVariables: (str: string) => str,
-          data: {
-            series: [
-              {
-                refId: 'A',
-              },
-              {
-                refId: 'B',
-              },
-            ],
-          } as any,
-        })
+    it('Should change frame', async () => {
+      await act(async () =>
+        render(
+          getComponent({
+            options: { ...defaultOptions, defaultContent: 'hello' },
+            replaceVariables: (str: string) => str,
+            data: {
+              series: [
+                {
+                  refId: 'A',
+                },
+                {
+                  refId: 'B',
+                },
+              ],
+            } as any,
+          })
+        )
       );
 
       const fieldFrame = screen.getByTestId(TEST_IDS.panel.fieldFrame);
 
-      fireEvent.change(fieldFrame, { target: { value: 'B' } });
+      await act(async () => fireEvent.change(fieldFrame, { target: { value: 'B' } }));
 
       expect(fieldFrame).toHaveValue('B');
     });

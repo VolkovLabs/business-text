@@ -1,6 +1,6 @@
 export * from './code';
 export * from './code-parameters';
-export * from './externalResource';
+export * from './external-resources';
 export * from './handlebars';
 export * from './html';
 export * from './variable';

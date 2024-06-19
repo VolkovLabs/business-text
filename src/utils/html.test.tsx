@@ -58,14 +58,14 @@ describe('HTML helpers', () => {
       expect(textUtil.sanitize).toHaveBeenCalledWith(content);
     });
 
-    it('Should wrap lines', () => {
+    it('Should wrap lines', async () => {
       const content = `
         line 1
         
         line 2
       `;
 
-      const { html } = generateHtml({
+      const { html } = await generateHtml({
         content,
         options,
       } as any);
@@ -75,14 +75,14 @@ describe('HTML helpers', () => {
       expect(screen.getByTestId('root').querySelector('pre')).toBeInTheDocument();
     });
 
-    it('Should wrap lines', () => {
+    it('Should not wrap lines', async () => {
       const content = `
         line 1
         
         line 2
       `;
 
-      const { html } = generateHtml({
+      const { html } = await generateHtml({
         content,
         options: {
           ...options,
@@ -141,5 +141,21 @@ describe('HTML helpers', () => {
 
     expect(variableHandler('varName')).toEqual([]);
     expect(variableValueHandler('varName')).toEqual('varName');
+  });
+
+  it('Should wait until promise in code resolved', async () => {
+    const content = '';
+
+    const { unsubscribe } = await generateHtml({
+      content,
+      options,
+      helpers: `
+        return Promise.resolve(() => 123)
+      `,
+    } as any);
+
+    expect(unsubscribe).toBeDefined();
+    expect(unsubscribe).toBeInstanceOf(Function);
+    expect((unsubscribe as Function)()).toEqual(123);
   });
 });
