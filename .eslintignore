@@ -18,4 +18,4 @@ __mocks__
 
 # Playwright tests
 playwright.config.ts
-test/panel.spec.ts
+test/
