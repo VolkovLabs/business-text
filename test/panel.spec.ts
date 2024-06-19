@@ -2,7 +2,9 @@ import { test, expect } from '@grafana/plugin-e2e';
 import { TEST_IDS } from '../src/constants/tests';
 
 test.describe('Volkovlabs Dynamictext Panel', () => {
-  test('Should display a Text', async ({ gotoDashboardPage, dashboardPage, page }) => {
+  test('Should display a Text', async ({ gotoDashboardPage, dashboardPage, page, grafanaVersion }) => {
+    console.log('Grafana version: ', grafanaVersion);
+
     /**
      * Go To E2E dashboard
      * return dashboardPage
