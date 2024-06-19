@@ -1,5 +1,5 @@
 import { AppEvents, FieldType, toDataFrame } from '@grafana/data';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { DEFAULT_OPTIONS, TEST_IDS } from '../../constants';
@@ -50,7 +50,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
 
     expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
     expect(screen.getByTestId(TEST_IDS.text.content)).toHaveTextContent('Test default content');
@@ -79,7 +79,7 @@ describe('Text', () => {
         eventBus: eventBus as any,
       };
 
-      render(<Text {...props} />);
+      await act(async () => render(<Text {...props} />));
 
       expect(eventBus.publish).toHaveBeenCalledWith('ready', expect.any(HTMLDivElement));
     });
@@ -113,7 +113,7 @@ describe('Text', () => {
         eventBus: eventBus as any,
       };
 
-      render(<Text {...props} />);
+      await act(async () => render(<Text {...props} />));
 
       expect(publish).toHaveBeenCalledTimes(2);
       expect(publish).toHaveBeenCalledWith({
@@ -148,12 +148,12 @@ describe('Text', () => {
         eventBus: eventBus as any,
       };
 
-      const { rerender } = render(<Text {...props} />);
+      const { rerender } = await act(async () => render(<Text {...props} />));
 
       /**
        * Re-render with updated props
        */
-      rerender(<Text {...props} timeZone="123" />);
+      await act(async () => rerender(<Text {...props} timeZone="123" />));
 
       expect(eventBus.publish).toHaveBeenCalledWith('destroy');
     });
@@ -189,7 +189,7 @@ describe('Text', () => {
         eventBus: eventBus as any,
       };
 
-      render(<Text {...props} />);
+      await act(async () => render(<Text {...props} />));
 
       expect(publish).toHaveBeenCalledTimes(2);
       expect(publish).toHaveBeenCalledWith({
@@ -232,7 +232,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
 
     const statuses = screen.getAllByTestId('status');
     expect(statuses[0]).toHaveStyle({ backgroundColor: 'green' });
@@ -280,7 +280,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
 
     const statuses = screen.getAllByTestId('status');
 
@@ -339,7 +339,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
     expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toBeInTheDocument();
     expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toHaveTextContent('Value 1 1.05 MB');
   });
@@ -377,7 +377,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
     expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toBeInTheDocument();
     expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toHaveTextContent('Value 1 1048576');
   });
@@ -418,7 +418,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
 
     expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toBeInTheDocument();
     expect(screen.getAllByTestId(TEST_IDS.text.content)[0]).toHaveTextContent('Test content');
@@ -448,7 +448,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
 
     expect(screen.getAllByText('Test content')).toHaveLength(1);
   });
@@ -487,7 +487,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
 
     expect(screen.getAllByText('Test content')).toHaveLength(1);
   });
@@ -537,7 +537,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
 
     expect(screen.getAllByRole('row')[1]).toHaveTextContent('Erik');
     expect(screen.getAllByRole('row')[2]).toHaveTextContent('Natasha');
@@ -599,7 +599,7 @@ describe('Text', () => {
       eventBus: {} as any,
     };
 
-    render(<Text {...props} />);
+    await act(async () => render(<Text {...props} />));
 
     expect(screen.getAllByRole('row')[1]).toHaveTextContent('Erik');
     expect(screen.getAllByRole('row')[2]).toHaveTextContent('Natasha');

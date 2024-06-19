@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { createResourcesManager } from '../helpers';
 import { Resource, ResourceType } from '../types';
+import { createResourcesManager } from '../utils';
 
 /**
  * External Scripts Manager

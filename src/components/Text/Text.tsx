@@ -16,8 +16,8 @@ import { Alert, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
-import { generateHtml } from '../../helpers';
 import { PanelOptions, RenderMode, RowItem } from '../../types';
+import { generateHtml } from '../../utils';
 import { Row } from '../Row';
 import { getStyles } from './Text.styles';
 
@@ -127,9 +127,9 @@ export const Text: React.FC<Props> = ({
    * HTML
    */
   const getHtml = useCallback(
-    (htmlData: Record<string, unknown>, content: string) => {
+    async (htmlData: Record<string, unknown>, content: string) => {
       return {
-        ...generateHtml({
+        ...(await generateHtml({
           data: htmlData,
           content,
           helpers: options.helpers,
@@ -143,7 +143,7 @@ export const Text: React.FC<Props> = ({
           notifySuccess,
           notifyError,
           theme,
-        }),
+        })),
         data: htmlData,
       };
     },
@@ -153,101 +153,106 @@ export const Text: React.FC<Props> = ({
   useEffect(() => {
     let unsubscribeFn: undefined | unknown;
 
-    /**
-     * Reset error before html generation
-     */
-    setError(null);
+    const run = async () => {
+      /**
+       * Reset error before html generation
+       */
+      setError(null);
 
-    try {
-      if (!frame?.length) {
-        /**
-         * For empty frame
-         */
-        const { html, unsubscribe } = getHtml({}, options.defaultContent);
-
-        setRows([
-          {
-            html,
-            data: {},
-            panelData,
-            dataFrame: frame,
-          },
-        ]);
-        unsubscribeFn = unsubscribe;
-      } else {
-        /**
-         * Frame returned
-         */
-        const frames = options.renderMode === RenderMode.DATA ? panelData.series : [frame];
-        const templateData = frames.map((frame) =>
-          frame.fields.reduce(
-            (acc, { config, name, values, display }) => {
-              values.forEach((value, i) => {
-                /**
-                 * Formatted Value
-                 */
-                const formattedValue = display?.(value);
-
-                /**
-                 * Status Color
-                 */
-                const statusColor = options.status === name ? formattedValue?.color : acc[i]?.statusColor;
-
-                /**
-                 * Set Value and Status Color
-                 */
-                acc[i] = {
-                  ...acc[i],
-                  [config.displayName || name]:
-                    config.unit && formattedValue ? formattedValueToString(formattedValue) : value,
-                  statusColor,
-                };
-              });
-
-              return acc;
-            },
-            [] as Array<Record<string, unknown>>
-          )
-        );
-
-        if (options.renderMode === RenderMode.EVERY_ROW) {
+      try {
+        if (!frame?.length) {
           /**
-           * For every row in data frame
+           * For empty frame
            */
-          const rows = templateData[0].map((row) => getHtml(row, options.content));
-          setRows(
-            rows.map(({ html, data }) => ({
+          const { html, unsubscribe } = await getHtml({}, options.defaultContent);
+
+          setRows([
+            {
               html,
-              data,
+              data: {},
               panelData,
               dataFrame: frame,
-            }))
-          );
-
-          /**
-           * Call unsubscribe for all rows
-           */
-          unsubscribeFn = () => {
-            rows.forEach(({ unsubscribe }) => {
-              if (unsubscribe && typeof unsubscribe === 'function') {
-                unsubscribe();
-              }
-            });
-          };
+            },
+          ]);
+          unsubscribeFn = unsubscribe;
         } else {
           /**
-           * For whole data frame
+           * Frame returned
            */
-          const data = options.renderMode === RenderMode.DATA ? templateData : templateData[0];
-          const { html, unsubscribe } = getHtml({ data }, options.content);
-          setRows([{ html, data, panelData, dataFrame: frame }]);
+          const frames = options.renderMode === RenderMode.DATA ? panelData.series : [frame];
+          const templateData = frames.map((frame) =>
+            frame.fields.reduce(
+              (acc, { config, name, values, display }) => {
+                values.forEach((value, i) => {
+                  /**
+                   * Formatted Value
+                   */
+                  const formattedValue = display?.(value);
 
-          unsubscribeFn = unsubscribe;
+                  /**
+                   * Status Color
+                   */
+                  const statusColor = options.status === name ? formattedValue?.color : acc[i]?.statusColor;
+
+                  /**
+                   * Set Value and Status Color
+                   */
+                  acc[i] = {
+                    ...acc[i],
+                    [config.displayName || name]:
+                      config.unit && formattedValue ? formattedValueToString(formattedValue) : value,
+                    statusColor,
+                  };
+                });
+
+                return acc;
+              },
+              [] as Array<Record<string, unknown>>
+            )
+          );
+
+          if (options.renderMode === RenderMode.EVERY_ROW) {
+            /**
+             * For every row in data frame
+             */
+            const rows = await Promise.all(templateData[0].map((row) => getHtml(row, options.content)));
+
+            setRows(
+              rows.map(({ html, data }) => ({
+                html,
+                data,
+                panelData,
+                dataFrame: frame,
+              }))
+            );
+
+            /**
+             * Call unsubscribe for all rows
+             */
+            unsubscribeFn = () => {
+              rows.forEach(({ unsubscribe }) => {
+                if (unsubscribe && typeof unsubscribe === 'function') {
+                  unsubscribe();
+                }
+              });
+            };
+          } else {
+            /**
+             * For whole data frame
+             */
+            const data = options.renderMode === RenderMode.DATA ? templateData : templateData[0];
+            const { html, unsubscribe } = await getHtml({ data }, options.content);
+            setRows([{ html, data, panelData, dataFrame: frame }]);
+
+            unsubscribeFn = unsubscribe;
+          }
         }
+      } catch (e) {
+        setError(e);
       }
-    } catch (e) {
-      setError(e);
-    }
+    };
+
+    run();
 
     return () => {
       if (unsubscribeFn && typeof unsubscribeFn === 'function') {
