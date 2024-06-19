@@ -16,7 +16,7 @@ services:
       - dev
   grafana-main:
     container_name: grafana-main
-    image: grafana/grafana:11.0.0
+    image: grafana/grafana:main
     ports:
       - 3000:3000/tcp
     environment:
@@ -27,7 +27,7 @@ services:
       - ./dist:/var/lib/grafana/plugins/marcusolsson-dynamictext-panel
       - ./provisioning:/etc/grafana/provisioning
     profiles:
-      - prod
+      - main
   test:
     container_name: test-e2e
     build:
