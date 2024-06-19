@@ -32,11 +32,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Sign plugin
-        run: npm run sign
-        env:
-          GRAFANA_ACCESS_POLICY_TOKEN: ${{ secrets.GRAFANA_ACCESS_POLICY_TOKEN }}
-
       - name: Start Grafana
         run: docker compose --profile prod up -d
 
