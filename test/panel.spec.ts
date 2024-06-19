@@ -1,5 +1,5 @@
 import { test, expect } from '@grafana/plugin-e2e';
-import { TEST_IDS } from '../src/constants';
+import { TEST_IDS } from '../src/constants/tests';
 
 test.describe('Volkovlabs Dynamictext Panel', () => {
   test('Check grafana version', async ({ grafanaVersion }) => {
