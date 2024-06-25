@@ -18,7 +18,7 @@ test.describe('Volkovlabs Dynamictext Panel', () => {
      * Find panel by title
      * Should be visible
      */
-    await expect(dashboardPage.getPanelByTitle('Random Walk').locator).toBeHidden();
+    await expect(dashboardPage.getPanelByTitle('Random Walk').locator).toBeVisible();
 
     /**
      * Check if plugin is rendered
