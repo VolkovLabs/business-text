@@ -4,7 +4,8 @@
 
 ### Features / Enhancements
 
-- Update before render code async and pass markdown instance (#322)
+- Updated before render code async and pass markdown instance (#322)
+- Added running e2e tests in docker (#323)
 
 ## 5.0.0 (2024-06-06)
 
