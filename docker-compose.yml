@@ -14,6 +14,7 @@ services:
       - ./provisioning:/etc/grafana/provisioning
     profiles:
       - dev
+
   grafana-main:
     container_name: grafana-main
     image: grafana/grafana:main
@@ -28,6 +29,7 @@ services:
       - ./provisioning:/etc/grafana/provisioning
     profiles:
       - main
+
   test:
     container_name: test-e2e
     build:
