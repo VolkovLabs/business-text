@@ -14,7 +14,7 @@ Business Text Panel is a Grafana visualization plugin that converts plain text a
 
 The Business Text Panel plugin allows you to construct a text visualization template from the values of a dataset returned by a data source query.
 
-[![Business Text plugin for Grafana | Use HTML, Markdown, JavaScript and CSS | Community use cases](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/video.png)](https://youtu.be/AcQi-6GCrNU)
+[![Business Text plugin for Grafana | Use HTML, Markdown, JavaScript and CSS | Community use cases](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/business-text.png)](https://youtu.be/UVMysEjouNo)
 
 ## Requirements
 

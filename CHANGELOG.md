@@ -1,11 +1,12 @@
 # Changelog
 
-## 5.1.0 (IN PROGRESS)
+## 5.1.0 (2024-07-01)
 
 ### Features / Enhancements
 
 - Updated before render code async and pass markdown instance (#322)
 - Added running e2e tests in docker (#323)
+- Updated Video tutorial (#330)
 
 ## 5.0.0 (2024-06-06)
 
