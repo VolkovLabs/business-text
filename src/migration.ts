@@ -20,44 +20,54 @@ interface OutdatedPanelOptions {
  */
 const normalizeHelpersOption = (code: string): string => {
   const search =
-    /(handlebars|panelData|dataFrame\.|data.|getLocale\(|timezone|timeRange|eventBus|locationService|replaceVariables\()/gm;
-  return code.replace(search, (value) => {
-    switch (value) {
-      case 'data.': {
-        return 'context.data.';
-      }
-      case 'handlebars': {
-        return 'context.handlebars';
-      }
-      case 'dataFrame.': {
-        return 'context.dataFrame.';
-      }
-      case 'panelData': {
-        return 'context.panelData';
-      }
-      case 'getLocale(': {
-        return 'context.grafana.getLocale(';
-      }
-      case 'timezone': {
-        return 'context.grafana.timezone';
-      }
-      case 'timeRange': {
-        return 'context.grafana.timeRange';
-      }
-      case 'eventBus': {
-        return 'context.grafana.eventBus';
-      }
-      case 'locationService': {
-        return 'context.grafana.locationService';
-      }
-      case 'replaceVariables(': {
-        return 'context.grafana.replaceVariables(';
-      }
-      default: {
-        return value;
-      }
-    }
-  });
+    /^(?!.*context\.)(?:.*)(handlebars|panelData|dataFrame\.|data\.|getLocale\(|timeZone|timeRange|eventBus|locationService|replaceVariables\()/gm;
+
+  return code
+    .split(' ')
+    .map((part) => {
+      return part.replace(search, (value, ...args) => {
+        const searchTerm = args[0] || value;
+
+        return value.replace(searchTerm, (valueToReplace) => {
+          switch (valueToReplace) {
+            case 'data.': {
+              return 'context.data.';
+            }
+            case 'handlebars': {
+              return 'context.handlebars';
+            }
+            case 'dataFrame.': {
+              return 'context.dataFrame.';
+            }
+            case 'panelData': {
+              return 'context.panelData';
+            }
+            case 'getLocale(': {
+              return 'context.grafana.getLocale(';
+            }
+            case 'timeZone': {
+              return 'context.grafana.timeZone';
+            }
+            case 'timeRange': {
+              return 'context.grafana.timeRange';
+            }
+            case 'eventBus': {
+              return 'context.grafana.eventBus';
+            }
+            case 'locationService': {
+              return 'context.grafana.locationService';
+            }
+            case 'replaceVariables(': {
+              return 'context.grafana.replaceVariables(';
+            }
+            default: {
+              return value;
+            }
+          }
+        });
+      });
+    })
+    .join(' ');
 };
 
 /**
