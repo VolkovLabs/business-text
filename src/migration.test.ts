@@ -35,9 +35,11 @@ describe('Migration', () => {
           initial: `
           const data = [];
           data.series.forEach();
+          context.data.series.forEach();
           `,
           expected: `
           const data = [];
+          context.data.series.forEach();
           context.data.series.forEach();
           `,
         },
@@ -45,9 +47,11 @@ describe('Migration', () => {
           name: 'handlebars',
           initial: `
           const helpers = handlebars.helpers;
+          const helpers2 = context.handlebars.helpers;
           `,
           expected: `
           const helpers = context.handlebars.helpers;
+          const helpers2 = context.handlebars.helpers;
           `,
         },
         {
@@ -62,19 +66,23 @@ describe('Migration', () => {
         {
           name: 'dataFrame',
           initial: `
-          const id = dataFrame.refId
+          const id = dataFrame.refId;
+          if (dataFrame.refId) {}
+          if (context.dataFrame.refId) {}
           `,
           expected: `
-          const id = context.dataFrame.refId
+          const id = context.dataFrame.refId;
+          if (context.dataFrame.refId) {}
+          if (context.dataFrame.refId) {}
           `,
         },
         {
-          name: 'timezone',
+          name: 'timeZone',
           initial: `
-          const zone = timezone
+          const zone = timeZone;
           `,
           expected: `
-          const zone = context.grafana.timezone
+          const zone = context.grafana.timeZone;
           `,
         },
         {
