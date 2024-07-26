@@ -2,7 +2,7 @@
 
 ![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
 
-![Grafana](https://img.shields.io/badge/Grafana-11.0-orange)
+![Grafana](https://img.shields.io/badge/Grafana-11.1-orange)
 ![CI](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/CI/badge.svg)
 ![E2E](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/E2E/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel)
@@ -56,6 +56,14 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 | [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes/)       | Useful snippets that you can use in your templates.            |
 | [Features](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/features/)     | Demonstrates panel features.templates.                         |
 | [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release/) | Stay up to date with the latest features and updates.          |
+
+## Business Suite for Grafana
+
+The Business Suite is a collection of open source plugins created and actively maintained by Volkov Labs.
+
+The collection aims to solve the most frequent business tasks by providing an intuitive interface with detailed written documentation, examples, and video tutorials.
+
+[![Business Suite for Grafana](https://raw.githubusercontent.com/VolkovLabs/.github/main/business.png)](https://volkovlabs.io/plugins/)
 
 ## Feedback
 

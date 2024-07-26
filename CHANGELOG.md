@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.2.0 (2024-07-25)
+
+### Features / Enhancements
+
+- Updated helpers migration (#338)
+- Updated to Grafana 11.1 and dependencies (#339)
+
 ## 5.1.0 (2024-07-01)
 
 ### Features / Enhancements
