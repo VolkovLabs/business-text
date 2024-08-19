@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.3.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Add partials to load external HTML (#345)
+
 ## 5.2.0 (2024-07-25)
 
 ### Features / Enhancements
