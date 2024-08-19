@@ -5,7 +5,7 @@ import { Select, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
-import { useExternalResources } from '../../hooks';
+import { useContentPartials, useExternalResources } from '../../hooks';
 import { PanelOptions, RenderMode, ResourceType } from '../../types';
 import { Text } from '../Text';
 import { getStyles } from './TextPanel.styles';
@@ -89,6 +89,8 @@ export const TextPanel: React.FC<Props> = ({
     type: ResourceType.STYLES,
   });
 
+  const { htmlContents } = useContentPartials(options?.contentPartials);
+
   /**
    * Re-render on dashboard refresh
    */
@@ -139,6 +141,7 @@ export const TextPanel: React.FC<Props> = ({
           replaceVariables={replaceVariables}
           eventBus={eventBus}
           data={data}
+          htmlContents={htmlContents}
         />
       </div>
 

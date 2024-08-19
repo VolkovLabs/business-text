@@ -48,6 +48,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -77,6 +78,7 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        htmlContents: [],
       };
 
       await act(async () => render(<Text {...props} />));
@@ -111,6 +113,7 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        htmlContents: [],
       };
 
       await act(async () => render(<Text {...props} />));
@@ -146,6 +149,7 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        htmlContents: [],
       };
 
       const { rerender } = await act(async () => render(<Text {...props} />));
@@ -187,6 +191,7 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        htmlContents: [],
       };
 
       await act(async () => render(<Text {...props} />));
@@ -230,6 +235,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -278,6 +284,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -337,6 +344,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -375,6 +383,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -416,6 +425,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -446,6 +456,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -485,6 +496,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -535,6 +547,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));
@@ -597,6 +610,7 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      htmlContents: [],
     };
 
     await act(async () => render(<Text {...props} />));

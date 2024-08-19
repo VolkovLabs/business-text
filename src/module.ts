@@ -1,6 +1,14 @@
 import { Field, FieldConfigProperty, FieldType, PanelPlugin } from '@grafana/data';
 
-import { AfterRenderEditor, HelpersEditor, ResourcesEditor, StylesEditor, TextEditor, TextPanel } from './components';
+import {
+  AfterRenderEditor,
+  ContentPartialsEditor,
+  HelpersEditor,
+  ResourcesEditor,
+  StylesEditor,
+  TextEditor,
+  TextPanel,
+} from './components';
 import {
   CODE_LANGUAGE_OPTIONS,
   DEFAULT_OPTIONS,
@@ -94,6 +102,14 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         settings: {
           options: WRAP_OPTIONS,
         },
+        category: ['Content'],
+      })
+      .addCustomEditor({
+        id: 'contentPartials',
+        path: 'contentPartials',
+        name: 'Content Partials',
+        defaultValue: DEFAULT_OPTIONS.contentPartials,
+        editor: ContentPartialsEditor,
         category: ['Content'],
       })
       .addCustomEditor({

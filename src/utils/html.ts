@@ -17,7 +17,7 @@ import hljs from 'highlight.js';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 import MarkdownIt from 'markdown-it';
 
-import { PanelOptions } from '../types';
+import { ContentItem, PanelOptions } from '../types';
 import { createExecutionCode } from './code';
 import { beforeRenderCodeParameters } from './code-parameters';
 import { registerHelpers } from './handlebars';
@@ -45,6 +45,7 @@ export const generateHtml = async ({
   notifySuccess,
   notifyError,
   theme,
+  htmlContents,
 }: {
   data: Record<string, unknown>;
   content: string;
@@ -59,6 +60,7 @@ export const generateHtml = async ({
   notifySuccess: (payload: AlertPayload) => void;
   notifyError: (payload: AlertErrorPayload) => void;
   theme: GrafanaTheme2;
+  htmlContents: ContentItem[];
 }): Promise<{ html: string; unsubscribe?: unknown }> => {
   /**
    * Variable
@@ -135,6 +137,14 @@ export const generateHtml = async ({
    * Handlebars
    */
   const template = handlebars.compile(content);
+
+  /**
+   * Register partials in handlebars
+   */
+  htmlContents.forEach((content) => {
+    handlebars.registerPartial(content.name, content.content);
+  });
+
   const markdown = template(data);
 
   /**
