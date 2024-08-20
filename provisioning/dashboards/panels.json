@@ -50,8 +50,7 @@
                 "value": 50
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -65,6 +64,7 @@
       "options": {
         "afterRender": "",
         "content": "<div style=\"background-color: {{statusColor}}\">\n  {{A-series}}\n</div>",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -80,7 +80,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "repeat": "test",
       "repeatDirection": "h",
       "targets": [
@@ -114,8 +114,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -129,6 +128,7 @@
       "options": {
         "afterRender": "",
         "content": "{{replace Test \"Pattern\" \"Replaced\"}}",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -143,7 +143,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "6.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -188,21 +188,98 @@
                 "value": 80
               }
             ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
+      "id": 25,
+      "options": {
+        "afterRender": "",
+        "content": "```html\n{{> Index}}\n```",
+        "contentPartials": [
+          {
+            "id": "1a363455-fd81-4afd-993b-beb062fe29ac",
+            "name": "Index",
+            "url": "https://volkovlabs.io/index.html"
+          }
+        ],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "markdown"
+        },
+        "editors": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
           },
-          "unitScale": true
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "test",
+                "type": "string",
+                "values": ["test"]
+              }
+            ],
+            "meta": {},
+            "name": "test"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Partial",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
       "gridPos": {
         "h": 2,
         "w": 12,
-        "x": 12,
-        "y": 5
+        "x": 0,
+        "y": 7
       },
       "id": 7,
       "options": {
         "afterRender": "",
         "content": "- Timestamp: {{variable \"__from\"}}\n- Parsed: {{variable \"__from:date:YYYY\"}}",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -217,7 +294,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -249,8 +326,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -258,12 +334,13 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 7
+        "y": 9
       },
       "id": 13,
       "options": {
         "afterRender": "",
         "content": "# {{app}}\n\n> {{description}}\n\n{{#if (eq tier \"frontend\")}}\nLink: <a href='https://{{cluster}}.example.com/{{app}}'>https://{{cluster}}.example.com/{{app}}</a>\n{{/if}}",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -278,7 +355,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -341,8 +418,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -350,12 +426,13 @@
         "h": 12,
         "w": 6,
         "x": 12,
-        "y": 7
+        "y": 13
       },
       "id": 8,
       "options": {
         "afterRender": "",
         "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"}}\n\n## {{test}}\n\n{{json @root}}",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -371,7 +448,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -435,8 +512,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -444,12 +520,13 @@
         "h": 12,
         "w": 6,
         "x": 18,
-        "y": 7
+        "y": 13
       },
       "id": 17,
       "options": {
         "afterRender": "",
         "content": "```json\n{{{json @root}}}\n```",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -464,7 +541,7 @@
         "styles": "& {\n  padding: 0;\n  margin: 0;\n}",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -495,8 +572,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -504,12 +580,13 @@
         "h": 4,
         "w": 12,
         "x": 0,
-        "y": 12
+        "y": 14
       },
       "id": 11,
       "options": {
         "afterRender": "",
         "content": "<a type=\"button\" onclick=\"myFunc()\" class=\"btn btn-danger\">{{test}}</a>\n\n<button onclick=\"myFunc()\">{{test}}</button>",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -524,7 +601,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -569,8 +646,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -578,12 +654,13 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 18
       },
       "id": 5,
       "options": {
         "afterRender": "",
         "content": "<table width=100% style='border:2px solid #5D3FC4'>\n   <tr>\n      <td class='name'>\n         <p style='margin:0'><b class='name'>{{first_name}} {{last_name}}</b>\n         </p>\n      </td>\n      <td rowspan=3 class='photo' width=200px>\n         <img width=120px src=\"{{photo}}\">\n      </td>\n   </tr>\n   <tr>\n      <td style='background-color:#f6f2ff;color:#5F3DC4'>login\n         <b style='font-family: silom;font-size:14px'>{{login}}</b>\n         <br>role <b style='font-family: silom;font-size:14px'>{{role}}</b>\n      </td>\n   </tr>\n   <tr>\n      <td class='desc'>\n         <p style='margin:0'>\n            {{#if (eq status 'active')}}\n         <p style='px;color:#549728; font-size:22px; font-family:Roboto;margin:0'><b>Active</b></p>\n         {{/if}}\n         {{#if (eq status 'not active')}}\n         <p style='px;color:#FF5656; font-size:22px; font-family:Roboto;margin:0'><b>Not Active</b></p>\n         {{/if}}\n         Last Login Date <br><b> {{date last_login_date 'YYYY-MM-DD HH:MM'}}</b></p>\n      </td>\n   </tr>\n</table>",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -599,7 +676,7 @@
         "styles": "td.name {\n  border: 0;\n  background-color: #5d3fc4;\n  color: white;\n}\n\nb.name {\n  font-family: silom;\n  font-size:20px;\n}\n\ntd.photo {\n  border:2px solid #5D3FC4;\n  text-align:center;\n}\n\ntd.desc {\n  text-align:right;\n  border:0;\n  background-color:#f6f2ff;\n  color:#5F3DC4;\n}",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -695,8 +772,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -704,12 +780,13 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 19
+        "y": 25
       },
       "id": 9,
       "options": {
         "afterRender": "",
         "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"\n\n## {{test}}",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -725,7 +802,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -773,86 +850,6 @@
     {
       "datasource": {
         "type": "volkovlabs-rss-datasource",
-        "uid": "rZAdZdf82"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unitScale": true
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 12,
-        "y": 28
-      },
-      "id": 3,
-      "options": {
-        "afterRender": "",
-        "content": "<table width=100% style='border:0'>\n<tr>\n<td style='border:0'><h3><a target=\"_blank\" style=\"color: blue\" href=\"{{link}}\">{{title}}</a></h3>\n{{{content:h4}}}</td>\n<td rowspan=2 style='border:0' width=200px>\n<div style='max-width: 100%; display: inline; height: auto '><img width=200px src=\"{{media:group:media:thumbnail:url}}\"></div></td>\n</tr>\n<tr>\n<td style='border:0'><b>{{date updated 'MMM, DD YYYY'}} by {{author}}</b></td>\n</table>",
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 400,
-          "language": "html"
-        },
-        "editors": [],
-        "externalScripts": [],
-        "externalStyles": [],
-        "handlebars": "",
-        "helpers": "",
-        "renderMode": "everyRow",
-        "styles": "",
-        "wrap": true
-      },
-      "pluginVersion": "4.4.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "volkovlabs-rss-datasource",
-            "uid": "rZAdZdf82"
-          },
-          "dateField": "",
-          "feedType": "items",
-          "queryText": "test",
-          "refId": "A"
-        }
-      ],
-      "title": "YouTube",
-      "transformations": [
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "dateFormat": "",
-                "destinationType": "time",
-                "targetField": "updated"
-              }
-            ],
-            "fields": {}
-          }
-        }
-      ],
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "volkovlabs-rss-datasource",
         "uid": "rZAdZdf7a"
       },
       "fieldConfig": {
@@ -869,21 +866,21 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 12,
         "w": 12,
         "x": 0,
-        "y": 29
+        "y": 31
       },
       "id": 2,
       "options": {
         "afterRender": "",
         "content": "| Title | Date | Category |\n| ----- | ------ | ---- |\n{{#each data}}\n| {{title}} | {{date pubDate 'MMM, DD YYYY'}} | {{category}}\n{{/each}}",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "auto",
@@ -899,7 +896,7 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "6.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -932,6 +929,86 @@
     },
     {
       "datasource": {
+        "type": "volkovlabs-rss-datasource",
+        "uid": "rZAdZdf82"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 34
+      },
+      "id": 3,
+      "options": {
+        "afterRender": "",
+        "content": "<table width=100% style='border:0'>\n<tr>\n<td style='border:0'><h3><a target=\"_blank\" style=\"color: blue\" href=\"{{link}}\">{{title}}</a></h3>\n{{{content:h4}}}</td>\n<td rowspan=2 style='border:0' width=200px>\n<div style='max-width: 100%; display: inline; height: auto '><img width=200px src=\"{{media:group:media:thumbnail:url}}\"></div></td>\n</tr>\n<tr>\n<td style='border:0'><b>{{date updated 'MMM, DD YYYY'}} by {{author}}</b></td>\n</table>",
+        "contentPartials": [],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "html"
+        },
+        "editors": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "handlebars": "",
+        "helpers": "",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-rss-datasource",
+            "uid": "rZAdZdf82"
+          },
+          "dateField": "",
+          "feedType": "items",
+          "queryText": "test",
+          "refId": "A"
+        }
+      ],
+      "title": "YouTube",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "",
+                "destinationType": "time",
+                "targetField": "updated"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
         "type": "marcusolsson-static-datasource",
         "uid": "U0HP2Rv4z"
       },
@@ -949,8 +1026,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": []
       },
@@ -958,12 +1034,13 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 38
+        "y": 43
       },
       "id": 22,
       "options": {
         "afterRender": "",
         "content": "<button class=\"button\">Button</button>",
+        "contentPartials": [],
         "defaultContent": "The query didn't return any results.",
         "editor": {
           "format": "none",
@@ -978,7 +1055,7 @@
         "styles": ".button {\n  background-color: ${theme.colors.primary.main};\n  border: none;\n  color: ${theme.colors.primary.contrastText};\n  padding: 4px 8px;\n  border-radius: ${theme.shape.radius.default};\n}",
         "wrap": true
       },
-      "pluginVersion": "4.4.0",
+      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {

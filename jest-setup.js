@@ -5,6 +5,20 @@ import { TextDecoder, TextEncoder } from 'util';
 import ResizeObserver from 'resize-observer-polyfill';
 
 /**
+ * Fetch
+ */
+const fetchMock = () =>
+  Promise.resolve({
+    json: () => Promise.resolve({}),
+  });
+
+global.fetch = jest.fn(fetchMock);
+
+beforeEach(() => {
+  global.fetch.mockImplementation(fetchMock);
+});
+
+/**
  * Mock ResizeObserver
  */
 global.ResizeObserver = ResizeObserver;

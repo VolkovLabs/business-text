@@ -11,6 +11,7 @@ import { generateHtml } from './html';
  */
 jest.mock('handlebars', () => ({
   registerHelper: jest.fn(),
+  registerPartial: jest.fn(),
   compile: jest.fn((str: string) => () => str),
 }));
 
@@ -53,6 +54,7 @@ describe('HTML helpers', () => {
       generateHtml({
         content,
         options,
+        htmlContents: [],
       } as any);
 
       expect(textUtil.sanitize).toHaveBeenCalledWith(content);
@@ -68,6 +70,7 @@ describe('HTML helpers', () => {
       const { html } = await generateHtml({
         content,
         options,
+        htmlContents: [],
       } as any);
 
       render(<div data-testid="root" dangerouslySetInnerHTML={{ __html: html }} />);
@@ -80,6 +83,8 @@ describe('HTML helpers', () => {
         line 1
         
         line 2
+
+        {{> aaaa }}
       `;
 
       const { html } = await generateHtml({
@@ -88,6 +93,7 @@ describe('HTML helpers', () => {
           ...options,
           wrap: false,
         },
+        htmlContents: [{ name: 'aaaa', content: '<p>test<p>' }],
       } as any);
 
       render(<div data-testid="root" dangerouslySetInnerHTML={{ __html: html }} />);
@@ -106,6 +112,7 @@ describe('HTML helpers', () => {
       generateHtml({
         content,
         options,
+        htmlContents: [],
       } as any);
 
       expect(textUtil.sanitize).not.toHaveBeenCalled();
@@ -134,6 +141,7 @@ describe('HTML helpers', () => {
       content: '<div></div>',
       replaceVariables: (str: string) => str,
       options,
+      htmlContents: [],
     } as any);
 
     expect(Handlebars.registerHelper).toHaveBeenCalledWith('variable', expect.any(Function));
@@ -141,6 +149,32 @@ describe('HTML helpers', () => {
 
     expect(variableHandler('varName')).toEqual([]);
     expect(variableValueHandler('varName')).toEqual('varName');
+  });
+
+  it('Should use partial handler', () => {
+    let partialName: any;
+    let partialContent: any;
+
+    jest.mocked(Handlebars.registerPartial).mockImplementation(((name: any, content: any) => {
+      if (name) {
+        partialName = name;
+      }
+      if (content) {
+        partialContent = content;
+      }
+    }) as any);
+
+    generateHtml({
+      content: '<div></div>',
+      replaceVariables: (str: string) => str,
+      options,
+      htmlContents: [{ name: 'aaaa', content: '<p>test<p>' }],
+    } as any);
+
+    expect(Handlebars.registerPartial).toHaveBeenCalledWith('aaaa', '<p>test<p>');
+
+    expect(partialName).toEqual('aaaa');
+    expect(partialContent).toEqual('<p>test<p>');
   });
 
   it('Should wait until promise in code resolved', async () => {
@@ -152,6 +186,7 @@ describe('HTML helpers', () => {
       helpers: `
         return Promise.resolve(() => 123)
       `,
+      htmlContents: [],
     } as any);
 
     expect(unsubscribe).toBeDefined();

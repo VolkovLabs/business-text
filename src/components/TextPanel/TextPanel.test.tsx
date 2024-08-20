@@ -93,6 +93,7 @@ describe('Panel', () => {
     styles: '',
     status: '',
     externalStyles: [],
+    contentPartials: [],
     wrap: false,
     afterRender: '',
   };

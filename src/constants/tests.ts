@@ -23,4 +23,15 @@ export const TEST_IDS = {
     newItem: 'data-testid resources-editor new-item',
     newItemName: 'data-testid resources-editor new-item-name',
   },
+  partialsEditor: {
+    buttonAddNew: 'data-testid partials-editor button-add-new',
+    buttonRemove: 'data-testid partials-editor button-remove',
+    itemLabel: (name: string) => `data-testid partials-editor item-label-${name}`,
+    itemContent: (name: string) => `data-testid partials-editor item-content-${name}`,
+    fieldUrl: 'data-testid partials-editor field-url',
+    fieldName: 'data-testid partials-editor field-name',
+    newItem: 'data-testid partials-editor new-item',
+    newItemURL: 'data-testid partials-editor new-item-url',
+    newItemName: 'data-testid partials-editor new-item-name',
+  },
 };

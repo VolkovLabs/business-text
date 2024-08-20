@@ -16,7 +16,7 @@ import { Alert, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
-import { PanelOptions, RenderMode, RowItem } from '../../types';
+import { PanelOptions, PartialItem, RenderMode, RowItem } from '../../types';
 import { generateHtml } from '../../utils';
 import { Row } from '../Row';
 import { getStyles } from './Text.styles';
@@ -73,6 +73,13 @@ interface Props {
    * @type {PanelData}
    */
   data: PanelData;
+
+  /**
+   * HTML contents
+   *
+   * @type {PartialItem[]}
+   */
+  htmlContents: PartialItem[];
 }
 
 /**
@@ -86,6 +93,7 @@ export const Text: React.FC<Props> = ({
   replaceVariables,
   eventBus,
   data: panelData,
+  htmlContents,
 }) => {
   /**
    * Generated rows
@@ -143,11 +151,24 @@ export const Text: React.FC<Props> = ({
           notifySuccess,
           notifyError,
           theme,
+          htmlContents,
         })),
         data: htmlData,
       };
     },
-    [options, timeRange, timeZone, replaceVariables, eventBus, panelData, frame, notifySuccess, notifyError, theme]
+    [
+      options,
+      timeRange,
+      timeZone,
+      replaceVariables,
+      eventBus,
+      panelData,
+      frame,
+      notifySuccess,
+      notifyError,
+      theme,
+      htmlContents,
+    ]
   );
 
   useEffect(() => {

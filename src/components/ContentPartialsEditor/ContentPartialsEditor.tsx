@@ -13,14 +13,14 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 
 import { TEST_IDS } from '../../constants';
-import { PanelOptions, Resource } from '../../types';
+import { PanelOptions, PartialItemConfig } from '../../types';
 import { reorder } from '../../utils';
-import { getStyles } from './ResourceEditor.styles';
+import { getStyles } from './ContentPartialsEditor.styles';
 
 /**
  * Properties
  */
-type Props = StandardEditorProps<Resource[], PanelOptions>;
+type Props = StandardEditorProps<PartialItemConfig[], PanelOptions>;
 
 /**
  * Get Item Style
@@ -33,9 +33,9 @@ const getItemStyle = (isDragging: boolean, draggableStyle: DraggingStyle | NotDr
 });
 
 /**
- * Resources Editor
+ * Content Partials Editor
  */
-export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
+export const ContentPartialsEditor: React.FC<Props> = ({ value, onChange }) => {
   /**
    * Styles and Theme
    */
@@ -44,15 +44,17 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
   /**
    * States
    */
-  const [items, setItems] = useState<Resource[]>(value || []);
-  const [newItem, setNewItem] = useState('');
+  const [items, setItems] = useState<PartialItemConfig[]>(value || []);
+  const [newItemUrl, setNewItemUrl] = useState('');
+  const [newItemName, setNewItemName] = useState('');
+
   const [collapseState, setCollapseState] = useState<Record<string, boolean>>({});
 
   /**
    * Change Items
    */
   const onChangeItems = useCallback(
-    (items: Resource[]) => {
+    (items: PartialItemConfig[]) => {
       setItems(items);
       onChange(items);
     },
@@ -90,16 +92,17 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
    * Add new item
    */
   const onAddNewItem = useCallback(() => {
-    setNewItem('');
-    onChangeItems(items.concat([{ id: uuidv4(), url: newItem }]));
-    onToggleItem(newItem);
-  }, [items, newItem, onChangeItems, onToggleItem]);
+    setNewItemUrl('');
+    setNewItemName('');
+    onChangeItems(items.concat([{ id: uuidv4(), url: newItemUrl, name: newItemName }]));
+    onToggleItem(newItemName);
+  }, [items, newItemName, newItemUrl, onChangeItems, onToggleItem]);
 
   /**
    * Change item
    */
   const onChangeItem = useCallback(
-    (updatedItem: Resource) => {
+    (updatedItem: PartialItemConfig) => {
       onChangeItems(items.map((item) => (item.id === updatedItem.id ? updatedItem : item)));
     },
     [items, onChangeItems]
@@ -121,7 +124,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
         <Droppable droppableId="groups-editor">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
-              {items.map(({ url, id }, index) => (
+              {items.map(({ url, id, name }, index) => (
                 <Draggable key={id} draggableId={id} index={index}>
                   {(provided, snapshot) => (
                     <div
@@ -131,9 +134,9 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                       className={styles.group}
                     >
                       <Collapse
-                        title={<div className={styles.groupHeader}>{url}</div>}
-                        headerTestId={TEST_IDS.resourcesEditor.itemLabel(url)}
-                        contentTestId={TEST_IDS.resourcesEditor.itemContent(url)}
+                        title={<div className={styles.groupHeader}>{`[${name}] ${url}`}</div>}
+                        headerTestId={TEST_IDS.partialsEditor.itemLabel(url)}
+                        contentTestId={TEST_IDS.partialsEditor.itemContent(url)}
                         actions={
                           <>
                             <Button
@@ -145,7 +148,7 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                               onClick={() => {
                                 onRemoveItem(id);
                               }}
-                              data-testid={TEST_IDS.resourcesEditor.buttonRemove}
+                              data-testid={TEST_IDS.partialsEditor.buttonRemove}
                             />
                             <div className={styles.dragHandle} {...provided.dragHandleProps}>
                               <Icon name="draggabledots" className={styles.dragIcon} />
@@ -155,18 +158,34 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
                         isOpen={collapseState[id]}
                         onToggle={() => onToggleItem(id)}
                       >
-                        <InlineField grow label="URL">
-                          <Input
-                            value={url}
-                            onChange={(event) => {
-                              onChangeItem({
-                                id,
-                                url: event.currentTarget.value,
-                              });
-                            }}
-                            data-testid={TEST_IDS.resourcesEditor.fieldUrl}
-                          />
-                        </InlineField>
+                        <InlineFieldRow>
+                          <InlineField grow label="URL">
+                            <Input
+                              value={url}
+                              onChange={(event) => {
+                                onChangeItem({
+                                  id,
+                                  url: event.currentTarget.value,
+                                  name,
+                                });
+                              }}
+                              data-testid={TEST_IDS.partialsEditor.fieldUrl}
+                            />
+                          </InlineField>
+                          <InlineField grow label="Name">
+                            <Input
+                              value={name}
+                              onChange={(event) => {
+                                onChangeItem({
+                                  id,
+                                  name: event.currentTarget.value,
+                                  url,
+                                });
+                              }}
+                              data-testid={TEST_IDS.partialsEditor.fieldName}
+                            />
+                          </InlineField>
+                        </InlineFieldRow>
                       </Collapse>
                     </div>
                   )}
@@ -178,21 +197,30 @@ export const ResourcesEditor: React.FC<Props> = ({ value, onChange }) => {
         </Droppable>
       </DragDropContext>
 
-      <InlineFieldRow className={styles.newGroup} data-testid={TEST_IDS.resourcesEditor.newItem}>
-        <InlineField label="New Resource" grow>
+      <InlineFieldRow className={styles.newGroup} data-testid={TEST_IDS.partialsEditor.newItem}>
+        <InlineField label="New Partial" grow>
           <Input
             placeholder="URL"
-            value={newItem}
-            onChange={(event) => setNewItem(event.currentTarget.value)}
-            data-testid={TEST_IDS.resourcesEditor.newItemName}
+            value={newItemUrl}
+            onChange={(event) => setNewItemUrl(event.currentTarget.value)}
+            data-testid={TEST_IDS.partialsEditor.newItemURL}
           />
         </InlineField>
+        <InlineField label="Name" grow>
+          <Input
+            placeholder="name"
+            value={newItemName}
+            onChange={(event) => setNewItemName(event.currentTarget.value)}
+            data-testid={TEST_IDS.partialsEditor.newItemName}
+          />
+        </InlineField>
+
         <Button
           icon="plus"
-          title="Add Resource"
-          disabled={!newItem}
+          title="Add Partial"
+          disabled={!newItemName || !newItemUrl}
           onClick={onAddNewItem}
-          data-testid={TEST_IDS.resourcesEditor.buttonAddNew}
+          data-testid={TEST_IDS.partialsEditor.buttonAddNew}
         >
           Add
         </Button>
