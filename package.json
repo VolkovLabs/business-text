@@ -21,7 +21,7 @@
     "tslib": "^2.6.3",
     "uuid": "^10.0.0"
   },
-  "description": "A panel plugin for Grafana for dynamic, data-driven text",
+  "description": "Dynamic, data-driven text",
   "devDependencies": {
     "@babel/core": "^7.24.9",
     "@babel/preset-typescript": "^7.24.7",
@@ -66,7 +66,7 @@
     "node": ">=20"
   },
   "license": "Apache-2.0",
-  "name": "marcusolsson-dynamictext-panel",
+  "name": "business-text",
   "scripts": {
     "build": "webpack -c ./webpack.config.ts --env production",
     "dev": "webpack -w -c ./webpack.config.ts --env development",
