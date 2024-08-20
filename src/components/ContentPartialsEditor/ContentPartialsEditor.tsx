@@ -13,14 +13,14 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 
 import { TEST_IDS } from '../../constants';
-import { PanelOptions, PartialItem } from '../../types';
+import { PanelOptions, PartialItemConfig } from '../../types';
 import { reorder } from '../../utils';
 import { getStyles } from './ContentPartialsEditor.styles';
 
 /**
  * Properties
  */
-type Props = StandardEditorProps<PartialItem[], PanelOptions>;
+type Props = StandardEditorProps<PartialItemConfig[], PanelOptions>;
 
 /**
  * Get Item Style
@@ -44,7 +44,7 @@ export const ContentPartialsEditor: React.FC<Props> = ({ value, onChange }) => {
   /**
    * States
    */
-  const [items, setItems] = useState<PartialItem[]>(value || []);
+  const [items, setItems] = useState<PartialItemConfig[]>(value || []);
   const [newItemUrl, setNewItemUrl] = useState('');
   const [newItemName, setNewItemName] = useState('');
 
@@ -54,7 +54,7 @@ export const ContentPartialsEditor: React.FC<Props> = ({ value, onChange }) => {
    * Change Items
    */
   const onChangeItems = useCallback(
-    (items: PartialItem[]) => {
+    (items: PartialItemConfig[]) => {
       setItems(items);
       onChange(items);
     },
@@ -102,7 +102,7 @@ export const ContentPartialsEditor: React.FC<Props> = ({ value, onChange }) => {
    * Change item
    */
   const onChangeItem = useCallback(
-    (updatedItem: PartialItem) => {
+    (updatedItem: PartialItemConfig) => {
       onChangeItems(items.map((item) => (item.id === updatedItem.id ? updatedItem : item)));
     },
     [items, onChangeItems]

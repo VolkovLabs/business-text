@@ -1,24 +1,35 @@
 import { useEffect, useState } from 'react';
 
-import { ContentItem, PartialItem } from '../types';
+import { PartialItem, PartialItemConfig } from '../types';
 
 /**
  * Use Content Partials
  * @param items
  */
-export const useContentPartials = (items: PartialItem[]): { htmlContents: ContentItem[] } => {
-  const [htmlContents, setHtmlContents] = useState<ContentItem[]>([]);
+export const useContentPartials = (items: PartialItemConfig[]): PartialItem[] => {
+  /**
+   * State
+   */
+  const [htmlContents, setHtmlContents] = useState<PartialItem[]>([]);
 
   useEffect(() => {
     /**
      * Fetch content
      */
-    const fetchHtml = async (url: string, partialName: string): Promise<ContentItem> => {
-      const response = await fetch(url);
-      const html = await response.text();
+    const fetchHtml = async (url: string, partialName: string): Promise<PartialItem> => {
+      let content = 'Unable to load template\n';
+
+      try {
+        const response = await fetch(url);
+
+        if (response && response.ok) {
+          content = await response.text();
+        }
+      } catch {}
+
       return {
         name: partialName,
-        content: html,
+        content,
       };
     };
 
@@ -32,7 +43,5 @@ export const useContentPartials = (items: PartialItem[]): { htmlContents: Conten
     }
   }, [items]);
 
-  return {
-    htmlContents,
-  };
+  return htmlContents;
 };

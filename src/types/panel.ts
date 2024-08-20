@@ -1,7 +1,7 @@
 import { DataFrame, PanelData } from '@grafana/data';
 
 import { EditorOptions } from './editor';
-import { PartialItem, Resource } from './resource';
+import { PartialItemConfig, Resource } from './resource';
 
 /**
  * Editor Types
@@ -105,9 +105,9 @@ export interface PanelOptions {
   /**
    * Content Partials
    *
-   * @type {PartialItem[]}
+   * @type {PartialItemConfig[]}
    */
-  contentPartials: PartialItem[];
+  contentPartials: PartialItemConfig[];
 }
 
 /**

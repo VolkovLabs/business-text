@@ -26,9 +26,9 @@ export interface Resource {
 }
 
 /**
- * Partial item
+ * Partial Item Config
  */
-export interface PartialItem {
+export interface PartialItemConfig {
   /**
    * Id
    *
@@ -52,9 +52,9 @@ export interface PartialItem {
 }
 
 /**
- * Content item
+ * Partial Item
  */
-export interface ContentItem {
+export interface PartialItem {
   /**
    * Content
    *

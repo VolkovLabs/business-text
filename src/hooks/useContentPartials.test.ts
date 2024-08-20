@@ -4,7 +4,7 @@ import { useContentPartials } from './useContentPartials';
 describe('useContentPartials', () => {
   it('Should return an empty array when no items are provided', () => {
     const { result } = renderHook(() => useContentPartials([]));
-    expect(result.current.htmlContents).toEqual([]);
+    expect(result.current).toEqual([]);
   });
 
   describe('When data is fetched successfully', () => {
@@ -16,6 +16,7 @@ describe('useContentPartials', () => {
 
       jest.mocked(fetch).mockImplementation((url, options) => {
         return Promise.resolve({
+          ok: true,
           json: Promise.resolve({}),
           text: () => Promise.resolve('<p>test</p>'),
         } as any);
@@ -28,9 +29,9 @@ describe('useContentPartials', () => {
         currentResult = result as any;
       });
 
-      expect(currentResult.current.htmlContents.length).toBe(2);
-      expect(currentResult.current.htmlContents[0]).toEqual({ content: '<p>test</p>', name: 'Partial 1' });
-      expect(currentResult.current.htmlContents[1]).toEqual({ content: '<p>test</p>', name: 'Partial 2' });
+      expect(currentResult.current.length).toBe(2);
+      expect(currentResult.current[0]).toEqual({ content: '<p>test</p>', name: 'Partial 1' });
+      expect(currentResult.current[1]).toEqual({ content: '<p>test</p>', name: 'Partial 2' });
       expect(fetch).toHaveBeenCalledTimes(2);
       expect(fetch).toHaveBeenCalledWith('/partial1.html');
       expect(fetch).toHaveBeenCalledWith('/partial2.html');

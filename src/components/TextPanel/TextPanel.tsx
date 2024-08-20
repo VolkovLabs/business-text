@@ -89,7 +89,7 @@ export const TextPanel: React.FC<Props> = ({
     type: ResourceType.STYLES,
   });
 
-  const { htmlContents } = useContentPartials(options?.contentPartials);
+  const htmlContents = useContentPartials(options?.contentPartials);
 
   /**
    * Re-render on dashboard refresh

@@ -17,7 +17,7 @@ import hljs from 'highlight.js';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 import MarkdownIt from 'markdown-it';
 
-import { ContentItem, PanelOptions } from '../types';
+import { PanelOptions, PartialItem } from '../types';
 import { createExecutionCode } from './code';
 import { beforeRenderCodeParameters } from './code-parameters';
 import { registerHelpers } from './handlebars';
@@ -60,7 +60,7 @@ export const generateHtml = async ({
   notifySuccess: (payload: AlertPayload) => void;
   notifyError: (payload: AlertErrorPayload) => void;
   theme: GrafanaTheme2;
-  htmlContents: ContentItem[];
+  htmlContents: PartialItem[];
 }): Promise<{ html: string; unsubscribe?: unknown }> => {
   /**
    * Variable
