@@ -93,7 +93,7 @@ export const ContentPartialsEditor: React.FC<Props> = ({ value, onChange }) => {
    */
   const onAddNewItem = useCallback(() => {
     setNewItemUrl('');
-    setNewItemUrl('');
+    setNewItemName('');
     onChangeItems(items.concat([{ id: uuidv4(), url: newItemUrl, name: newItemName }]));
     onToggleItem(newItemName);
   }, [items, newItemName, newItemUrl, onChangeItems, onToggleItem]);
@@ -206,7 +206,7 @@ export const ContentPartialsEditor: React.FC<Props> = ({ value, onChange }) => {
             data-testid={TEST_IDS.partialsEditor.newItemURL}
           />
         </InlineField>
-        <InlineField label="Partial name" grow>
+        <InlineField label="Name" grow>
           <Input
             placeholder="name"
             value={newItemName}

@@ -108,6 +108,7 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         id: 'contentPartials',
         path: 'contentPartials',
         name: 'Content Partials',
+        description: 'Partial call syntax: {{> name }}',
         defaultValue: DEFAULT_OPTIONS.contentPartials,
         editor: ContentPartialsEditor,
         category: ['Content'],
