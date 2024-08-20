@@ -1,31 +1,31 @@
-# Business Text Panel for Grafana
+# Business Text for Grafana
 
-![Text](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/raw/main/src/img/screenshot.png)
+![Text](https://github.com/VolkovLabs/business-text/raw/main/src/img/screenshot.png)
 
 ![Grafana](https://img.shields.io/badge/Grafana-11.1-orange)
-![CI](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/CI/badge.svg)
-![E2E](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/workflows/E2E/badge.svg)
-[![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/volkovlabs-dynamictext-panel)
-[![CodeQL](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/VolkovLabs/volkovlabs-dynamictext-panel/actions/workflows/codeql-analysis.yml)
+![CI](https://github.com/volkovlabs/business-text/workflows/CI/badge.svg)
+![E2E](https://github.com/volkovlabs/business-text/workflows/E2E/badge.svg)
+[![codecov](https://codecov.io/gh/VolkovLabs/business-text/branch/main/graph/badge.svg)](https://codecov.io/gh/VolkovLabs/business-text)
+[![CodeQL](https://github.com/VolkovLabs/business-text/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/VolkovLabs/business-text/actions/workflows/codeql-analysis.yml)
 
 ## Introduction
 
-Business Text Panel is a Grafana visualization plugin that converts plain text and table data into visually appealing, easy-to-read information cards.
+Business Text panel is a Grafana visualization plugin that converts plain text and table data into visually appealing, easy-to-read information cards.
 
-The Business Text Panel plugin allows you to construct a text visualization template from the values of a dataset returned by a data source query.
+The Business Text panel plugin allows you to construct a text visualization template from the values of a dataset returned by a data source query.
 
-[![Business Text plugin for Grafana | Use HTML, Markdown, JavaScript and CSS | Community use cases](https://raw.githubusercontent.com/volkovlabs/volkovlabs-dynamictext-panel/main/img/business-text.png)](https://youtu.be/UVMysEjouNo)
+[![Business Text plugin for Grafana | Use HTML, Markdown, JavaScript and CSS | Community use cases](https://raw.githubusercontent.com/volkovlabs/business-text/main/img/business-text.png)](https://youtu.be/UVMysEjouNo)
 
 ## Requirements
 
-- Business Text Panel 5.X requires **Grafana 10** or **Grafana 11**.
-- Dynamic Text Panel 4.X requires **Grafana 9.2** or **Grafana 10**.
-- Dynamic Text Panel 2.X and 3.X require **Grafana 8.5** or **Grafana 9**.
-- Dynamic Text Panel 1.X requires **Grafana 7**.
+- Business Text panel 5.X requires **Grafana 10** or **Grafana 11**.
+- Dynamic Text panel 4.X requires **Grafana 9.2** or **Grafana 10**.
+- Dynamic Text panel 2.X and 3.X require **Grafana 8.5** or **Grafana 9**.
+- Dynamic Text panel 1.X requires **Grafana 7**.
 
 ## Getting Started
 
-You can install the Business Text Panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or use the Grafana command line tool.
+You can install the Business Text panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or use the Grafana command line tool.
 
 For the latter, please use the following command:
 
@@ -50,12 +50,12 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Documentation
 
-| Section                                                                              | Description                                                    |
-| ------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| [Content](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/content/)       | Explains how to create a visualization template for your data. |
-| [Recipes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/recipes/)       | Useful snippets that you can use in your templates.            |
-| [Features](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/features/)     | Demonstrates panel features.templates.                         |
-| [Release Notes](https://volkovlabs.io/plugins/volkovlabs-dynamictext-panel/release/) | Stay up to date with the latest features and updates.          |
+| Section                                                               | Description                                                    |
+| --------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [Content](https://volkovlabs.io/plugins/business-text/content/)       | Explains how to create a visualization template for your data. |
+| [Recipes](https://volkovlabs.io/plugins/business-text/recipes/)       | Useful snippets that you can use in your templates.            |
+| [Features](https://volkovlabs.io/plugins/business-text/features/)     | Demonstrates panel features.templates.                         |
+| [Release Notes](https://volkovlabs.io/plugins/business-text/release/) | Stay up to date with the latest features and updates.          |
 
 ## Business Suite for Grafana
 
@@ -69,11 +69,11 @@ The collection aims to solve the most frequent business tasks by providing an in
 
 We're looking forward to hearing from you. You can use different ways to get in touch with us.
 
-- Ask a question, request a new feature, or report an issue at [GitHub issues](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/issues).
+- Ask a question, request a new feature, or report an issue at [GitHub issues](https://github.com/volkovlabs/business-text/issues).
 - Subscribe to our [YouTube Channel](https://www.youtube.com/@volkovlabs) and leave your comments.
 - Sponsor our open-source plugins for Grafana at [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
 - Support our project by starring the repository.
 
 ## License
 
-Apache License Version 2.0, see [LICENSE](https://github.com/volkovlabs/volkovlabs-dynamictext-panel/blob/main/LICENSE).
+Apache License Version 2.0, see [LICENSE](https://github.com/volkovlabs/business-text/blob/main/LICENSE).
