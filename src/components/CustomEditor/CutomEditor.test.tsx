@@ -114,6 +114,7 @@ describe('Custom Editor', () => {
         monacoOptions: {
           formatOnPaste: false,
           formatOnType: false,
+          scrollBeyondLastLine: false,
         },
       }),
       expect.anything()
@@ -143,6 +144,7 @@ describe('Custom Editor', () => {
         monacoOptions: {
           formatOnPaste: true,
           formatOnType: true,
+          scrollBeyondLastLine: false,
         },
       }),
       expect.anything()
