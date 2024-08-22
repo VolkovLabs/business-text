@@ -8,7 +8,7 @@
     "@grafana/ui": "^11.1.4",
     "@types/highlight.js": "^10.1.0",
     "@types/markdown-it": "^14.1.2",
-    "@volkovlabs/components": "^2.8.0",
+    "@volkovlabs/components": "^2.8.1",
     "dayjs": "^1.11.13",
     "handlebars": "^4.7.8",
     "helper-date": "^1.0.1",
@@ -58,7 +58,7 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "5.5.4",
-    "webpack": "^5.93.0",
+    "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4",
     "webpack-livereload-plugin": "^3.0.2"
   },
