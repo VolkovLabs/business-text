@@ -62,13 +62,16 @@ describe('Custom Editor', () => {
     };
   };
 
+  const editorItem = {
+    name: 'test',
+  };
   /**
    * Get Tested Component
    * @param restProps
    * @param context
    */
   const getComponent = ({ ...restProps }: any, context = getContext()) => {
-    return <CustomEditor {...restProps} context={context} />;
+    return <CustomEditor {...restProps} context={context} item={editorItem} />;
   };
 
   const onChange = jest.fn();
@@ -196,7 +199,7 @@ describe('Custom Editor', () => {
     const props: any = { context: { options: { editor: { language: '123' } } }, onChange };
 
     it('Should use language from options', () => {
-      render(<TextEditor {...props} />);
+      render(<TextEditor {...props} item={editorItem} />);
 
       expect(AutosizeCodeEditor).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -223,7 +226,7 @@ describe('Custom Editor', () => {
           }) as any
       );
 
-      render(<TextEditor {...props} />);
+      render(<TextEditor {...props} item={editorItem} />);
 
       expect(suggestionsResult).toEqual([]);
     });
@@ -236,7 +239,7 @@ describe('Custom Editor', () => {
     const props: any = { context: { options: { editor: {} } }, onChange };
 
     it('Should use javascript language', () => {
-      render(<HelpersEditor {...props} />);
+      render(<HelpersEditor {...props} item={editorItem} />);
 
       expect(AutosizeCodeEditor).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -263,7 +266,7 @@ describe('Custom Editor', () => {
           }) as any
       );
 
-      render(<HelpersEditor {...props} />);
+      render(<HelpersEditor {...props} item={editorItem} />);
 
       expect(suggestionsResult).toEqual(expect.arrayContaining(HELPERS_EDITOR_SUGGESTIONS));
       expect(suggestionsResult).toEqual(
@@ -294,7 +297,7 @@ describe('Custom Editor', () => {
     const props: any = { context: { options: { editor: {} } }, onChange };
 
     it('Should use javascript language', () => {
-      render(<AfterRenderEditor {...props} />);
+      render(<AfterRenderEditor {...props} item={editorItem} />);
 
       expect(AutosizeCodeEditor).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -321,7 +324,7 @@ describe('Custom Editor', () => {
           }) as any
       );
 
-      render(<AfterRenderEditor {...props} />);
+      render(<AfterRenderEditor {...props} item={editorItem} />);
 
       expect(suggestionsResult).toEqual(expect.arrayContaining(AFTER_RENDER_EDITOR_SUGGESTIONS));
       expect(suggestionsResult).toEqual(
@@ -352,7 +355,7 @@ describe('Custom Editor', () => {
     const props: any = { context: { options: { editor: {} } }, onChange };
 
     it('Should use javascript language', () => {
-      render(<StylesEditor {...props} />);
+      render(<StylesEditor {...props} item={editorItem} />);
 
       expect(AutosizeCodeEditor).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -379,7 +382,7 @@ describe('Custom Editor', () => {
           }) as any
       );
 
-      render(<StylesEditor {...props} />);
+      render(<StylesEditor {...props} item={editorItem} />);
 
       expect(suggestionsResult).toEqual(
         expect.arrayContaining([
