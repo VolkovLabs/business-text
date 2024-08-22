@@ -34,13 +34,6 @@ interface Props extends StandardEditorProps {
   type: EditorType;
 
   /**
-   * Title for the Modal window
-   *
-   * @type {string}
-   */
-  modalTitle: string;
-
-  /**
    * Tooltip for the Modal window button
    *
    * @type {string}
@@ -56,8 +49,8 @@ export const CustomEditor: React.FC<Props> = ({
   onChange,
   context,
   type = EditorType.TEXT,
-  modalTitle,
   modalButtonTooltip,
+  item,
 }) => {
   /**
    * Template Service to get Variables
@@ -179,9 +172,8 @@ export const CustomEditor: React.FC<Props> = ({
         value={value}
         onBlur={onChange}
         onSave={onChange}
-        modalTitle={modalTitle}
+        modalTitle={item.name}
         modalButtonTooltip={modalButtonTooltip}
-        modalHeight={600}
         monacoOptions={{ ...monacoOptions, scrollBeyondLastLine: false }}
         onEditorDidMount={onEditorMount}
         getSuggestions={getSuggestions}
@@ -196,12 +188,7 @@ export const CustomEditor: React.FC<Props> = ({
  * @constructor
  */
 export const TextEditor: React.FC<StandardEditorProps> = (props) => (
-  <CustomEditor
-    {...props}
-    type={EditorType.TEXT}
-    modalTitle="Content Editor"
-    modalButtonTooltip="Expand content editor"
-  />
+  <CustomEditor {...props} type={EditorType.TEXT} modalButtonTooltip="Expand content editor" />
 );
 
 /**
@@ -210,12 +197,7 @@ export const TextEditor: React.FC<StandardEditorProps> = (props) => (
  * @constructor
  */
 export const HelpersEditor: React.FC<StandardEditorProps> = (props) => (
-  <CustomEditor
-    {...props}
-    type={EditorType.HELPERS}
-    modalTitle="Before Render Editor"
-    modalButtonTooltip="Expand before render editor"
-  />
+  <CustomEditor {...props} type={EditorType.HELPERS} modalButtonTooltip="Expand before render editor" />
 );
 
 /**
@@ -224,12 +206,7 @@ export const HelpersEditor: React.FC<StandardEditorProps> = (props) => (
  * @constructor
  */
 export const AfterRenderEditor: React.FC<StandardEditorProps> = (props) => (
-  <CustomEditor
-    {...props}
-    type={EditorType.AFTER_RENDER}
-    modalTitle="After Render Editor"
-    modalButtonTooltip="Expand render editor"
-  />
+  <CustomEditor {...props} type={EditorType.AFTER_RENDER} modalButtonTooltip="Expand render editor" />
 );
 
 /**
@@ -238,10 +215,5 @@ export const AfterRenderEditor: React.FC<StandardEditorProps> = (props) => (
  * @constructor
  */
 export const StylesEditor: React.FC<StandardEditorProps> = (props) => (
-  <CustomEditor
-    {...props}
-    type={EditorType.STYLES}
-    modalTitle="Styles Editor"
-    modalButtonTooltip="Expand styles editor"
-  />
+  <CustomEditor {...props} type={EditorType.STYLES} modalButtonTooltip="Expand styles editor" />
 );
