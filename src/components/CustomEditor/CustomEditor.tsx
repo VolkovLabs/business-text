@@ -206,7 +206,7 @@ export const HelpersEditor: React.FC<StandardEditorProps> = (props) => (
  * @constructor
  */
 export const AfterRenderEditor: React.FC<StandardEditorProps> = (props) => (
-  <CustomEditor {...props} type={EditorType.AFTER_RENDER} modalButtonTooltip="Expand render editor" />
+  <CustomEditor {...props} type={EditorType.AFTER_RENDER} modalButtonTooltip="Expand after render editor" />
 );
 
 /**
