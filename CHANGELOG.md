@@ -1,11 +1,12 @@
 # Changelog
 
-## 5.3.0 (IN PROGRESS)
+## 5.3.0 (2024-08-22)
 
 ### Features / Enhancements
 
 - Updated Provisioning Dashboard (#346)
 - Added partials to load external HTML (#345)
+- Added Expandable Editors (#348)
 
 ## 5.2.0 (2024-07-25)
 
