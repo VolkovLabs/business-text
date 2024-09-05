@@ -25,3 +25,13 @@ datasources:
     access: proxy
     orgId: 1
     uid: U0HP2Rv4z
+  - name: Infinity
+    id: 4
+    uid: fdwzblygl5i4gf
+    orgId: 1
+    type: yesoreyeram-infinity-datasource
+    basicAuth: false
+    isDefault: false
+    jsonData:
+      global_queries: []
+    readOnly: false
