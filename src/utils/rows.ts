@@ -1,5 +1,6 @@
-import { RenderMode } from '../types';
 import { DataFrame } from '@grafana/data';
+
+import { RenderMode } from '../types';
 
 /**
  * Reorder
