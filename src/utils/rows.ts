@@ -26,5 +26,6 @@ export const getFrame = (renderMode: string, frameIndex: number, series: DataFra
   if (renderMode === RenderMode.DATA) {
     return series.find((frame) => !!frame.fields.length);
   }
+
   return series[frameIndex] ? series[frameIndex] : undefined;
 };

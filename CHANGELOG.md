@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.4.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Updated panel render if first data source does not have data (#353)
+
 ## 5.3.0 (2024-08-22)
 
 ### Features / Enhancements
