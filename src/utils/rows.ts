@@ -1,3 +1,6 @@
+import { RenderMode } from '../types';
+import { DataFrame } from '@grafana/data';
+
 /**
  * Reorder
  * @param list
@@ -10,4 +13,17 @@ export const reorder = <T>(list: T[], startIndex: number, endIndex: number) => {
   result.splice(endIndex, 0, removed);
 
   return result;
+};
+
+/**
+ * Get Frame
+ * @param renderMode
+ * @param frameIndex
+ * @param series
+ */
+export const getFrame = (renderMode: string, frameIndex: number, series: DataFrame[]) => {
+  if (renderMode === RenderMode.DATA) {
+    return series.find((frame) => !!frame.fields.length);
+  }
+  return series[frameIndex] ? series[frameIndex] : undefined;
 };

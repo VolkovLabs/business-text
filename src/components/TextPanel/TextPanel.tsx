@@ -7,6 +7,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { TEST_IDS } from '../../constants';
 import { useContentPartials, useExternalResources } from '../../hooks';
 import { PanelOptions, RenderMode, ResourceType } from '../../types';
+import { getFrame } from '../../utils';
 import { Text } from '../Text';
 import { getStyles } from './TextPanel.styles';
 
@@ -79,7 +80,10 @@ export const TextPanel: React.FC<Props> = ({
   /**
    * Selected Frame
    */
-  const frame = data.series[frameIndex] ? data.series[frameIndex] : undefined;
+  const frame = useMemo(
+    () => getFrame(options.renderMode, frameIndex, data.series),
+    [data.series, frameIndex, options.renderMode]
+  );
 
   /**
    * External Styles
