@@ -28,6 +28,10 @@ export const getStyles = (theme: GrafanaTheme2) => {
       margin-left: ${theme.spacing(2)};
     }
 
+    a {
+      color: blue;
+    }
+
     table {
       border-collapse: collapse;
 
