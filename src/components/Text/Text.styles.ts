@@ -60,6 +60,9 @@ export const getStyles = (theme: GrafanaTheme2) => {
     }
   `;
 
+  /**
+   * Loading Bar
+   */
   const loadingBar = css`
     position: absolute;
     top: 0;

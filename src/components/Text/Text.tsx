@@ -12,13 +12,12 @@ import {
 } from '@grafana/data';
 import { getAppEvents } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
-import { Alert, useStyles2, useTheme2 } from '@grafana/ui';
+import { Alert, LoadingBar, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
 import { PanelOptions, RenderMode, RowItem } from '../../types';
 import { generateHtml } from '../../utils';
-import { LoadingBar } from '../LoadingBar';
 import { Row } from '../Row';
 import { getStyles } from './Text.styles';
 
