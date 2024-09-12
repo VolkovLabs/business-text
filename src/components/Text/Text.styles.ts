@@ -60,6 +60,13 @@ export const getStyles = (theme: GrafanaTheme2) => {
     }
   `;
 
+  const loadingBar = css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+  `;
   /**
    * Highlight
    */
@@ -68,5 +75,6 @@ export const getStyles = (theme: GrafanaTheme2) => {
   return {
     frame,
     highlight,
+    loadingBar,
   };
 };

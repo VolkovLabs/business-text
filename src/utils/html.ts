@@ -17,10 +17,11 @@ import hljs from 'highlight.js';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 import MarkdownIt from 'markdown-it';
 
-import { PanelOptions, PartialItem } from '../types';
+import { PanelOptions, PartialItemConfig } from '../types';
 import { createExecutionCode } from './code';
 import { beforeRenderCodeParameters } from './code-parameters';
 import { registerHelpers } from './handlebars';
+import { fetchAllPartials } from './partials';
 import { replaceVariablesHelper } from './variable';
 
 /**
@@ -45,7 +46,7 @@ export const generateHtml = async ({
   notifySuccess,
   notifyError,
   theme,
-  htmlContents,
+  partials,
 }: {
   data: Record<string, unknown>;
   content: string;
@@ -60,7 +61,7 @@ export const generateHtml = async ({
   notifySuccess: (payload: AlertPayload) => void;
   notifyError: (payload: AlertErrorPayload) => void;
   theme: GrafanaTheme2;
-  htmlContents: PartialItem[];
+  partials: PartialItemConfig[];
 }): Promise<{ html: string; unsubscribe?: unknown }> => {
   /**
    * Variable
@@ -138,12 +139,19 @@ export const generateHtml = async ({
    */
   const template = handlebars.compile(content);
 
-  /**
-   * Register partials in handlebars
-   */
-  htmlContents.forEach((content) => {
-    handlebars.registerPartial(content.name, content.content);
-  });
+  if (partials && !!partials.length) {
+    /**
+     * await fetching partials
+     */
+    const fetchedPartials = await fetchAllPartials(partials);
+
+    /**
+     * Register partials in handlebars
+     */
+    fetchedPartials.forEach((content) => {
+      handlebars.registerPartial(content.name, content.content);
+    });
+  }
 
   const markdown = template(data);
 

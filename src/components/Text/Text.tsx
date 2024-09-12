@@ -16,8 +16,9 @@ import { Alert, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
-import { PanelOptions, PartialItem, RenderMode, RowItem } from '../../types';
+import { PanelOptions, RenderMode, RowItem } from '../../types';
 import { generateHtml } from '../../utils';
+import { LoadingBar } from '../LoadingBar';
 import { Row } from '../Row';
 import { getStyles } from './Text.styles';
 
@@ -73,13 +74,6 @@ interface Props {
    * @type {PanelData}
    */
   data: PanelData;
-
-  /**
-   * HTML contents
-   *
-   * @type {PartialItem[]}
-   */
-  htmlContents: PartialItem[];
 }
 
 /**
@@ -93,12 +87,16 @@ export const Text: React.FC<Props> = ({
   replaceVariables,
   eventBus,
   data: panelData,
-  htmlContents,
 }) => {
   /**
    * Generated rows
    */
   const [rows, setRows] = useState<RowItem[]>([]);
+
+  /**
+   * Loading state
+   */
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   /**
    * Generate html error
@@ -136,7 +134,8 @@ export const Text: React.FC<Props> = ({
    */
   const getHtml = useCallback(
     async (htmlData: Record<string, unknown>, content: string) => {
-      return {
+      setIsLoading(true);
+      const result = {
         ...(await generateHtml({
           data: htmlData,
           content,
@@ -151,24 +150,14 @@ export const Text: React.FC<Props> = ({
           notifySuccess,
           notifyError,
           theme,
-          htmlContents,
+          partials: options?.contentPartials,
         })),
         data: htmlData,
       };
+      setIsLoading(false);
+      return result;
     },
-    [
-      options,
-      timeRange,
-      timeZone,
-      replaceVariables,
-      eventBus,
-      panelData,
-      frame,
-      notifySuccess,
-      notifyError,
-      theme,
-      htmlContents,
-    ]
+    [options, timeRange, timeZone, replaceVariables, eventBus, panelData, frame, notifySuccess, notifyError, theme]
   );
 
   useEffect(() => {
@@ -306,6 +295,11 @@ export const Text: React.FC<Props> = ({
 
   return (
     <>
+      {isLoading && (
+        <div className={styles.loadingBar}>
+          <LoadingBar width={250} />
+        </div>
+      )}
       {rows.map((row, index) => (
         <Row
           key={index}
