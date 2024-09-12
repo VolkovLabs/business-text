@@ -28,6 +28,10 @@ export const getStyles = (theme: GrafanaTheme2) => {
       margin-left: ${theme.spacing(2)};
     }
 
+    a {
+      color: blue;
+    }
+
     table {
       border-collapse: collapse;
 
@@ -61,6 +65,16 @@ export const getStyles = (theme: GrafanaTheme2) => {
   `;
 
   /**
+   * Loading Bar
+   */
+  const loadingBar = css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+  `;
+  /**
    * Highlight
    */
   const highlight = theme.isDark ? HIGHLIGHT_DARK : HIGHLIGHT_LIGHT;
@@ -68,5 +82,6 @@ export const getStyles = (theme: GrafanaTheme2) => {
   return {
     frame,
     highlight,
+    loadingBar,
   };
 };

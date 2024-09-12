@@ -3,7 +3,7 @@ import { config } from '@grafana/runtime';
 import { render, screen } from '@testing-library/react';
 import Handlebars from 'handlebars';
 import React from 'react';
-
+import { fetchAllPartials } from './partials';
 import { generateHtml } from './html';
 
 /**
@@ -13,6 +13,11 @@ jest.mock('handlebars', () => ({
   registerHelper: jest.fn(),
   registerPartial: jest.fn(),
   compile: jest.fn((str: string) => () => str),
+  partials: {},
+}));
+
+jest.mock('./partials', () => ({
+  fetchAllPartials: jest.fn(),
 }));
 
 /**
@@ -151,30 +156,37 @@ describe('HTML helpers', () => {
     expect(variableValueHandler('varName')).toEqual('varName');
   });
 
-  it('Should use partial handler', () => {
-    let partialName: any;
-    let partialContent: any;
+  it('Should use partial handler', async () => {
+    const returnFetchedPartials = [{ name: 'partialName', content: 'some content' }] as any;
+    const defaultParams = {
+      data: { key: 'value' },
+      content: '{{> partialName}}',
+      partials: [{ id: 'test-partial', name: 'partialName', url: 'Partial Content' }],
+      helpers: '',
+      timeRange: {},
+      timeZone: {},
+      replaceVariables: jest.fn(),
+      eventBus: {},
+      options: { wrap: true },
+      panelData: {},
+      notifySuccess: jest.fn(),
+      notifyError: jest.fn(),
+      theme: {},
+    } as any;
 
-    jest.mocked(Handlebars.registerPartial).mockImplementation(((name: any, content: any) => {
-      if (name) {
-        partialName = name;
-      }
-      if (content) {
-        partialContent = content;
-      }
-    }) as any);
+    jest.mocked(fetchAllPartials).mockImplementation(() => returnFetchedPartials);
 
-    generateHtml({
-      content: '<div></div>',
-      replaceVariables: (str: string) => str,
-      options,
-      htmlContents: [{ name: 'aaaa', content: '<p>test<p>' }],
-    } as any);
+    const { html, unsubscribe } = await generateHtml(defaultParams);
 
-    expect(Handlebars.registerPartial).toHaveBeenCalledWith('aaaa', '<p>test<p>');
+    expect(fetchAllPartials).toHaveBeenCalledWith(defaultParams.partials);
 
-    expect(partialName).toEqual('aaaa');
-    expect(partialContent).toEqual('<p>test<p>');
+    expect(Handlebars.registerPartial).toHaveBeenCalledWith(
+      returnFetchedPartials[0].name,
+      returnFetchedPartials[0].content
+    );
+
+    expect(html).toBeDefined();
+    expect(unsubscribe).toBeUndefined();
   });
 
   it('Should wait until promise in code resolved', async () => {

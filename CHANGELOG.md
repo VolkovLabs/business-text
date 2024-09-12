@@ -1,11 +1,13 @@
 # Changelog
 
-## 5.4.0 (IN PROGRESS)
+## 5.4.0 (2024-09-12)
 
 ### Features / Enhancements
 
 - Updated panel render if first data source does not have data (#353)
 - Added wrap button in the code editor (#359)
+- Updated Partials loading (#358)
+- Updated hyperlinks style (#358)
 
 ## 5.3.0 (2024-08-22)
 
