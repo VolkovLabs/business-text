@@ -6,6 +6,7 @@
 
 - Updated panel render if first data source does not have data (#353)
 - Added wrap button in the code editor (#359)
+- Updated Partials loading (#358)
 
 ## 5.3.0 (2024-08-22)
 
