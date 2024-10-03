@@ -8,7 +8,7 @@
     "@grafana/ui": "^11.2.0",
     "@types/highlight.js": "^10.1.0",
     "@types/markdown-it": "^14.1.2",
-    "@volkovlabs/components": "^3.0.0",
+    "@volkovlabs/components": "^3.3.0",
     "dayjs": "^1.11.13",
     "handlebars": "^4.7.8",
     "helper-date": "^1.0.1",
