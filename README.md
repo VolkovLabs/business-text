@@ -10,8 +10,6 @@
 
 ## Introduction
 
-Business Text panel is a Grafana visualization plugin that converts plain text and table data into visually appealing, easy-to-read information cards.
-
 The Business Text panel plugin allows you to construct a text visualization template from the values of a dataset returned by a data source query.
 
 [![Business Text plugin for Grafana | Use HTML, Markdown, JavaScript and CSS | Community use cases](https://raw.githubusercontent.com/volkovlabs/business-text/main/img/business-text.png)](https://youtu.be/UVMysEjouNo)
@@ -35,7 +33,7 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 
 ## Highlights
 
-- Uses Monaco Code Editor with automatic formatting supporting templates, JS code snippets, and CSS styling.
+- Uses Monaco Code Editor with automatic JavaScript code formatting.
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Renders [markdown-it](https://github.com/markdown-it/markdown-it) into HTML elements.
   - Supports the highlighting of code syntax using A11Y styles.
@@ -45,17 +43,18 @@ grafana-cli plugins install marcusolsson-dynamictext-panel
 - Supports display of nested objects using the `{{json object}}` Handlebars helper.
 - Supports display of time global variables (`__to` and `__from`) as seconds, ISO timestamps, or formatted using the `dayjs` library.
 - Supports adding the Handlebars helpers and event handlers.
-- Supports adding CSS styles.
+- Supports adding CSS styles with dashboard variables.
 - Supports internationalization using custom helpers.
 
 ## Documentation
 
-| Section                                                               | Description                                                    |
-| --------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [Content](https://volkovlabs.io/plugins/business-text/content/)       | Explains how to create a visualization template for your data. |
-| [Recipes](https://volkovlabs.io/plugins/business-text/recipes/)       | Useful snippets that you can use in your templates.            |
-| [Features](https://volkovlabs.io/plugins/business-text/features/)     | Demonstrates panel features.templates.                         |
-| [Release Notes](https://volkovlabs.io/plugins/business-text/release/) | Stay up to date with the latest features and updates.          |
+| Section                                                               | Description                                                   |
+| --------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [Rendering](https://volkovlabs.io/plugins/business-text/content/)     | Explains how to create a visualization template for your data |
+| [Recipes](https://volkovlabs.io/plugins/business-text/recipes/)       | Useful snippets that you can use in your templates            |
+| [Features](https://volkovlabs.io/plugins/business-text/features/)     | Demonstrates panel features.templates                         |
+| [Tutorials](https://volkovlabs.io/plugins/business-text/tutorials/)   | Easy to follow tutorials                                      |
+| [Release Notes](https://volkovlabs.io/plugins/business-text/release/) | Stay up to date with the latest features and updates          |
 
 ## Business Suite for Grafana
 
@@ -65,14 +64,17 @@ The collection aims to solve the most frequent business tasks by providing an in
 
 [![Business Suite for Grafana](https://raw.githubusercontent.com/VolkovLabs/.github/main/business.png)](https://volkovlabs.io/plugins/)
 
-## Feedback
+### Enterprise Support
 
-We're looking forward to hearing from you. You can use different ways to get in touch with us.
+With the [Business Suite Enterprise](https://volkovlabs.io/pricing/), you're not just getting a product, you're getting a complete support system. You'll have a designated support team ready to tackle any issues.
+
+You can contact us via Zendesk, receive priority in feature requests and bug fixes, meet with us for in-person consultation, and get access to the Business Intelligence. It's a package that's designed to make your life easier.
+
+## Always happy to hear from you
 
 - Ask a question, request a new feature, or report an issue at [GitHub issues](https://github.com/volkovlabs/business-text/issues).
-- Subscribe to our [YouTube Channel](https://www.youtube.com/@volkovlabs) and leave your comments.
-- Sponsor our open-source plugins for Grafana at [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
-- Support our project by starring the repository.
+- Subscribe to our [YouTube Channel](https://youtube.com/@volkovlabs) and leave your comments.
+- Become a [Business Suite sponsor](https://github.com/sponsors/VolkovLabs).
 
 ## License
 
