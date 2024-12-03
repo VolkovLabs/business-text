@@ -1,4 +1,3 @@
-import { InterpolateFunction } from '@grafana/data';
 import { useEffect, useState } from 'react';
 
 import { Resource, ResourceType } from '../types';
