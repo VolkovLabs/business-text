@@ -17,7 +17,7 @@ import hljs from 'highlight.js';
 // eslint-disable-next-line @typescript-eslint/naming-convention
 import MarkdownIt from 'markdown-it';
 
-import { PanelOptions, PartialItemConfig } from '../types';
+import { PanelOptions, PartialItemConfig, RenderMode } from '../types';
 import { createExecutionCode } from './code';
 import { beforeRenderCodeParameters } from './code-parameters';
 import { registerHelpers } from './handlebars';
@@ -68,6 +68,28 @@ export const generateHtml = async ({
    */
   handlebars.registerHelper('variable', (name: string) => {
     return replaceVariablesHelper(name, replaceVariables);
+  });
+
+  /**
+   * Field status color Helper
+   */
+  handlebars.registerHelper('fieldStatusColor', (fieldName: string, valueIndex?: number) => {
+    if (options.renderMode === RenderMode.DATA) {
+      return '';
+    }
+
+    const field = dataFrame?.fields.find((field) => field.name === fieldName);
+
+    if (field) {
+      /**
+       * Formatted Value
+       */
+      const value = field.values[valueIndex || 0];
+      const formattedValue = field.display?.(value);
+      return formattedValue?.color;
+    }
+
+    return '';
   });
 
   /**
