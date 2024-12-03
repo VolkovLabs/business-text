@@ -2,7 +2,7 @@ import { FieldType, toDataFrame } from '@grafana/data';
 import { RefreshEvent } from '@grafana/runtime';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { useExternalResources } from '../../hooks';
+
 import { CodeLanguage, Format, TEST_IDS } from '../../constants';
 import { PanelOptions, RenderMode } from '../../types';
 import { TextPanel } from './TextPanel';
