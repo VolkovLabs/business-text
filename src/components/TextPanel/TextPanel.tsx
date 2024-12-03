@@ -91,6 +91,7 @@ export const TextPanel: React.FC<Props> = ({
   useExternalResources({
     items: options.externalStyles,
     type: ResourceType.STYLES,
+    replaceVariables: replaceVariables,
   });
 
   /**

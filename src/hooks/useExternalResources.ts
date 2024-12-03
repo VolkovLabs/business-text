@@ -1,3 +1,4 @@
+import { InterpolateFunction } from '@grafana/data';
 import { useEffect, useState } from 'react';
 
 import { Resource, ResourceType } from '../types';
@@ -18,7 +19,15 @@ const stylesManager = createResourcesManager(ResourceType.STYLES);
  * @param type
  * @param items
  */
-export const useExternalResources = ({ type, items }: { type: ResourceType; items: Resource[] }) => {
+export const useExternalResources = ({
+  type,
+  items,
+  replaceVariables,
+}: {
+  type: ResourceType;
+  items: Resource[];
+  replaceVariables: InterpolateFunction;
+}) => {
   /**
    * Is Resources Loaded
    */
@@ -38,7 +47,7 @@ export const useExternalResources = ({ type, items }: { type: ResourceType; item
       /**
        * Add all resources
        */
-      await Promise.all(items.map((item) => resourcesManager.add(item.url)));
+      await Promise.all(items.map((item) => resourcesManager.add(replaceVariables(item.url))));
 
       /**
        * Set loaded
@@ -57,7 +66,7 @@ export const useExternalResources = ({ type, items }: { type: ResourceType; item
        */
       items.forEach((item) => resourcesManager.remove(item.url));
     };
-  }, [items, resourcesManager]);
+  }, [items, replaceVariables, resourcesManager]);
 
   return {
     isLoaded,

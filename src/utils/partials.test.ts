@@ -60,7 +60,7 @@ describe('fetchAllPartials', () => {
   it('Should fetch HTML successfully', async () => {
     const item = { id: 'test', name: 'test partial', url: 'http://example.com/template' };
     const item2 = { id: 'test2', name: 'test partial 2', url: 'http://example.com/template2' };
-
+    const replaceVariables = jest.fn((str: string) => str);
     jest.mocked(fetch).mockImplementation((url, options) => {
       return Promise.resolve({
         ok: true,
@@ -69,7 +69,7 @@ describe('fetchAllPartials', () => {
       } as any);
     });
 
-    const result = await fetchAllPartials([item, item2]);
+    const result = await fetchAllPartials([item, item2], replaceVariables);
 
     expect(fetch).toHaveBeenCalledWith(item.url);
     expect(fetch).toHaveBeenCalledWith(item2.url);

@@ -143,7 +143,7 @@ export const generateHtml = async ({
     /**
      * await fetching partials
      */
-    const fetchedPartials = await fetchAllPartials(partials);
+    const fetchedPartials = await fetchAllPartials(partials, replaceVariables);
 
     /**
      * Register partials in handlebars

@@ -1,3 +1,5 @@
+import { InterpolateFunction } from '@grafana/data';
+
 import { PartialItem, PartialItemConfig } from '../types';
 
 /**
@@ -23,6 +25,6 @@ export const fetchHtml = async (url: string, partialName: string): Promise<Parti
 /**
  * Fetch partials
  */
-export const fetchAllPartials = async (items: PartialItemConfig[]) => {
-  return await Promise.all(items.map((item) => fetchHtml(item.url, item.name)));
+export const fetchAllPartials = async (items: PartialItemConfig[], replaceVariables: InterpolateFunction) => {
+  return await Promise.all(items.map((item) => fetchHtml(replaceVariables(item.url), item.name)));
 };

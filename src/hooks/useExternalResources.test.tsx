@@ -24,7 +24,8 @@ describe('Use External Resources', () => {
   ];
 
   const Component: React.FC<{ items: Resource[]; type: ResourceType }> = ({ items, type }) => {
-    const { isLoaded } = useExternalResources({ type, items });
+    const replaceVariables = jest.fn((str: string) => str);
+    const { isLoaded } = useExternalResources({ type, items, replaceVariables });
     return isLoaded ? <div data-testid={InTestIds.root} /> : null;
   };
 

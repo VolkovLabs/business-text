@@ -158,6 +158,7 @@ describe('HTML helpers', () => {
 
   it('Should use partial handler', async () => {
     const returnFetchedPartials = [{ name: 'partialName', content: 'some content' }] as any;
+    const replaceVariables = jest.fn((str: string) => str);
     const defaultParams = {
       data: { key: 'value' },
       content: '{{> partialName}}',
@@ -165,7 +166,7 @@ describe('HTML helpers', () => {
       helpers: '',
       timeRange: {},
       timeZone: {},
-      replaceVariables: jest.fn(),
+      replaceVariables: replaceVariables,
       eventBus: {},
       options: { wrap: true },
       panelData: {},
@@ -178,7 +179,7 @@ describe('HTML helpers', () => {
 
     const { html, unsubscribe } = await generateHtml(defaultParams);
 
-    expect(fetchAllPartials).toHaveBeenCalledWith(defaultParams.partials);
+    expect(fetchAllPartials).toHaveBeenCalledWith(defaultParams.partials, replaceVariables);
 
     expect(Handlebars.registerPartial).toHaveBeenCalledWith(
       returnFetchedPartials[0].name,
