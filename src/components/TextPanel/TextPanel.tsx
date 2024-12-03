@@ -89,9 +89,8 @@ export const TextPanel: React.FC<Props> = ({
    * External Styles
    */
   useExternalResources({
-    items: options.externalStyles,
+    items: options.externalStyles.map((resource) => ({ ...resource, url: replaceVariables(resource.url) })),
     type: ResourceType.STYLES,
-    replaceVariables: replaceVariables,
   });
 
   /**

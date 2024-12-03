@@ -19,15 +19,7 @@ const stylesManager = createResourcesManager(ResourceType.STYLES);
  * @param type
  * @param items
  */
-export const useExternalResources = ({
-  type,
-  items,
-  replaceVariables,
-}: {
-  type: ResourceType;
-  items: Resource[];
-  replaceVariables: InterpolateFunction;
-}) => {
+export const useExternalResources = ({ type, items }: { type: ResourceType; items: Resource[] }) => {
   /**
    * Is Resources Loaded
    */
@@ -47,7 +39,7 @@ export const useExternalResources = ({
       /**
        * Add all resources
        */
-      await Promise.all(items.map((item) => resourcesManager.add(replaceVariables(item.url))));
+      await Promise.all(items.map((item) => resourcesManager.add(item.url)));
 
       /**
        * Set loaded
@@ -66,7 +58,7 @@ export const useExternalResources = ({
        */
       items.forEach((item) => resourcesManager.remove(item.url));
     };
-  }, [items, replaceVariables, resourcesManager]);
+  }, [items, resourcesManager]);
 
   return {
     isLoaded,
