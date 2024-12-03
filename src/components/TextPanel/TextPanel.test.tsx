@@ -2,7 +2,7 @@ import { FieldType, toDataFrame } from '@grafana/data';
 import { RefreshEvent } from '@grafana/runtime';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-
+import { useExternalResources } from '../../hooks';
 import { CodeLanguage, Format, TEST_IDS } from '../../constants';
 import { PanelOptions, RenderMode } from '../../types';
 import { TextPanel } from './TextPanel';
@@ -212,6 +212,54 @@ describe('Panel', () => {
 
     expect(screen.getByTestId(TEST_IDS.text.content)).toBeInTheDocument();
     expect(screen.getByTestId(TEST_IDS.text.content)).toHaveStyle({ color: 'red' });
+  });
+
+  it('Should call replaceVariables with externalStyles css for component', async () => {
+    const streamSubscribe = jest.fn(() => ({
+      unsubscribe: jest.fn(),
+    }));
+
+    const eventBus = {
+      getStream: jest.fn(() => ({
+        subscribe: streamSubscribe,
+      })),
+    };
+
+    const replaceVariables = jest.fn((str: string) => str);
+
+    const items = [
+      {
+        id: '1',
+        url: 'https://abc.com/main.js',
+      },
+      {
+        id: '2',
+        url: 'https://bbb.com/main.js',
+      },
+    ];
+
+    await act(async () =>
+      render(
+        getComponent({
+          options: {
+            ...defaultOptions,
+            defaultContent: 'hello',
+            styles: '.styles-test{}; .dt-row{color:red}',
+            externalStyles: items,
+          },
+          replaceVariables,
+          data: { series: [] } as any,
+          eventBus: eventBus as any,
+          id: 5,
+        })
+      )
+    );
+
+    expect(replaceVariables).toHaveBeenCalledWith('https://abc.com/main.js');
+    expect(replaceVariables).toHaveBeenCalledWith('https://bbb.com/main.js');
+    expect(replaceVariables).toHaveBeenCalledWith('.styles-test{}; .dt-row{color:red}', {
+      theme: { value: { color: 'blue' } },
+    });
   });
 
   describe('Helpers execution', () => {
