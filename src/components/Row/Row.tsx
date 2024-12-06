@@ -82,6 +82,7 @@ export const Row: React.FC<Props> = ({
   timeRange,
   timeZone,
 }) => {
+  console.log('item', item);
   /**
    * Row Ref
    */
