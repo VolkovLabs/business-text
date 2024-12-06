@@ -1,5 +1,4 @@
-import { test, expect, selectors } from '@grafana/plugin-e2e';
-import { TEST_IDS } from '../src/constants/tests';
+import { test, expect } from '@grafana/plugin-e2e';
 import { PanelHelper } from './utils';
 
 test.describe('Volkovlabs Dynamictext Panel', () => {
