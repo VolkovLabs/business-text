@@ -1,6 +1,6 @@
 # Changelog
 
-## 5.5.0 (IN PROGRESS)
+## 5.5.0 (2024-12-09)
 
 ### Features / Enhancements
 
