@@ -63,7 +63,7 @@ const formatDate = (name: string, value: string): string => {
       const formatter = name.substring('__to:date:'.length);
       return dayjs(date).format(formatter);
     }
-  } catch (e) {}
+  } catch {}
 
   /**
    * Return original value

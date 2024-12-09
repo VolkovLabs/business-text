@@ -7,6 +7,7 @@
 - Updated Autosize Code Editor toolbar (#362)
 - Added helper statusColor from specific field (#375)
 - Updated E2E tests (#377)
+- Updated to Grafana 11.4 and dependencies (#378)
 
 ## 5.4.0 (2024-09-12)
 
