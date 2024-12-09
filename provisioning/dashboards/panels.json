@@ -24,8 +24,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 6,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -56,7 +56,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 8,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -80,7 +80,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "repeat": "test",
       "repeatDirection": "h",
       "targets": [
@@ -143,7 +142,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -221,7 +219,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -294,7 +291,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -355,7 +351,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -448,7 +443,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -541,7 +535,6 @@
         "styles": "& {\n  padding: 0;\n  margin: 0;\n}",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -551,6 +544,7 @@
           "refId": "A"
         }
       ],
+      "title": "",
       "type": "marcusolsson-dynamictext-panel"
     },
     {
@@ -601,7 +595,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -676,7 +669,6 @@
         "styles": "td.name {\n  border: 0;\n  background-color: #5d3fc4;\n  color: white;\n}\n\nb.name {\n  font-family: silom;\n  font-size:20px;\n}\n\ntd.photo {\n  border:2px solid #5D3FC4;\n  text-align:center;\n}\n\ntd.desc {\n  text-align:right;\n  border:0;\n  background-color:#f6f2ff;\n  color:#5F3DC4;\n}",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -802,7 +794,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -896,7 +887,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -976,7 +966,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -1055,7 +1044,6 @@
         "styles": ".button {\n  background-color: ${theme.colors.primary.main};\n  border: none;\n  color: ${theme.colors.primary.contrastText};\n  padding: 4px 8px;\n  border-radius: ${theme.shape.radius.default};\n}",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "datasource": {
@@ -1078,21 +1066,205 @@
       ],
       "title": "Theme",
       "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "value"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "yellow",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 46
+      },
+      "id": 26,
+      "options": {
+        "afterRender": "",
+        "content": "<div >\n{{#each data}}\n    <div style=\"background-color: {{fieldStatusColor \"value\" }}\">Color from value field</div>\n    <div style=\"background-color: {{statusColor}}\">Status color from Time</div>\n    {{time}} -- {{value}} \n{{/each}}\n</div>",
+        "contentPartials": [],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "markdown"
+        },
+        "editors": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "allRows",
+        "status": "time",
+        "styles": "",
+        "wrap": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "string",
+                "values": ["1", "2", "3", "4", "5", "6", "7"]
+              },
+              {
+                "config": {},
+                "name": "time",
+                "type": "number",
+                "values": [10, 20, 30, 40, 50, 60, 70]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "All rows color from specific field",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "value"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "yellow",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      },
+      "id": 27,
+      "options": {
+        "afterRender": "",
+        "content": "<div style=\"background-color: {{fieldStatusColor \"value\" }}; padding:10px\">\n<span style=\"background-color: {{statusColor}}; padding:5px\">\n```json\n{{{json @root}}}\n```\n</span> \n</div>",
+        "contentPartials": [],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "markdown"
+        },
+        "editors": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "status": "time",
+        "styles": "",
+        "wrap": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "string",
+                "values": ["1", "2", "3", "4", "5", "6", "7"]
+              },
+              {
+                "config": {},
+                "name": "time",
+                "type": "number",
+                "values": [10, 20, 30, 40, 50, 60, 70]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Every row color from specific field",
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "revision": 1,
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
           "text": ["All"],
           "value": ["$__all"]
         },
-        "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "test",
@@ -1119,8 +1291,6 @@
           }
         ],
         "query": "test1,test2,test3",
-        "queryValue": "",
-        "skipUrlSync": false,
         "type": "custom"
       }
     ]
