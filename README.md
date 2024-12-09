@@ -2,7 +2,7 @@
 
 ![Text](https://github.com/VolkovLabs/business-text/raw/main/src/img/screenshot.png)
 
-![Grafana](https://img.shields.io/badge/Grafana-11.2-orange)
+![Grafana](https://img.shields.io/badge/Grafana-11.4-orange)
 ![CI](https://github.com/volkovlabs/business-text/workflows/CI/badge.svg)
 ![E2E](https://github.com/volkovlabs/business-text/workflows/E2E/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/business-text/branch/main/graph/badge.svg)](https://codecov.io/gh/VolkovLabs/business-text)
@@ -28,8 +28,10 @@ You can install the Business Text panel from the [Grafana Plugins catalog](https
 For the latter, please use the following command:
 
 ```bash
-grafana-cli plugins install marcusolsson-dynamictext-panel
+grafana cli plugins install marcusolsson-dynamictext-panel
 ```
+
+[![Install Business Suite plugins in Cloud, OSS, Enterprise | Open source community plugins](https://raw.githubusercontent.com/volkovlabs/.github/main/started.png)](https://youtu.be/1qYzHfPXJF8)
 
 ## Highlights
 
