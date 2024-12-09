@@ -142,6 +142,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -219,6 +220,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -291,6 +293,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -351,6 +354,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -446,6 +450,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -518,6 +523,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -592,6 +598,7 @@
         "styles": "td.name {\n  border: 0;\n  background-color: #5d3fc4;\n  color: white;\n}\n\nb.name {\n  font-family: silom;\n  font-size:20px;\n}\n\ntd.photo {\n  border:2px solid #5D3FC4;\n  text-align:center;\n}\n\ntd.desc {\n  text-align:right;\n  border:0;\n  background-color:#f6f2ff;\n  color:#5F3DC4;\n}",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -717,6 +724,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -809,6 +817,7 @@
         "styles": "& {\n  padding: 0;\n  margin: 0;\n}",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -870,6 +879,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -949,6 +959,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -1042,6 +1053,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -1120,6 +1132,7 @@
         "styles": ".button {\n  background-color: ${theme.colors.primary.main};\n  border: none;\n  color: ${theme.colors.primary.contrastText};\n  padding: 4px 8px;\n  border-radius: ${theme.shape.radius.default};\n}",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -1194,6 +1207,7 @@
         "styles": "",
         "wrap": true
       },
+      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -1217,6 +1231,194 @@
       ],
       "title": "CSS external with variable",
       "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "value"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "yellow",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 54
+      },
+      "id": 28,
+      "options": {
+        "afterRender": "",
+        "content": "<div >\n{{#each data}}\n    <div style=\"background-color: {{fieldStatusColor \"value\" }}\">Color from value field</div>\n    <div style=\"background-color: {{statusColor}}\">Status color from Time</div>\n    {{time}} -- {{value}} \n{{/each}}\n</div>",
+        "contentPartials": [],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "markdown"
+        },
+        "editors": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "allRows",
+        "status": "time",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.5.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "string",
+                "values": ["1", "2", "3", "4", "5", "6", "7"]
+              },
+              {
+                "config": {},
+                "name": "time",
+                "type": "number",
+                "values": [10, 20, 30, 40, 50, 60, 70]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "All rows color from specific field",
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "value"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "yellow",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 54
+      },
+      "id": 29,
+      "options": {
+        "afterRender": "",
+        "content": "<div style=\"background-color: {{fieldStatusColor \"value\" }}; padding:10px\">\n<span style=\"background-color: {{statusColor}}; padding:5px\">\n```json\n{{{json @root}}}\n```\n</span> \n</div>",
+        "contentPartials": [],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "markdown"
+        },
+        "editors": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "status": "time",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "5.5.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "value",
+                "type": "string",
+                "values": ["1", "2", "3", "4", "5", "6", "7"]
+              },
+              {
+                "config": {},
+                "name": "time",
+                "type": "number",
+                "values": [10, 20, 30, 40, 50, 60, 70]
+              }
+            ],
+            "meta": {}
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Every row color from specific field",
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "preload": false,
@@ -1227,18 +1429,13 @@
     "list": [
       {
         "current": {
-          "text": ["All"],
+          "text": ["$__all"],
           "value": ["$__all"]
         },
         "includeAll": true,
         "multi": true,
         "name": "test",
         "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
           {
             "selected": false,
             "text": "test1",
@@ -1323,6 +1520,6 @@
   "timezone": "",
   "title": "Examples",
   "uid": "O4tc_E6Gz",
-  "version": 8,
+  "version": 18,
   "weekStart": ""
 }

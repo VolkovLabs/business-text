@@ -1,4 +1,8 @@
 {
   "extends": "./.config/tsconfig.json",
-  "include": ["./src", ".config/types", ".config/jest-setup.ts", "./test"]
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["*"]
+    }
+  }
 }

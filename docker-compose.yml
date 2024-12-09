@@ -28,6 +28,20 @@ services:
     profiles:
       - main
 
+  grafana-dep:
+    image: grafana/grafana:10.0.0
+    ports:
+      - 3000:3000/tcp
+    environment:
+      - GF_DEFAULT_APP_MODE=development
+      - GF_USERS_DEFAULT_THEME=light
+      - GF_INSTALL_PLUGINS=volkovlabs-rss-datasource,marcusolsson-static-datasource,yesoreyeram-infinity-datasource
+    volumes:
+      - ./dist:/var/lib/grafana/plugins/marcusolsson-dynamictext-panel
+      - ./provisioning:/etc/grafana/provisioning
+    profiles:
+      - dependency
+
   test:
     build:
       context: .

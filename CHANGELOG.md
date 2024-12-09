@@ -5,6 +5,8 @@
 ### Features / Enhancements
 
 - Updated Autosize Code Editor toolbar (#362)
+- Added helper statusColor from specific field (#375)
+- Updated E2E tests (#377)
 
 ## 5.4.0 (2024-09-12)
 

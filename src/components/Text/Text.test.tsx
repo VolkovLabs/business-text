@@ -287,6 +287,250 @@ describe('Text', () => {
     expect(statuses[0]).toHaveStyle({ backgroundColor: 'red' });
   });
 
+  it('Should apply status from specific field', async () => {
+    const replaceVariables = jest.fn((str: string) => str);
+    const dataFrame = toDataFrame({
+      fields: [
+        {
+          name: 'test',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [70, 75],
+        },
+        {
+          name: 'value',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [60, 65],
+        },
+        {
+          name: 'number',
+          type: FieldType.number,
+          display: (value: number) => ({ color: 'yellow' }),
+          values: [90, 95],
+        },
+      ],
+    });
+
+    const props: Props = {
+      data: {} as any,
+      frame: dataFrame,
+      options: {
+        ...DEFAULT_OPTIONS,
+        status: 'value',
+        content:
+          '<div style="background-color: {{fieldStatusColor "number" 0}}" data-testid="status-color">{{statusColor}}</div>',
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.EVERY_ROW,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    await act(async () => render(<Text {...props} />));
+
+    const statuses = screen.getAllByTestId('status-color');
+
+    expect(statuses[0]).toHaveStyle({ backgroundColor: 'yellow' });
+    expect(statuses[0]).toHaveTextContent('green');
+  });
+
+  it('Should apply status from specific field and value', async () => {
+    const replaceVariables = jest.fn((str: string) => str);
+    const dataFrame = toDataFrame({
+      fields: [
+        {
+          name: 'test',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [70, 75],
+        },
+        {
+          name: 'value',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [60, 65],
+        },
+        {
+          name: 'number',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value >= 95 ? 'yellow' : 'dark-yellow' }),
+          values: [95, 90],
+        },
+      ],
+    });
+
+    const props: Props = {
+      data: {} as any,
+      frame: dataFrame,
+      options: {
+        ...DEFAULT_OPTIONS,
+        status: 'value',
+        content:
+          '<div style="background-color: {{fieldStatusColor "number" 1 }}" data-testid="status-color">{{number}}</div>',
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.EVERY_ROW,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    await act(async () => render(<Text {...props} />));
+
+    const statuses = screen.getAllByTestId('status-color');
+
+    expect(statuses[0]).toHaveStyle({ backgroundColor: 'dark-yellow' });
+  });
+
+  it('Should apply status from specific field for all rows', async () => {
+    const replaceVariables = jest.fn((str: string) => str);
+    const dataFrame = toDataFrame({
+      fields: [
+        {
+          name: 'test',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [70, 75],
+        },
+        {
+          name: 'value',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [60, 65],
+        },
+        {
+          name: 'number',
+          type: FieldType.number,
+          display: (value: number) => ({ color: 'yellow' }),
+          values: [90, 95],
+        },
+      ],
+    });
+
+    const props: Props = {
+      data: {} as any,
+      frame: dataFrame,
+      options: {
+        ...DEFAULT_OPTIONS,
+        status: 'value',
+        content: `<div >
+                    {{#each data}}
+                      <div style="background-color: {{fieldStatusColor "number" }}" data-testid="status-color">Specific field</div>
+                      <div style="background-color: {{statusColor}}" data-testid="color">Status color</div>
+                      {{time}}{{series}} 
+                    {{/each}}
+                  </div>`,
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.ALL_ROWS,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    await act(async () => render(<Text {...props} />));
+
+    const fieldStatuses = screen.getAllByTestId('status-color');
+    const statuses = screen.getAllByTestId('color');
+
+    expect(fieldStatuses[0]).toHaveStyle({ backgroundColor: 'yellow' });
+    expect(statuses[0]).toHaveStyle({ backgroundColor: 'green' });
+  });
+
+  it('Should return empty color apply if field not specified for data frame', async () => {
+    const replaceVariables = jest.fn((str: string) => str);
+    const dataFrame = toDataFrame({
+      fields: [
+        {
+          name: 'test',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [70, 75],
+        },
+        {
+          name: 'value',
+          type: FieldType.number,
+          display: (value: number) => ({ color: value > 80 ? 'red' : 'green' }),
+          values: [60, 65],
+        },
+        {
+          name: 'number',
+          type: FieldType.number,
+          display: (value: number) => ({ color: 'yellow' }),
+          values: [90, 95],
+        },
+      ],
+    });
+
+    const props: Props = {
+      data: {} as any,
+      frame: dataFrame,
+      options: {
+        ...DEFAULT_OPTIONS,
+        status: 'value',
+        content:
+          '<div style="background-color: {{fieldStatusColor "empty" }}" data-testid="status-color">{{number}}</div>',
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.EVERY_ROW,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables,
+      eventBus: {} as any,
+    };
+
+    await act(async () => render(<Text {...props} />));
+
+    const statuses = screen.getAllByTestId('status-color');
+
+    expect(statuses[0]).toHaveStyle({ backgroundColor: '' });
+  });
+
+  it('Should return empty color apply if field not specified for all data mode', async () => {
+    const props: Props = {
+      data: {
+        series: [
+          toDataFrame({
+            fields: [
+              {
+                type: FieldType.string,
+                name: 'text',
+                display: (value: number) => ({ color: 'yellow' }),
+                values: ['hello', 'hello2'],
+              },
+            ],
+          }),
+        ],
+      } as any,
+      frame: {
+        fields: [],
+        length: 2,
+      },
+      options: {
+        ...DEFAULT_OPTIONS,
+        content:
+          '<div style="background-color: {{fieldStatusColor "text" }}" data-testid="status-color">Test content</div>',
+        defaultContent: 'Test default content',
+        renderMode: RenderMode.DATA,
+      },
+      timeRange: {} as any,
+      timeZone: '',
+      replaceVariables: (str: string) => str,
+      eventBus: {} as any,
+    };
+
+    await act(async () => render(<Text {...props} />));
+    const statuses = screen.getAllByTestId('status-color');
+
+    expect(statuses[0]).toHaveStyle({ backgroundColor: '' });
+    expect(screen.getAllByText('Test content')).toHaveLength(1);
+  });
+
   it('Should apply formatted value', async () => {
     const replaceVariables = jest.fn((str: string) => str);
     const dataFrame = toDataFrame({
