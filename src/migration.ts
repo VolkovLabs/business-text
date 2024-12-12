@@ -76,12 +76,32 @@ const normalizeHelpersOption = (code: string): string => {
  */
 export const getMigratedOptions = (panel: PanelModel<OutdatedPanelOptions & PanelOptions>): PanelOptions => {
   const { everyRow, ...actualOptions } = panel.options;
-
   /**
    * Normalize non context code parameters before 5.0.0
    */
   if (panel.pluginVersion && semver.lt(panel.pluginVersion, '5.0.0')) {
     actualOptions.helpers = normalizeHelpersOption(actualOptions.helpers);
+  }
+
+  /**
+   * Normalize \\n characters to \n for versions lt 5.6.0
+   */
+  if (panel.pluginVersion && semver.lt(panel.pluginVersion, '5.6.0')) {
+    if (actualOptions.helpers) {
+      actualOptions.helpers = actualOptions.helpers.replaceAll('\\n', '\n');
+    }
+    if (actualOptions.afterRender) {
+      actualOptions.afterRender = actualOptions.afterRender.replaceAll('\\n', '\n');
+    }
+    if (actualOptions.defaultContent) {
+      actualOptions.defaultContent = actualOptions.defaultContent.replaceAll('\\n', '\n');
+    }
+    if (actualOptions.content) {
+      actualOptions.content = actualOptions.content.replaceAll('\\n', '\n');
+    }
+    if (actualOptions.styles) {
+      actualOptions.styles = actualOptions.styles.replaceAll('\\n', '\n');
+    }
   }
 
   /**

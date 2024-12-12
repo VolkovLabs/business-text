@@ -144,4 +144,97 @@ describe('Migration', () => {
       });
     });
   });
+
+  describe('5.6.0', () => {
+    describe('Execution code', () => {
+      it.each([
+        {
+          name: 'content',
+          initial: `<br>\\n<p class=\"panel-title\">Test</p>\\n<span>next line</span>;`,
+          expected: `<br>\n<p class=\"panel-title\">Test</p>\n<span>next line</span>;`,
+        },
+        {
+          name: 'afterRender',
+          initial: `console.log('after render')\\nconsole.log('after render')\\nconsole.log('after render')`,
+          expected: `console.log('after render')\nconsole.log('after render')\nconsole.log('after render')`,
+        },
+        {
+          name: 'helpers',
+          initial: `console.log('before render')\\nconsole.log('before render')\\nconsole.log('before render')`,
+          expected: `console.log('before render')\nconsole.log('before render')\nconsole.log('before render')`,
+        },
+        {
+          name: 'defaultContent',
+          initial: `<br>\\n<p class=\"panel-title\">Test default content</p>\\n<span>next line</span>;`,
+          expected: `<br>\n<p class=\"panel-title\">Test default content</p>\n<span>next line</span>;`,
+        },
+        {
+          name: 'styles',
+          initial: `.test{ \\n  color:red;\\n}`,
+          expected: `.test{ \n  color:red;\n}`,
+        },
+      ])('Should migrate $name', ({ initial, expected }) => {
+        expect(
+          getMigratedOptions({
+            pluginVersion: '5.5.0',
+            options: {
+              helpers: initial,
+              afterRender: initial,
+              content: initial,
+              defaultContent: initial,
+              styles: initial,
+            },
+          } as any).helpers
+        ).toEqual(expected);
+        expect(
+          getMigratedOptions({
+            pluginVersion: '5.5.0',
+            options: {
+              helpers: initial,
+              afterRender: initial,
+              content: initial,
+              defaultContent: initial,
+              styles: initial,
+            },
+          } as any).afterRender
+        ).toEqual(expected);
+        expect(
+          getMigratedOptions({
+            pluginVersion: '5.5.0',
+            options: {
+              helpers: initial,
+              afterRender: initial,
+              content: initial,
+              defaultContent: initial,
+              styles: initial,
+            },
+          } as any).content
+        ).toEqual(expected);
+        expect(
+          getMigratedOptions({
+            pluginVersion: '5.5.0',
+            options: {
+              helpers: initial,
+              afterRender: initial,
+              content: initial,
+              defaultContent: initial,
+              styles: initial,
+            },
+          } as any).defaultContent
+        ).toEqual(expected);
+        expect(
+          getMigratedOptions({
+            pluginVersion: '5.5.0',
+            options: {
+              helpers: initial,
+              afterRender: initial,
+              content: initial,
+              defaultContent: initial,
+              styles: initial,
+            },
+          } as any).styles
+        ).toEqual(expected);
+      });
+    });
+  });
 });
