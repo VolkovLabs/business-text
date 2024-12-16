@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.6.0 (2024-12-15)
+
+### Features / Enhancements
+
+- Updated packages for Code Editor (#380)
+
 ## 5.5.0 (2024-12-09)
 
 ### Features / Enhancements
