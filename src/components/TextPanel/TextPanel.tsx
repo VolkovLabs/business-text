@@ -86,10 +86,17 @@ export const TextPanel: React.FC<Props> = ({
   );
 
   /**
+   * External Resources; use memo to prevent endless call to resources
+   */
+  const externalResources = useMemo(() => {
+    return options.externalStyles.map((resource) => ({ ...resource, url: replaceVariables(resource.url) }));
+  }, [options.externalStyles, replaceVariables]);
+
+  /**
    * External Styles
    */
   useExternalResources({
-    items: options.externalStyles.map((resource) => ({ ...resource, url: replaceVariables(resource.url) })),
+    items: externalResources,
     type: ResourceType.STYLES,
   });
 
