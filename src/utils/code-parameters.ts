@@ -46,6 +46,7 @@ const renderCodeParameters = {
         getLocale: new CodeParameterItem<typeof getLocale>('Returns locale.', CodeEditorSuggestionItemKind.Method),
         timeZone: new CodeParameterItem<TimeZone>('Selected time zone.'),
         timeRange: new CodeParameterItem<TimeRange>('Selected time range.'),
+        refresh: new CodeParameterItem<() => void>('Refresh dashboard.', CodeEditorSuggestionItemKind.Method),
       },
     },
   },
