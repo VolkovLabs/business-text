@@ -57,6 +57,9 @@ describe('Text', () => {
   });
 
   describe('After Render Function', () => {
+    /**
+     * context.grafana.eventBus.publish
+     */
     it('Should run after render function', async () => {
       const eventBus = {
         publish: jest.fn(() => {}),
@@ -84,7 +87,10 @@ describe('Text', () => {
       expect(eventBus.publish).toHaveBeenCalledWith('ready', expect.any(HTMLDivElement));
     });
 
-    it('Should run notify Events', async () => {
+    /**
+     * notifyError and notifySuccess
+     */
+    it('Should run notify Events after content Render', async () => {
       const eventBus = {
         publish: jest.fn(() => {}),
       };
@@ -126,6 +132,51 @@ describe('Text', () => {
       });
     });
 
+    /**
+     * context.grafana.refresh
+     */
+    it('Should run refresh after content Render', async () => {
+      const eventBus = {
+        publish: jest.fn(() => {}),
+      };
+      const replaceVariables = jest.fn((str: string) => str);
+
+      const publish = jest.fn();
+      const appEvents = {
+        publish,
+      };
+      jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
+
+      const props: Props = {
+        data: {} as any,
+        options: {
+          ...DEFAULT_OPTIONS,
+          defaultContent: '<div id="element"></div>',
+          afterRender: `
+          context.grafana.refresh();
+          `,
+          renderMode: RenderMode.EVERY_ROW,
+        },
+        timeRange: {} as any,
+        timeZone: '',
+        replaceVariables,
+        eventBus: eventBus as any,
+      };
+
+      await act(async () => render(<Text {...props} />));
+
+      expect(publish).toHaveBeenCalledTimes(1);
+      expect(publish).toHaveBeenCalledWith({
+        payload: {
+          refreshAll: true,
+        },
+        type: 'variables-changed',
+      });
+    });
+
+    /**
+     * context.grafana.eventBus.publish('destroy')
+     */
     it('Should call unsubscribe function', async () => {
       const eventBus = {
         publish: jest.fn(() => {}),
@@ -160,6 +211,9 @@ describe('Text', () => {
   });
 
   describe('Before Render Function', () => {
+    /**
+     * notify Events
+     */
     it('Should run notify Events', async () => {
       const eventBus = {
         publish: jest.fn(() => {}),
@@ -199,6 +253,48 @@ describe('Text', () => {
       expect(publish).toHaveBeenCalledWith({
         type: AppEvents.alertSuccess.name,
         payload: ['success'],
+      });
+    });
+
+    /**
+     * context.grafana.refresh
+     */
+    it('Should run refresh event before render', async () => {
+      const eventBus = {
+        publish: jest.fn(() => {}),
+      };
+      const replaceVariables = jest.fn((str: string) => str);
+
+      const publish = jest.fn();
+      const appEvents = {
+        publish,
+      };
+      jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
+
+      const props: Props = {
+        data: {} as any,
+        options: {
+          ...DEFAULT_OPTIONS,
+          defaultContent: '<div id="element"></div>',
+          helpers: `
+          context.grafana.refresh();
+          `,
+          renderMode: RenderMode.EVERY_ROW,
+        },
+        timeRange: {} as any,
+        timeZone: '',
+        replaceVariables,
+        eventBus: eventBus as any,
+      };
+
+      await act(async () => render(<Text {...props} />));
+
+      expect(publish).toHaveBeenCalledTimes(1);
+      expect(publish).toHaveBeenCalledWith({
+        payload: {
+          refreshAll: true,
+        },
+        type: 'variables-changed',
       });
     });
   });

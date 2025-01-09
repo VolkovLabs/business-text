@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.7.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Added context.grafana.refresh (#387)
+
 ## 5.6.0 (2024-12-15)
 
 ### Features / Enhancements

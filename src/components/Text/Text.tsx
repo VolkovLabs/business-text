@@ -13,6 +13,7 @@ import {
 import { getAppEvents } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import { Alert, LoadingBar, useStyles2, useTheme2 } from '@grafana/ui';
+import { useDashboardRefresh } from '@volkovlabs/components';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
@@ -129,6 +130,11 @@ export const Text: React.FC<Props> = ({
   );
 
   /**
+   * Refresh dashboard
+   */
+  const refreshDashboard = useDashboardRefresh();
+
+  /**
    * HTML
    */
   const getHtml = useCallback(
@@ -150,13 +156,26 @@ export const Text: React.FC<Props> = ({
           notifyError,
           theme,
           partials: options?.contentPartials,
+          refreshDashboard,
         })),
         data: htmlData,
       };
       setIsLoading(false);
       return result;
     },
-    [options, timeRange, timeZone, replaceVariables, eventBus, panelData, frame, notifySuccess, notifyError, theme]
+    [
+      options,
+      timeRange,
+      timeZone,
+      replaceVariables,
+      eventBus,
+      panelData,
+      frame,
+      notifySuccess,
+      notifyError,
+      theme,
+      refreshDashboard,
+    ]
   );
 
   useEffect(() => {

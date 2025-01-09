@@ -47,6 +47,7 @@ export const generateHtml = async ({
   notifyError,
   theme,
   partials,
+  refreshDashboard,
 }: {
   data: Record<string, unknown>;
   content: string;
@@ -62,6 +63,7 @@ export const generateHtml = async ({
   notifyError: (payload: AlertErrorPayload) => void;
   theme: GrafanaTheme2;
   partials: PartialItemConfig[];
+  refreshDashboard: () => void;
 }): Promise<{ html: string; unsubscribe?: unknown }> => {
   /**
    * Variable
@@ -144,6 +146,7 @@ export const generateHtml = async ({
           replaceVariables,
           locationService,
           eventBus,
+          refresh: () => refreshDashboard(),
         },
       }),
       helpers

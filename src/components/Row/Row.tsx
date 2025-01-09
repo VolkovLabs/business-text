@@ -10,6 +10,7 @@ import {
 import { getAppEvents, locationService } from '@grafana/runtime';
 import { TimeZone } from '@grafana/schema';
 import { useTheme2 } from '@grafana/ui';
+import { useDashboardRefresh } from '@volkovlabs/components';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { RowItem } from 'types';
 
@@ -108,6 +109,11 @@ export const Row: React.FC<Props> = ({
   );
 
   /**
+   * Refresh dashboard
+   */
+  const refreshDashboard = useDashboardRefresh();
+
+  /**
    * Function This
    */
   const functionThis = useRef({});
@@ -137,6 +143,7 @@ export const Row: React.FC<Props> = ({
             replaceVariables,
             eventBus,
             locationService,
+            refresh: () => refreshDashboard(),
           },
         })
       );
@@ -155,6 +162,7 @@ export const Row: React.FC<Props> = ({
     item.panelData,
     notifyError,
     notifySuccess,
+    refreshDashboard,
     replaceVariables,
     theme,
     timeRange,
