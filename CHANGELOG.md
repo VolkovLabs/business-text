@@ -5,6 +5,7 @@
 ### Features / Enhancements
 
 - Added context.grafana.refresh (#387)
+- Updated external resources usage (#384)
 
 ## 5.6.0 (2024-12-15)
 
