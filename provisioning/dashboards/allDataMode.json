@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 11,
+  "id": 7,
   "links": [],
   "panels": [
     {
@@ -57,8 +57,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -155,8 +154,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -190,7 +188,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "columns": [],
@@ -280,8 +277,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -310,7 +306,6 @@
         "frameIndex": 1,
         "showHeader": true
       },
-      "pluginVersion": "11.2.0",
       "targets": [
         {
           "columns": [],
@@ -404,7 +399,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "columns": [],
@@ -449,7 +443,7 @@
         },
         {
           "columns": [],
-          "data": "[\n  {\n    \"timestamp\": \"2024-08-02T00:30:18.692Z\",\n    \"data\": \"data\",\n    \"nullData\": null\n  }\n]",
+          "data": "[\n  {\n   \"data\": \"data\",\n   \"nullData\": null,\n    \"timestamp\": \"2024-08-02T00:30:18.692Z\"\n  }\n]",
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
             "uid": "fdwzblygl5i4gf"
@@ -458,6 +452,7 @@
           "format": "table",
           "global_query_id": "",
           "hide": false,
+          "parser": "backend",
           "refId": "B",
           "root_selector": "",
           "source": "inline",
@@ -491,7 +486,7 @@
         },
         {
           "columns": [],
-          "data": "[\n  {\n    \"timestamp\": \"2024-08-02T00:30:18.692Z\",\n    \"data\": \"data\",\n    \"nullData\": null\n  }\n]",
+          "data": "[\n{\n   \"data\": \"data\",\n   \"nullData\": null,\n    \"timestamp\": \"2024-08-02T00:30:18.692Z\"\n  }\n]",
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
             "uid": "fdwzblygl5i4gf"
@@ -500,6 +495,7 @@
           "format": "table",
           "global_query_id": "",
           "hide": false,
+          "parser": "backend",
           "refId": "D",
           "root_selector": "",
           "source": "inline",
@@ -525,8 +521,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -560,7 +555,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.3.0",
       "targets": [
         {
           "columns": [],
@@ -608,7 +602,8 @@
       "type": "marcusolsson-dynamictext-panel"
     }
   ],
-  "schemaVersion": 39,
+  "preload": false,
+  "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": []
@@ -621,6 +616,6 @@
   "timezone": "browser",
   "title": "All data render mode",
   "uid": "edwgdt36v13pca11",
-  "version": 6,
+  "version": 1,
   "weekStart": ""
 }
