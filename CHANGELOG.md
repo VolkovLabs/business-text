@@ -6,6 +6,8 @@
 
 - Added context.grafana.refresh (#387)
 - Updated external resources usage (#384)
+- Updated to Grafana 11.5 and dependencies (#402)
+- Updated release workflow to include attestation (#402)
 
 ## 5.6.0 (2024-12-15)
 
