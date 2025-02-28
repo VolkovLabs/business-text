@@ -102,6 +102,14 @@ class ContentHelper {
     return expect(this.selectors.content(), this.getMsg(`Check name Screenshot`)).toHaveScreenshot(name);
   }
 
+  public async checkFlowChat() {
+    const locator = this.selectors.content();
+    const flowchartElement = locator.locator('#flowchart');
+    const svgCount = flowchartElement.locator('svg');
+
+    return expect(svgCount).not.toHaveCount(0);
+  }
+
   public getContentElement(testId: string): ContentElement {
     return new ContentElement(this.get().getByTestId(testId));
   }

@@ -193,7 +193,7 @@ test.describe('Volkovlabs Dynamictext Panel', () => {
     }`);
   });
 
-  test('Should display content from import (libraries etc.)', async ({
+  test('Should display content from import (libraries etc.). Flowchart', async ({
     gotoDashboardPage,
     readProvisionedDashboard,
   }) => {
@@ -209,7 +209,7 @@ test.describe('Volkovlabs Dynamictext Panel', () => {
     await panel.checkPresence();
 
     const content = panel.getContent();
-    await content.compareScreenshot('flowchart.png');
+    await content.checkFlowChat();
   });
 
   test('Should display message if no data', async ({ gotoDashboardPage, readProvisionedDashboard }) => {
