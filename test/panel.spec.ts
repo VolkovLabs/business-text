@@ -175,18 +175,18 @@ test.describe('Volkovlabs Dynamictext Panel', () => {
         [],
         [],
         [
-          {
-            "timestamp": "2024-08-02T00:30:18.692Z",
-            "data": "data",
-            "nullData": "null"
-          }
+         {
+          "data": "data",
+          "nullData": null,
+          "timestamp": "2024-08-02T00:30:18.692Z"
+         }
         ],
         [],
         [
           {
-            "timestamp": "2024-08-02T00:30:18.692Z",
-            "data": "data",
-            "nullData": "null"
+           "data": "data",
+           "nullData": null,
+           "timestamp": "2024-08-02T00:30:18.692Z"
           }
         ]
       ]

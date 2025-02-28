@@ -25,6 +25,8 @@ datasources:
     access: proxy
     orgId: 1
     uid: U0HP2Rv4z
+    jsonData:
+      codeEditorEnabled: true
   - name: Infinity
     id: 4
     uid: fdwzblygl5i4gf
