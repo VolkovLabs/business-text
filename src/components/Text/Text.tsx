@@ -228,7 +228,9 @@ export const Text: React.FC<Props> = ({
                   acc[i] = {
                     ...acc[i],
                     [config.displayName || name]:
-                      config.unit && formattedValue ? formattedValueToString(formattedValue) : value,
+                      (config.unit || !!config.decimals) && formattedValue
+                        ? formattedValueToString(formattedValue)
+                        : value,
                     statusColor,
                   };
                 });
