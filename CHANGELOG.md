@@ -6,6 +6,10 @@
 
 We’re excited to announce an update for the Business Text Panel! The latest version, fully compatible with Grafana 11 and Grafana 12, is now available under our new plugin ID: `volkovlabs-text-panel`. This enhancement ensures seamless integration and improved functionality for your dashboards.
 
+### Changed
+
+- Update Decimals setting support in panel options (#422)
+
 ## 5.7.0 (2025-03-05)
 
 ### Features / Enhancements
