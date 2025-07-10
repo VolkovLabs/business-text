@@ -2,7 +2,7 @@
 
 ![Text](https://github.com/VolkovLabs/business-text/raw/main/src/img/screenshot.png)
 
-![Grafana](https://img.shields.io/badge/Grafana-11.5-orange)
+![Grafana](https://img.shields.io/badge/Grafana-12-orange)
 ![CI](https://github.com/volkovlabs/business-text/workflows/CI/badge.svg)
 ![E2E](https://github.com/volkovlabs/business-text/workflows/E2E/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/business-text/branch/main/graph/badge.svg)](https://codecov.io/gh/VolkovLabs/business-text)
@@ -22,6 +22,7 @@ The Business Text panel plugin allows you to construct a text visualization temp
 
 ## Requirements
 
+- Business Text panel 6.X requires **Grafana 11** or **Grafana 12**.
 - Business Text panel 5.X requires **Grafana 10** or **Grafana 11**.
 - Dynamic Text panel 4.X requires **Grafana 9.2** or **Grafana 10**.
 - Dynamic Text panel 2.X and 3.X require **Grafana 8.5** or **Grafana 9**.
