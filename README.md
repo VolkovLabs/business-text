@@ -83,7 +83,6 @@ You can contact us via Zendesk, receive priority in feature requests and bug fix
 
 - Ask a question, request a new feature, or report an issue at [GitHub issues](https://github.com/volkovlabs/business-text/issues).
 - Subscribe to our [YouTube Channel](https://youtube.com/@volkovlabs) and leave your comments.
-- Become a [Business Suite sponsor](https://github.com/sponsors/VolkovLabs).
 
 ## License
 
