@@ -253,7 +253,7 @@
         }
       ],
       "title": "Business Text All frames are empty",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -508,7 +508,7 @@
         }
       ],
       "title": "Business Text some of frames are empty",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -599,7 +599,7 @@
         }
       ],
       "title": "Business Text First frame is empty",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     }
   ],
   "preload": false,

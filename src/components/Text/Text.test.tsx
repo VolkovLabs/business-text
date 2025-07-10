@@ -6,7 +6,7 @@ import { DEFAULT_OPTIONS, TEST_IDS } from '../../constants';
 import { RenderMode } from '../../types';
 import { Text } from './Text';
 import { getAppEvents } from '@grafana/runtime';
-
+import { useDashboardRefresh } from '@volkovlabs/components';
 /**
  * Mock @grafana/runtime
  */
@@ -17,6 +17,11 @@ const appEvents = {
 jest.mock('@grafana/runtime', () => ({
   ...jest.requireActual('@grafana/runtime'),
   getAppEvents: jest.fn().mockImplementation(() => appEvents),
+}));
+
+jest.mock('@volkovlabs/components', () => ({
+  ...jest.requireActual('@volkovlabs/components'),
+  useDashboardRefresh: jest.fn(),
 }));
 
 /**
@@ -97,9 +102,11 @@ describe('Text', () => {
       const replaceVariables = jest.fn((str: string) => str);
 
       const publish = jest.fn();
+
       const appEvents = {
         publish,
       };
+
       jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
 
       const props: Props = {
@@ -120,7 +127,6 @@ describe('Text', () => {
       };
 
       await act(async () => render(<Text {...props} />));
-
       expect(publish).toHaveBeenCalledTimes(2);
       expect(publish).toHaveBeenCalledWith({
         type: AppEvents.alertError.name,
@@ -136,15 +142,29 @@ describe('Text', () => {
      * context.grafana.refresh
      */
     it('Should run refresh after content Render', async () => {
+      const mockRefreshDashboard = jest.fn(() => {
+        publish({
+          payload: {
+            refreshAll: true,
+          },
+          type: 'variables-changed',
+        });
+      });
+
+      (useDashboardRefresh as jest.Mock).mockReturnValue(mockRefreshDashboard);
+
       const eventBus = {
         publish: jest.fn(() => {}),
       };
+
       const replaceVariables = jest.fn((str: string) => str);
 
       const publish = jest.fn();
+
       const appEvents = {
         publish,
       };
+
       jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
 
       const props: Props = {
@@ -165,6 +185,7 @@ describe('Text', () => {
 
       await act(async () => render(<Text {...props} />));
 
+      expect(mockRefreshDashboard).toHaveBeenCalledTimes(1);
       expect(publish).toHaveBeenCalledTimes(1);
       expect(publish).toHaveBeenCalledWith({
         payload: {
@@ -224,6 +245,7 @@ describe('Text', () => {
       const appEvents = {
         publish,
       };
+
       jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
 
       const props: Props = {
@@ -260,16 +282,31 @@ describe('Text', () => {
      * context.grafana.refresh
      */
     it('Should run refresh event before render', async () => {
+      const mockRefreshDashboard = jest.fn(() => {
+        publish({
+          payload: {
+            refreshAll: true,
+          },
+          type: 'variables-changed',
+        });
+      });
+
+      (useDashboardRefresh as jest.Mock).mockReturnValue(mockRefreshDashboard);
+
       const eventBus = {
         publish: jest.fn(() => {}),
       };
+
       const replaceVariables = jest.fn((str: string) => str);
 
       const publish = jest.fn();
       const appEvents = {
         publish,
       };
-      jest.mocked(getAppEvents).mockImplementation(() => appEvents as any); // we need only these options
+
+      jest.mocked(getAppEvents).mockImplementation(() => {
+        return appEvents as any;
+      }); // we need only these options
 
       const props: Props = {
         data: {} as any,
@@ -288,7 +325,7 @@ describe('Text', () => {
       };
 
       await act(async () => render(<Text {...props} />));
-
+      expect(mockRefreshDashboard).toHaveBeenCalledTimes(1);
       expect(publish).toHaveBeenCalledTimes(1);
       expect(publish).toHaveBeenCalledWith({
         payload: {

@@ -2,11 +2,17 @@
 
 ![Text](https://github.com/VolkovLabs/business-text/raw/main/src/img/screenshot.png)
 
-![Grafana](https://img.shields.io/badge/Grafana-11.5-orange)
+![Grafana](https://img.shields.io/badge/Grafana-12-orange)
 ![CI](https://github.com/volkovlabs/business-text/workflows/CI/badge.svg)
 ![E2E](https://github.com/volkovlabs/business-text/workflows/E2E/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/business-text/branch/main/graph/badge.svg)](https://codecov.io/gh/VolkovLabs/business-text)
 [![CodeQL](https://github.com/VolkovLabs/business-text/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/VolkovLabs/business-text/actions/workflows/codeql-analysis.yml)
+
+## New Plugin Identifier
+
+We’re excited to announce an update for the Business Text Panel! The latest version, fully compatible with Grafana 11 and Grafana 12, is now available under our new plugin ID: `volkovlabs-text-panel`. This enhancement ensures seamless integration and improved functionality for your dashboards.
+
+To access the latest version and explore its features—such as dynamic text rendering, Markdown support, and JavaScript customization—please update your installations using the Grafana Plugins Catalog or the Grafana CLI with the new ID. For a step-by-step guide, visit our documentation or watch our latest tutorial video.
 
 ## Introduction
 
@@ -16,6 +22,7 @@ The Business Text panel plugin allows you to construct a text visualization temp
 
 ## Requirements
 
+- Business Text panel 6.X requires **Grafana 11** or **Grafana 12**.
 - Business Text panel 5.X requires **Grafana 10** or **Grafana 11**.
 - Dynamic Text panel 4.X requires **Grafana 9.2** or **Grafana 10**.
 - Dynamic Text panel 2.X and 3.X require **Grafana 8.5** or **Grafana 9**.
@@ -23,12 +30,12 @@ The Business Text panel plugin allows you to construct a text visualization temp
 
 ## Getting Started
 
-You can install the Business Text panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or use the Grafana command line tool.
+You can install the Business Text panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/volkovlabs-text-panel/) or use the Grafana command line tool.
 
 For the latter, please use the following command:
 
 ```bash
-grafana cli plugins install marcusolsson-dynamictext-panel
+grafana cli plugins install volkovlabs-text-panel
 ```
 
 [![Install Business Suite plugins in Cloud, OSS, Enterprise | Open source community plugins](https://raw.githubusercontent.com/volkovlabs/.github/main/started.png)](https://youtu.be/1qYzHfPXJF8)
@@ -76,7 +83,6 @@ You can contact us via Zendesk, receive priority in feature requests and bug fix
 
 - Ask a question, request a new feature, or report an issue at [GitHub issues](https://github.com/volkovlabs/business-text/issues).
 - Subscribe to our [YouTube Channel](https://youtube.com/@volkovlabs) and leave your comments.
-- Become a [Business Suite sponsor](https://github.com/sponsors/VolkovLabs).
 
 ## License
 

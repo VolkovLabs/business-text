@@ -1,10 +1,10 @@
 {
   "$schema": "https://github.com/grafana/grafana/raw/main/docs/sources/developers/plugins/plugin.schema.json",
   "dependencies": {
-    "grafanaDependency": ">=10.0.0",
+    "grafanaDependency": ">=11.0.0",
     "plugins": []
   },
-  "id": "marcusolsson-dynamictext-panel",
+  "id": "volkovlabs-text-panel",
   "info": {
     "author": {
       "name": "Volkov Labs",

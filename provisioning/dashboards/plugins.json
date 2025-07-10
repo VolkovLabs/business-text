@@ -60,10 +60,7 @@
           "format": "auto",
           "language": "markdown"
         },
-        "editors": [
-          "helpers",
-          "styles"
-        ],
+        "editors": ["helpers", "styles"],
         "externalStyles": [],
         "helpers": "return import('https://cdn.jsdelivr.net/npm/@mdit/plugin-tasklist').then(({ tasklist }) => {\n  context.markdown.use(tasklist, {\n    containerClass: 'tasklist',\n    itemClass: 'tasklist-item'\n  });\n\n  return () => {\n    console.log('unsubscribe');\n  }\n})",
         "renderMode": "everyRow",
@@ -83,9 +80,7 @@
                 "config": {},
                 "name": "Field 1",
                 "type": "string",
-                "values": [
-                  ""
-                ]
+                "values": [""]
               }
             ],
             "meta": {}
@@ -94,7 +89,7 @@
         }
       ],
       "title": "Tasklist",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     }
   ],
   "refresh": "",
