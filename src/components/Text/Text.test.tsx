@@ -127,7 +127,6 @@ describe('Text', () => {
       };
 
       await act(async () => render(<Text {...props} />));
-      console.log('publish -> ', publish);
       expect(publish).toHaveBeenCalledTimes(2);
       expect(publish).toHaveBeenCalledWith({
         type: AppEvents.alertError.name,
@@ -306,7 +305,6 @@ describe('Text', () => {
       };
 
       jest.mocked(getAppEvents).mockImplementation(() => {
-        console.log('return app events ', appEvents);
         return appEvents as any;
       }); // we need only these options
 
