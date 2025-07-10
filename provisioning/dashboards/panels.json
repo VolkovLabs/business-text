@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 6,
   "links": [],
   "panels": [
     {
@@ -38,7 +38,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#EAB839",
@@ -104,7 +105,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -176,7 +178,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -251,7 +254,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -301,8 +305,8 @@
     },
     {
       "datasource": {
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "fdwzblygl5i4gf"
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
       },
       "fieldConfig": {
         "defaults": {
@@ -310,7 +314,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -328,154 +333,6 @@
         "y": 9
       },
       "id": 13,
-      "options": {
-        "afterRender": "",
-        "content": "<table>\n{{#each data}}\n<tr>\n  {{#each this}}<td>{{this}}</td>{{/each}}\n</tr>\n{{/each}}\n</table>",
-        "contentPartials": [],
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 400,
-          "language": "markdown"
-        },
-        "editors": [],
-        "externalScripts": [],
-        "externalStyles": [],
-        "helpers": "",
-        "renderMode": "allRows",
-        "styles": "",
-        "wrap": true
-      },
-      "targets": [
-        {
-          "columns": [],
-          "data": "[\n    {\n      \"1\": 12.7,\n      \"2\": 13.1,\n      \"3\": 13.3,\n      \"4\": 13.4,\n      \"5\": 13.7,\n      \"6\": 13.8,\n      \"7\": 13.9,\n      \"8\": 14.0,\n      \"9\": 13.8,\n      \"10\": 13.6,\n      \"11\": 13.5,\n      \"12\": 13.3,\n      \"13\": 13.0,\n      \"14\": 12.8,\n      \"15\": 12.6,\n      \"16\": 12.2\n    },\n    {\n      \"1\": 12.9,\n      \"2\": 13.2,\n      \"3\": 13.5,\n      \"4\": 13.6,\n      \"5\": 13.9,\n      \"6\": 13.9,\n      \"7\": 14.0,\n      \"8\": 13.9,\n      \"9\": 13.9,\n      \"10\": 13.7,\n      \"11\": 13.6,\n      \"12\": 13.3,\n      \"13\": 13.1,\n      \"14\": 13.0,\n      \"15\": 12.8,\n      \"16\": 12.5\n    },\n    {\n      \"1\": 12.9,\n      \"2\": 13.2,\n      \"3\": 13.5,\n      \"4\": 13.6,\n      \"5\": 13.7,\n      \"6\": 13.7,\n      \"7\": 13.9,\n      \"8\": 14.0,\n      \"9\": 13.7,\n      \"10\": 13.6,\n      \"11\": 13.6,\n      \"12\": 13.3,\n      \"13\": 13.1,\n      \"14\": 12.9,\n      \"15\": 12.7,\n      \"16\": 12.4\n    },\n    {\n      \"1\": 13.0,\n      \"2\": 13.2,\n      \"3\": 13.4,\n      \"4\": 13.5,\n      \"5\": 13.8,\n      \"6\": 13.7,\n      \"7\": 13.8,\n      \"8\": 13.8,\n      \"9\": 13.7,\n      \"10\": 13.6,\n      \"11\": 13.5,\n      \"12\": 13.2,\n      \"13\": 13.0,\n      \"14\": 12.8,\n      \"15\": 12.7,\n      \"16\": 12.4\n    },\n    {\n      \"1\": 12.9,\n      \"2\": 13.1,\n      \"3\": 13.3,\n      \"4\": 13.4,\n      \"5\": 13.7,\n      \"6\": 13.7,\n      \"7\": 13.6,\n      \"8\": 13.6,\n      \"9\": 13.5,\n      \"10\": 13.4,\n      \"11\": 13.3,\n      \"12\": 13.2,\n      \"13\": 13.0,\n      \"14\": 12.8,\n      \"15\": 12.6,\n      \"16\": 12.4\n    },\n    {\n      \"1\": 12.9,\n      \"2\": 13.0,\n      \"3\": 13.1,\n      \"4\": 13.1,\n      \"5\": 13.3,\n      \"6\": 13.4,\n      \"7\": 13.5,\n      \"8\": 13.4,\n      \"9\": 13.3,\n      \"10\": 13.2,\n      \"11\": 13.2,\n      \"12\": 13.0,\n      \"13\": 12.9,\n      \"14\": 12.7,\n      \"15\": 12.5,\n      \"16\": 12.4\n    },\n    {\n      \"1\": 12.7,\n      \"2\": 12.8,\n      \"3\": 12.9,\n      \"4\": 12.9,\n      \"5\": 13.1,\n      \"6\": 13.1,\n      \"7\": 13.1,\n      \"8\": 13.2,\n      \"9\": 13.1,\n      \"10\": 13.0,\n      \"11\": 12.9,\n      \"12\": 12.8,\n      \"13\": 12.7,\n      \"14\": 12.5,\n      \"15\": 12.4,\n      \"16\": 12.2\n    },\n    {\n      \"1\": 12.5,\n      \"2\": 12.7,\n      \"3\": 12.8,\n      \"4\": 12.8,\n      \"5\": 12.8,\n      \"6\": 12.8,\n      \"7\": 12.9,\n      \"8\": 13.0,\n      \"9\": 12.9,\n      \"10\": 12.7,\n      \"11\": 12.7,\n      \"12\": 12.5,\n      \"13\": 12.5,\n      \"14\": 12.4,\n      \"15\": 12.4,\n      \"16\": 12.0\n    },\n    {\n      \"1\": 11.1,\n      \"2\": 11.5,\n      \"3\": 11.7,\n      \"4\": 11.8,\n      \"5\": 12.0,\n      \"6\": 12.2,\n      \"7\": 12.3,\n      \"8\": 12.5,\n      \"9\": 12.4,\n      \"10\": 12.2,\n      \"11\": 12.3,\n      \"12\": 12.2,\n      \"13\": 12.1,\n      \"14\": 12.1,\n      \"15\": 12.1,\n      \"16\": 11.8\n    }\n  ]",
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "fdwzblygl5i4gf"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "parser": "backend",
-          "refId": "A",
-          "root_selector": "",
-          "source": "inline",
-          "type": "json",
-          "url": "",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "title": "All Rows Simple Table without extra rows and columns",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "U0HP2Rv4z"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 13
-      },
-      "id": 26,
-      "options": {
-        "afterRender": "",
-        "content": "```html\n{{> Index}}\n```",
-        "contentPartials": [
-          {
-            "id": "1a363455-fd81-4afd-993b-beb062fe29ac",
-            "name": "Index",
-            "url": "https://volkovlabs.io/${pages}.html"
-          }
-        ],
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "language": "markdown"
-        },
-        "editors": [],
-        "externalStyles": [],
-        "helpers": "",
-        "renderMode": "everyRow",
-        "styles": "",
-        "wrap": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "marcusolsson-static-datasource",
-            "uid": "U0HP2Rv4z"
-          },
-          "frame": {
-            "fields": [
-              {
-                "config": {},
-                "name": "test",
-                "type": "string",
-                "values": ["test"]
-              }
-            ],
-            "meta": {},
-            "name": "test"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "Partial with replace",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "U0HP2Rv4z"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 0,
-        "y": 14
-      },
-      "id": 30,
       "options": {
         "afterRender": "",
         "content": "# {{app}}\n\n> {{description}}\n\n{{#if (eq tier \"frontend\")}}\nLink: <a href='https://{{cluster}}.example.com/{{app}}'>https://{{cluster}}.example.com/{{app}}</a>\n{{/if}}",
@@ -589,7 +446,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -641,7 +497,7 @@
         "h": 4,
         "w": 12,
         "x": 0,
-        "y": 19
+        "y": 14
       },
       "id": 11,
       "options": {
@@ -698,158 +554,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 6,
-        "x": 12,
-        "y": 21
-      },
-      "id": 8,
-      "options": {
-        "afterRender": "",
-        "content": "- Timestamp: {{variable \"__from\"}}\n- Seconds: {{variable \"__from:date:seconds\"}}\n- Parsed: {{variable \"__from:date:YYYY-MM-DD\"}}\n- ISO:\n  - From {{variable \"__from:date:iso\"}}\n  - To {{variable \"__from:date\"}}\n\n## {{test}}\n\n{{json @root}}",
-        "contentPartials": [],
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 400,
-          "language": "markdown"
-        },
-        "editors": [],
-        "externalScripts": [],
-        "externalStyles": [],
-        "handlebars": "",
-        "helpers": "",
-        "renderMode": "everyRow",
-        "styles": "",
-        "wrap": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "marcusolsson-static-datasource",
-            "uid": "U0HP2Rv4z"
-          },
-          "frame": {
-            "fields": [
-              {
-                "config": {},
-                "name": "test",
-                "type": "string",
-                "values": ["test"]
-              }
-            ],
-            "meta": {},
-            "name": "test"
-          },
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "marcusolsson-static-datasource",
-            "uid": "U0HP2Rv4z"
-          },
-          "frame": {
-            "fields": [
-              {
-                "config": {},
-                "name": "test",
-                "type": "string",
-                "values": ["test2"]
-              }
-            ],
-            "meta": {},
-            "name": "test2"
-          },
-          "hide": false,
-          "refId": "B"
-        }
-      ],
-      "title": "Date Variables",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "grafana",
-        "uid": "grafana"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 6,
-        "x": 18,
-        "y": 21
-      },
-      "id": 17,
-      "options": {
-        "afterRender": "",
-        "content": "```json\n{{{json @root}}}\n```",
-        "contentPartials": [],
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 100,
-          "language": "markdown"
-        },
-        "editors": ["styles"],
-        "externalScripts": [],
-        "externalStyles": [],
-        "helpers": "",
-        "renderMode": "allRows",
-        "styles": "& {\n  padding: 0;\n  margin: 0;\n}",
-        "wrap": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "marcusolsson-static-datasource",
-        "uid": "U0HP2Rv4z"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -864,7 +570,7 @@
         "h": 13,
         "w": 12,
         "x": 0,
-        "y": 23
+        "y": 18
       },
       "id": 5,
       "options": {
@@ -1011,7 +717,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -1104,7 +809,6 @@
         "styles": "& {\n  padding: 0;\n  margin: 0;\n}",
         "wrap": true
       },
-      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -1166,7 +870,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -1293,84 +996,6 @@
     {
       "datasource": {
         "type": "volkovlabs-rss-datasource",
-        "uid": "rZAdZdf7a"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 0,
-        "y": 36
-      },
-      "id": 2,
-      "options": {
-        "afterRender": "",
-        "content": "| Title | Date | Category |\n| ----- | ------ | ---- |\n{{#each data}}\n| {{title}} | {{date pubDate 'MMM, DD YYYY'}} | {{category}}\n{{/each}}",
-        "contentPartials": [],
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "height": 400,
-          "language": "html"
-        },
-        "editors": [],
-        "externalScripts": [],
-        "externalStyles": [],
-        "handlebars": "handlebars.registerHelper('replace',\n  (context, pattern, replacement) => context.replace(pattern, replacement));\n",
-        "helpers": "",
-        "renderMode": "allRows",
-        "styles": "",
-        "wrap": true
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "volkovlabs-rss-datasource",
-            "uid": "rZAdZdf7a"
-          },
-          "dateField": "pubDate",
-          "feedType": "items",
-          "queryText": "test",
-          "refId": "A"
-        }
-      ],
-      "title": "News",
-      "transformations": [
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
-              {
-                "dateFormat": "ddd, DD MMM YYYY HH:mm:ss ZZ",
-                "destinationType": "time",
-                "targetField": "pubDate"
-              }
-            ],
-            "fields": {}
-          }
-        }
-      ],
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
-      "datasource": {
-        "type": "volkovlabs-rss-datasource",
         "uid": "rZAdZdf82"
       },
       "fieldConfig": {
@@ -1379,7 +1004,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1457,7 +1083,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1472,7 +1099,7 @@
         "h": 3,
         "w": 12,
         "x": 0,
-        "y": 48
+        "y": 43
       },
       "id": 22,
       "options": {
@@ -1527,7 +1154,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1542,7 +1170,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 51
+        "y": 46
       },
       "id": 27,
       "options": {
@@ -1601,7 +1229,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           }
@@ -1653,7 +1282,6 @@
         "styles": "",
         "wrap": true
       },
-      "pluginVersion": "5.5.0",
       "targets": [
         {
           "datasource": {
@@ -1779,7 +1407,7 @@
   ],
   "preload": false,
   "refresh": "",
-  "schemaVersion": 41,
+  "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
@@ -1876,5 +1504,6 @@
   "timezone": "",
   "title": "Examples",
   "uid": "O4tc_E6Gz",
-  "version": 1
+  "version": 18,
+  "weekStart": ""
 }
