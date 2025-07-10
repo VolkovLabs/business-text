@@ -9,7 +9,7 @@ We’re excited to announce an update for the Business Text Panel! The latest ve
 ### Changed
 
 - Update Decimals setting support in panel options (#422)
-- Updated to Grafana 12 and dependencies ()
+- Updated to Grafana 12 and dependencies (#424)
 
 ## 5.7.0 (2025-03-05)
 
