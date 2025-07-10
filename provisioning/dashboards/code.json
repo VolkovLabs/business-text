@@ -60,9 +60,7 @@
           "height": 200,
           "language": "markdown"
         },
-        "editors": [
-          "afterRender"
-        ],
+        "editors": ["afterRender"],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
@@ -72,7 +70,7 @@
       },
       "pluginVersion": "5.0.0",
       "title": "Panel Title",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -113,9 +111,7 @@
           "height": 200,
           "language": "markdown"
         },
-        "editors": [
-          "afterRender"
-        ],
+        "editors": ["afterRender"],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
@@ -136,9 +132,7 @@
                 "config": {},
                 "name": "test",
                 "type": "string",
-                "values": [
-                  "test"
-                ]
+                "values": ["test"]
               }
             ],
             "meta": {},
@@ -148,7 +142,7 @@
         }
       ],
       "title": "Dynamic Form",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -189,9 +183,7 @@
           "height": 200,
           "language": "markdown"
         },
-        "editors": [
-          "styles"
-        ],
+        "editors": ["styles"],
         "externalScripts": [],
         "externalStyles": [],
         "helpers": "",
@@ -211,7 +203,7 @@
         }
       ],
       "title": "Dynamic Form",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     }
   ],
   "refresh": "",

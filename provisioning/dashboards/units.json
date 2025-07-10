@@ -116,7 +116,7 @@
         }
       ],
       "title": "Bytes",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -206,7 +206,7 @@
         }
       ],
       "title": "Energy: Watt",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -296,7 +296,7 @@
         }
       ],
       "title": "Force: Newtons",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -386,7 +386,7 @@
         }
       ],
       "title": "Mass: gram",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -476,7 +476,7 @@
         }
       ],
       "title": "Pressure: pascals",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -566,7 +566,7 @@
         }
       ],
       "title": "Length: millimeter",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -656,7 +656,7 @@
         }
       ],
       "title": "Volume: litre",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -746,7 +746,7 @@
         }
       ],
       "title": "Time: seconds",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -836,7 +836,7 @@
         }
       ],
       "title": "Rotation Speed: Hertz",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -897,7 +897,7 @@
         }
       ],
       "title": "Time Series: decimals",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     }
   ],
   "refresh": "",

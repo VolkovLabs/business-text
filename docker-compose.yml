@@ -9,7 +9,7 @@ services:
       - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/etc/grafana/provisioning/dashboards/panels.json
       - GF_INSTALL_PLUGINS=volkovlabs-rss-datasource,marcusolsson-static-datasource,yesoreyeram-infinity-datasource
     volumes:
-      - ./dist:/var/lib/grafana/plugins/marcusolsson-dynamictext-panel
+      - ./dist:/var/lib/grafana/plugins/volkovlabs-text-panel
       - ./provisioning:/etc/grafana/provisioning
     profiles:
       - dev
@@ -23,7 +23,7 @@ services:
       - GF_USERS_DEFAULT_THEME=light
       - GF_INSTALL_PLUGINS=marcusolsson-static-datasource,volkovlabs-rss-datasource,yesoreyeram-infinity-datasource
     volumes:
-      - ./dist:/var/lib/grafana/plugins/marcusolsson-dynamictext-panel
+      - ./dist:/var/lib/grafana/plugins/volkovlabs-text-panel
       - ./provisioning:/etc/grafana/provisioning
     profiles:
       - main
@@ -37,7 +37,7 @@ services:
       - GF_USERS_DEFAULT_THEME=light
       - GF_INSTALL_PLUGINS=volkovlabs-rss-datasource,marcusolsson-static-datasource,yesoreyeram-infinity-datasource
     volumes:
-      - ./dist:/var/lib/grafana/plugins/marcusolsson-dynamictext-panel
+      - ./dist:/var/lib/grafana/plugins/volkovlabs-text-panel
       - ./provisioning:/etc/grafana/provisioning
     profiles:
       - dependency

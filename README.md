@@ -29,12 +29,12 @@ The Business Text panel plugin allows you to construct a text visualization temp
 
 ## Getting Started
 
-You can install the Business Text panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or use the Grafana command line tool.
+You can install the Business Text panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/volkovlabs-text-panel/) or use the Grafana command line tool.
 
 For the latter, please use the following command:
 
 ```bash
-grafana cli plugins install marcusolsson-dynamictext-panel
+grafana cli plugins install volkovlabs-text-panel
 ```
 
 [![Install Business Suite plugins in Cloud, OSS, Enterprise | Open source community plugins](https://raw.githubusercontent.com/volkovlabs/.github/main/started.png)](https://youtu.be/1qYzHfPXJF8)

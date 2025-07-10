@@ -116,7 +116,7 @@
         }
       ],
       "title": "Random Walk All Data",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -213,7 +213,7 @@
         }
       ],
       "title": "Random Walk Every row",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -310,7 +310,7 @@
         }
       ],
       "title": "Random Walk",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     },
     {
       "datasource": {
@@ -384,7 +384,7 @@
         }
       ],
       "title": "External styles",
-      "type": "marcusolsson-dynamictext-panel"
+      "type": "volkovlabs-text-panel"
     }
   ],
   "preload": false,
