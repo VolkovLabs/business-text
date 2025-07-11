@@ -33,6 +33,8 @@ type Props = React.ComponentProps<typeof Text>;
  * Text
  */
 describe('Text', () => {
+  const getUserPreferenceDefault = jest.fn();
+  const setUserPreference = jest.fn();
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -53,6 +55,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -85,6 +89,8 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        getUserPreference: getUserPreferenceDefault,
+        setUserPreference: setUserPreference,
       };
 
       await act(async () => render(<Text {...props} />));
@@ -124,6 +130,8 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        getUserPreference: getUserPreferenceDefault,
+        setUserPreference: setUserPreference,
       };
 
       await act(async () => render(<Text {...props} />));
@@ -181,6 +189,8 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        getUserPreference: getUserPreferenceDefault,
+        setUserPreference: setUserPreference,
       };
 
       await act(async () => render(<Text {...props} />));
@@ -218,6 +228,8 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        getUserPreference: getUserPreferenceDefault,
+        setUserPreference: setUserPreference,
       };
 
       const { rerender } = await act(async () => render(<Text {...props} />));
@@ -263,6 +275,8 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        getUserPreference: getUserPreferenceDefault,
+        setUserPreference: setUserPreference,
       };
 
       await act(async () => render(<Text {...props} />));
@@ -322,6 +336,8 @@ describe('Text', () => {
         timeZone: '',
         replaceVariables,
         eventBus: eventBus as any,
+        getUserPreference: getUserPreferenceDefault,
+        setUserPreference: setUserPreference,
       };
 
       await act(async () => render(<Text {...props} />));
@@ -363,6 +379,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -411,6 +429,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -460,6 +480,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -510,6 +532,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -564,6 +588,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -615,6 +641,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -655,6 +683,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -714,6 +744,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -752,6 +784,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -793,6 +827,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -823,6 +859,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -862,6 +900,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -912,6 +952,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
@@ -974,6 +1016,8 @@ describe('Text', () => {
       timeZone: '',
       replaceVariables: (str: string) => str,
       eventBus: {} as any,
+      getUserPreference: getUserPreferenceDefault,
+      setUserPreference: setUserPreference,
     };
 
     await act(async () => render(<Text {...props} />));
