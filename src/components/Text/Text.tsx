@@ -74,6 +74,16 @@ interface Props {
    * @type {PanelData}
    */
   data: PanelData;
+
+  /**
+   * Get User Preference
+   */
+  getUserPreference: (key: string) => Promise<unknown>;
+
+  /**
+   * Set User Preference
+   */
+  setUserPreference: <T>(key: string, data: T) => Promise<T>;
 }
 
 /**
@@ -87,6 +97,8 @@ export const Text: React.FC<Props> = ({
   replaceVariables,
   eventBus,
   data: panelData,
+  getUserPreference,
+  setUserPreference,
 }) => {
   /**
    * Generated rows
@@ -157,6 +169,8 @@ export const Text: React.FC<Props> = ({
           theme,
           partials: options?.contentPartials,
           refreshDashboard,
+          getUserPreference,
+          setUserPreference,
         })),
         data: htmlData,
       };
@@ -175,6 +189,8 @@ export const Text: React.FC<Props> = ({
       notifyError,
       theme,
       refreshDashboard,
+      getUserPreference,
+      setUserPreference,
     ]
   );
 
@@ -330,6 +346,8 @@ export const Text: React.FC<Props> = ({
           timeRange={timeRange}
           timeZone={timeZone}
           replaceVariables={replaceVariables}
+          getUserPreference={getUserPreference}
+          setUserPreference={setUserPreference}
         />
       ))}
     </>

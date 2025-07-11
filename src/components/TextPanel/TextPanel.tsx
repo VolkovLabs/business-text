@@ -5,7 +5,7 @@ import { Select, useStyles2, useTheme2 } from '@grafana/ui';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { TEST_IDS } from '../../constants';
-import { useExternalResources } from '../../hooks';
+import { useExternalResources, useStorage } from '../../hooks';
 import { PanelOptions, RenderMode, ResourceType } from '../../types';
 import { getFrame } from '../../utils';
 import { Text } from '../Text';
@@ -39,6 +39,11 @@ export const TextPanel: React.FC<Props> = ({
    * Theme
    */
   const theme = useTheme2();
+
+  /**
+   * Local Storage Model
+   */
+  const { get: getPreferencesValue, update: savePreferencesValue } = useStorage();
 
   /**
    * Styles Scoped Vars
@@ -150,6 +155,8 @@ export const TextPanel: React.FC<Props> = ({
           replaceVariables={replaceVariables}
           eventBus={eventBus}
           data={data}
+          getUserPreference={getPreferencesValue}
+          setUserPreference={savePreferencesValue}
         />
       </div>
 

@@ -69,6 +69,16 @@ export interface Props {
    * @type {TimeZone}
    */
   timeZone: TimeZone;
+
+  /**
+   * Get User Preference
+   */
+  getUserPreference: (key: string) => Promise<unknown>;
+
+  /**
+   * Set User Preference
+   */
+  setUserPreference: <T>(key: string, data: T) => Promise<T>;
 }
 
 /**
@@ -82,6 +92,8 @@ export const Row: React.FC<Props> = ({
   eventBus,
   timeRange,
   timeZone,
+  getUserPreference,
+  setUserPreference,
 }) => {
   /**
    * Row Ref
@@ -144,6 +156,8 @@ export const Row: React.FC<Props> = ({
             eventBus,
             locationService,
             refresh: () => refreshDashboard(),
+            getUserPreference,
+            setUserPreference,
           },
         })
       );
@@ -157,6 +171,7 @@ export const Row: React.FC<Props> = ({
   }, [
     afterRender,
     eventBus,
+    getUserPreference,
     item.data,
     item.dataFrame,
     item.panelData,
@@ -164,6 +179,7 @@ export const Row: React.FC<Props> = ({
     notifySuccess,
     refreshDashboard,
     replaceVariables,
+    setUserPreference,
     theme,
     timeRange,
     timeZone,

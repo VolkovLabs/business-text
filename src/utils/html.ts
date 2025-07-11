@@ -48,6 +48,8 @@ export const generateHtml = async ({
   theme,
   partials,
   refreshDashboard,
+  getUserPreference,
+  setUserPreference,
 }: {
   data: Record<string, unknown>;
   content: string;
@@ -64,6 +66,8 @@ export const generateHtml = async ({
   theme: GrafanaTheme2;
   partials: PartialItemConfig[];
   refreshDashboard: () => void;
+  getUserPreference: (key: string) => Promise<unknown>;
+  setUserPreference: <T>(key: string, data: T) => Promise<T>;
 }): Promise<{ html: string; unsubscribe?: unknown }> => {
   /**
    * Variable
@@ -147,6 +151,8 @@ export const generateHtml = async ({
           locationService,
           eventBus,
           refresh: () => refreshDashboard(),
+          getUserPreference,
+          setUserPreference,
         },
       }),
       helpers

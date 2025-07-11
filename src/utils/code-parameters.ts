@@ -47,6 +47,14 @@ const renderCodeParameters = {
         timeZone: new CodeParameterItem<TimeZone>('Selected time zone.'),
         timeRange: new CodeParameterItem<TimeRange>('Selected time range.'),
         refresh: new CodeParameterItem<() => void>('Refresh dashboard.', CodeEditorSuggestionItemKind.Method),
+        getUserPreference: new CodeParameterItem<(key: string) => unknown>(
+          'Get User preference by key',
+          CodeEditorSuggestionItemKind.Method
+        ),
+        setUserPreference: new CodeParameterItem<(key: string, data: unknown) => void>(
+          'Set User preference by key',
+          CodeEditorSuggestionItemKind.Method
+        ),
       },
     },
   },
