@@ -1,0 +1,219 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 10,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "id": 13,
+      "options": {
+        "afterRender": "context.grafana.getUserPreference('testKey').then((value) => {\n  const element = document.getElementById('content');\n  element.textContent = JSON.stringify(value);\n});",
+        "content": "\n<button onclick=\"myFuncGetValue()\">Get Value and show message</button>\n<button onclick=\"myFuncSetValue()\">Set default Value and show message</button>\n<br>\n<br>\nShow content after render:\n<pre id=\"content\"></pre>\n",
+        "contentPartials": [],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "markdown"
+        },
+        "editors": ["helpers", "afterRender"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "myFuncGetValue = () => {\n  context.grafana.getUserPreference('testKey').then((value) => {\n    context.grafana.notifySuccess(['USER STORAGE: ', JSON.stringify(value)])\n  });\n};\n\nmyFuncSetValue = () => {\n  context.grafana.setUserPreference('testKey', {defaultData:'test message'}).then((value) => {\n    context.grafana.notifySuccess(['Data Added ', 'Check Data'])\n    context.grafana.refresh()\n  });\n};\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "feedType": "all",
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "tier",
+                "type": "string",
+                "values": ["frontend"]
+              }
+            ],
+            "meta": {},
+            "name": "Test"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Simple example",
+      "type": "volkovlabs-text-panel"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-static-datasource",
+        "uid": "U0HP2Rv4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 6
+      },
+      "id": 29,
+      "options": {
+        "afterRender": "const variable = context.grafana.replaceVariables('$keys')\n\ncontext.grafana.getUserPreference(variable).then((value) => {\n  const element = document.getElementById('content3');\n  element.textContent = JSON.stringify(value);\n});",
+        "content": "\n<button onclick=\"myFuncGetValue()\">Get Value and show message</button>\n<button onclick=\"myFuncSetValue()\">Set default Value and show message</button>\n<br>\n<br>\nShow content after render:\n<pre id=\"content3\"></pre>\n",
+        "contentPartials": [],
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 400,
+          "language": "markdown"
+        },
+        "editors": ["helpers", "afterRender"],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "const variable = context.grafana.replaceVariables('$keys')\n\nmyFuncGetValue = () => {\n  context.grafana.getUserPreference(variable).then((value) => {\n    context.grafana.notifySuccess(['USER STORAGE: ', JSON.stringify(value)])\n  });\n};\n\nmyFuncSetValue = () => {\n  context.grafana.setUserPreference(variable, { defaultData: `test message for key ${variable}` }).then((value) => {\n    context.grafana.notifySuccess(['Data Added ', 'Check Data'])\n    context.grafana.refresh()\n  });\n};\n",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "marcusolsson-static-datasource",
+            "uid": "U0HP2Rv4z"
+          },
+          "feedType": "all",
+          "frame": {
+            "fields": [
+              {
+                "config": {},
+                "name": "var",
+                "type": "string",
+                "values": ["$keys"]
+              }
+            ],
+            "meta": {},
+            "name": "Test"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Simple example using variable",
+      "type": "volkovlabs-text-panel"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "keyTestOne",
+          "value": "keyTestOne"
+        },
+        "label": "keys",
+        "name": "keys",
+        "options": [
+          {
+            "selected": true,
+            "text": "keyTestOne",
+            "value": "keyTestOne"
+          },
+          {
+            "selected": false,
+            "text": "KeyTestSecond",
+            "value": "KeyTestSecond"
+          },
+          {
+            "selected": false,
+            "text": "KeyTestThird",
+            "value": "KeyTestThird"
+          }
+        ],
+        "query": "keyTestOne, KeyTestSecond, KeyTestThird",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1y",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Preference",
+  "uid": "8bc31e2b-eb47-4022-abd8-10714915c426",
+  "version": 65
+}
