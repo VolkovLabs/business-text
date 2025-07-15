@@ -233,22 +233,28 @@ export const Text: React.FC<Props> = ({
                    */
                   const formattedValue = display?.(value);
 
-                  /**
-                   * Status Color
-                   */
-                  const statusColor = options.status === name ? formattedValue?.color : acc[i]?.statusColor;
+                  let fieldObject = {
+                    ...acc[i],
+                    [config.displayName || name]:
+                      config.unit && formattedValue ? formattedValueToString(formattedValue) : value,
+                  };
+
+                  if (options.status) {
+                    /**
+                     * Status Color
+                     */
+                    const statusColor = options.status === name ? formattedValue?.color : acc[i]?.statusColor;
+
+                    fieldObject = {
+                      ...fieldObject,
+                      statusColor,
+                    };
+                  }
 
                   /**
                    * Set Value and Status Color
                    */
-                  acc[i] = {
-                    ...acc[i],
-                    [config.displayName || name]:
-                      (config.unit || !!config.decimals) && formattedValue
-                        ? formattedValueToString(formattedValue)
-                        : value,
-                    statusColor,
-                  };
+                  acc[i] = fieldObject;
                 });
 
                 return acc;
