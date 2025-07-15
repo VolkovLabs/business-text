@@ -97,7 +97,7 @@
         }
       ],
       "title": "Simple example",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -169,7 +169,7 @@
         }
       ],
       "title": "Simple example using variable",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "preload": false,
