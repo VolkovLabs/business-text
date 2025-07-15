@@ -2,11 +2,15 @@
 
 All notable changes to the **Business Text Panel** (formerly Dynamic Text Plugin) for Grafana will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [6.0.0] - 2025-07-10
+## [6.0.0] - 2025-07-15
 
 ### Breaking Changes
 
 - Now requires Grafana 11 or 12.
+
+### Added
+
+- Added User Preferences functionality ([#425](https://github.com/VolkovLabs/business-text/issues/425)).
 
 ### Changed
 
