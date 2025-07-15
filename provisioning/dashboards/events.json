@@ -235,7 +235,7 @@
         }
       ],
       "title": "Data-Hover Subscribe",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -273,7 +273,7 @@
         }
       ],
       "title": "Data-Hover Subscribe",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "refresh": "",

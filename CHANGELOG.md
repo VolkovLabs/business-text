@@ -6,7 +6,7 @@ All notable changes to the **Business Text Panel** (formerly Dynamic Text Plugin
 
 ### Breaking Changes
 
-- Updated plugin ID to `volkovlabs-text-panel` for compatibility with Grafana 11 and 12, ensuring seamless integration and enhanced dashboard functionality.
+- Now requires Grafana 11 or 12.
 
 ### Changed
 

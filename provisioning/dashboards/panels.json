@@ -91,7 +91,7 @@
         }
       ],
       "title": "$test",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -163,7 +163,7 @@
         }
       ],
       "title": "Replace Custom Function",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -238,7 +238,7 @@
         }
       ],
       "title": "Partial",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -297,7 +297,7 @@
         }
       ],
       "title": "No Results",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -368,7 +368,7 @@
         }
       ],
       "title": "no extra columns and rows",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -443,7 +443,7 @@
         }
       ],
       "title": "Partial with replace",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -533,7 +533,7 @@
         }
       ],
       "title": "All Rows",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -625,7 +625,7 @@
         }
       ],
       "title": "Date Variables",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -684,7 +684,7 @@
         }
       ],
       "title": "",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -756,7 +756,7 @@
         }
       ],
       "title": "Buttons",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -880,7 +880,7 @@
         }
       ],
       "title": "Users",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -972,7 +972,7 @@
         }
       ],
       "title": "Error Output",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -1050,7 +1050,7 @@
           }
         }
       ],
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -1128,7 +1128,7 @@
           }
         }
       ],
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -1198,7 +1198,7 @@
         }
       ],
       "title": "Theme",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -1272,7 +1272,7 @@
         }
       ],
       "title": "CSS external with variable",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -1363,7 +1363,7 @@
         }
       ],
       "title": "Every row color from specific field",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -1454,7 +1454,7 @@
         }
       ],
       "title": "All rows color from specific field",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "preload": false,

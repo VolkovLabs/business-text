@@ -88,7 +88,7 @@
         }
       ],
       "title": "D3 library",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -158,7 +158,7 @@
         }
       ],
       "title": "Chart.js",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -235,7 +235,7 @@
         }
       ],
       "title": "Leaflet",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -305,7 +305,7 @@
         }
       ],
       "title": "Flowchart",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -375,7 +375,7 @@
         }
       ],
       "title": "Youtube",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -445,7 +445,7 @@
         }
       ],
       "title": "Mermaid",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -515,7 +515,7 @@
         }
       ],
       "title": "Plotly 3D Scatter",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "schemaVersion": 39,

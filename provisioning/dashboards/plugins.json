@@ -89,7 +89,7 @@
         }
       ],
       "title": "Tasklist",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "refresh": "",

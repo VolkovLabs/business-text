@@ -4,7 +4,7 @@
     "grafanaDependency": ">=11.0.0",
     "plugins": []
   },
-  "id": "volkovlabs-text-panel",
+  "id": "marcusolsson-dynamictext-panel",
   "info": {
     "author": {
       "name": "Volkov Labs",

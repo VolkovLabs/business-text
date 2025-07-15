@@ -70,7 +70,7 @@
       },
       "pluginVersion": "5.0.0",
       "title": "Panel Title",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -142,7 +142,7 @@
         }
       ],
       "title": "Dynamic Form",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     },
     {
       "datasource": {
@@ -203,7 +203,7 @@
         }
       ],
       "title": "Dynamic Form",
-      "type": "volkovlabs-text-panel"
+      "type": "marcusolsson-dynamictext-panel"
     }
   ],
   "refresh": "",
