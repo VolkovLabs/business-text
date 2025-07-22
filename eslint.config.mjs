@@ -34,5 +34,6 @@ export default defineConfig(
     'src/__mocks__/**',
     'src/**/*.test.ts*',
     'test/*',
+    'webpack.config.ts',
   ])
 );
