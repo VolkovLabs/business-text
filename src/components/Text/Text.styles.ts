@@ -12,7 +12,7 @@ export const getStyles = (theme: GrafanaTheme2) => {
    */
   const frame = css`
     border-bottom: 1px solid ${theme.colors.border.medium};
-    margin-bottom: 1rem;
+    margin-bottom: ${theme.spacing(2)};
     padding: ${theme.spacing(1)};
 
     &:last-child {
@@ -29,7 +29,7 @@ export const getStyles = (theme: GrafanaTheme2) => {
     }
 
     a {
-      color: blue;
+      color: ${theme.colors.text.link};
     }
 
     table {
