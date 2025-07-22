@@ -2,6 +2,12 @@
 
 All notable changes to the **Business Text Panel** (formerly Dynamic Text Plugin) for Grafana will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.1.0] - Unreleased
+
+### Changed
+
+- Update styles using theme object ([#427](https://github.com/VolkovLabs/business-text/issues/427)).
+
 ## [6.0.0] - 2025-07-15
 
 ### Breaking Changes
