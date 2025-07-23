@@ -130,7 +130,8 @@ export const plugin = new PanelPlugin<PanelOptions>(TextPanel)
         editor: TextEditor,
         category: ['Content'],
         showIf: (config) =>
-          config.editors.includes(EditorType.DEFAULT) || config.defaultContent !== DEFAULT_OPTIONS.defaultContent,
+          config.editors.includes(EditorType.DEFAULT) ||
+          (!!config.defaultContent.length && config.defaultContent !== DEFAULT_OPTIONS.defaultContent),
       });
 
     /**
