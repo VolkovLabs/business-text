@@ -8,6 +8,7 @@ All notable changes to the **Business Text Panel** (formerly Dynamic Text Plugin
 
 - Updated styles using theme object ([#427](https://github.com/VolkovLabs/business-text/issues/427)).
 - Updated ESLint configuration ([#428](https://github.com/VolkovLabs/business-text/issues/428)).
+- Removed Default content editor if value is empty ([#429](https://github.com/VolkovLabs/business-text/issues/429)).
 
 ## [6.0.0] - 2025-07-15
 
